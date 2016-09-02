@@ -10,7 +10,7 @@ $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev != 8){
-	header("Location: lvlError.php");
+  header("Location: lvlError.php");
 }
 
 session_destroy();

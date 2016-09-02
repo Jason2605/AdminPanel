@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -12,7 +12,7 @@ $conecG = "work";
 $_SESSION['conecFail'] = $conecG;
 
 if ($adminLev < 1){
-	header("Location: index.php");
+  header("Location: index.php");
 }
 
 include('verifyPanel.php');
@@ -26,8 +26,8 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be establ
 
 while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
 	
-	$players++;
-	$money=$money + $row['cash'] + $row['bankacc'];
+  $players++;
+  $money=$money + $row['cash'] + $row['bankacc'];
 }
 
 $sqlgetVeh = "SELECT * FROM vehicles";
@@ -37,7 +37,7 @@ $vehicles=0;
 
 while ($rowVeh = mysqli_fetch_array($sqldataVeh,MYSQLI_ASSOC)) {
 	
-	$vehicles++;
+  $vehicles++;
 }
 ?>
 

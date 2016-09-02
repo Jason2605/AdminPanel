@@ -89,15 +89,15 @@ class Query
 
         if ($this->where) {
             list($field, $operator, $predicate) = $this->where;
-            $documents = array_filter($documents, function ($doc) use ($field, $operator, $predicate) {
+            $documents = array_filter($documents, function($doc) use ($field, $operator, $predicate) {
                 $value = $doc->{$field};
 
                 switch (true) {
                     case ($operator === '==' && $value == $predicate): return true;
                     case ($operator === '===' && $value === $predicate): return true;
-                    case ($operator === '>'  && $value >  $predicate): return true;
+                    case ($operator === '>' && $value > $predicate): return true;
                     case ($operator === '>=' && $value >= $predicate): return true;
-                    case ($operator === '<'  && $value <  $predicate): return true;
+                    case ($operator === '<' && $value < $predicate): return true;
                     case ($operator === '>=' && $value >= $predicate): return true;
                 }
 
@@ -141,7 +141,7 @@ class Query
     {
         $c = count($args);
 
-        usort($array, function ($a, $b) use ($args, $c) {
+        usort($array, function($a, $b) use ($args, $c) {
             $i   = 0;
             $cmp = 0;
             while ($cmp == 0 && $i < $c) {
@@ -152,7 +152,7 @@ class Query
                     $cmp = strcmp($valueA, $valueB);
                 } elseif (is_bool($valueA)) {
                     $cmp = $valueA - $valueB;
-                } else {
+                }else {
                     $cmp = ($valueA == $valueB) ? 0 : ($valueA > $valueB) ? -1 : 1;
                 }
 

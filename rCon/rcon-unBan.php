@@ -7,10 +7,10 @@ if (!isset($_SESSION['logged'])){
     header("Location: ../index.php");
 }
 if ($adminLev < 7){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
- require_once '../ArmaRConClass/rcon.php'; 
+  require_once '../ArmaRConClass/rcon.php'; 
 
 session_id ("user");
 session_start();
@@ -22,7 +22,7 @@ Rconconnect();
 $banid = $_SESSION['banid'];
 
 if($banid == ''){
-	header("Location: ../home.php");
+  header("Location: ../home.php");
 }
 else{
 

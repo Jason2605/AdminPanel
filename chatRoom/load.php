@@ -17,13 +17,13 @@ $repo = new \JamesMoss\Flywheel\Repository('shouts', $config);
 
 // Delete comments which are more than 1 hour old if the variable is set to be true.
 
-if($deleteOldComments) {
+if ($deleteOldComments) {
     
     $oldShouts = $repo->query()
                 ->where('createdAt', '<', strtotime('-1 hour'))
                 ->execute();
 
-    foreach($oldShouts as $old) {
+    foreach ($oldShouts as $old) {
         $repo->delete($old->id);
     }
     
@@ -33,7 +33,7 @@ if($deleteOldComments) {
 
 $shouts = $repo->query()
         ->orderBy('createdAt ASC')
-        ->limit(8,0)
+        ->limit(8, 0)
         ->execute();
 
 $results = array();
@@ -47,7 +47,7 @@ $config = array(
 
 $relativeTime = new \RelativeTime\RelativeTime($config);
         
-foreach($shouts as $shout) {
+foreach ($shouts as $shout) {
     $shout->timeAgo = $relativeTime->timeAgo($shout->createdAt);
     $results[] = $shout;
 }

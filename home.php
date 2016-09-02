@@ -3,7 +3,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -14,7 +14,7 @@ $conecG = "work";
 $_SESSION['conecFail'] = $conecG;
 
 if ($adminLev < 1){
-	header("Location: index.php");
+  header("Location: index.php");
 }
 
 include('verifyPanel.php');
@@ -28,8 +28,8 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be establ
 
 while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
 	
-	$players++;
-	$money=$money + $row['cash'] + $row['bankacc'];
+  $players++;
+  $money=$money + $row['cash'] + $row['bankacc'];
 }
 
 $sqlgetVeh = "SELECT * FROM vehicles";
@@ -81,104 +81,104 @@ include('header/header.php');
           <h1 style = "margin-top: 70px">Dashboard</h1>
 		  <p class="page-header">Dashboard of the panel.</p>
 <?php
-		//Max players
+    //Max players
 		
-		echo	"<div id='rcorners1'>";
-		echo		"<div class='box-top'><center><h1>Players</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo		"<p><br><center>There are currently ".$players." players signed up on the server.</p>";
-		echo		"</div>";
-		echo	"</div>";
+    echo	"<div id='rcorners1'>";
+    echo		"<div class='box-top'><center><h1>Players</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo		"<p><br><center>There are currently ".$players." players signed up on the server.</p>";
+    echo		"</div>";
+    echo	"</div>";
 		
-		//Vehicles
+    //Vehicles
 		
-		echo	"<div id='rcorners2'>";
-		echo		"<div class='box-top'><center><h1>Vehicles</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo		"<p><br><center>There are currently ".$vehicles." vehicles.</p>";
-		echo		"</div>";
-		echo	"</div>";
+    echo	"<div id='rcorners2'>";
+    echo		"<div class='box-top'><center><h1>Vehicles</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo		"<p><br><center>There are currently ".$vehicles." vehicles.</p>";
+    echo		"</div>";
+    echo	"</div>";
 		
-		//?
+    //?
 $money = "$".number_format($money, 2);
 
-		echo	"<div id='rcorners3'>";
-		echo		"<div class='box-top'><center><h1>Total money</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo		"<p><br><center>There is a total of ".$money." on the server.</p>";
-		echo		"</div>";
-		echo	"</div>";
+    echo	"<div id='rcorners3'>";
+    echo		"<div class='box-top'><center><h1>Total money</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo		"<p><br><center>There is a total of ".$money." on the server.</p>";
+    echo		"</div>";
+    echo	"</div>";
 		
 		
-		echo	"<div id='rcorners4'>";
-		echo		"<div class='box-top'><center><h1>Global Message</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo 			"<form action=home.php method=post>";
-		echo 		"<div class = 'textInput'><td>" ."<center><input class='form-control' type=text name=global value='' < /td></div><br>";
-		echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=send value=Send". " </td></div>";
-		echo		"</div>";
-		echo	"</div>";
-		echo  "</form>";
+    echo	"<div id='rcorners4'>";
+    echo		"<div class='box-top'><center><h1>Global Message</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo 			"<form action=home.php method=post>";
+    echo 		"<div class = 'textInput'><td>" ."<center><input class='form-control' type=text name=global value='' < /td></div><br>";
+    echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=send value=Send". " </td></div>";
+    echo		"</div>";
+    echo	"</div>";
+    echo  "</form>";
 		
 		
-		echo	"<div id='rcorners5'>";
-		echo		"<div class='box-top'><center><h1>Restart Server</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo 			"<form action=home.php method=post>";
-		//echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
-		echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=restart value=Restart". " </td></div>";
-		echo		"</div>";
-		echo	"</div>";
-		echo  "</form>";
+    echo	"<div id='rcorners5'>";
+    echo		"<div class='box-top'><center><h1>Restart Server</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo 			"<form action=home.php method=post>";
+    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
+    echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=restart value=Restart". " </td></div>";
+    echo		"</div>";
+    echo	"</div>";
+    echo  "</form>";
 		
 		
-		echo	"<div id='rcorners6'>";
-		echo		"<div class='box-top'><center><h1>Stop Server</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo 			"<form action=home.php method=post>";
-		//echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
-		echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=stop value=Stop". " </td></div>";
-		echo		"</div>";
-		echo	"</div>";
-		echo  "</form>";
+    echo	"<div id='rcorners6'>";
+    echo		"<div class='box-top'><center><h1>Stop Server</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo 			"<form action=home.php method=post>";
+    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
+    echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=stop value=Stop". " </td></div>";
+    echo		"</div>";
+    echo	"</div>";
+    echo  "</form>";
 		
-		echo	"<div id='rcorners7'>";
-		echo		"<div class='box-top'><center><h1>Admin Chatroom</h1></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo 			"<form action=home.php method=post>";
-		//echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
-		echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=chat value=Chatroom". " </td></div>";
-		echo		"</div>";
-		echo	"</div>";
-		echo  "</form>";
+    echo	"<div id='rcorners7'>";
+    echo		"<div class='box-top'><center><h1>Admin Chatroom</h1></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo 			"<form action=home.php method=post>";
+    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
+    echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=chat value=Chatroom". " </td></div>";
+    echo		"</div>";
+    echo	"</div>";
+    echo  "</form>";
 		
-		echo	"<div id='rcorners8'>";
-		echo		"<div class='box-top'><center><h1>Help</h1></div>";
-		echo 		"<div class='box-top'><center><h4>For general help on the panel!</h4></div>";
-		echo		"<div class='box-panel'><p></p>";
-		echo 			"<form action=home.php method=post>";
-		//echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
-		echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=help value=Help". " </td></div>";
-		echo		"</div>";
-		echo	"</div>";
-		echo  "</form>";
+    echo	"<div id='rcorners8'>";
+    echo		"<div class='box-top'><center><h1>Help</h1></div>";
+    echo 		"<div class='box-top'><center><h4>For general help on the panel!</h4></div>";
+    echo		"<div class='box-panel'><p></p>";
+    echo 			"<form action=home.php method=post>";
+    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
+    echo 		"<div class = 'textSend'><td>" . "<center><input class='btn btn-primary btn-outline' type=submit name=help value=Help". " </td></div>";
+    echo		"</div>";
+    echo	"</div>";
+    echo  "</form>";
 		
 		
 if (isset($_POST['send'])){
-	if ($adminLev > 6) {
+  if ($adminLev > 6) {
 $send = $_POST['global'];
 $_SESSION['send'] = $send;
 header("Location: rCon/rcon-mess.php");
-		$message = "Admin ".$user." has sent a global message (".$send.")";
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	} else {header("Location: ../lvlError.php");}
+    $message = "Admin ".$user." has sent a global message (".$send.")";
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  } else {header("Location: ../lvlError.php");}
 }
 
 if (isset($_POST['restart'])){
-	if ($adminLev > 6) {
+  if ($adminLev > 6) {
 header("Location: rCon/rcon-restart.php");
-	} else {header("Location: ../lvlError.php");}
+  } else {header("Location: ../lvlError.php");}
 }
 
 if (isset($_POST['chat'])){
@@ -188,9 +188,9 @@ header("Location: chatRoom/chatRoom.php");
 }
 
 if (isset($_POST['stop'])){
-	if ($adminLev > 6) {
+  if ($adminLev > 6) {
 header("Location: rCon/rcon-stop.php");
-	} else {header("Location: ../lvlError.php");}
+  } else {header("Location: ../lvlError.php");}
 }
 
 if (isset($_POST['help'])){

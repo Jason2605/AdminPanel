@@ -47,23 +47,26 @@ class Translation
     public function translate(array $units = array(), $direction = 0)
     {
         $lang = $this->loadLanguage();
-        if (empty($units))
-            return $lang['now'];
+        if (empty($units)) {
+                    return $lang['now'];
+        }
 
         $translation = array();
         foreach ($units as $unit => $v)
         {
-            if ($v == 1)
-                $translation[] = sprintf($lang[$unit]['singular'], $v);
-            else
-                $translation[] = sprintf($lang[$unit]['plural'], $v);
+            if ($v == 1) {
+                            $translation[] = sprintf($lang[$unit]['singular'], $v);
+            } else {
+                            $translation[] = sprintf($lang[$unit]['plural'], $v);
+            }
         }
 
         $string = implode($this->config['separator'], $translation);
-        if (!$this->config['suffix'])
-            return $string;
-        else if ($direction > 0)
-            return sprintf($lang['ago'], $string);
+        if (!$this->config['suffix']) {
+                    return $string;
+        } else if ($direction > 0) {
+                    return sprintf($lang['ago'], $string);
+        }
 
         return sprintf($lang['left'], $string);
     }
@@ -76,14 +79,15 @@ class Translation
     protected function LoadLanguage()
     {
         $languages = array(
-            '\RelativeTime\Languages\\' . $this->config['language'],
+            '\RelativeTime\Languages\\'.$this->config['language'],
             $this->config['language'],
         );
 
         foreach ($languages as $lang)
         {
-            if (class_exists($lang))
-                return new $lang();
+            if (class_exists($lang)) {
+                            return new $lang();
+            }
         }
 
         return new \RelativeTime\Languages\English();

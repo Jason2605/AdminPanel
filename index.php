@@ -2,7 +2,7 @@
 session_start();
 
 if (!file_exists('verifyPanel.php')) {
-	header("Location: create.php");
+  header("Location: create.php");
 }
 ?>
 
@@ -58,8 +58,8 @@ function checkTime(i) {
 $divStyle1='bobfdd';
 
 if (isset($_COOKIE['conecFail']) && $_COOKIE['conecFail'] == '1'){
-	//$divStyle1='style="display:none;"'; //hide div
-	print'<div style="color:red"><center>Database connection failed!</center></div>';
+  //$divStyle1='style="display:none;"'; //hide div
+  print'<div style="color:red"><center>Database connection failed!</center></div>';
 }
 
 if (isset($_COOKIE['fail'])){

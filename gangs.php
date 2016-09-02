@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -99,29 +99,29 @@ $sql = "SELECT * FROM `gangs` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $gang = $result->fetch_object();	
 	
-	if ($_POST['maxmembers'] != $gang->maxmembers){
-		$message = "Admin ".$user." has changed gang maxmember of gang ".$gang->name." from ".$gang->maxmembers." to ".$_POST['maxmembers'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['maxmembers'] != $gang->maxmembers){
+    $message = "Admin ".$user." has changed gang maxmember of gang ".$gang->name." from ".$gang->maxmembers." to ".$_POST['maxmembers'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['members'] != $gang->members){
-		$message = "Admin ".$user." has changed gang members of gang ".$gang->name." from ".$gang->members." to ".$_POST['members'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['members'] != $gang->members){
+    $message = "Admin ".$user." has changed gang members of gang ".$gang->name." from ".$gang->members." to ".$_POST['members'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['bank'] != $gang->bank){
-		$message = "Admin ".$user." has changed the gang bank for gang ".$gang->name." from ".$gang->bank." to ".$_POST['bank'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['bank'] != $gang->bank){
+    $message = "Admin ".$user." has changed the gang bank for gang ".$gang->name." from ".$gang->bank." to ".$_POST['bank'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['active'] != $gang->active){
-		$message = "Admin ".$user." has changed the alive status of gang ".$gang->name." from ".$gang->active." to ".$_POST['active'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['active'] != $gang->active){
+    $message = "Admin ".$user." has changed the alive status of gang ".$gang->name." from ".$gang->active." to ".$_POST['active'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 
 $UpdateQ = "UPDATE gangs SET members='$_POST[members]', maxmembers='$_POST[maxmembers]', bank='$_POST[bank]', active='$_POST[active]' WHERE id='$_POST[hidden]'";
 mysqli_query($dbcon, $UpdateQ);
@@ -131,29 +131,29 @@ $sql = "SELECT * FROM `gangs` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $gang = $result->fetch_object();	
 	
-	if ($_POST['maxmembers'] != $gang->maxmembers){
-		$message = "Admin ".$user." tried to change gang maxmember of gang ".$gang->name." from ".$gang->maxmembers." to ".$_POST['maxmembers'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['maxmembers'] != $gang->maxmembers){
+    $message = "Admin ".$user." tried to change gang maxmember of gang ".$gang->name." from ".$gang->maxmembers." to ".$_POST['maxmembers'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['members'] != $gang->members){
-		$message = "Admin ".$user." tried to change gang members of gang ".$gang->name." from ".$gang->members." to ".$_POST['members'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['members'] != $gang->members){
+    $message = "Admin ".$user." tried to change gang members of gang ".$gang->name." from ".$gang->members." to ".$_POST['members'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['bank'] != $gang->bank){
-		$message = "Admin ".$user." tried to change the gang bank for gang ".$gang->name." from ".$gang->bank." to ".$_POST['bank'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['bank'] != $gang->bank){
+    $message = "Admin ".$user." tried to change the gang bank for gang ".$gang->name." from ".$gang->bank." to ".$_POST['bank'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['active'] != $gang->active){
-		$message = "Admin ".$user." tried to change the alive status of gang ".$gang->name." from ".$gang->active." to ".$_POST['active'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['active'] != $gang->active){
+    $message = "Admin ".$user." tried to change the alive status of gang ".$gang->name." from ".$gang->active." to ".$_POST['active'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
 }
 
@@ -177,23 +177,23 @@ $gang = $result->fetch_object();
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
-	echo "<form action=gangs.php method=post>";
-	echo "<tr>";
-	//echo "<td>" .$row['uid']. "</td>";
-	echo "<td>" .$row['owner'] ." </td>";
-	echo "<td>" .$row['name'] . " </td>";
+  echo "<form action=gangs.php method=post>";
+  echo "<tr>";
+  //echo "<td>" .$row['uid']. "</td>";
+  echo "<td>" .$row['owner'] ." </td>";
+  echo "<td>" .$row['name'] . " </td>";
 	
-	echo "<td>" ."<input class='form-control' type=text name=members value=" .$row['members'] . " </td>";
-	echo "<td>" ."<input class='form-control' type=text name=maxmembers value=" .$row['maxmembers'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=members value=" .$row['members'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=maxmembers value=" .$row['maxmembers'] . " </td>";
 	
-	echo "<td>" ."<input class='form-control' type=text name=bank value=" .$row['bank'] . " </td>";
-	echo "<td>" ."<input class='form-control' type=text name=active value=" .$row['active'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=bank value=" .$row['bank'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=active value=" .$row['active'] . " </td>";
 	
-	echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
-	echo "<td style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['id'] . " </td>";
+  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
+  echo "<td style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['id'] . " </td>";
 	
-	echo "</tr>";
-	echo "</form>";
+  echo "</tr>";
+  echo "</form>";
 }
 
 echo "</table></div>";

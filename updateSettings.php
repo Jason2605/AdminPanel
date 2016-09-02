@@ -4,74 +4,74 @@ session_start();
 $adminLev = $_SESSION['adminLevel'];
 
 if ($adminLev != 8){
-	header("Location: lvlError.php");
+  header("Location: lvlError.php");
 }
 	
 $fail = false;
-	if ($_POST['user'] != ""){
-		$user = $_POST['user'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['user'] != ""){
+    $user = $_POST['user'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['pass'] != ""){
-		$pass = $_POST['pass'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['pass'] != ""){
+    $pass = $_POST['pass'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['host'] != ""){
-		$host = $_POST['host'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['host'] != ""){
+    $host = $_POST['host'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['name'] != ""){
-		$name = $_POST['name'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['name'] != ""){
+    $name = $_POST['name'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['lName'] != ""){
-		$lName = $_POST['lName'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['lName'] != ""){
+    $lName = $_POST['lName'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['RHost'] != ""){
-		$RHost = $_POST['RHost'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['RHost'] != ""){
+    $RHost = $_POST['RHost'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['RPass'] != ""){
-		$RPass = $_POST['RPass'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['RPass'] != ""){
+    $RPass = $_POST['RPass'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['RPort'] != ""){
-		$RPort = $_POST['RPort'];
-		$RPort = (int)$RPort;
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['RPort'] != ""){
+    $RPort = $_POST['RPort'];
+    $RPort = (int)$RPort;
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
 if (!$fail){
 $filename = "verifyPanel.php";
@@ -119,14 +119,14 @@ global "."$"."RconPass;
 ?>
 ";
 
-fwrite($ourFileHandle,$written);
+fwrite($ourFileHandle, $written);
 fclose($ourFileHandle);
 
 header("Location: settings.php");
 
-}else{
+}else {
 	
-	echo $fail;
+  echo $fail;
 }
 
 ?>

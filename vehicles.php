@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -88,70 +88,70 @@ include('header/header.php');
 <?php
 if (isset($_POST['update'])){
 	
-	if ($adminLev > 6){	
+  if ($adminLev > 6){	
 	
 $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $vehicle = $result->fetch_object();	
 	
-	if ($_POST['classname'] != $vehicle->classname){
-		$message = "Admin ".$user." has changed the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['classname'] != $vehicle->classname){
+    $message = "Admin ".$user." has changed the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['alive'] != $vehicle->alive){
-		$message = "Admin ".$user." has changed the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['alive'] != $vehicle->alive){
+    $message = "Admin ".$user." has changed the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['active'] != $vehicle->active){
-		$message = "Admin ".$user." has changed the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['active'] != $vehicle->active){
+    $message = "Admin ".$user." has changed the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['plate'] != $vehicle->plate){
-		$message = "Admin ".$user." has changed the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['plate'] != $vehicle->plate){
+    $message = "Admin ".$user." has changed the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 
 $UpdateQ = "UPDATE vehicles SET classname='$_POST[classname]', alive='$_POST[alive]', active='$_POST[active]', plate='$_POST[plate]' WHERE id='$_POST[hidden]'";
 mysqli_query($dbcon, $UpdateQ);
 
-	}else {
+  }else {
 		
-		$sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
+    $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $vehicle = $result->fetch_object();	
 	
-	if ($_POST['classname'] != $vehicle->classname){
-		$message = "Admin ".$user." tried to change the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['classname'] != $vehicle->classname){
+    $message = "Admin ".$user." tried to change the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['alive'] != $vehicle->alive){
-		$message = "Admin ".$user." tried to change the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['alive'] != $vehicle->alive){
+    $message = "Admin ".$user." tried to change the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['active'] != $vehicle->active){
-		$message = "Admin ".$user." tried to change the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['active'] != $vehicle->active){
+    $message = "Admin ".$user." tried to change the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['plate'] != $vehicle->plate){
-		$message = "Admin ".$user." tried to change the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['plate'] != $vehicle->plate){
+    $message = "Admin ".$user." tried to change the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 		
-	}
+  }
 
 };
 ?>
@@ -174,24 +174,24 @@ $vehicle = $result->fetch_object();
 <?php
 while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
 
-	echo "<form action=vehicles.php method=post>";
-	echo "<tr>";
-	echo "<td>" .$row['id']. "</td>";
-	echo "<td>" .$row['side'] ." </td>";
+  echo "<form action=vehicles.php method=post>";
+  echo "<tr>";
+  echo "<td>" .$row['id']. "</td>";
+  echo "<td>" .$row['side'] ." </td>";
 	
-	echo "<td>" ."<input class='form-control' type=text name=classname value=" .$row['classname'] . " </td>";
-	echo "<td>" .$row['pid'] . " </td>";
-	echo "<td>" .$row['type'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=classname value=" .$row['classname'] . " </td>";
+  echo "<td>" .$row['pid'] . " </td>";
+  echo "<td>" .$row['type'] . " </td>";
 	
-	echo "<td>" ."<input class='form-control' type=text name=alive value=" .$row['alive'] . " </td>";
-	echo "<td>" ."<input class='form-control' type=text name=active value=" .$row['active'] . " </td>";
-	echo "<td>" ."<input class='form-control' type=text name=plate value=" .$row['plate'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=alive value=" .$row['alive'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=active value=" .$row['active'] . " </td>";
+  echo "<td>" ."<input class='form-control' type=text name=plate value=" .$row['plate'] . " </td>";
 	
-	echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
-	echo "<td  style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['id'] . " </td>";
+  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
+  echo "<td  style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['id'] . " </td>";
 	
-	echo "</tr>";
-	echo "</form>";
+  echo "</tr>";
+  echo "</form>";
 	
 }
 

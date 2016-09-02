@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged'])){
     header("Location: ../index.php");
 }
 if ($adminLev < 7){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
 ob_start();

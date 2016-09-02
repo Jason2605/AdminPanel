@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'RelativeTime' => array($vendorDir . '/mpratt/relativetime/Lib'),
-    'JamesMoss\\Flywheel\\' => array($vendorDir . '/jamesmoss/flywheel/src', $vendorDir . '/jamesmoss/flywheel/test'),
+    'RelativeTime' => array($vendorDir.'/mpratt/relativetime/Lib'),
+    'JamesMoss\\Flywheel\\' => array($vendorDir.'/jamesmoss/flywheel/src', $vendorDir.'/jamesmoss/flywheel/test'),
 );

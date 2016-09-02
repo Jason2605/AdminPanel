@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -12,7 +12,7 @@ $conecG = "work";
 $_SESSION['conecFail'] = $conecG;
 
 if ($adminLev < 1){
-	header("Location: index.php");
+  header("Location: index.php");
 }
 ?>
 

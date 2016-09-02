@@ -10,11 +10,11 @@ $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 1){
-	header("Location: ../index.php");
+  header("Location: ../index.php");
 }
 
 if ($adminLev < 2){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
 $max = PHP_INT_MAX;
@@ -95,14 +95,14 @@ $sqlget = "SELECT * FROM players";
 $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
 if (isset($_POST['delete'])){
-	$sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
-	mysqli_query($dbconL, $sql);
+  $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
+  mysqli_query($dbconL, $sql);
 }
 
 
 if (isset($_POST['update'])){
-	$UpdateQ = "UPDATE users SET username='$_POST[username]', password='$_POST[password]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-	mysqli_query($dbconL, $UpdateQ);
+  $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$_POST[password]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
+  mysqli_query($dbconL, $UpdateQ);
 };
 
 ?>
@@ -119,32 +119,32 @@ if (isset($_POST['update'])){
               </thead>
               <tbody>
 <?php
-while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
 if ($max != 2147483647) {
 
 $steamID = $row['playerid'];
 $temp = '';
 
 for ($i = 0; $i < 8; $i++) {
-	$temp .= chr($steamID & 0xFF);
-	$steamID >>= 8;
+  $temp .= chr($steamID & 0xFF);
+  $steamID >>= 8;
 }
 
 $return = md5('BE' . $temp);
-}else{
+} else{
 $return = "32 bit PHP, GUID will not work!";
 }	
-	echo "<form action=logs.php method=post>";
-	echo "<tr>";
-	echo "<td>" .$row['name']. "</td>";
-	echo "<td>" .$row['aliases'] ." </td>";
-	echo "<td>" .$row['playerid'] . " </td>";
-	echo "<td>" .$return. "</td>";
+  echo "<form action=logs.php method=post>";
+  echo "<tr>";
+  echo "<td>" .$row['name']. "</td>";
+  echo "<td>" .$row['aliases'] ." </td>";
+  echo "<td>" .$row['playerid'] . " </td>";
+  echo "<td>" .$return. "</td>";
 	
-	//echo "<td><a href='http://steamcommunity.com/profiles/" . $row["playerid"] . "'class ='button' class='btn btn-link'>Steam Account</a></td>";
-	echo "<td><a href='http://steamcommunity.com/profiles/" . $row["playerid"] . "' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
-	echo "</tr>";
-	echo "</form>";
+  //echo "<td><a href='http://steamcommunity.com/profiles/" . $row["playerid"] . "'class ='button' class='btn btn-link'>Steam Account</a></td>";
+  echo "<td><a href='http://steamcommunity.com/profiles/" . $row["playerid"] . "' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
+  echo "</tr>";
+  echo "</form>";
 }
 
 echo "</table></div>";

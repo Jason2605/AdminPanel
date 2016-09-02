@@ -11,11 +11,11 @@ $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 1){
-	header("Location: ../index.php");
+  header("Location: ../index.php");
 }
 
 if ($adminLev < 3){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 ?>
 

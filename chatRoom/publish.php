@@ -15,7 +15,7 @@ $repo = new \JamesMoss\Flywheel\Repository('shouts', $config);
     
 // Store the posted shout data to the data store
 
-if(isset($_POST["comment"])) {
+if (isset($_POST["comment"])) {
     
     $name = htmlspecialchars($_SESSION['user']);
     $name = str_replace(array("\n", "\r"), '', $name);

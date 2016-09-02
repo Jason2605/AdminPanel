@@ -7,10 +7,10 @@ if (!isset($_SESSION['logged'])){
     header("Location: ../index.php");
 }
 if ($adminLev < 3){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
- require_once '../ArmaRConClass/rcon.php'; 
+  require_once '../ArmaRConClass/rcon.php'; 
 
 session_id ("user");
 session_start();
@@ -24,20 +24,20 @@ $name = $_SESSION['name'];
 
 
 if($uid == ''){
-	header("Location: ../home.php");
-	echo "wtf";
+  header("Location: ../home.php");
+  echo "wtf";
 } else
 {
-	echo "worked?";
+  echo "worked?";
 }
 
 if($name == ''){
-	//header("Location: /home.php");
-	echo "wtf";
+  //header("Location: /home.php");
+  echo "wtf";
 } else
 {
-	echo "worked?";
-	echo $name;
+  echo "worked?";
+  echo $name;
 }
 //else{
 

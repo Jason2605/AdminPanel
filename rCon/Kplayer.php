@@ -10,7 +10,7 @@ $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 3){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 ?>
 
@@ -107,30 +107,30 @@ include('../header/header.php');
               </thead>
               <tbody>
 <?php
-	echo "<form action=Kplayer.php method=post>";
-	echo "<tr>";
+  echo "<form action=Kplayer.php method=post>";
+  echo "<tr>";
 	
-	echo "<td>" ."<input class='form-control' type=text name=guid value='' </td>";
-	echo "<td>" ."<input class='form-control' type=text name=reason value=''</td>";
+  echo "<td>" ."<input class='form-control' type=text name=guid value='' </td>";
+  echo "<td>" ."<input class='form-control' type=text name=reason value=''</td>";
 
 
-	echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Kick". " </td>";
+  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Kick". " </td>";
 	
-	echo "</tr>";
-	echo "</form>";
+  echo "</tr>";
+  echo "</form>";
 
 echo "</table></div>";
 
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
-	$guid = $_POST['guid'];
-	$reason = $_POST['reason'];
+  $guid = $_POST['guid'];
+  $reason = $_POST['reason'];
 	
-	$_SESSION['guid'] = $guid;
-	$_SESSION['reason'] = $reason;
+  $_SESSION['guid'] = $guid;
+  $_SESSION['reason'] = $reason;
 
-	header("Location: rcon-kick.php");
+  header("Location: rcon-kick.php");
 };
 ?>
 <p>To use the kick feature you need to find the player ID, this is found by pressing the battleye list and typing in the [#] value. This is betwen 0-amount of players on server. So please check, this is NOT uid or GUID!</p>

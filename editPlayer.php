@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -38,7 +38,7 @@ function stripArray($input, $type)
 
 function before($this, $inthat) 
 { 
-     return substr($inthat, 0, strpos($inthat, $this)); 
+      return substr($inthat, 0, strpos($inthat, $this)); 
 } 
 ?>
 
@@ -161,58 +161,58 @@ echo "<div class='panel panel-info'>
 			  
 <?php
 
-if (isset($_POST['donUpdate'])){
+if (isset($_POST['donUpdate'])) {
 	
-	$sql = "SELECT * FROM `players` WHERE `uid` = $uidPlayer";
-	$result = mysqli_query($dbcon, $sql);
-	$player = $result->fetch_object();	
+  $sql = "SELECT * FROM `players` WHERE `uid` = $uidPlayer";
+  $result = mysqli_query($dbcon, $sql);
+  $player = $result->fetch_object();	
 	
-	if ($adminLev > 6) {
+  if ($adminLev > 6) {
 	
-		if ($_POST['donatorlvl'] != $player->donatorlvl){
-		$message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+    if ($_POST['donatorlvl'] != $player->donatorlvl){
+    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['blacklist'] != $player->blacklist){
-		$message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
-	$UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
-	mysqli_query($dbcon, $UpdateQ);	
+  if ($_POST['blacklist'] != $player->blacklist){
+    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
+  $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
+  mysqli_query($dbcon, $UpdateQ);	
 	
-	} elseif ($adminLev > 4) {
+  } elseif ($adminLev > 4) {
 		
-	if ($_POST['donatorlvl'] != $player->donatorlvl){
-		$message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['donatorlvl'] != $player->donatorlvl){
+    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['blacklist'] != $player->blacklist){
-		$message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
-	$UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
-	mysqli_query($dbcon, $UpdateQ);
-	} else {
+  if ($_POST['blacklist'] != $player->blacklist){
+    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
+  $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
+  mysqli_query($dbcon, $UpdateQ);
+  } else {
 		
-	if ($_POST['donatorlvl'] != $player->donatorlvl){
-		$message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['donatorlvl'] != $player->donatorlvl){
+    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	if ($_POST['blacklist'] != $player->blacklist){
-		$message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['blacklist'] != $player->blacklist){
+    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 		
-	}
+  }
 }
 
 
@@ -221,16 +221,16 @@ $sqlget = "SELECT * FROM players WHERE uid=$uidPlayer;";
 $search_result = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
 while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
-	echo "<tr>";
+  echo "<tr>";
 echo "<form action=editPlayer.php method=post>";
 echo "<td>" ."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=" .$row['donatorlvl'] . " </td>";
 echo "<td>" ."<input class='form-control' type=text style = 'width: 100%;' name=blacklist value=" .$row['blacklist'] . " </td>";
 echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update". " </td>";
 echo "</form>";
 		
-	echo "</tr>";
+  echo "</tr>";
 }
-	echo "</table></div>";
+  echo "</table></div>";
 	
 	
 
@@ -258,48 +258,48 @@ echo "<div class='panel panel-info'>
 			  
 <?php
 	
-	$sqlget = "SELECT * FROM notes WHERE uid=$uidPlayer;";
+  $sqlget = "SELECT * FROM notes WHERE uid=$uidPlayer;";
 $search_result = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
 while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
-	echo "<tr>";
+  echo "<tr>";
 //echo "$row[note_text]";
 
-	if ($row['warning'] == 2){
-	//echo "<td style=background-color:#FFA500;>Strike</td>";
-	//echo "<td style=background-color:#FFA500;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
+  if ($row['warning'] == 2){
+  //echo "<td style=background-color:#FFA500;>Strike</td>";
+  //echo "<td style=background-color:#FFA500;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
 
 echo "<td style=background-color:#FFA500;>" .$row['staff_name'] . " </td>";
 echo "<td style=background-color:#FFA500;>" .$row['note_text'] . " </td>";
 echo "<td style=background-color:#FFA500;>" .$row['note_updated'] . " </td>";
 
 	
-	}elseif ($row['warning'] == 3){
-	//echo "<td style=background-color:#FF0000;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
+  }elseif ($row['warning'] == 3){
+  //echo "<td style=background-color:#FF0000;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
 	
 echo "<td style=background-color:#FF0000;>" .$row['staff_name'] . " </td>";
 echo "<td style=background-color:#FF0000;>" .$row['note_text'] . " </td>";
 echo "<td style=background-color:#FF0000;>" .$row['note_updated'] . " </td>";
-	} else {
+  } else {
 		
 echo "<td>" .$row['staff_name'] . " </td>";
 echo "<td>" .$row['note_text'] . " </td>";
 echo "<td>" .$row['note_updated'] . " </td>";
 		
-	}
-	echo "</tr>";
+  }
+  echo "</tr>";
 }
-	echo "</table></div>";
+  echo "</table></div>";
 echo "</div>";
 echo "</div>";
 
 
 echo "<div id ='civlic'>";
 
-	if ($player->civ_licenses !== '"[]"' && $player->civ_licenses !== '') {
+  if ($player->civ_licenses !== '"[]"' && $player->civ_licenses !== '') {
 
-		$return = stripArray($player->civ_licenses, 0);
-		$return = str_replace('[[', "", $return);
+    $return = stripArray($player->civ_licenses, 0);
+    $return = str_replace('[[', "", $return);
 
 echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -309,30 +309,30 @@ echo "<div class='panel panel-info'>
 
 
 
-	foreach ($return as $value) {
-		if (strpos($value, "1") == TRUE) {
-			$name = before(',', $value);
-			$display = explode("_", $name); 
-			$displayN = $display['2']; 
-			echo "<button type='button' id=" . $name . " class='license btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
+  foreach ($return as $value) {
+    if (strpos($value, "1") == TRUE) {
+      $name = before(',', $value);
+      $display = explode("_", $name); 
+      $displayN = $display['2']; 
+      echo "<button type='button' id=" . $name . " class='license btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
 		
-		} else {
-			$name = before(',', $value);
-			$display = explode("_", $name); 
-			$displayN = $display['2'];
-			echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
+    } else {
+      $name = before(',', $value);
+      $display = explode("_", $name); 
+      $displayN = $display['2'];
+      echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
 
 		
-		}
-	}
+    }
+  }
 echo "  </div>
 </div>";
 }
 echo "</div>";
 echo "<div id ='civlic1'>";
-	if ($player->med_licenses !== '"[]"' && $player->med_licenses !== '') {
-		$return = stripArray($player->med_licenses, 0);
-		$return = str_replace('[[', "", $return);
+  if ($player->med_licenses !== '"[]"' && $player->med_licenses !== '') {
+    $return = stripArray($player->med_licenses, 0);
+    $return = str_replace('[[', "", $return);
 		
 echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -341,59 +341,59 @@ echo "<div class='panel panel-info'>
   <div class='panel-body'>";
   
  
-	foreach ($return as $value) {
-		if (strpos($value, "1") == TRUE) {
-			$name = before(',', $value);
-			$display = explode("_", $name); 
-			$displayN = $display['2'];
-			echo "<button type='button' id=" . $name . " class='btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
+  foreach ($return as $value) {
+    if (strpos($value, "1") == TRUE) {
+      $name = before(',', $value);
+      $display = explode("_", $name); 
+      $displayN = $display['2'];
+      echo "<button type='button' id=" . $name . " class='btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
 		
-		} else {
-			$name = before(',', $value);
-			if ($name != ""){
-			$display = explode("_", $name); 
-			$displayN = $display['2'];
-			echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
-			}
+    } else {
+      $name = before(',', $value);
+      if ($name != ""){
+      $display = explode("_", $name); 
+      $displayN = $display['2'];
+      echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
+      }
 		
-		}
-	}
-	echo "  </div>
+    }
+  }
+  echo "  </div>
 </div>";
 }
 echo "</div>";
 echo "<div id ='civlic2'>";
-	if ($player->cop_licenses !== '"[]"' && $player->cop_licenses !== '') {
+  if ($player->cop_licenses !== '"[]"' && $player->cop_licenses !== '') {
 
-		$return = stripArray($player->cop_licenses, 0);
-		$return = str_replace('[[', "", $return);
+    $return = stripArray($player->cop_licenses, 0);
+    $return = str_replace('[[', "", $return);
 
-	echo "<div class='panel panel-info'>
+  echo "<div class='panel panel-info'>
   <div class='panel-heading'>
     <h3 class='panel-title'>Cop Licenses</h3>
   </div>
   <div class='panel-body'>";
 		
-	foreach ($return as $value) {
-		if (strpos($value, "1") == TRUE) {
-		$name = before(',', $value);
-		$display = explode("_", $name); 
-		$displayN = $display['2'];
-		echo "<button type='button' id=" . $name . " class='btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
+  foreach ($return as $value) {
+    if (strpos($value, "1") == TRUE) {
+    $name = before(',', $value);
+    $display = explode("_", $name); 
+    $displayN = $display['2'];
+    echo "<button type='button' id=" . $name . " class='btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
 		
-		} else {
-			$name = before(',', $value);
-			if ($name != ""){
-			$display = explode("_", $name); 
-			$displayN = $display['2'];
-			echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
-			}
+    } else {
+      $name = before(',', $value);
+      if ($name != ""){
+      $display = explode("_", $name); 
+      $displayN = $display['2'];
+      echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
+      }
 		
-		}
+    }
 		
 	
-	}
-		echo "  </div>
+  }
+    echo "  </div>
 </div>";
 }
 echo "</div>";
@@ -406,26 +406,26 @@ echo "</div>";
 
 
 
-if (isset($_POST['remove'])){
+if (isset($_POST['remove'])) {
 	
 $licReset = str_replace("1", "0", $player->civ_licenses);
 $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
 $result = mysqli_query($dbcon, $sql); 
 
-		$message = "Admin ".$user." has removed all licenses from ".$player->name."(".$player->playerid.")";
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
+    $message = "Admin ".$user." has removed all licenses from ".$player->name."(".$player->playerid.")";
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
 
 };
-if (isset($_POST['give'])){
+if (isset($_POST['give'])) {
 	
 $licReset = str_replace("0", "1", $player->civ_licenses);
 $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
 $result = mysqli_query($dbcon, $sql); 
 
-		$message = "Admin ".$user." has added all licenses to ".$player->name."(".$player->playerid.")";
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
+    $message = "Admin ".$user." has added all licenses to ".$player->name."(".$player->playerid.")";
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
 
 };
 ?>

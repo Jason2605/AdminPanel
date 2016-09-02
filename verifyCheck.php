@@ -2,70 +2,70 @@
 if (!file_exists('verifyPanel.php')) {
 	
 $fail = false;
-	if ($_POST['user'] != ""){
-		$user = $_POST['user'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['user'] != ""){
+    $user = $_POST['user'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['pass'] != ""){
-		$pass = $_POST['pass'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['pass'] != ""){
+    $pass = $_POST['pass'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['host'] != ""){
-		$host = $_POST['host'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['host'] != ""){
+    $host = $_POST['host'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['name'] != ""){
-		$name = $_POST['name'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['name'] != ""){
+    $name = $_POST['name'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['lName'] != ""){
-		$lName = $_POST['lName'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['lName'] != ""){
+    $lName = $_POST['lName'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['RHost'] != ""){
-		$RHost = $_POST['RHost'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['RHost'] != ""){
+    $RHost = $_POST['RHost'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['RPass'] != ""){
-		$RPass = $_POST['RPass'];
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['RPass'] != ""){
+    $RPass = $_POST['RPass'];
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
-	if ($_POST['RPort'] != ""){
-		$RPort = $_POST['RPort'];
-		$RPort = (int)$RPort;
-	}else
-	{
-		echo "error?";
-		$fail = true;
-	}
+  if ($_POST['RPort'] != ""){
+    $RPort = $_POST['RPort'];
+    $RPort = (int)$RPort;
+  }else
+  {
+    echo "error?";
+    $fail = true;
+  }
 	
 if (!$fail){
 $filename = "verifyPanel.php";
@@ -113,7 +113,7 @@ global "."$"."RconPass;
 ?>
 ";
 
-fwrite($ourFileHandle,$written);
+fwrite($ourFileHandle, $written);
 fclose($ourFileHandle);
 
 $dbconnect = mysqli_connect($host, $user, $pass, $name) or die ('Database connection failed');
@@ -225,19 +225,18 @@ $sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
 $sqldata4 = mysqli_query($dbconnect, $sqledit1) or die ('Connection could not be established or column "warning" already exists!');
 
 header("Location: /index.php");
-}else{
+}else {
 	
-	//header("Location: create.php");
-	echo $fail;
+  //header("Location: create.php");
+  echo $fail;
 }
 
 
 	
 
-}
-else
+} else
 {
-	header("Location: /index.php");
+  header("Location: /index.php");
 }
 
 ?>

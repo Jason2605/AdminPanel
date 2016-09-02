@@ -30,7 +30,7 @@ class RelativeTime
      * Construct
      *
      * @param array $config Associative array with configuration directives
-     * @return void
+     * @return string
      */
     public function __construct(array $config = array())
     {
@@ -67,8 +67,9 @@ class RelativeTime
     public function TimeAgo($date)
     {
         $interval = $this->getInterval(time(), $date);
-        if ($interval->invert)
-            return $this->convert(time(), $date);
+        if ($interval->invert) {
+                    return $this->convert(time(), $date);
+        }
 
         return $this->translation->translate();
     }
@@ -82,8 +83,9 @@ class RelativeTime
     public function TimeLeft($date)
     {
         $interval = $this->getInterval($date, time());
-        if ($interval->invert)
-            return $this->convert(time(), $date);
+        if ($interval->invert) {
+                    return $this->convert(time(), $date);
+        }
 
         return $this->translation->translate();
     }
@@ -94,7 +96,7 @@ class RelativeTime
      *
      * @param string $fromTime
      * @param string $toTime When null is given, uses the current date.
-     * @return array
+     * @return \DateInterval
      */
     protected function getInterval($fromTime, $toTime = null)
     {
@@ -112,10 +114,11 @@ class RelativeTime
     protected function normalizeDate($date)
     {
         $date = str_replace(array('/', '|'), '-', $date);
-        if (empty($date))
-            return date('Y-m-d H:i:s');
-        else if (ctype_digit($date))
-            return date('Y-m-d H:i:s', $date);
+        if (empty($date)) {
+                    return date('Y-m-d H:i:s');
+        } else if (ctype_digit($date)) {
+                    return date('Y-m-d H:i:s', $date);
+        }
 
         return $date;
     }
@@ -124,7 +127,7 @@ class RelativeTime
      * Given a DateInterval, creates an array with the time
      * units and truncates it when necesary.
      *
-     * @param object $interval Instance of \DateInterval
+     * @param \DateInterval $interval Instance of \DateInterval
      * @return array
      */
     protected function calculateUnits(\DateInterval $interval)
@@ -138,12 +141,13 @@ class RelativeTime
             'seconds' => (int) $interval->s,
         ));
 
-        if (empty($units))
-            return array();
-        else if ($this->config['truncate'] > 0)
-            return array_slice($units, 0, $this->config['truncate']);
-        else
-            return $units;
+        if (empty($units)) {
+                    return array();
+        } else if ($this->config['truncate'] > 0) {
+                    return array_slice($units, 0, $this->config['truncate']);
+        } else {
+                    return $units;
+        }
     }
 }
 ?>

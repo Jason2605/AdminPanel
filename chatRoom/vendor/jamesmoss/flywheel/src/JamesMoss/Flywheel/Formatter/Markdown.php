@@ -24,9 +24,9 @@ class Markdown implements Format
         unset($data[$this->contentFieldName]);
 
         $str = "---\n";
-        $str.= SymfonyYAML::dump($data);
-        $str.= "---\n";
-        $str.= $body;
+        $str .= SymfonyYAML::dump($data);
+        $str .= "---\n";
+        $str .= $body;
 
         return $str;
     }
