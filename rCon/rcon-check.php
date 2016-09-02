@@ -6,11 +6,11 @@ if (!isset($_SESSION['logged'])){
     header("Location: ../index.php");
 }
 if ($adminLev < 3){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
 if ($adminLev < 1){
-	header("Location: ../index.php");
+  header("Location: ../index.php");
 }
 
 require_once '../ArmaRConClass/rcon.php'; 
@@ -152,9 +152,9 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
 <?php
 $i = 0;
 foreach ($players[1] as $match) {
-   echo "<tr><td>" .$players[1][$i]. "</td>";
-   echo "<td>".$players[5][$i]."</td></tr>";
-   $i++;
+    echo "<tr><td>" .$players[1][$i]. "</td>";
+    echo "<td>".$players[5][$i]."</td></tr>";
+    $i++;
 }
 echo "</table></div>";
 ?>
@@ -173,11 +173,11 @@ echo "</table></div>";
 <?php
 $ii = 0;
 foreach ($str[0] as $ban) {
-   echo "<tr><td>" .$str[1][$ii]. "</td>";
-   echo "<td>" .$str[2][$ii]. "</td>";
-   echo "<td>" .$str[3][$ii]. "</td>";
-   echo "<td>" .$str[4][$ii]. "</td></tr>";
-   $ii++;
+    echo "<tr><td>" .$str[1][$ii]. "</td>";
+    echo "<td>" .$str[2][$ii]. "</td>";
+    echo "<td>" .$str[3][$ii]. "</td>";
+    echo "<td>" .$str[4][$ii]. "</td></tr>";
+    $ii++;
 }
 echo "</table></div>";
 ?>

@@ -24,7 +24,7 @@ class ARC {
      *
      * @var array
      */
-    public $options = array (
+    public $options = array(
         'send_heartbeat'       => false,
         'timeout_seconds'      => 1
     );
@@ -93,7 +93,7 @@ class ARC {
      * @param string  $RCONpassword        RCon password required by BattlEye
      * @param array  $options              Options array of ARC
      */
-    public function __construct($serverIP, $serverPort = 2302, $RCONpassword , array $options = array())
+    public function __construct($serverIP, $serverPort = 2302, $RCONpassword, array $options = array())
     {
         $this->serverIP = $serverIP;
         $this->serverPort = $serverPort;
@@ -120,28 +120,28 @@ class ARC {
      */
     private function authorize()
     {
-        if ( fwrite($this->socket, $this->get_loginmessage()) === false ) throw new PacketException('[ARC] Failed to send login!');
+        if (fwrite($this->socket, $this->get_loginmessage()) === false) throw new PacketException('[ARC] Failed to send login!');
 
         $result = fread($this->socket, 16);
 
-        if ( ord($result[strlen($result)-1]) == 0 ) throw new AuthorizationException('[ARC] Login failed, wrong password!');
+        if (ord($result[strlen($result) - 1]) == 0) throw new AuthorizationException('[ARC] Login failed, wrong password!');
     }
 
 
     /**
      * Generates the password's CRC32 data
      *
-     * @return string
+     * @return string[]
      */
     private function get_authCRC()
     {
         $authCRC = sprintf("%x", crc32(chr(255).chr(00).trim($this->RCONpassword)));
-        $authCRC = array(substr($authCRC,-2,2),substr($authCRC,-4,2),substr($authCRC,-6,2),substr($authCRC,0,2));
+        $authCRC = array(substr($authCRC, -2, 2), substr($authCRC, -4, 2), substr($authCRC, -6, 2), substr($authCRC, 0, 2));
 
         return $authCRC;
     }
 	
-	public function getBansArray()
+  public function getBansArray()
     {
         $bansRaw = $this->getBans();
 
@@ -157,12 +157,12 @@ class ARC {
      * Generates the message's CRC32 data
      *
      * @param string $command   The message which will be prepared for being sent to the server
-     * @return string           Message which can be sent to the server
+     * @return string[]           Message which can be sent to the server
      */
     private function get_msgCRC($command)
     {
         $msgCRC = sprintf("%x", crc32(chr(255).chr(01).chr(hexdec(sprintf('%01b', 0))).$command));
-        $msgCRC = array(substr($msgCRC,-2,2),substr($msgCRC,-4,2),substr($msgCRC,-6,2),substr($msgCRC,0,2));
+        $msgCRC = array(substr($msgCRC, -2, 2), substr($msgCRC, -4, 2), substr($msgCRC, -6, 2), substr($msgCRC, 0, 2));
 
         return $msgCRC;
     }
@@ -194,7 +194,7 @@ class ARC {
         $hb_msg = "BE".chr(hexdec("7d")).chr(hexdec("8f")).chr(hexdec("ef")).chr(hexdec("73"));
         $hb_msg .= chr(hexdec('ff')).chr(hexdec('02')).chr(hexdec('00'));
 
-        if ( fwrite($this->socket, $hb_msg) === false ) throw new PacketException('[ARC] Failed to send heartbeat packet!');
+        if (fwrite($this->socket, $hb_msg) === false) throw new PacketException('[ARC] Failed to send heartbeat packet!');
     }
 
 
@@ -210,9 +210,9 @@ class ARC {
 
         do {
             $answer = $get();
-            while ( strpos($answer,'RCon admin') !== false ) $answer = $get();
+            while (strpos($answer, 'RCon admin') !== false) $answer = $get();
             $output .= $answer;
-        } while ( $answer != '' );
+        } while ($answer != '');
 
         return $output;
     }
@@ -221,13 +221,13 @@ class ARC {
     /**
      * The heart of this class - this function actually sends the RCON command
      *
-     * @param $command string   The command sent to the server
+     * @param string $command string   The command sent to the server
      * @return bool             Whether sending the command was successful or not
      * @throws \Exception       If the connection is closed
      */
     private function send($command)
     {
-        if ( $this->disconnected ) throw new \Exception('[ARC] Failed to send command, because the connection is closed!');
+        if ($this->disconnected) throw new \Exception('[ARC] Failed to send command, because the connection is closed!');
 
         $msgCRC = $this->get_msgCRC($command);
         $head = "BE".chr(hexdec($msgCRC[0])).chr(hexdec($msgCRC[1])).chr(hexdec($msgCRC[2])).chr(hexdec($msgCRC[3])).chr(hexdec('ff')).chr(hexdec('01')).chr(hexdec(sprintf('%01b', 0)));
@@ -246,7 +246,7 @@ class ARC {
      */
     public function disconnect()
     {
-        if ( $this->disconnected ) return;
+        if ($this->disconnected) return;
 
         $this->send("Exit");
 
@@ -271,22 +271,22 @@ class ARC {
      */
     public function connect($ServerIP = "", $ServerPort = "", $RConPassword = "")
     {
-        if ( !$this->disconnected) $this->disconnect();
+        if (!$this->disconnected) $this->disconnect();
 
-        if ( $ServerIP != "" ) $this->serverIP = $ServerIP;
-        if ( $ServerPort != "" ) $this->serverPort = $ServerPort;
-        if ( $RConPassword != "" ) $this->RCONpassword = $RConPassword;
+        if ($ServerIP != "") $this->serverIP = $ServerIP;
+        if ($ServerPort != "") $this->serverPort = $ServerPort;
+        if ($RConPassword != "") $this->RCONpassword = $RConPassword;
 
         $this->socket = @fsockopen("udp://".$this->serverIP, $this->serverPort, $errno, $errstr, $this->options['timeout_seconds']);
 
         stream_set_timeout($this->socket, $this->options['timeout_seconds']);
         stream_set_blocking($this->socket, true);
 
-        if ( !$this->socket ) throw new SocketException('[ARC] Failed to create socket!');
+        if (!$this->socket) throw new SocketException('[ARC] Failed to create socket!');
 
         $this->authorize();
 
-        if ( $this->options['send_heartbeat'] ) $this->send_heartbeat();
+        if ($this->options['send_heartbeat']) $this->send_heartbeat();
 
         $this->disconnected = false;
     }
@@ -390,7 +390,7 @@ class ARC {
     /**
      * Gets a list of all players currently on the server
      *
-     * @return string|bool      The list of all players on the server or, if sending failed, false
+     * @return string|false      The list of all players on the server or, if sending failed, false
      */
     public function get_players()
     {
@@ -402,7 +402,7 @@ class ARC {
     /**
      * Gets a list of all bans
      *
-     * @return string|bool      The list of bans or, if sending failed, false
+     * @return string|false      The list of bans or, if sending failed, false
      */
     public function get_bans()
     {
@@ -413,7 +413,7 @@ class ARC {
     /**
      * Gets a list of all bans
      *
-     * @return string|bool      The list of missions or, if sending failed, false
+     * @return string|false      The list of missions or, if sending failed, false
      */
     public function get_missions()
     {

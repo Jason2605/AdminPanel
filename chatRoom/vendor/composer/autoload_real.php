@@ -9,7 +9,7 @@ class ComposerAutoloaderInit379f5255d2bd4900a9e5d70aa4da83ed
     public static function loadClassLoader($class)
     {
         if ('Composer\Autoload\ClassLoader' === $class) {
-            require __DIR__ . '/ClassLoader.php';
+            require __DIR__.'/ClassLoader.php';
         }
     }
 
@@ -23,17 +23,17 @@ class ComposerAutoloaderInit379f5255d2bd4900a9e5d70aa4da83ed
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
         spl_autoload_unregister(array('ComposerAutoloaderInit379f5255d2bd4900a9e5d70aa4da83ed', 'loadClassLoader'));
 
-        $map = require __DIR__ . '/autoload_namespaces.php';
+        $map = require __DIR__.'/autoload_namespaces.php';
         foreach ($map as $namespace => $path) {
             $loader->set($namespace, $path);
         }
 
-        $map = require __DIR__ . '/autoload_psr4.php';
+        $map = require __DIR__.'/autoload_psr4.php';
         foreach ($map as $namespace => $path) {
             $loader->setPsr4($namespace, $path);
         }
 
-        $classMap = require __DIR__ . '/autoload_classmap.php';
+        $classMap = require __DIR__.'/autoload_classmap.php';
         if ($classMap) {
             $loader->addClassMap($classMap);
         }

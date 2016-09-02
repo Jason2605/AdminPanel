@@ -21,7 +21,7 @@ class CachedQuery extends Query
     {
         // Generate a cache key by comparing our parameters to see if we've
         // made this query before
-        $key = $this->getParameterHash() . $this->getFileHash();
+        $key = $this->getParameterHash().$this->getFileHash();
 
         // Try and fetch a cached result object from APC
         $result = apc_fetch($key, $success);
@@ -54,8 +54,8 @@ class CachedQuery extends Query
                 continue;
             }
 
-            $hash.= $file . '|';
-            $hash.= (string) filemtime($path . '/' . $file) . '|';
+            $hash .= $file.'|';
+            $hash .= (string) filemtime($path.'/'.$file).'|';
         }
 
         $hash = md5($hash);

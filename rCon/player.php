@@ -10,7 +10,7 @@ $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 4){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 ?>
 
@@ -110,11 +110,11 @@ include('../header/header.php');
 echo "<form action=player.php method=post>";
 echo "<tr>";
 
-echo "<td>" ."<input class='form-control' type=text name=guid value='' </td>";
-echo "<td>" ."<input class='form-control' type=text name=reason value=''</td>";
-echo "<td>" ."<input class='form-control' type=text name=time value='' </td>";
+echo "<td>"."<input class='form-control' type=text name=guid value='' </td>";
+echo "<td>"."<input class='form-control' type=text name=reason value=''</td>";
+echo "<td>"."<input class='form-control' type=text name=time value='' </td>";
 
-echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Ban". " </td>";
+echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Ban"." </td>";
 
 echo "</tr>";
 echo "</form>";
@@ -125,26 +125,26 @@ echo "</form>";
 echo "</table></div>";
 
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
-	$guid = $_POST['guid'];
-	$reason = $_POST['reason'];
-	$time = $_POST['time'];
+  $guid = $_POST['guid'];
+  $reason = $_POST['reason'];
+  $time = $_POST['time'];
 	
-	$_SESSION['guid'] = $guid;
-	$_SESSION['reason'] = $reason;
-	$_SESSION['time'] = $time;
+  $_SESSION['guid'] = $guid;
+  $_SESSION['reason'] = $reason;
+  $_SESSION['time'] = $time;
 	
-	include('../verifyPanel.php');
-	masterconnect();
+  include('../verifyPanel.php');
+  masterconnect();
 	
-	if ($_POST['guid'] != ""){
-		$message = "Admin ".$user." has banned ".$guid." for ".$time." minutes under the reason of (".$reason.")";
-		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-		mysqli_query($dbcon, $logQ);
-	}
+  if ($_POST['guid'] != ""){
+    $message = "Admin ".$user." has banned ".$guid." for ".$time." minutes under the reason of (".$reason.")";
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+    mysqli_query($dbcon, $logQ);
+  }
 	
-	header("Location: rcon-ban.php");
+  header("Location: rcon-ban.php");
 };
 ?>
 <p><br><br><br>To use the ban feature, batteye needs to use the GUID and not a player UID<br>NOTE: if the player is currently on the server please make sure you kick them else they will be banned however still playing until they have left!</p>

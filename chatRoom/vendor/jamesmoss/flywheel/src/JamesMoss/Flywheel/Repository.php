@@ -24,7 +24,7 @@ class Repository
     {
         // Setup class properties
         $this->name      = $name;
-        $this->path      = $config->getPath() . DIRECTORY_SEPARATOR . $name;
+        $this->path      = $config->getPath().DIRECTORY_SEPARATOR.$name;
         $this->formatter = $config->getOption('formatter');
 
         // Ensure the repo name is valid
@@ -75,7 +75,7 @@ class Repository
     public function findAll()
     {
         $ext       = $this->formatter->getFileExtension();
-        $files     = glob($this->path . DIRECTORY_SEPARATOR . '*.' . $ext);
+        $files     = glob($this->path.DIRECTORY_SEPARATOR.'*.'.$ext);
         $documents = array();
 
         foreach ($files as $file) {
@@ -147,7 +147,7 @@ class Repository
      */
     public function getPathForDocument($id)
     {
-        return $this->path . DIRECTORY_SEPARATOR . $this->getFilename($id);
+        return $this->path.DIRECTORY_SEPARATOR.$this->getFilename($id);
     }
 
     /**
@@ -159,7 +159,7 @@ class Repository
      */
     public function getFilename($id)
     {
-        return $id . '_' . sha1($id) . '.' . $this->formatter->getFileExtension();
+        return $id.'_'.sha1($id).'.'.$this->formatter->getFileExtension();
     }
 
     /**
@@ -173,7 +173,7 @@ class Repository
         static $choices = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $id = '';
         while (strlen($id) < 9) {
-            $id .= $choices[ mt_rand(0, strlen($choices) - 1) ];
+            $id .= $choices[mt_rand(0, strlen($choices) - 1)];
         }
         return $id;
     }

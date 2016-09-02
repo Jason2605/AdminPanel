@@ -8,10 +8,10 @@ if (!isset($_SESSION['logged'])){
     header("Location: ../index.php");
 }
 if ($adminLev < 4){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
- require_once '../ArmaRConClass/rcon.php'; 
+  require_once '../ArmaRConClass/rcon.php'; 
 
 include('../verifyPanel.php');
 Rconconnect();
@@ -20,7 +20,7 @@ $guid = $_SESSION['guid'];
 
 
 if($guid == ''){
-	header("Location: ../home.php");
+  header("Location: ../home.php");
 }
 else{
 
@@ -36,7 +36,7 @@ $time = $_SESSION['time'];
 
 
 if($time == ''){
-	$time = 0;
+  $time = 0;
 }
 
 echo $time;

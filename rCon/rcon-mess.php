@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged'])){
     header("Location: ../index.php");
 }
 if ($adminLev < 7){
-	header("Location: ../lvlError.php");
+  header("Location: ../lvlError.php");
 }
 
 require_once '../ArmaRConClass/rcon.php'; 
@@ -19,7 +19,7 @@ $mess = $_SESSION['send'];
 
 
 if($mess == ''){
-	header("Location: ../home.php");
+  header("Location: ../home.php");
 }
 else{
 

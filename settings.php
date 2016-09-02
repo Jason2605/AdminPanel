@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
@@ -13,7 +13,7 @@ include ('verifyPanel.php');
 
 
 if ($adminLev != 8){
-	header("Location: lvlError.php");
+  header("Location: lvlError.php");
 }
 ?>
 
