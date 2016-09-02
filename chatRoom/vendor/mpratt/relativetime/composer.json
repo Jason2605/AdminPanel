@@ -1,0 +1,22 @@
+{
+    "name": "mpratt/relativetime",
+    "type": "library",
+    "description": "A library that calculates the time difference between two dates and returns the result in words (Example: 5 minutes ago or 5 Minutes left). The library supports other languages aswell like Spanish and German.",
+    "keywords": ["time","time-ago", "ago", "future", "interval", "date", "relative"],
+    "homepage": "https://github.com/mpratt/RelativeTime",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Pratt",
+            "email": "pratt@hablarmierda.net",
+            "homepage": "http://www.michael-pratt.com",
+            "role": "Author/Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": {"RelativeTime": "Lib/"}
+    }
+}

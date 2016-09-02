@@ -1,0 +1,307 @@
+
+/* ------- Reset ------- */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    color: #4B535C;
+    font:13px Arial, Helvetica, sans-serif;
+    padding-top:40px;
+}
+
+/* ------- The main content ------- */
+
+.shoutbox {
+    max-width: 474px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+h1 {
+    background-color:  #87bfef;
+    box-shadow: 0px 1px 1px 0.00px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: relative;
+    height: 46px;
+    text-align: left;
+    margin: 0;
+    padding-left: 20px;
+    color:  #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 46px;
+}
+
+h1 img {
+    position: absolute;
+    top: 13px;
+    right: 35px;
+    width: 17px;
+    height: 18px;
+    float:right;
+    cursor: pointer;
+}
+
+/* ------- The comments content ------- */
+
+.shoutbox-content {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color:  #df377a;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.shoutbox-content li {
+    padding: 20px;
+    border-bottom: 1px solid #d5dbe1;
+}
+
+.shoutbox-username {
+    display: inline;
+    color:  #df377a;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    margin-right: 5px;
+}
+
+.shoutbox-comment {
+    display: inline;
+    color:  #717c87;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: left;
+}
+
+.shoutbox-comment-details {
+    width: 100%;
+    margin: 5px auto;
+    height: 11px;
+}
+
+.shoutbox-comment-reply {
+    display: inline-block;
+    float: left;
+    color:  #5896cb;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: left;
+    height: 9px;
+    cursor: pointer;
+}
+
+.shoutbox-comment-ago {
+    display: inline-block;
+    float: right;
+    color:  #9aa1a7;
+    font-size: 11px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: right;
+    height: 11px;
+}
+
+
+/* ------- Writing a new comment form ------- */
+
+h2 {
+    position: relative;
+    background-color:  #f9fafb;
+    border-bottom: 2px solid #e2e8eb;
+    max-width: 100%;
+    height: 45px;
+    margin: 0;
+    text-align: center;
+    color:  #df377a;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+h2 span {
+    display: none;
+    position: absolute;
+    float: right;
+    right: 13px;
+    font-size: 22px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 20px;
+}
+
+.shoutbox-form form {
+    display: none;
+    background-color:  #f9fafb;
+    box-shadow: 0px 2px 0px 0.00px #e2e8eb;
+    max-width: 100%;
+    text-align: left;
+    padding: 20px 20px 30px;
+}
+
+.shoutbox-form form label {
+    display: inline-block;
+    color:  #df377a;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    width: 80px;
+    height: 11px;
+    line-height: 11px;
+    margin-bottom: 15px;
+}
+
+.shoutbox-form form .shoutbox-comment-label {
+    position: relative;
+    top: -75px;
+}
+
+.shoutbox-form form #shoutbox-name {
+    display: inline-block;
+    background-color: #ffffff;
+    box-shadow: 1px 3px 0px 0.00px rgba(0, 0, 0, 0.04);
+    border: 1px solid #bfcdda;
+    outline: none;
+    max-width: 170px;
+    width: 100%;
+    height: 41px;
+    font-size: 14px;
+    margin-right: 150px;
+    margin-bottom: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    color:inherit;
+}
+
+.shoutbox-form form #shoutbox-comment {
+    background-color: #ffffff;
+    box-shadow: 1px 3px 0px 0.00px rgba(0, 0, 0, 0.04);
+    border: 1px solid #bfcdda;
+    outline: none;
+    max-width: 320px;
+    width: 100%;
+    height: 76px;
+    margin-bottom: 20px;
+    resize: none;
+    font-weight: normal;
+    font: inherit;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    color:inherit;
+}
+
+.shoutbox-form form input[type=submit] {
+    background-color: #87bfef;
+    border: 1px solid #e6e7e8;
+    box-shadow: 0px 1px 2px 0.00px rgba(0, 0, 0, 0.1);
+    width: 110px;
+    height: 41px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 38px;
+    outline: none;
+    margin-left: 83px;
+    cursor: pointer;
+}
+
+
+/* ------- Make the page responsive ------- */
+
+@media(max-width: 445px) {
+    .shoutbox-form form .shoutbox-comment-label {
+        top: 0;
+    }
+    .shoutbox-form form input[type=submit] {
+        margin-left: 0;
+    }
+}
+
+
+/* ------- Demo footer. Please ignore and remove ------- */
+
+footer {
+    font: normal 16px Arial, Helvetica, sans-serif;
+    padding: 15px 35px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #1B1F22;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+footer a.tz{
+    font-weight: normal;
+    font-size: 16px !important;
+    text-decoration: none !important;
+    display: block;
+    margin-right: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #CCC !important;
+    position: relative;
+    padding-left: 140px;
+}
+
+footer a.tz:before{
+    font-weight: bold;
+    color: #FFF;
+    content: 'tutorial';
+    position: absolute;
+    text-align: right;
+    width: 100px;
+    left: -20px;
+}
+
+footer a.tz:after{
+    content: 'zine';
+    position: absolute;
+    font-weight: bold;
+    color: #DA431C;
+    left: 80px;
+}
+
+footer .close{
+    position: absolute;
+    cursor: pointer;
+    width: 8px;
+    height: 8px;
+    top: 10px;
+    right: 12px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+footer #tzine-actions{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    width: 340px;
+    text-align: right;
+}
+
+footer #tzine-actions iframe{
+    display: inline-block;
+    height: 21px;
+    width: 95px;
+}
+
+@media (max-width: 1024px) {
+    #bsaHolder, footer{ display:none;}
+}
