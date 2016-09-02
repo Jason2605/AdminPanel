@@ -42,7 +42,7 @@ if ($adminLev < 3){
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/styles/dashboard.css" rel="stylesheet">
+    <link href="../styles/dashboard.css" rel="stylesheet">
 	<link href="assests/css/styles.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -79,7 +79,7 @@ include('../header/header.php');
                 <h2>Write a message <span>×</span></h2>
                 
                 <form action="publish.php" method="post">
- <?php   echo "                <label for='shoutbox-name'>nickname </label> <input type='text' id='shoutbox-name' name='name' value= '$_COOKIE[cookie]' readonly/> "; ?> 
+ <?php   echo "                <label for='shoutbox-name'>nickname </label> <input type='text' id='shoutbox-name' name='name' value= '$user' readonly/> "; ?> 
                     <label class="shoutbox-comment-label" for="shoutbox-comment">message </label> <textarea id="shoutbox-comment" name="comment" maxlength='240'></textarea>
                     <input type="submit" value="Shout!"/>
                 </form>
