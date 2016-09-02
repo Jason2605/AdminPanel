@@ -1,0 +1,840 @@
+[15-May-2016 00:11:07 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 00:11:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 00:11:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:17:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 00:17:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:17:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:18:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:18:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:18:06 UTC] PHP Warning:  htmlspecialchars() expects parameter 1 to be string, array given in /home/adminpan/public_html/chatRoom/publish.php on line 25
+[15-May-2016 00:19:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:19:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:19:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:20:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:21:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:22:37 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:27 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:27 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:37 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:23:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:19 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:19 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:23 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:24:59 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:15 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:15 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 00:25:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:10:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 15:10:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 15:10:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:15:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 15:18:16 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 73
+[15-May-2016 15:18:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:18:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:19:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:19:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:19:04 UTC] PHP Warning:  htmlspecialchars() expects parameter 1 to be string, array given in /home/adminpan/public_html/chatRoom/publish.php on line 25
+[15-May-2016 15:21:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:21:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:21:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:21:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:21:59 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:24:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:30 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:34 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:55 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:55 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:26:55 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:07 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:19 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:19 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:20 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:21 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:35 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:36 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:37 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:37 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:37 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:38 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:39 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:40 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:42 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:43 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:44 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:45 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:46 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:47 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:48 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:49 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:50 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:51 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:52 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:53 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:54 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:55 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:55 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:56 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:56 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:56 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:56 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:56 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:56 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:57 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:58 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:58 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:59 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:27:59 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:00 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:01 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:02 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:03 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:04 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:05 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:06 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:07 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:07 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:07 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:07 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:08 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:08 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:08 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:08 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:09 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:10 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:11 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:12 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:13 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:14 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:15 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:15 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:15 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:17 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:18 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:22 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:26 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:26 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:26 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:26 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:26 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:27 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:27 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:28 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:29 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:31 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:32 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:33 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:37 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[15-May-2016 15:28:41 UTC] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/publish.php on line 22
+[25-May-2016 19:54:26 Europe/London] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:54:26 Europe/London] PHP Warning:  session_start(): open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:54:26 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:54:26 Europe/London] PHP Notice:  Undefined index: adminLevel in /home/adminpan/public_html/chatRoom/chatRoom.php on line 12
+[25-May-2016 19:54:26 Europe/London] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 15
+[25-May-2016 19:54:26 Europe/London] PHP Warning:  Unknown: open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[25-May-2016 19:54:26 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (../tmp) in Unknown on line 0
+[25-May-2016 19:55:21 Europe/London] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:55:21 Europe/London] PHP Warning:  session_start(): open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:55:21 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:55:21 Europe/London] PHP Notice:  Undefined index: adminLevel in /home/adminpan/public_html/chatRoom/chatRoom.php on line 12
+[25-May-2016 19:55:21 Europe/London] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 15
+[25-May-2016 19:55:21 Europe/London] PHP Warning:  Unknown: open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[25-May-2016 19:55:21 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (../tmp) in Unknown on line 0
+[25-May-2016 19:55:54 Europe/London] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:55:54 Europe/London] PHP Warning:  session_start(): open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:55:54 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[25-May-2016 19:55:54 Europe/London] PHP Notice:  Undefined index: adminLevel in /home/adminpan/public_html/chatRoom/chatRoom.php on line 12
+[25-May-2016 19:55:54 Europe/London] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 15
+[25-May-2016 19:55:54 Europe/London] PHP Warning:  Unknown: open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[25-May-2016 19:55:54 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (../tmp) in Unknown on line 0
+[25-May-2016 19:56:27 Europe/London] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[25-May-2016 19:56:27 Europe/London] PHP Warning:  session_start(): open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[25-May-2016 19:56:27 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[25-May-2016 19:56:27 Europe/London] PHP Notice:  Undefined index: adminLevel in /home/adminpan/public_html/chatRoom/chatRoom.php on line 12
+[25-May-2016 19:56:27 Europe/London] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 15
+[25-May-2016 19:56:27 Europe/London] PHP Warning:  Unknown: open(../tmp/sess_user, O_RDWR) failed: No such file or directory (2) in Unknown on line 0
+[25-May-2016 19:56:27 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (../tmp) in Unknown on line 0
+[25-May-2016 19:56:47 Europe/London] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[25-May-2016 19:56:47 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[28-May-2016 00:25:18 Europe/London] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[28-May-2016 00:25:18 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:1) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 4
+[28-May-2016 00:26:41 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[28-May-2016 00:26:41 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:10) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[28-May-2016 00:26:41 Europe/London] PHP Notice:  Undefined index: adminLevel in /home/adminpan/public_html/chatRoom/chatRoom.php on line 12
+[28-May-2016 00:26:41 Europe/London] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:10) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 15
+[28-May-2016 00:26:41 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 17
+[28-May-2016 00:26:41 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[28-May-2016 00:26:41 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[28-May-2016 00:27:23 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[28-May-2016 00:27:23 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:10) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 10
+[28-May-2016 00:27:23 Europe/London] PHP Notice:  Undefined index: adminLevel in /home/adminpan/public_html/chatRoom/chatRoom.php on line 12
+[28-May-2016 00:27:23 Europe/London] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/adminpan/public_html/chatRoom/chatRoom.php:10) in /home/adminpan/public_html/chatRoom/chatRoom.php on line 15
+[28-May-2016 00:27:23 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 90
+[28-May-2016 00:27:23 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[28-May-2016 00:27:23 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[28-May-2016 00:28:13 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 00:28:17 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 00:28:21 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 00:28:23 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 00:28:25 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[28-May-2016 00:28:25 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[28-May-2016 00:28:25 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[28-May-2016 00:28:25 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[28-May-2016 00:28:31 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 00:28:37 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[28-May-2016 00:28:37 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[28-May-2016 00:28:37 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[28-May-2016 00:28:37 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[28-May-2016 00:28:40 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 13:22:05 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[28-May-2016 13:22:23 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[28-May-2016 13:22:23 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[28-May-2016 13:22:23 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[28-May-2016 13:22:23 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[29-May-2016 10:27:37 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[29-May-2016 10:27:50 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[29-May-2016 10:27:50 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[29-May-2016 10:27:50 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[29-May-2016 10:27:50 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[30-May-2016 18:18:20 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[30-May-2016 18:19:04 Europe/London] PHP Notice:  ob_end_flush(): failed to delete and flush buffer. No buffer to delete or flush in /home/adminpan/public_html/chatRoom/chatRoom.php on line 91
+[30-May-2016 18:35:12 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:12 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:12 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[30-May-2016 18:35:12 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[30-May-2016 18:35:21 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:21 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:21 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[30-May-2016 18:35:21 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[30-May-2016 18:35:26 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:26 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:26 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[30-May-2016 18:35:26 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[30-May-2016 18:35:45 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:45 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:35:45 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[30-May-2016 18:35:45 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[30-May-2016 18:38:58 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:38:58 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:38:58 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[30-May-2016 18:38:58 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[30-May-2016 18:39:08 Europe/London] PHP Warning:  session_start(): open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:39:08 Europe/London] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/adminpan/public_html/chatRoom/publish.php:4) in /home/adminpan/public_html/chatRoom/publish.php on line 4
+[30-May-2016 18:39:08 Europe/London] PHP Warning:  Unknown: open(/tmp/sess_user, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[30-May-2016 18:39:08 Europe/London] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[31-May-2016 22:39:18 Europe/London] PHP Notice:  Undefined index: cookie in /home/adminpan/public_html/chatRoom/chatRoom.php on line 75

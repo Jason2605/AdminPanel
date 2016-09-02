@@ -1,0 +1,13 @@
+{
+    "name": "nick/shoutbox",
+    "authors": [
+        {
+            "name": "nick",
+            "email": "nickanastasov37@gmail.com"
+        }
+    ],
+    "require": {
+         "jamesmoss/flywheel": "0.1.*",
+         "mpratt/relativetime": ">=1.0"
+    }
+}
