@@ -1,6 +1,4 @@
 <?php
-
-session_id ("user");
 session_start();
 
 require 'vendor/autoload.php';
@@ -19,7 +17,7 @@ $repo = new \JamesMoss\Flywheel\Repository('shouts', $config);
 
 if(isset($_POST["comment"])) {
     
-    $name = htmlspecialchars($_COOKIE['cookie']);
+    $name = htmlspecialchars($_SESSION['user']);
     $name = str_replace(array("\n", "\r"), '', $name);
 
     $comment = htmlspecialchars($_POST["comment"]);
