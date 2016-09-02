@@ -1,0 +1,2 @@
+[15-May-2016 00:11:16 UTC] PHP Fatal error:  Class 'JamesMoss\Flywheel\Query' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/CachedQuery.php on line 13
+[15-May-2016 15:10:26 UTC] PHP Fatal error:  Class 'JamesMoss\Flywheel\Query' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/CachedQuery.php on line 13
