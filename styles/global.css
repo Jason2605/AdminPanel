@@ -1,0 +1,324 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+.login-block {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #428bca;
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block input#username {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #428bca;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #428bca;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #428bca;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #afcee9;
+}
+
+/*
+.credits {
+	/*margin-left: 1100px;
+	margin-top: 470px;
+	margin-left: -650px;
+	font-size:20px;
+}
+*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans';
+}
+
+a {
+	text-decoration: none;
+}
+/*Start of making table*/
+
+
+/*End of making table*/
+div#header{
+	width: 100%;
+	height: 50px;
+	background-color: #428bca;
+	margin: 0 auto;
+}
+
+
+.logo {
+	float: left;
+	margin-top: 4px;
+	margin-left: 10px;
+}
+
+.logoE {
+	float: left;
+	margin-top: 4px;
+	margin-left: calc(100% - 320px);
+}
+
+.logoE a {
+	font-size: 1.5em;
+	color: #fff;
+}
+
+.logoE a span {
+	font-weight: 300;
+}
+
+.logo a {
+	font-size: 1.6em;
+	color: #fff;
+}
+
+.logo a span {
+	font-weight: 300;
+}
+
+input[type=submit]{
+    padding:5px 20px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	margin-top: 10px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+
+div#login{
+	width:600px; 
+	margin-top: 0%;
+	margin-bottom: auto;
+	margin-right:auto;
+	font-weight: 300;
+	margin-left:auto;
+}
+
+div#txt{
+margin-top:10%;
+font-family: 'Open Sans';
+font-size: 100px;
+color: white;
+}
+
+div#login1{
+	width:600px; 
+	margin-top: 100px;
+	margin-bottom: auto;
+	margin-right:auto;
+	font-weight: 300;
+	margin-left:auto;
+}
+
+
+
+
+.content {
+	width: auto;
+	height: calc(100% - 86px);
+	/*height: 100%;*/
+	margin-left: 250px;
+	background-color: #F0F0F0;
+	padding: 15px;
+}
+
+
+a.mobile {
+	display: block;
+	color: #fff;
+	background-color: #000;
+	text-align: centre;
+	padding: 7px;
+}
+
+a.mobile:active {
+	background-color: #4A4A4A;
+	
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
+
+	
+	.sidebar {
+		width: calc(100% + 280px);
+		display: none;
+                height: calc(100% + 115px);
+	}
+	
+	div#txt{
+		font-family: 'Open Sans';
+		font-size: 100px;
+		color: white;
+		margin-left: 30%;
+	}
+	
+	.content {
+	margin-left: 0px;
+	width: calc(100% + 280px);
+	height: calc(100% + 320px);
+	/*height: 100%;*/
+	background-color: #F0F0F0;
+	padding: 15px;
+	}
+	div#header{
+		width: calc(100% + 280px);
+		height: 50px;
+		background-color: #428bca;
+		margin: 0 auto;
+	}
+
+	
+	a.mobile {
+		/*display: none;*/
+                width: calc(100% + 280px);
+	}
+        div#login{
+	       	margin-bottom: 390px;    
+	}
+
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : landscape) {
+	.sidebar {
+		width: calc(100% + 900px);
+		display: none;
+		height: calc(100% + 255px);
+	}
+	
+	.content {
+		margin-left: 0px;
+                height: calc(100% + 500px);
+                width: calc(100% + 900px);
+	}
+	div#txt{
+		margin-top:1%;
+		font-family: 'Open Sans';
+		font-size: 100px;
+		color: white;
+		margin-left: 92%;
+	}
+	
+	div#header{
+		width: 100%;
+		height: 50px;
+		background-color: #;
+		margin: 0 auto;
+	}
+	.content {
+	width: calc(100% + 900px);
+	height: calc(100% + 500px);
+	background-color: #F0F0F0;
+	padding: 15px;
+	}
+	.table-fill {
+		background: white;
+		border-radius:3px;
+		border-collapse: collapse;
+		height: auto;
+		margin: auto;
+		padding:5px;
+		width: auto;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+		animation: float 5s infinite;
+	}
+	.search {
+		margin-left: 0;
+		margin-top: -30px;
+	}
+
+	.searchBar {
+		margin-left: 70;
+		margin-top: 20px;
+	}
+	.logoE {
+		float: left;
+		margin-top: 4px;
+		margin-left: (100% - 300px);
+	}
+	div#header{
+		width: calc(100% + 900px);
+		height: 50px;
+		background-color: #428bca;
+		margin: 0 auto;
+	}
+	.kick {
+		margin-left: 100px;
+		margin-top: -30px;
+	}
+
+	.note {
+		margin-left: 200px;
+		margin-top: -30px;
+	}
+	a.mobile {
+                 width: calc(100% + 900px);
+		/*display: none;*/
+	}
+        div#login{
+            margin-left: 75%;
+            margin-top: 20%;
+	       	margin-bottom: 40px;    
+	}
+}
+
+
+
+
+
+

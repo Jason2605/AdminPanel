@@ -1,0 +1,35 @@
+[06-Aug-2016 15:37:55 UTC] PHP Warning:  stream_set_timeout() expects parameter 1 to be resource, boolean given in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 282
+[06-Aug-2016 15:37:55 UTC] PHP Warning:  stream_set_blocking() expects parameter 1 to be resource, boolean given in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 283
+[06-Aug-2016 15:37:55 UTC] PHP Fatal error:  Uncaught exception 'Nizarii\ArmaRConClass\SocketException' with message '[ARC] Failed to create socket!' in /home/adminpa1/public_html/ArmaRConClass/rcon.php:285
+Stack trace:
+#0 /home/adminpa1/public_html/ArmaRConClass/rcon.php(103): Nizarii\ArmaRConClass\ARC->connect()
+#1 /home/adminpa1/public_html/verifyPanel.php(18): Nizarii\ArmaRConClass\ARC->__construct('1', 1, '1')
+#2 /home/adminpa1/public_html/rCon/rcon-mess.php(18): Rconconnect()
+#3 {main}
+  thrown in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 285
+[06-Aug-2016 15:38:41 UTC] PHP Warning:  stream_set_timeout() expects parameter 1 to be resource, boolean given in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 282
+[06-Aug-2016 15:38:41 UTC] PHP Warning:  stream_set_blocking() expects parameter 1 to be resource, boolean given in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 283
+[06-Aug-2016 15:38:41 UTC] PHP Fatal error:  Uncaught exception 'Nizarii\ArmaRConClass\SocketException' with message '[ARC] Failed to create socket!' in /home/adminpa1/public_html/ArmaRConClass/rcon.php:285
+Stack trace:
+#0 /home/adminpa1/public_html/ArmaRConClass/rcon.php(103): Nizarii\ArmaRConClass\ARC->connect()
+#1 /home/adminpa1/public_html/verifyPanel.php(18): Nizarii\ArmaRConClass\ARC->__construct('1', 1, '1')
+#2 /home/adminpa1/public_html/rCon/rcon-restart.php(15): Rconconnect()
+#3 {main}
+  thrown in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 285
+[06-Aug-2016 15:38:46 UTC] PHP Warning:  stream_set_timeout() expects parameter 1 to be resource, boolean given in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 282
+[06-Aug-2016 15:38:46 UTC] PHP Warning:  stream_set_blocking() expects parameter 1 to be resource, boolean given in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 283
+[06-Aug-2016 15:38:46 UTC] PHP Fatal error:  Uncaught exception 'Nizarii\ArmaRConClass\SocketException' with message '[ARC] Failed to create socket!' in /home/adminpa1/public_html/ArmaRConClass/rcon.php:285
+Stack trace:
+#0 /home/adminpa1/public_html/ArmaRConClass/rcon.php(103): Nizarii\ArmaRConClass\ARC->connect()
+#1 /home/adminpa1/public_html/verifyPanel.php(18): Nizarii\ArmaRConClass\ARC->__construct('1', 1, '1')
+#2 /home/adminpa1/public_html/rCon/rcon-stop.php(16): Rconconnect()
+#3 {main}
+  thrown in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 285
+[06-Aug-2016 17:12:41 UTC] PHP Fatal error:  Uncaught exception 'Nizarii\ArmaRConClass\AuthorizationException' with message '[ARC] Login failed, wrong password!' in /home/adminpa1/public_html/ArmaRConClass/rcon.php:127
+Stack trace:
+#0 /home/adminpa1/public_html/ArmaRConClass/rcon.php(287): Nizarii\ArmaRConClass\ARC->authorize()
+#1 /home/adminpa1/public_html/ArmaRConClass/rcon.php(103): Nizarii\ArmaRConClass\ARC->connect()
+#2 /home/adminpa1/public_html/verifyPanel.php(18): Nizarii\ArmaRConClass\ARC->__construct('77.98.39.61', 2418, 'test')
+#3 /home/adminpa1/public_html/rCon/rcon-check.php(22): Rconconnect()
+#4 {main}
+  thrown in /home/adminpa1/public_html/ArmaRConClass/rcon.php on line 127
