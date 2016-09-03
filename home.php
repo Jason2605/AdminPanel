@@ -103,7 +103,7 @@ include('header/header.php');
 $money = "$".number_format($money, 2);
 
     echo	"<div id='rcorners3'>";
-    echo		"<div class='box-top'><center><h1>Total money</h1></div>";
+    echo		"<div class='box-top'><center><h1>Total Money</h1></div>";
     echo		"<div class='box-panel'><p></p>";
     echo		"<p><br><center>There is a total of ".$money." on the server.</p>";
     echo		"</div>";

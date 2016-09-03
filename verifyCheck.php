@@ -200,7 +200,7 @@ $sqldeluser = "DELETE FROM users WHERE username='AdminPanel';";
 
 $sqldatadel = mysqli_query($dbconnect, $sqldeluser) or die ('Connection could not be established - USER!');
 
-$sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `level`) VALUES (1, 'AdminPanel', 'Admin1234', '8');";
+$sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `level`) VALUES (1, 'AdminPanel','2b12e1a2252d642c09f640b63ed35dcc5690464a', '8');";
 
 $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die ('Connection could not be established or user already exists!');
 
@@ -224,7 +224,7 @@ $sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
 
 $sqldata4 = mysqli_query($dbconnect, $sqledit1) or die ('Connection could not be established or column "warning" already exists!');
 
-header("Location: /index.php");
+header("Location: index.php");
 }else {
 	
   //header("Location: create.php");
@@ -236,7 +236,7 @@ header("Location: /index.php");
 
 }else
 {
-  header("Location: /index.php");
+  header("Location: index.php");
 }
 
 ?>

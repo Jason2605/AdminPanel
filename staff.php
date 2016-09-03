@@ -72,35 +72,35 @@ include('header/header.php');
 			</FORM>
 		  </div>
 		  <div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="delete.php">
-			<INPUT class='btn btn-primary btn-outline' TYPE="submit" name=delete VALUE="Reset entire panel">
-			</FORM>
+			<INPUT class='btn btn-primary btn-outline'data-toggle="modal" data-target="#myModal" id="deletePan" name=delete VALUE="Reset Entire Panel">
+
 		  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Reset Entire Panel</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to reset the entire panel?
+      </div>
+      <div class="modal-footer">
+        <FORM METHOD="LINK" ACTION="delete.php">
+        <button type="submit" class="btn btn-danger">Reset</button>
+        
+        <button type="button" class="btn btn-primary btn-outline" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> 
+
 			<br><br>
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 <?php
 if ($adminLev != 8) {
   echo "<script src='scripts/na.js'></script>";
