@@ -1,6 +1,0 @@
-[15-May-2016 00:11:16 UTC] PHP Fatal error:  Class 'RelativeTime\Adapters\Language' not found in /home/adminpan/public_html/chatRoom/vendor/mpratt/relativetime/Lib/RelativeTime/Languages/English.php on line 19
-[15-May-2016 00:11:16 UTC] PHP Fatal error:  Class 'RelativeTime\Adapters\Language' not found in /home/adminpan/public_html/chatRoom/vendor/mpratt/relativetime/Lib/RelativeTime/Languages/German.php on line 19
-[15-May-2016 00:11:17 UTC] PHP Fatal error:  Class 'RelativeTime\Adapters\Language' not found in /home/adminpan/public_html/chatRoom/vendor/mpratt/relativetime/Lib/RelativeTime/Languages/Spanish.php on line 19
-[15-May-2016 15:10:25 UTC] PHP Fatal error:  Class 'RelativeTime\Adapters\Language' not found in /home/adminpan/public_html/chatRoom/vendor/mpratt/relativetime/Lib/RelativeTime/Languages/English.php on line 19
-[15-May-2016 15:10:26 UTC] PHP Fatal error:  Class 'RelativeTime\Adapters\Language' not found in /home/adminpan/public_html/chatRoom/vendor/mpratt/relativetime/Lib/RelativeTime/Languages/German.php on line 19
-[15-May-2016 15:10:26 UTC] PHP Fatal error:  Class 'RelativeTime\Adapters\Language' not found in /home/adminpan/public_html/chatRoom/vendor/mpratt/relativetime/Lib/RelativeTime/Languages/Spanish.php on line 19

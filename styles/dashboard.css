@@ -180,24 +180,6 @@ h2 span {
 /* Move down content because we have a fixed navbar that is 50px tall */
 
 /*login page*/
-.donate {
-	margin-top: -200px;
-	margin-left: 500px;
-    border-radius: 15px 50px;
-    background: #fff;
-    padding: 20px; 
-    width: 400px;
-    height: 200px; 
-	
-	border-bottom:4px solid #9ea7af;
-    border-top:4px solid #9ea7af;
-    border-right: 4px solid #9ea7af;
-    border-left: 4px solid #9ea7af;
-}
-.donateB{
-	margin-left: 90px;
-	margin-top: 30px;
-}
 
 .kick {
 	margin-left: 35%;
@@ -209,14 +191,13 @@ h2 span {
 }
 
 div#rcorners1 {
-	margin-left: 50px;
-	margin-top: 15px;
+    margin-bottom: 10px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
     border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -224,14 +205,12 @@ div#rcorners1 {
 }
 
 div#rcorners2 {
-	margin-top: -200px;
-	margin-left: 500px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
 	border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -239,14 +218,12 @@ div#rcorners2 {
 }
 
 div#rcorners3 {
-	margin-top: -200px;
-	margin-left: 950px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
 	border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -254,14 +231,13 @@ div#rcorners3 {
 }
 
 div#rcorners4 {
-	margin-top: 50px;
-	margin-left: 500px;
+    margin-bottom: 10px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
 	border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -269,14 +245,12 @@ div#rcorners4 {
 }
 
 div#rcorners5 {
-	margin-left: 50px;
-	margin-top: -200px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
     border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -284,14 +258,12 @@ div#rcorners5 {
 }
 
 div#rcorners6 {
-	margin-top: -200px;
-	margin-left: 950px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
 	border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -299,14 +271,12 @@ div#rcorners6 {
 }
 
 div#rcorners7 {
-	margin-left: 50px;
-	margin-top: 50px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
     border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
@@ -314,18 +284,33 @@ div#rcorners7 {
 }
 
 div#rcorners8 {
-	margin-left: 950px;
-	margin-top: -200px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px; 
+    padding: 20px;
     width: 400px;
-    height: 200px; 
-	
+    height: 200px;
+
     border-bottom:4px solid #9ea7af;
     border-top:4px solid #9ea7af;
     border-right: 4px solid #9ea7af;
     border-left: 4px solid #9ea7af;
+}
+
+.donate {
+    border-radius: 15px 50px;
+    background: #fff;
+    padding: 20px;
+    width: 400px;
+    height: 200px;
+
+	border-bottom:4px solid #9ea7af;
+    border-top:4px solid #9ea7af;
+    border-right: 4px solid #9ea7af;
+    border-left: 4px solid #9ea7af;
+}
+.donateB{
+	margin-left: 90px;
+	margin-top: 30px;
 }
 
 
@@ -400,7 +385,7 @@ body {
 
 /* Sidebar navigation */
 .nav-sidebar {
-  margin-right: -21px; 
+  margin-right: -21px;
   margin-bottom: 20px;
   margin-top: -20px;
   margin-left: -20px;
@@ -491,7 +476,7 @@ color: white;
   margin-top: 50px;
   margin-bottom: -20px;
 }
-	
+
 .searchBar {
 	margin-top: 10px;
 	margin-left: calc(100% - 350px);

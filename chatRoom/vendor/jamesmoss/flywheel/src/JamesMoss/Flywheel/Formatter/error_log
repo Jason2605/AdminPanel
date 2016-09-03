@@ -1,6 +1,0 @@
-[15-May-2016 00:11:17 UTC] PHP Fatal error:  Interface 'JamesMoss\Flywheel\Formatter\Format' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/Formatter/JSON.php on line 6
-[15-May-2016 00:11:19 UTC] PHP Fatal error:  Interface 'JamesMoss\Flywheel\Formatter\Format' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/Formatter/Markdown.php on line 8
-[15-May-2016 00:11:19 UTC] PHP Fatal error:  Interface 'JamesMoss\Flywheel\Formatter\Format' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/Formatter/YAML.php on line 8
-[15-May-2016 15:10:30 UTC] PHP Fatal error:  Interface 'JamesMoss\Flywheel\Formatter\Format' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/Formatter/JSON.php on line 6
-[15-May-2016 15:10:31 UTC] PHP Fatal error:  Interface 'JamesMoss\Flywheel\Formatter\Format' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/Formatter/Markdown.php on line 8
-[15-May-2016 15:10:31 UTC] PHP Fatal error:  Interface 'JamesMoss\Flywheel\Formatter\Format' not found in /home/adminpan/public_html/chatRoom/vendor/jamesmoss/flywheel/src/JamesMoss/Flywheel/Formatter/YAML.php on line 8
