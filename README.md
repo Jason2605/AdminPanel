@@ -23,4 +23,8 @@ Donations are much appreciated!
 
 Download the latest version from <a href = "https://github.com/Jason2605/AdminPanel/releases">here!</a>
 
+###Install
+
+Just drop these files into a webserver (make sure they are in the root directory of where you are dropping them etc - public_html or the folder for you subdomain else the page linking may have issues.). Everything else is configured from the panel itself so no need for file configuration!
+
 Thanks for the support!
