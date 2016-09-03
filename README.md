@@ -18,9 +18,13 @@ The panel by default comes with 8 levels
 8: Global.
 </p>
 
-###Doante
+###Donate
 
 Donations are much appreciated! 
+
+###Screenshots
+
+See the AdminPanel in action <a href = "https://www.flickr.com/photos/140721778@N03/">here!</a> (Screenshots may be outdated at some point)
 
 ###Download
 
