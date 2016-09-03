@@ -12,7 +12,7 @@ $user = $_SESSION['user'];
 include('verifyPanel.php');
 masterconnect();
 
-if ($adminLev < 7){
+if ($adminLev < 7) {
   echo "<script src='scripts/na.js'></script>";
   header("Location: lvlError.php");
 }
@@ -75,12 +75,12 @@ if ($adminLev < 7){
 echo "<form action=reimbursement.php method=post>";
   echo "<tr>";
 	
-  echo "<td>" ."<input class='form-control' type=text name=uid value='' </td>";
-  echo "<td>" ."<input class='form-control' type=text name=amount value='' </td>";
-  echo "<td>" ."<input class='form-control' type=text name=reason value=''</td>";
+  echo "<td>"."<input class='form-control' type=text name=uid value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=amount value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=reason value=''</td>";
 
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Add". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Add"." </td>";
   //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
 	
   echo "</tr>";
@@ -123,17 +123,17 @@ include('header/header.php');
               </thead>
               <tbody>
 <?php
-while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
 
 
   echo "<form action=????.php method=post>";
   echo "<tr>";
-  echo "<td>" .$row['reimbursement_id']. "</td>";
-  echo "<td>" .$row['playerid'] ." </td>";
-  echo "<td>" .$row['comp'] ." </td>";
-  echo "<td>" .$row['reason'] . " </td>";
-  echo "<td>" .$row['staff_name'] . " </td>";
-  echo "<td>" .$row['timestamp'] . " </td>";
+  echo "<td>".$row['reimbursement_id']."</td>";
+  echo "<td>".$row['playerid']." </td>";
+  echo "<td>".$row['comp']." </td>";
+  echo "<td>".$row['reason']." </td>";
+  echo "<td>".$row['staff_name']." </td>";
+  echo "<td>".$row['timestamp']." </td>";
 
   echo "</tr>";
   echo "</form>";

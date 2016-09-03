@@ -25,13 +25,13 @@ $player = $result->fetch_object();
 $licences = $player->$col;
 $num = strpos($licences, $change['2']) + strlen($change['2']) + 2;
 
-if ($licences[$num] == 0){
+if ($licences[$num] == 0) {
 	
   $licences[$num] = 1;
     $message = "Admin ".$user." has added license ".$id." to ".$player->name."(".$player->playerid.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
-}elseif($licences[$num] == 1){
+}elseif ($licences[$num] == 1) {
     $message = "Admin ".$user." has removed license ".$id." to ".$player->name."(".$player->playerid.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);

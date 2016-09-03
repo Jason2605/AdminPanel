@@ -120,11 +120,15 @@ class ARC {
      */
     private function authorize()
     {
-        if (fwrite($this->socket, $this->get_loginmessage()) === false) throw new PacketException('[ARC] Failed to send login!');
+        if (fwrite($this->socket, $this->get_loginmessage()) === false) {
+          throw new PacketException('[ARC] Failed to send login!');
+        }
 
         $result = fread($this->socket, 16);
 
-        if (ord($result[strlen($result) - 1]) == 0) throw new AuthorizationException('[ARC] Login failed, wrong password!');
+        if (ord($result[strlen($result) - 1]) == 0) {
+          throw new AuthorizationException('[ARC] Login failed, wrong password!');
+        }
     }
 
 
@@ -194,7 +198,9 @@ class ARC {
         $hb_msg = "BE".chr(hexdec("7d")).chr(hexdec("8f")).chr(hexdec("ef")).chr(hexdec("73"));
         $hb_msg .= chr(hexdec('ff')).chr(hexdec('02')).chr(hexdec('00'));
 
-        if (fwrite($this->socket, $hb_msg) === false) throw new PacketException('[ARC] Failed to send heartbeat packet!');
+        if (fwrite($this->socket, $hb_msg) === false) {
+          throw new PacketException('[ARC] Failed to send heartbeat packet!');
+        }
     }
 
 
@@ -210,7 +216,9 @@ class ARC {
 
         do {
             $answer = $get();
-            while (strpos($answer, 'RCon admin') !== false) $answer = $get();
+            while (strpos($answer, 'RCon admin') !== false) {
+              $answer = $get();
+            }
             $output .= $answer;
         } while ($answer != '');
 
@@ -227,7 +235,9 @@ class ARC {
      */
     private function send($command)
     {
-        if ($this->disconnected) throw new \Exception('[ARC] Failed to send command, because the connection is closed!');
+        if ($this->disconnected) {
+          throw new \Exception('[ARC] Failed to send command, because the connection is closed!');
+        }
 
         $msgCRC = $this->get_msgCRC($command);
         $head = "BE".chr(hexdec($msgCRC[0])).chr(hexdec($msgCRC[1])).chr(hexdec($msgCRC[2])).chr(hexdec($msgCRC[3])).chr(hexdec('ff')).chr(hexdec('01')).chr(hexdec(sprintf('%01b', 0)));
@@ -246,7 +256,9 @@ class ARC {
      */
     public function disconnect()
     {
-        if ($this->disconnected) return;
+        if ($this->disconnected) {
+          return;
+        }
 
         $this->send("Exit");
 
@@ -271,22 +283,34 @@ class ARC {
      */
     public function connect($ServerIP = "", $ServerPort = "", $RConPassword = "")
     {
-        if (!$this->disconnected) $this->disconnect();
+        if (!$this->disconnected) {
+          $this->disconnect();
+        }
 
-        if ($ServerIP != "") $this->serverIP = $ServerIP;
-        if ($ServerPort != "") $this->serverPort = $ServerPort;
-        if ($RConPassword != "") $this->RCONpassword = $RConPassword;
+        if ($ServerIP != "") {
+          $this->serverIP = $ServerIP;
+        }
+        if ($ServerPort != "") {
+          $this->serverPort = $ServerPort;
+        }
+        if ($RConPassword != "") {
+          $this->RCONpassword = $RConPassword;
+        }
 
         $this->socket = @fsockopen("udp://".$this->serverIP, $this->serverPort, $errno, $errstr, $this->options['timeout_seconds']);
 
         stream_set_timeout($this->socket, $this->options['timeout_seconds']);
         stream_set_blocking($this->socket, true);
 
-        if (!$this->socket) throw new SocketException('[ARC] Failed to create socket!');
+        if (!$this->socket) {
+          throw new SocketException('[ARC] Failed to create socket!');
+        }
 
         $this->authorize();
 
-        if ($this->options['send_heartbeat']) $this->send_heartbeat();
+        if ($this->options['send_heartbeat']) {
+          $this->send_heartbeat();
+        }
 
         $this->disconnected = false;
     }

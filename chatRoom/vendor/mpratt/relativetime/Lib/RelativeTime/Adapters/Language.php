@@ -39,8 +39,9 @@ abstract class Language implements \ArrayAccess
      */
     public function offsetGet($id)
     {
-        if (!array_key_exists($id, $this->strings))
-            throw new \InvalidArgumentException($id.' is not defined');
+        if (!array_key_exists($id, $this->strings)) {
+                    throw new \InvalidArgumentException($id.' is not defined');
+        }
 
         return $this->strings[$id];
     }

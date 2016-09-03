@@ -152,7 +152,7 @@ class Query
                     $cmp = strcmp($valueA, $valueB);
                 } elseif (is_bool($valueA)) {
                     $cmp = $valueA - $valueB;
-                }else {
+                } else {
                     $cmp = ($valueA == $valueB) ? 0 : ($valueA > $valueB) ? -1 : 1;
                 }
 

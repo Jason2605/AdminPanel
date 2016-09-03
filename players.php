@@ -53,28 +53,28 @@ $max = PHP_INT_MAX;
   
 <?php
 
-if(isset($_POST['search']))
+if (isset($_POST['search']))
 {
   $valuetosearch = $_POST['SearchValue'];
   $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`) LIKE '%".$valuetosearch."%'";
   $search_result = filterTable($dbcon, $sqlget);
-}elseif(isset($_POST['orderBank']))
+}elseif (isset($_POST['orderBank']))
 {
   $sqlget = "SELECT * FROM players ORDER BY bankacc DESC";
   $search_result = filterTable($dbcon, $sqlget);
-}elseif(isset($_POST['orderCash']))
+}elseif (isset($_POST['orderCash']))
 {
   $sqlget = "SELECT * FROM players ORDER BY cash DESC";
   $search_result = filterTable($dbcon, $sqlget);
-}elseif(isset($_POST['orderCop']))
+}elseif (isset($_POST['orderCop']))
 {
   $sqlget = "SELECT * FROM players ORDER BY coplevel DESC";
   $search_result = filterTable($dbcon, $sqlget);
-}elseif(isset($_POST['orderMedic']))
+}elseif (isset($_POST['orderMedic']))
 {
   $sqlget = "SELECT * FROM players ORDER BY mediclevel DESC";
   $search_result = filterTable($dbcon, $sqlget);
-}elseif(isset($_POST['orderAdmin']))
+}elseif (isset($_POST['orderAdmin']))
 {
   $sqlget = "SELECT * FROM players ORDER BY adminlevel DESC";
   $search_result = filterTable($dbcon, $sqlget);
@@ -85,7 +85,7 @@ else {
 }
 
 
-if (isset($_POST['edit'])){
+if (isset($_POST['edit'])) {
   $uid = $_POST['hidden'];
   $guid = $_POST['guid'];
   $_SESSION['uidPlayer'] = $uid;
@@ -217,41 +217,41 @@ include('header/header.php');
               <tbody>
 <?php
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
 
 
-if ($adminLev > 6){
+if ($adminLev > 6) {
 	
 $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $player = $result->fetch_object();	
 
-  if ($_POST['csh'] != $player->cash){
+  if ($_POST['csh'] != $player->cash) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['bankacc'] != $player->bankacc){
+  if ($_POST['bankacc'] != $player->bankacc) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['coplevel'] != $player->coplevel){
+  if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['mediclevel'] != $player->mediclevel){
+  if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['adminlevel'] != $player->adminlevel){
+  if ($_POST['adminlevel'] != $player->adminlevel) {
     $message = "Admin ".$user." changed ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
@@ -260,20 +260,20 @@ $player = $result->fetch_object();
 	
 $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]', adminlevel='$_POST[adminlevel]', cash='$_POST[csh]', bankacc='$_POST[bankacc]' WHERE uid='$_POST[hidden]'";
 mysqli_query($dbcon, $UpdateQ);	
-} elseif ($adminLev > 5){
+} elseif ($adminLev > 5) {
 
 $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $player = $result->fetch_object();	
 
 	
-  if ($_POST['coplevel'] != $player->coplevel){
+  if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['mediclevel'] != $player->mediclevel){
+  if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
@@ -289,7 +289,7 @@ $result = mysqli_query($dbcon, $sql);
 $player = $result->fetch_object();	
 	
 	
-  if ($_POST['coplevel'] != $player->coplevel){
+  if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
@@ -299,37 +299,37 @@ $player = $result->fetch_object();
 
 $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]' WHERE uid ='$_POST[hidden]'";
 mysqli_query($dbcon, $UpdateQ);
-} else {
+}else {
 	
 $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
 $player = $result->fetch_object();	
 
-  if ($_POST['csh'] != $player->cash){
+  if ($_POST['csh'] != $player->cash) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['bankacc'] != $player->bankacc){
+  if ($_POST['bankacc'] != $player->bankacc) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['coplevel'] != $player->coplevel){
+  if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['mediclevel'] != $player->mediclevel){
+  if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['adminlevel'] != $player->adminlevel){
+  if ($_POST['adminlevel'] != $player->adminlevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
@@ -354,25 +354,25 @@ for ($i = 0; $i < 8; $i++) {
   $steamID >>= 8;
 }
 
-$return = md5('BE' . $temp);
-} else{
+$return = md5('BE'.$temp);
+}else {
 $return = "GUID can not be used with 32 bit php!";
 }
   echo "<form action=players.php method=post>";
   echo "<tr>";
-  echo "<td style='display:none;'>" ."<input type=hidden name=hiddenUID value=" .$row['playerid'] . " </td>";
-  echo "<td>" .$row['uid']. "</td>";
-  echo "<td>" .$row['name'] ." </td>";
-  echo "<td>" .$row['aliases'] ." </td>";
-  echo "<td>" .$row['playerid'] . " </td>";
-  echo "<td>" .$return. "</td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=hiddenUID value=".$row['playerid']." </td>";
+  echo "<td>".$row['uid']."</td>";
+  echo "<td>".$row['name']." </td>";
+  echo "<td>".$row['aliases']." </td>";
+  echo "<td>".$row['playerid']." </td>";
+  echo "<td>".$return."</td>";
 	
-  echo "<td>" ."<input class='form-control' type=text name=csh value=" .$row['cash'] . " </td>";
+  echo "<td>"."<input class='form-control' type=text name=csh value=".$row['cash']." </td>";
   
-  echo "<td>" ."<input class='form-control' type=text  name=bankacc value=" .$row['bankacc'] . " </td>";
+  echo "<td>"."<input class='form-control' type=text  name=bankacc value=".$row['bankacc']." </td>";
 	
-  echo "<td>" ."<input class='form-control' type=text style = 'width: 100%;' name=coplevel value=" .$row['coplevel'] . " </td>";
-  echo "<td>" ."<input class='form-control' type=text style = 'width: 100%;' name=mediclevel value=" .$row['mediclevel'] . " </td>";
+  echo "<td>"."<input class='form-control' type=text style = 'width: 100%;' name=coplevel value=".$row['coplevel']." </td>";
+  echo "<td>"."<input class='form-control' type=text style = 'width: 100%;' name=mediclevel value=".$row['mediclevel']." </td>";
 
   //if ($row['warning'] == 1){
   //echo "<td style=background-color:#00FF00;>Fine</td>";
@@ -385,12 +385,12 @@ $return = "GUID can not be used with 32 bit php!";
   //}
 
 	
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=Edit Player". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=Edit Player"." </td>";
 
-  echo "<td style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['uid'] . " </td>";
-  echo "<td style='display:none;'>" ."<input type=hidden name=guid value=" .$return . " </td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['uid']." </td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=guid value=".$return." </td>";
 	
 	
   echo "</tr>";

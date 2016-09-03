@@ -2,14 +2,14 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: /index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 4){
+if ($adminLev < 4) {
   header("Location: ../lvlError.php");
 }
 ?>
@@ -138,7 +138,7 @@ if (isset($_POST['update'])) {
   include('../verifyPanel.php');
   masterconnect();
 	
-  if ($_POST['guid'] != ""){
+  if ($_POST['guid'] != "") {
     $message = "Admin ".$user." has banned ".$guid." for ".$time." minutes under the reason of (".$reason.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);

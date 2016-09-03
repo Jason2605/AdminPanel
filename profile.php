@@ -59,29 +59,29 @@ include('header/header.php');
 		  
 <?php
 
-if (isset($_POST['updateButton'])){
+if (isset($_POST['updateButton'])) {
 $fail = false;
 	
-  if ($_POST['curPass'] != ""){
+  if ($_POST['curPass'] != "") {
     $curPass = $_POST['curPass'];
     $curPass = sha1($curPass);
-  }else
+  } else
   {
 
     $fail = true;
   }
 	
-  if ($_POST['pass'] != ""){
+  if ($_POST['pass'] != "") {
     $pass = $_POST['pass'];
-  }else
+  } else
   {
 
     $fail = true;
   }
 	
-  if ($_POST['pass1'] != ""){
+  if ($_POST['pass1'] != "") {
     $pass1 = $_POST['pass1'];
-  }else
+  } else
   {
 
     $fail = true;
@@ -96,9 +96,9 @@ $fail = false;
   $passR = $dbPass->password;
 
 	
-  if ($passR == $curPass){
+  if ($passR == $curPass) {
 		
-    if ($pass == $pass1){
+    if ($pass == $pass1) {
       //same
 			
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Password changed.</a></div>';
@@ -108,7 +108,7 @@ $fail = false;
         $UpdateQ = "UPDATE users SET password='$pass' WHERE username='$user'";
         mysqli_query($dbconL, $UpdateQ);
 		
-    }else
+    } else
       {
         //not same
 
@@ -117,9 +117,9 @@ $fail = false;
           echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Passwords do not match!</a></div>';
 				
       }
-  } else {echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Current password is wrong!</a></div>';}
+  }else {echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Current password is wrong!</a></div>'; }
 	
-  } else {
+  }else {
     echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please fill both boxes!</a></div>';
 		
   }

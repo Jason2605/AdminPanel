@@ -2,14 +2,14 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 2){
+if ($adminLev < 2) {
   header("Location: /lvlError.php");
 }
 
@@ -149,13 +149,13 @@ include('header/header.php');
               </thead>
               <tbody>
 <?php
-while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
   echo "<form action=notes.php method=post>";
   echo "<tr>";
 	
   //echo "<td>" ."<input type=hidden name=hiddenUID value=" .$row['playerid'] . " </td>";
-  echo "<td>" .$row['name'] ." </td>";
-  echo "<td>" .$row['aliases'] ." </td>";
+  echo "<td>".$row['name']." </td>";
+  echo "<td>".$row['aliases']." </td>";
 
 	
   //if ($row['warning'] == 1){
@@ -167,17 +167,17 @@ while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
   //}elseif ($row['warning'] == 3){
   //echo "<td style=background-color:#FF0000;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
   //}
-  echo "<td>" ."<input class='form-control' type=text name=warn value='1' </td>";
+  echo "<td>"."<input class='form-control' type=text name=warn value='1' </td>";
 	
-  echo "<td>" ."<input class='form-control' type=text name=note value='' </td>";
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
-  echo "<td style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['uid'] . " </td>";
+  echo "<td>"."<input class='form-control' type=text name=note value='' </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['uid']." </td>";
   echo "</tr>";
   echo "</form>";
 }
 
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
 $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
@@ -194,7 +194,7 @@ $player = $result->fetch_object();
 //		mysqli_query($dbcon, $logQ);
 //	}
 	
-  if ($_POST['note'] != $player->notes){
+  if ($_POST['note'] != $player->notes) {
     //$message = "Admin ".$user." has added the note ".$player->name."(".$player->playerid.")"." notes to ".$_POST['note'];
     $message = "Admin ".$user." has added the note (".$_POST['note'].") to ".$player->name."(".$player->playerid.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";

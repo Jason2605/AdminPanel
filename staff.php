@@ -2,14 +2,14 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev != 8){
+if ($adminLev != 8) {
   header("Location: lvlError.php");
 }
 ?>
@@ -102,7 +102,7 @@ include('header/header.php');
           </div>
 -->
 <?php
-if ($adminLev != 8){
+if ($adminLev != 8) {
   echo "<script src='scripts/na.js'></script>";
   header("Location: lvlError.php");
 }
@@ -114,18 +114,18 @@ loginconnect();
 $sqlget = "SELECT * FROM users";
 $sqldata = mysqli_query($dbconL, $sqlget) or die ('Connection could not be established');
 
-if (isset($_POST['delete'])){
+if (isset($_POST['delete'])) {
   $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
   mysqli_query($dbconL, $sql);
 }
 
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
-  if ($_POST['password'] == ""){
+  if ($_POST['password'] == "") {
     $UpdateQ = "UPDATE users SET username='$_POST[username]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
 
-  } else {
+  }else {
     $password = $_POST['password'];
     $pass = sha1($password);
     $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
@@ -147,16 +147,16 @@ if (isset($_POST['update'])){
               </thead>
               <tbody>
 <?php
-while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
   echo "<form action=staff.php method=post>";
   echo "<tr>";
-  echo "<td>" ."<input class='form-control' type=text name=username value=" .$row['username'] . " </td>";
-  echo "<td>" ."<input class='form-control' type=text name=password placeholder='New password' </td>";
-  echo "<td>" ."<input class='form-control' type=text name=adminlevel value=" .$row['level'] . " </td>";
+  echo "<td>"."<input class='form-control' type=text name=username value=".$row['username']." </td>";
+  echo "<td>"."<input class='form-control' type=text name=password placeholder='New password' </td>";
+  echo "<td>"."<input class='form-control' type=text name=adminlevel value=".$row['level']." </td>";
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete". " </td>";
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update". " </td>";
-  echo "<td style='display:none;'>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete"." </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['ID']." </td>";
 	
   echo "</tr>";
   echo "</form>";

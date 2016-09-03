@@ -2,18 +2,18 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 1){
+if ($adminLev < 1) {
   header("Location: /index.php");
 }
 
-if ($adminLev < 3){
+if ($adminLev < 3) {
   header("Location: /lvlError.php");
 }
 ?>
@@ -66,9 +66,9 @@ $page1 = $_GET["page"];
 if ($page1 == "" || $page1 == "1")
 {
   $page = 0;
-} else {
+}else {
 	
-  $page = ($page1*20)-20;
+  $page = ($page1*20) - 20;
 }
 
 
@@ -138,13 +138,13 @@ if ($addPage > $amount) {
 $sqlget = "SELECT * FROM log ORDER BY logid DESC limit $page,20";
 $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
-while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
   echo "<form action=logs.php method=post>";
   echo "<tr>";
   //echo "<td>" .$row['uid']. "</td>";
-  echo "<td>" .$row['date_time']. "</td>";
-  echo "<td>" .$row['user'] ." </td>";
-  echo "<td>" .$row['action'] . " </td>";
+  echo "<td>".$row['date_time']."</td>";
+  echo "<td>".$row['user']." </td>";
+  echo "<td>".$row['action']." </td>";
 	
   echo "</tr>";
   echo "</form>";
@@ -162,7 +162,7 @@ echo "</table></div>";
 	<span aria-hidden="true">&laquo;</span>
   </a>
 </li>
-<?php }else { ?>
+<?php } else { ?>
 	
 <li class = "disabled">
   <a href="logs.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
@@ -190,7 +190,7 @@ for ($b = $pageBefore; $b <= $amountPage; $b++)
   if ($b == $currentpage) {
   ?><li class = "active"><a href = "logs.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b." "; ?></a><li><?php
 	
-  }else {
+  } else {
 		
   ?><li><a href = "logs.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b." "; ?></a><li><?php
   }
@@ -205,7 +205,7 @@ for ($b = $pageBefore; $b <= $amountPage; $b++)
 	<span aria-hidden="true">&raquo;</span>
   </a>
 </li>
-<?php }else { ?>
+<?php } else { ?>
 	
 <li class = "disabled">
   <a href="logs.php?page=<?php echo $addPage; ?>" aria-label="Next">

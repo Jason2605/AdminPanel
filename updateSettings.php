@@ -3,82 +3,82 @@ session_start();
 
 $adminLev = $_SESSION['adminLevel'];
 
-if ($adminLev != 8){
+if ($adminLev != 8) {
   header("Location: lvlError.php");
 }
 	
 $fail = false;
-  if ($_POST['user'] != ""){
+  if ($_POST['user'] != "") {
     $user = $_POST['user'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['pass'] != ""){
+  if ($_POST['pass'] != "") {
     $pass = $_POST['pass'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['host'] != ""){
+  if ($_POST['host'] != "") {
     $host = $_POST['host'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['name'] != ""){
+  if ($_POST['name'] != "") {
     $name = $_POST['name'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['lName'] != ""){
+  if ($_POST['lName'] != "") {
     $lName = $_POST['lName'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['RHost'] != ""){
+  if ($_POST['RHost'] != "") {
     $RHost = $_POST['RHost'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['RPass'] != ""){
+  if ($_POST['RPass'] != "") {
     $RPass = $_POST['RPass'];
-  }else
+  } else
   {
     echo "error?";
     $fail = true;
   }
 	
-  if ($_POST['RPort'] != ""){
+  if ($_POST['RPort'] != "") {
     $RPort = $_POST['RPort'];
-    $RPort = (int)$RPort;
+    $RPort = (int) $RPort;
   }else
   {
     echo "error?";
     $fail = true;
   }
 	
-if (!$fail){
+if (!$fail) {
 $filename = "verifyPanel.php";
-$ourFileName =$filename;
+$ourFileName = $filename;
 $ourFileHandle = fopen($ourFileName, 'w');
 
-$written =  "<?php
+$written = "<?php
  
 function masterconnect(){
 	
@@ -124,7 +124,7 @@ fclose($ourFileHandle);
 
 header("Location: settings.php");
 
-}else {
+} else {
 	
   echo $fail;
 }

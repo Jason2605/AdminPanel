@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 
-if ($adminLev != 8){
+if ($adminLev != 8) {
   echo "<script src='scripts/na.js'></script>";
   header("Location: lvlError.php");
 }
@@ -109,12 +109,12 @@ include('header/header.php');
 echo "<form action=addStaff.php method=post>";
   echo "<tr>";
 	
-  echo "<td>" ."<input class='form-control' type=text name=username value='' </td>";
-  echo "<td>" ."<input class='form-control' type=text name=password value=''</td>";
-  echo "<td>" ."<input class='form-control' type=text name=adminlevel value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=username value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=password value=''</td>";
+  echo "<td>"."<input class='form-control' type=text name=adminlevel value='' </td>";
 
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Add". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Add"." </td>";
   //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
 	
   echo "</tr>";
@@ -122,15 +122,15 @@ echo "<form action=addStaff.php method=post>";
 
 echo "</table></div>";
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
-  if ($adminLev == '8'){
+  if ($adminLev == '8') {
 		
   $username = mysqli_real_escape_string($dbconL, $_POST['username']);
     $password = mysqli_real_escape_string($dbconL, $_POST['password']);	
   $admin = mysqli_real_escape_string($dbconL, $_POST['adminlevel']);
 
-    $intAdmin = (int)$admin;
+    $intAdmin = (int) $admin;
   $encPass = sha1($password);
 		
   $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$password', '$intAdmin')";
