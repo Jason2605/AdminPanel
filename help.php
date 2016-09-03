@@ -11,7 +11,7 @@ $user = $_SESSION['user'];
 $conecG = "work";
 $_SESSION['conecFail'] = $conecG;
 
-if ($adminLev < 1){
+if ($adminLev < 1) {
   header("Location: index.php");
 }
 ?>

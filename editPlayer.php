@@ -169,13 +169,13 @@ if (isset($_POST['donUpdate'])) {
 	
   if ($adminLev > 6) {
 	
-    if ($_POST['donatorlvl'] != $player->donatorlvl){
+    if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['blacklist'] != $player->blacklist){
+  if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
@@ -185,28 +185,28 @@ if (isset($_POST['donUpdate'])) {
 	
   } elseif ($adminLev > 4) {
 		
-  if ($_POST['donatorlvl'] != $player->donatorlvl){
+  if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['blacklist'] != $player->blacklist){
+  if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
   $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
   mysqli_query($dbcon, $UpdateQ);
-  } else {
+  }else {
 		
-  if ($_POST['donatorlvl'] != $player->donatorlvl){
+  if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
 	
-  if ($_POST['blacklist'] != $player->blacklist){
+  if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
@@ -220,12 +220,12 @@ if (isset($_POST['donUpdate'])) {
 $sqlget = "SELECT * FROM players WHERE uid=$uidPlayer;";
 $search_result = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
-while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
   echo "<tr>";
 echo "<form action=editPlayer.php method=post>";
-echo "<td>" ."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=" .$row['donatorlvl'] . " </td>";
-echo "<td>" ."<input class='form-control' type=text style = 'width: 100%;' name=blacklist value=" .$row['blacklist'] . " </td>";
-echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update". " </td>";
+echo "<td>"."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=".$row['donatorlvl']." </td>";
+echo "<td>"."<input class='form-control' type=text style = 'width: 100%;' name=blacklist value=".$row['blacklist']." </td>";
+echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update"." </td>";
 echo "</form>";
 		
   echo "</tr>";
@@ -261,30 +261,30 @@ echo "<div class='panel panel-info'>
   $sqlget = "SELECT * FROM notes WHERE uid=$uidPlayer;";
 $search_result = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
-while ($row = mysqli_fetch_array($search_result,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
   echo "<tr>";
 //echo "$row[note_text]";
 
-  if ($row['warning'] == 2){
+  if ($row['warning'] == 2) {
   //echo "<td style=background-color:#FFA500;>Strike</td>";
   //echo "<td style=background-color:#FFA500;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
 
-echo "<td style=background-color:#FFA500;>" .$row['staff_name'] . " </td>";
-echo "<td style=background-color:#FFA500;>" .$row['note_text'] . " </td>";
-echo "<td style=background-color:#FFA500;>" .$row['note_updated'] . " </td>";
+echo "<td style=background-color:#FFA500;>".$row['staff_name']." </td>";
+echo "<td style=background-color:#FFA500;>".$row['note_text']." </td>";
+echo "<td style=background-color:#FFA500;>".$row['note_updated']." </td>";
 
 	
-  }elseif ($row['warning'] == 3){
+  }elseif ($row['warning'] == 3) {
   //echo "<td style=background-color:#FF0000;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
 	
-echo "<td style=background-color:#FF0000;>" .$row['staff_name'] . " </td>";
-echo "<td style=background-color:#FF0000;>" .$row['note_text'] . " </td>";
-echo "<td style=background-color:#FF0000;>" .$row['note_updated'] . " </td>";
-  } else {
+echo "<td style=background-color:#FF0000;>".$row['staff_name']." </td>";
+echo "<td style=background-color:#FF0000;>".$row['note_text']." </td>";
+echo "<td style=background-color:#FF0000;>".$row['note_updated']." </td>";
+  }else {
 		
-echo "<td>" .$row['staff_name'] . " </td>";
-echo "<td>" .$row['note_text'] . " </td>";
-echo "<td>" .$row['note_updated'] . " </td>";
+echo "<td>".$row['staff_name']." </td>";
+echo "<td>".$row['note_text']." </td>";
+echo "<td>".$row['note_updated']." </td>";
 		
   }
   echo "</tr>";
@@ -314,13 +314,13 @@ echo "<div class='panel panel-info'>
       $name = before(',', $value);
       $display = explode("_", $name); 
       $displayN = $display['2']; 
-      echo "<button type='button' id=" . $name . " class='license btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
+      echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN."</button> ";
 		
-    } else {
+    }else {
       $name = before(',', $value);
       $display = explode("_", $name); 
       $displayN = $display['2'];
-      echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
+      echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
 
 		
     }
@@ -346,14 +346,14 @@ echo "<div class='panel panel-info'>
       $name = before(',', $value);
       $display = explode("_", $name); 
       $displayN = $display['2'];
-      echo "<button type='button' id=" . $name . " class='btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
+      echo "<button type='button' id=".$name." class='btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN."</button> ";
 		
-    } else {
+    }else {
       $name = before(',', $value);
-      if ($name != ""){
+      if ($name != "") {
       $display = explode("_", $name); 
       $displayN = $display['2'];
-      echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
+      echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
       }
 		
     }
@@ -379,14 +379,14 @@ echo "<div id ='civlic2'>";
     $name = before(',', $value);
     $display = explode("_", $name); 
     $displayN = $display['2'];
-    echo "<button type='button' id=" . $name . " class='btn btn-success btn-sm' onClick='post1(this.id);'>" . $displayN . "</button> ";
+    echo "<button type='button' id=".$name." class='btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN."</button> ";
 		
-    } else {
+    }else {
       $name = before(',', $value);
-      if ($name != ""){
+      if ($name != "") {
       $display = explode("_", $name); 
       $displayN = $display['2'];
-      echo "<button type='button' id=" . $name . " class='btn btn-secondary btn-sm' onClick='post(this.id);'>" . $displayN . "</button> ";
+      echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
       }
 		
     }

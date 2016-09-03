@@ -2,14 +2,14 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: /index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 3){
+if ($adminLev < 3) {
   header("Location: ../lvlError.php");
 }
 ?>
@@ -114,18 +114,18 @@ $sqlget = "SELECT * FROM players";
 $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
 
-while ($row = mysqli_fetch_array($sqldata,MYSQLI_ASSOC)) {
+while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
   echo "<form action=SKPlayerv1.php method=post>";
   echo "<tr>";
 	
-  echo "<td style='display:none;'>" ."<input type=hidden name=hiddenUID value=" .$row['playerid'] . " </td>";
-  echo "<td>" .$row['name'] ." </td>";
-  echo "<td>" .$row['aliases'] ." </td>";
-  echo "<td>" .$row['playerid'] . " </td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=hiddenUID value=".$row['playerid']." </td>";
+  echo "<td>".$row['name']." </td>";
+  echo "<td>".$row['aliases']." </td>";
+  echo "<td>".$row['playerid']." </td>";
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Kick". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick"." </td>";
 	
-  echo "<td style='display:none;'>" ."<input type=hidden name=hiddenName value=" .$row['name'] . " </td>";
+  echo "<td style='display:none;'>"."<input type=hidden name=hiddenName value=".$row['name']." </td>";
   //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
 	
   echo "</tr>";

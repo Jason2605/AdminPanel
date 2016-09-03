@@ -12,7 +12,7 @@ $user = $_SESSION['user'];
 include ('verifyPanel.php');
 
 
-if ($adminLev != 8){
+if ($adminLev != 8) {
   header("Location: lvlError.php");
 }
 ?>

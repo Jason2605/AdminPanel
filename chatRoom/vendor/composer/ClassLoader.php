@@ -90,7 +90,7 @@ class ClassLoader
     {
         if ($this->classMap) {
             $this->classMap = array_merge($this->classMap, $classMap);
-        }else {
+        } else {
             $this->classMap = $classMap;
         }
     }
@@ -111,7 +111,7 @@ class ClassLoader
                     (array) $paths,
                     $this->fallbackDirsPsr0
                 );
-            }else {
+            } else {
                 $this->fallbackDirsPsr0 = array_merge(
                     $this->fallbackDirsPsr0,
                     (array) $paths
@@ -132,7 +132,7 @@ class ClassLoader
                 (array) $paths,
                 $this->prefixesPsr0[$first][$prefix]
             );
-        }else {
+        } else {
             $this->prefixesPsr0[$first][$prefix] = array_merge(
                 $this->prefixesPsr0[$first][$prefix],
                 (array) $paths
@@ -159,7 +159,7 @@ class ClassLoader
                     (array) $paths,
                     $this->fallbackDirsPsr4
                 );
-            }else {
+            } else {
                 $this->fallbackDirsPsr4 = array_merge(
                     $this->fallbackDirsPsr4,
                     (array) $paths
@@ -179,7 +179,7 @@ class ClassLoader
                 (array) $paths,
                 $this->prefixDirsPsr4[$prefix]
             );
-        }else {
+        } else {
             // Append directories for an already registered namespace.
             $this->prefixDirsPsr4[$prefix] = array_merge(
                 $this->prefixDirsPsr4[$prefix],
@@ -199,7 +199,7 @@ class ClassLoader
     {
         if (!$prefix) {
             $this->fallbackDirsPsr0 = (array) $paths;
-        }else {
+        } else {
             $this->prefixesPsr0[$prefix[0]][$prefix] = (array) $paths;
         }
     }
@@ -217,7 +217,7 @@ class ClassLoader
     {
         if (!$prefix) {
             $this->fallbackDirsPsr4 = (array) $paths;
-        }else {
+        } else {
             $length = strlen($prefix);
             if ('\\' !== $prefix[$length - 1]) {
                 throw new \InvalidArgumentException("A non-empty PSR-4 prefix must end with a namespace separator.");
@@ -349,7 +349,7 @@ class ClassLoader
             // namespaced class name
             $logicalPathPsr0 = substr($logicalPathPsr4, 0, $pos + 1)
                 . strtr(substr($logicalPathPsr4, $pos + 1), '_', DIRECTORY_SEPARATOR);
-        }else {
+        } else {
             // PEAR-like class name
             $logicalPathPsr0 = strtr($class, '_', DIRECTORY_SEPARATOR).$ext;
         }

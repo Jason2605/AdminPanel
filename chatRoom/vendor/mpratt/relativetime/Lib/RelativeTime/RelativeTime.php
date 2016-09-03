@@ -116,7 +116,7 @@ class RelativeTime
         $date = str_replace(array('/', '|'), '-', $date);
         if (empty($date)) {
                     return date('Y-m-d H:i:s');
-        } else if (ctype_digit($date)) {
+        }else if (ctype_digit($date)) {
                     return date('Y-m-d H:i:s', $date);
         }
 
@@ -143,9 +143,9 @@ class RelativeTime
 
         if (empty($units)) {
                     return array();
-        } else if ($this->config['truncate'] > 0) {
+        }else if ($this->config['truncate'] > 0) {
                     return array_slice($units, 0, $this->config['truncate']);
-        } else {
+        }else {
                     return $units;
         }
     }

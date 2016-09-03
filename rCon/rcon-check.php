@@ -2,14 +2,14 @@
 session_start();
 $adminLev = $_SESSION['adminLevel'];
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: ../index.php");
 }
-if ($adminLev < 3){
+if ($adminLev < 3) {
   header("Location: ../lvlError.php");
 }
 
-if ($adminLev < 1){
+if ($adminLev < 1) {
   header("Location: ../index.php");
 }
 
@@ -152,7 +152,7 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
 <?php
 $i = 0;
 foreach ($players[1] as $match) {
-    echo "<tr><td>" .$players[1][$i]. "</td>";
+    echo "<tr><td>".$players[1][$i]."</td>";
     echo "<td>".$players[5][$i]."</td></tr>";
     $i++;
 }
@@ -173,10 +173,10 @@ echo "</table></div>";
 <?php
 $ii = 0;
 foreach ($str[0] as $ban) {
-    echo "<tr><td>" .$str[1][$ii]. "</td>";
-    echo "<td>" .$str[2][$ii]. "</td>";
-    echo "<td>" .$str[3][$ii]. "</td>";
-    echo "<td>" .$str[4][$ii]. "</td></tr>";
+    echo "<tr><td>".$str[1][$ii]."</td>";
+    echo "<td>".$str[2][$ii]."</td>";
+    echo "<td>".$str[3][$ii]."</td>";
+    echo "<td>".$str[4][$ii]."</td></tr>";
     $ii++;
 }
 echo "</table></div>";

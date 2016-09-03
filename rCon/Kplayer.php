@@ -2,14 +2,14 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: /index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 3){
+if ($adminLev < 3) {
   header("Location: ../lvlError.php");
 }
 ?>
@@ -110,11 +110,11 @@ include('../header/header.php');
   echo "<form action=Kplayer.php method=post>";
   echo "<tr>";
 	
-  echo "<td>" ."<input class='form-control' type=text name=guid value='' </td>";
-  echo "<td>" ."<input class='form-control' type=text name=reason value=''</td>";
+  echo "<td>"."<input class='form-control' type=text name=guid value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=reason value=''</td>";
 
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Kick". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick"." </td>";
 	
   echo "</tr>";
   echo "</form>";

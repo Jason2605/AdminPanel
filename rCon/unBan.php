@@ -2,14 +2,14 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
+if (!isset($_SESSION['logged'])) {
     header("Location: /index.php");
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 7){
+if ($adminLev < 7) {
   header("Location: ../lvlError.php");
 }
 ?>
@@ -108,17 +108,17 @@ include('../header/header.php');
   echo "<form action=unBan.php method=post>";
   echo "<tr>";
 	
-  echo "<td>" ."<input class='form-control' type=text name=banid value='' </td>";
-  echo "<td>" ."<input class='form-control' type=text name=guid value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=banid value='' </td>";
+  echo "<td>"."<input class='form-control' type=text name=guid value='' </td>";
 
-  echo "<td>" . "<input class='btn btn-primary btn-outline' type=submit name=update value=Un-Ban". " </td>";
+  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Un-Ban"." </td>";
   //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
 	
   echo "</tr>";
   echo "</form>";
 echo "</table></div>";
 
-if (isset($_POST['update'])){
+if (isset($_POST['update'])) {
 	
   $banid = $_POST['banid'];
   $guidUBan = $_POST['guidUBan'];
@@ -129,9 +129,9 @@ if (isset($_POST['update'])){
   //include('../verifyPanel.php');
   //masterconnect();
 	
-  if ($guidUBan != "" and $banid != ""){
+  if ($guidUBan != "" and $banid != "") {
 	
-  if ($_POST['banid'] != ""){
+  if ($_POST['banid'] != "") {
     $message = "Admin ".$user." has unbanned ".$guidUBan;
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);

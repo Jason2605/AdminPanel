@@ -56,7 +56,7 @@ class Translation
         {
             if ($v == 1) {
                             $translation[] = sprintf($lang[$unit]['singular'], $v);
-            } else {
+            }else {
                             $translation[] = sprintf($lang[$unit]['plural'], $v);
             }
         }
@@ -64,7 +64,7 @@ class Translation
         $string = implode($this->config['separator'], $translation);
         if (!$this->config['suffix']) {
                     return $string;
-        } else if ($direction > 0) {
+        }else if ($direction > 0) {
                     return sprintf($lang['ago'], $string);
         }
 
