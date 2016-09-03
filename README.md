@@ -34,4 +34,7 @@ Download the latest version from <a href = "https://github.com/Jason2605/AdminPa
 
 Just drop these files into a webserver (make sure they are in the root directory of where you are dropping them etc - public_html or the folder for you subdomain else the page linking may have issues.). Everything else is configured from the panel itself so no need for file configuration!
 
+Default user is Username: AdminPanel Password: Admin1234
+Please change this after the first login.
+
 Thanks for the support!
