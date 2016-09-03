@@ -22,10 +22,6 @@ The panel by default comes with 8 levels
 
 Donations are much appreciated! 
 
-<script async src="paypal-button.min.js?merchant=AGSWR748URLKY"
-    data-button="donate"
-></script>
-
 ###Download
 
 Download the latest version from <a href = "https://github.com/Jason2605/AdminPanel/releases">here!</a>
