@@ -1,5 +1,4 @@
 # AdminPanel
-Test Stages
 <p align="center">
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/quality-score.png?b=master" alt="Build Status">
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/build.png?b=master" alt="Build Status">
@@ -19,5 +18,9 @@ The panel by default comes with 8 levels
 8: Global.
 </p>
 Donations are much appreciated! 
+
+###Download
+
+Download the latest version from <a href = "https://github.com/Jason2605/AdminPanel/releases">here!</a>
 
 Thanks for the support!
