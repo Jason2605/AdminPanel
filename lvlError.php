@@ -8,7 +8,7 @@ if (!isset($_SESSION['logged'])) {
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
-
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
