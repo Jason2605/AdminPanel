@@ -123,12 +123,11 @@ $money = '$'.number_format($money, 2);
     echo    '<div class="row">';
     echo '<div class="col-lg-5">';
 
-    echo    "<div id='rcorners4'>";
-    echo        "<div class='box-top'><center><h1>Global Message</h1></div>";
+    echo    "<div id='rcorners5'>";
+    echo        "<div class='box-top'><center><h1>Restart Server</h1></div>";
     echo        "<div class='box-panel'><p></p>";
     echo            '<form action=home.php method=post>';
-    echo        "<div class = 'textInput'><td>"."<center><input class='form-control' type=text name=global value='' < /td></div><br>";
-    echo        "<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=send value=Send".' </td></div>';
+    echo        "<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=restart value=Restart".' </td></div>';
     echo        '</div>';
     echo    '</div>';
     echo  '</form>';
@@ -136,11 +135,12 @@ $money = '$'.number_format($money, 2);
     echo    '</div>';
     echo '<div class="col-lg-5">';
 
-    echo    "<div id='rcorners5'>";
-    echo        "<div class='box-top'><center><h1>Restart Server</h1></div>";
+    echo    "<div id='rcorners4'>";
+    echo        "<div class='box-top'><center><h1>Global Message</h1></div>";
     echo        "<div class='box-panel'><p></p>";
     echo            '<form action=home.php method=post>';
-    echo        "<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=restart value=Restart".' </td></div>';
+    echo        "<div class = 'textInput'><td>"."<center><input class='form-control' type=text name=global value='' < /td></div><br>";
+    echo        "<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=send value=Send".' </td></div>';
     echo        '</div>';
     echo    '</div>';
     echo  '</form>';
@@ -184,7 +184,7 @@ if (isset($_POST['send'])) {
         header('Location: rCon/rcon-mess.php');
         $message = 'Admin '.$user.' has sent a global message ('.$send.')';
         logIt($user, $message, $dbcon);
-    }else {
+    } else {
         header('Location: ../lvlError.php');
     }
 }
@@ -192,7 +192,7 @@ if (isset($_POST['send'])) {
 if (isset($_POST['restart'])) {
     if ($adminLev > 6) {
         header('Location: rCon/rcon-restart.php');
-    }else {
+    } else {
         header('Location: ../lvlError.php');
     }
 }
@@ -204,7 +204,7 @@ if (isset($_POST['chat'])) {
 if (isset($_POST['stop'])) {
     if ($adminLev > 6) {
         header('Location: rCon/rcon-stop.php');
-    }else {
+    } else {
         header('Location: ../lvlError.php');
     }
 }
