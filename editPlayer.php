@@ -118,7 +118,6 @@ echo "<center><h4>Cop Level: ".$player->coplevel."</h3></center>";
 echo "<center><h4>Medic Level: ".$player->mediclevel."</h3></center>";
 echo "<center><h4>Admin Level: ".$player->adminlevel."</h3></center>";
 
-//echo "<center><h3>".$player->playerid."</h3></center>";
 echo "</div>";
 echo "  </div> </div> </div>";
 
@@ -281,7 +280,8 @@ echo "<div class='panel panel-info'>
 
 
   foreach ($return as $value) {
-    if (strpos($value, "1") == TRUE) {
+    $pos = strpos($value, "1");
+    if ($pos !== false) {
       $name = before(',', $value);
       $display = explode("_", $name);
       $displayN = $display['2'];
@@ -313,18 +313,19 @@ echo "<div class='panel panel-info'>
 
 
   foreach ($return as $value) {
-    if (strpos($value, "1") == TRUE) {
+    $pos = strpos($value, "1");
+    if ($pos !== false) {
       $name = before(',', $value);
-      $display = explode("_", $name);
-      $displayN = $display['2'];
-      echo "<button type='button' id=".$name." class='btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN."</button> ";
+        $display = explode("_", $name);
+        $displayN = $display['2'];
+        echo "<button type='button' id=".$name." class='btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN."</button> ";
 
     }else {
       $name = before(',', $value);
       if ($name != "") {
-      $display = explode("_", $name);
-      $displayN = $display['2'];
-      echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
+        $display = explode("_", $name);
+        $displayN = $display['2'];
+        echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
       }
 
     }
@@ -346,7 +347,8 @@ echo "<div id ='civlic2'>";
   <div class='panel-body'>";
 
   foreach ($return as $value) {
-    if (strpos($value, "1") == TRUE) {
+    $pos = strpos($value, "1");
+    if ($pos !== false) {
     $name = before(',', $value);
     $display = explode("_", $name);
     $displayN = $display['2'];
@@ -355,9 +357,9 @@ echo "<div id ='civlic2'>";
     }else {
       $name = before(',', $value);
       if ($name != "") {
-      $display = explode("_", $name);
-      $displayN = $display['2'];
-      echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
+          $display = explode("_", $name);
+          $displayN = $display['2'];
+          echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN."</button> ";
       }
 
     }

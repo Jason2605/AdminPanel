@@ -1,3 +1,0 @@
-[03-Sep-2016 13:04:24 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jason_000'@'ns343442.ip-94-23-251.eu' (using password: YES) in /home/adminpa1/testPanel.adminpanel.vilayer.me/verifyCheck.php on line 119
-[03-Sep-2016 13:04:45 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jason_000'@'ns343442.ip-94-23-251.eu' (using password: YES) in /home/adminpa1/testPanel.adminpanel.vilayer.me/verifyPanel.php on line 12
-[03-Sep-2016 13:04:54 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jason_000'@'ns343442.ip-94-23-251.eu' (using password: YES) in /home/adminpa1/testPanel.adminpanel.vilayer.me/verifyPanel.php on line 12
