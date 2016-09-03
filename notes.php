@@ -137,7 +137,7 @@ $player = $result->fetch_object();
 
   if ($_POST['note'] != $player->notes) {
     $message = "Admin ".$user." has added the note (".$_POST['note'].") to ".$player->name."(".$player->playerid.")";
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
   $UpdateN = "INSERT INTO notes (uid, staff_name, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$_POST[note]','$_POST[warn]')";
   mysqli_query($dbcon, $UpdateN);

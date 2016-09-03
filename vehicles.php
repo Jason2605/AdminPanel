@@ -72,28 +72,28 @@ $vehicle = $result->fetch_object();
 
   if ($_POST['classname'] != $vehicle->classname) {
     $message = "Admin ".$user." has changed the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['alive'] != $vehicle->alive) {
     $message = "Admin ".$user." has changed the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['active'] != $vehicle->active) {
     $message = "Admin ".$user." has changed the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['plate'] != $vehicle->plate) {
     $message = "Admin ".$user." has changed the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 $UpdateQ = "UPDATE vehicles SET classname='$_POST[classname]', alive='$_POST[alive]', active='$_POST[active]', plate='$_POST[plate]' WHERE id='$_POST[hidden]'";
 mysqli_query($dbcon, $UpdateQ);
 
-  } else {
+  }else {
 
     $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
@@ -101,22 +101,22 @@ $vehicle = $result->fetch_object();
 
   if ($_POST['classname'] != $vehicle->classname) {
     $message = "Admin ".$user." tried to change the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['alive'] != $vehicle->alive) {
     $message = "Admin ".$user." tried to change the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['active'] != $vehicle->active) {
     $message = "Admin ".$user." tried to change the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['plate'] != $vehicle->plate) {
     $message = "Admin ".$user." tried to change the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   }

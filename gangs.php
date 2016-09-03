@@ -77,22 +77,22 @@ $gang = $result->fetch_object();
 
   if ($_POST['maxmembers'] != $gang->maxmembers) {
     $message = "Admin ".$user." has changed gang maxmember of gang ".$gang->name." from ".$gang->maxmembers." to ".$_POST['maxmembers'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['members'] != $gang->members) {
     $message = "Admin ".$user." has changed gang members of gang ".$gang->name." from ".$gang->members." to ".$_POST['members'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['bank'] != $gang->bank) {
     $message = "Admin ".$user." has changed the gang bank for gang ".$gang->name." from ".$gang->bank." to ".$_POST['bank'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['active'] != $gang->active) {
     $message = "Admin ".$user." has changed the alive status of gang ".$gang->name." from ".$gang->active." to ".$_POST['active'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 $UpdateQ = "UPDATE gangs SET members='$_POST[members]', maxmembers='$_POST[maxmembers]', bank='$_POST[bank]', active='$_POST[active]' WHERE id='$_POST[hidden]'";
@@ -105,22 +105,22 @@ $gang = $result->fetch_object();
 
   if ($_POST['maxmembers'] != $gang->maxmembers) {
     $message = "Admin ".$user." tried to change gang maxmember of gang ".$gang->name." from ".$gang->maxmembers." to ".$_POST['maxmembers'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['members'] != $gang->members) {
     $message = "Admin ".$user." tried to change gang members of gang ".$gang->name." from ".$gang->members." to ".$_POST['members'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['bank'] != $gang->bank) {
     $message = "Admin ".$user." tried to change the gang bank for gang ".$gang->name." from ".$gang->bank." to ".$_POST['bank'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['active'] != $gang->active) {
     $message = "Admin ".$user." tried to change the alive status of gang ".$gang->name." from ".$gang->active." to ".$_POST['active'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 }
