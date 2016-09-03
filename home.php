@@ -184,7 +184,7 @@ if (isset($_POST['send'])) {
         header('Location: rCon/rcon-mess.php');
         $message = 'Admin '.$user.' has sent a global message ('.$send.')';
         logIt($user, $message, $dbcon);
-    } else {
+    }else {
         header('Location: ../lvlError.php');
     }
 }
@@ -192,7 +192,7 @@ if (isset($_POST['send'])) {
 if (isset($_POST['restart'])) {
     if ($adminLev > 6) {
         header('Location: rCon/rcon-restart.php');
-    } else {
+    }else {
         header('Location: ../lvlError.php');
     }
 }
@@ -204,7 +204,7 @@ if (isset($_POST['chat'])) {
 if (isset($_POST['stop'])) {
     if ($adminLev > 6) {
         header('Location: rCon/rcon-stop.php');
-    } else {
+    }else {
         header('Location: ../lvlError.php');
     }
 }
