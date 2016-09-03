@@ -10,7 +10,7 @@ if ($adminLev < 7){
   header("Location: ../lvlError.php");
 }
 
-  require_once '../ArmaRConClass/rcon.php'; 
+  require_once '../ArmaRConClass/rcon.php';
 
 session_id ("user");
 session_start();
@@ -33,13 +33,3 @@ $delBan = $rcon->remove_ban($banid);
 
 header("Location: unBan.php");
 }
-
-//if ($addBan){
-//	echo "Sent";
-//}else
-//{
-//echo "Failed";
-//}
-
-//header("Location: /home.php");
-?>

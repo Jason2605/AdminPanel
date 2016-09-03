@@ -24,7 +24,7 @@ if (!$dbconL) {
 }
 else {
   echo "connected fam";
-	
+
 if (isset($_COOKIE['conecFail'])):
   setcookie('conecFail', '', time() - 7000000, '/');
 endif;
@@ -45,7 +45,7 @@ $res = mysqli_query($dbconL, $sqlget);
 
 
 $numrows = mysqli_num_rows($res);
-	
+
   if ($numrows != 0)
   {
     while ($row = mysqli_fetch_assoc($res))
@@ -56,38 +56,25 @@ $numrows = mysqli_num_rows($res);
     }
     if ($username == $dbusername && $encPass == $dbpassword)
     {
-      /*
-		if(isset($_COOKIE['logged'])):
-			setcookie('logged', '', time()-7000000, '/');
-		endif;
-		*/
+
     if (isset($_COOKIE['conecFail'])):
       setcookie('conecFail', '', time() - 7000000, '/');
     endif;
 
-		
+
     if (isset($_COOKIE['fail'])):
       setcookie('fail', '', time() - 7000000, '/');
     endif;
-		
-    /*
-		if(isset($_COOKIE['adminLevel'])):
-			setcookie('adminLevel', '', time()-7000000, '/');
-		endif;
-		*/
+
     $_SESSION = array();
-			
+
       echo "You are logged in!";
-      //setcookie('logged','1');
       $_SESSION['logged'] = 1;
-			
-      //setcookie('cookie', $username);
+
       $_SESSION['user'] = $dbusername;
-			
-      //$_SESSION['test'] = $username;
-      //setcookie('adminLevel', $adminLevel);
+
       $_SESSION['adminLevel'] = $adminLevel;
-      //echo $username;
+
       header("Location: home.php");
     }
     else {

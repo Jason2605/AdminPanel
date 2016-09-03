@@ -16,4 +16,3 @@ if ($adminLev != 8){
 session_destroy();
 unlink('verifyPanel.php');
 header ("Location: logout.php");
-?>

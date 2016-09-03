@@ -282,7 +282,7 @@ echo "<div class='panel panel-info'>
 
 
   foreach ($return as $value) {
-    if (strpos($value, "1") == TRUE) {
+    if (strpos($value, "1") !== 0) {
       $name = before(',', $value);
       $display = explode("_", $name);
       $displayN = $display['2'];
@@ -314,7 +314,7 @@ echo "<div class='panel panel-info'>
 
 
   foreach ($return as $value) {
-    if (strpos($value, "1") == TRUE) {
+    if (strpos($value, "1") !== 0) {
       $name = before(',', $value);
       $display = explode("_", $name);
       $displayN = $display['2'];
@@ -347,7 +347,7 @@ echo "<div id ='civlic2'>";
   <div class='panel-body'>";
 
   foreach ($return as $value) {
-    if (strpos($value, "1") == TRUE) {
+    if (strpos($value, "1") !== 0) {
     $name = before(',', $value);
     $display = explode("_", $name);
     $displayN = $display['2'];

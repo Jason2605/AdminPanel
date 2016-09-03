@@ -49,7 +49,7 @@ if ($adminLev < 7) {
   </head>
 
   <body>
-  
+
 <?php
 include('../header/header.php');
 ?>
@@ -57,7 +57,7 @@ include('../header/header.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">UnBan Menu</h1>
 		  <p class="page-header">UnBan menu of the panel, allows you to unban RCON banned players.</p>
-		  
+
 		  	<div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="/home.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
@@ -68,31 +68,6 @@ include('../header/header.php');
 			<FORM METHOD="LINK" ACTION="rcon-check.php">
 			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
 			</FORM></div> <br><br><br>
-		 
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
@@ -107,36 +82,33 @@ include('../header/header.php');
 <?php
   echo "<form action=unBan.php method=post>";
   echo "<tr>";
-	
+
   echo "<td>"."<input class='form-control' type=text name=banid value='' </td>";
   echo "<td>"."<input class='form-control' type=text name=guid value='' </td>";
 
   echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Un-Ban"." </td>";
-  //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
-	
+
   echo "</tr>";
   echo "</form>";
 echo "</table></div>";
 
 if (isset($_POST['update'])) {
-	
+
   $banid = $_POST['banid'];
   $guidUBan = $_POST['guidUBan'];
-	
+
   $_SESSION['banid'] = $banid;
   $_SESSION['guidUBan'] = $guidUBan;
-	
-  //include('../verifyPanel.php');
-  //masterconnect();
-	
+
+
   if ($guidUBan != "" and $banid != "") {
-	
+
   if ($_POST['banid'] != "") {
     $message = "Admin ".$user." has unbanned ".$guidUBan;
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
-	
+
   header("Location: rcon-unBan.php");
   }
 };

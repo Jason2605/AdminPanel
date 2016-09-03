@@ -15,8 +15,8 @@ masterconnect();
 $id = $_POST['id'];
 $uid = $_POST['uid'];
 
-$change = explode("_", $_POST['id']); 
-$col = $change['1']."_licenses"; 
+$change = explode("_", $_POST['id']);
+$col = $change['1']."_licenses";
 
 $sql = "SELECT * FROM `players` WHERE uid = '$_POST[uid]'";
 $result = mysqli_query($dbcon, $sql);
@@ -26,7 +26,7 @@ $licences = $player->$col;
 $num = strpos($licences, $change['2']) + strlen($change['2']) + 2;
 
 if ($licences[$num] == 0) {
-	
+
   $licences[$num] = 1;
     $message = "Admin ".$user." has added license ".$id." to ".$player->name."(".$player->playerid.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
@@ -41,6 +41,3 @@ if ($licences[$num] == 0) {
 echo $licences;
 $sql = "UPDATE `players` SET `".$col."`='$licences' WHERE uid ='$uid'";
 $result = mysqli_query($dbcon, $sql); 
-
-
-?>

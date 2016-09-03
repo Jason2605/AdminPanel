@@ -27,7 +27,7 @@ $sqlget = "SELECT * FROM players";
 $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
 
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-	
+
   $players++;
   $money = $money + $row['cash'] + $row['bankacc'];
 }
@@ -82,23 +82,23 @@ include('header/header.php');
 		  <p class="page-header">Dashboard of the panel.</p>
 <?php
     //Max players
-		
+
     echo	"<div id='rcorners1'>";
     echo		"<div class='box-top'><center><h1>Players</h1></div>";
     echo		"<div class='box-panel'><p></p>";
     echo		"<p><br><center>There are currently ".$players." players signed up on the server.</p>";
     echo		"</div>";
     echo	"</div>";
-		
+
     //Vehicles
-		
+
     echo	"<div id='rcorners2'>";
     echo		"<div class='box-top'><center><h1>Vehicles</h1></div>";
     echo		"<div class='box-panel'><p></p>";
     echo		"<p><br><center>There are currently ".$vehicles." vehicles.</p>";
     echo		"</div>";
     echo	"</div>";
-		
+
     //?
 $money = "$".number_format($money, 2);
 
@@ -108,8 +108,8 @@ $money = "$".number_format($money, 2);
     echo		"<p><br><center>There is a total of ".$money." on the server.</p>";
     echo		"</div>";
     echo	"</div>";
-		
-		
+
+
     echo	"<div id='rcorners4'>";
     echo		"<div class='box-top'><center><h1>Global Message</h1></div>";
     echo		"<div class='box-panel'><p></p>";
@@ -119,51 +119,47 @@ $money = "$".number_format($money, 2);
     echo		"</div>";
     echo	"</div>";
     echo  "</form>";
-		
-		
+
+
     echo	"<div id='rcorners5'>";
     echo		"<div class='box-top'><center><h1>Restart Server</h1></div>";
     echo		"<div class='box-panel'><p></p>";
     echo 			"<form action=home.php method=post>";
-    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
     echo 		"<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=restart value=Restart"." </td></div>";
     echo		"</div>";
     echo	"</div>";
     echo  "</form>";
-		
-		
+
+
     echo	"<div id='rcorners6'>";
     echo		"<div class='box-top'><center><h1>Stop Server</h1></div>";
     echo		"<div class='box-panel'><p></p>";
     echo 			"<form action=home.php method=post>";
-    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
     echo 		"<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=stop value=Stop"." </td></div>";
     echo		"</div>";
     echo	"</div>";
     echo  "</form>";
-		
+
     echo	"<div id='rcorners7'>";
     echo		"<div class='box-top'><center><h1>Admin Chatroom</h1></div>";
     echo		"<div class='box-panel'><p></p>";
     echo 			"<form action=home.php method=post>";
-    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
     echo 		"<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=chat value=Chatroom"." </td></div>";
     echo		"</div>";
     echo	"</div>";
     echo  "</form>";
-		
+
     echo	"<div id='rcorners8'>";
     echo		"<div class='box-top'><center><h1>Help</h1></div>";
     echo 		"<div class='box-top'><center><h4>For general help on the panel!</h4></div>";
     echo		"<div class='box-panel'><p></p>";
     echo 			"<form action=home.php method=post>";
-    //echo 		"<div class = 'textInput'><td>" ."<input type=text name=global value='' < /td></div>";
     echo 		"<div class = 'textSend'><td>"."<center><input class='btn btn-primary btn-outline' type=submit name=help value=Help"." </td></div>";
     echo		"</div>";
     echo	"</div>";
     echo  "</form>";
-		
-		
+
+
 if (isset($_POST['send'])) {
   if ($adminLev > 6) {
 $send = $_POST['global'];
@@ -182,9 +178,9 @@ header("Location: rCon/rcon-restart.php");
 }
 
 if (isset($_POST['chat'])) {
-	
+
 header("Location: chatRoom/chatRoom.php");
-	
+
 }
 
 if (isset($_POST['stop'])) {
@@ -212,33 +208,6 @@ ob_end_flush();
 	<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 	</form></div>
 </div>
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
-
- 
-
           </div>
         </div>
       </div>

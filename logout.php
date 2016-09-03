@@ -17,4 +17,3 @@ if (isset($_COOKIE['adminLevel'])):
 endif;
 session_destroy();
 header("location: index.php");
-?>

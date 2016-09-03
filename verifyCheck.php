@@ -1,6 +1,6 @@
 <?php
 if (!file_exists('verifyPanel.php')) {
-	
+
 $fail = false;
   if ($_POST['user'] != "") {
     $user = $_POST['user'];
@@ -9,7 +9,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['pass'] != "") {
     $pass = $_POST['pass'];
   } else
@@ -17,7 +17,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['host'] != "") {
     $host = $_POST['host'];
   } else
@@ -25,7 +25,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['name'] != "") {
     $name = $_POST['name'];
   } else
@@ -33,7 +33,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['lName'] != "") {
     $lName = $_POST['lName'];
   } else
@@ -41,7 +41,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['RHost'] != "") {
     $RHost = $_POST['RHost'];
   } else
@@ -49,7 +49,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['RPass'] != "") {
     $RPass = $_POST['RPass'];
   } else
@@ -57,7 +57,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['RPort'] != "") {
     $RPort = $_POST['RPort'];
     $RPort = (int) $RPort;
@@ -66,28 +66,28 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
 if (!$fail) {
 $filename = "verifyPanel.php";
 $ourFileName = $filename;
 $ourFileHandle = fopen($ourFileName, 'w');
 
 $written = "<?php
- 
+
 function masterconnect(){
-	
+
 	global "."$"."dbcon;
 	"."$"."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
 }
 
 function loginconnect(){
-	
+
 	global "."$"."dbconL;
 	"."$"."dbconL = mysqli_connect('$host', '$user', '$pass', '$lName');
 }
 
 function Rconconnect(){
-	
+
 	global "."$"."rcon;
 	"."$"."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
 }
@@ -109,7 +109,7 @@ global "."$"."RconPort;
 global "."$"."RconPass;
 "."$"."RconPass = '$RPass';
 
- 
+
 ?>
 ";
 
@@ -225,18 +225,12 @@ $sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
 $sqldata4 = mysqli_query($dbconnect, $sqledit1) or die ('Connection could not be established or column "warning" already exists!');
 
 header("Location: index.php");
-}else {
-	
-  //header("Location: create.php");
-  echo $fail;
+} else {
+
+  echo "There has been an error setting up your database, please recheck all inputs";
 }
 
-
-	
-
-}else
+} else
 {
   header("Location: index.php");
 }
-
-?>

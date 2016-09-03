@@ -44,15 +44,10 @@ masterconnect();
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
-  
+
 <?php
 
 if (isset($_POST['search']))
@@ -78,15 +73,7 @@ include('header/header.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Notes Menu</h1>
 		  <p class="page-header">Notes Menu of the panel, allows you to set notes on players. Warning - 1 = no colour, nothing too bad. 2 = orange, small caution. 3 = Red, big caution.</p>
-		  
-		  
 
-<!--			
-			<form action = "players.php" method="post">
-				<div class ="searchBar"><input class='form-control' type = "text" name="SearchValue" placeholder="Player Name/UID"></div>
-				<div class ="search"><input class='btn btn-primary' type = "submit" name="search" value="Filter"></div>
-			</form>
--->		
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="/players.php">
 <INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
@@ -108,32 +95,9 @@ include('header/header.php');
 			</div><!-- /.row -->
 		  </div>
 </form>
-			
+
 			<br>
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
+
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
@@ -152,23 +116,11 @@ include('header/header.php');
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
   echo "<form action=notes.php method=post>";
   echo "<tr>";
-	
-  //echo "<td>" ."<input type=hidden name=hiddenUID value=" .$row['playerid'] . " </td>";
+
+
   echo "<td>".$row['name']." </td>";
   echo "<td>".$row['aliases']." </td>";
-
-	
-  //if ($row['warning'] == 1){
-  //echo "<td style=background-color:#00FF00;>Fine</td>";
-  //echo "<td style=background-color:#00FF00;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
-  //}elseif ($row['warning'] == 2){
-  //echo "<td style=background-color:#FFA500;>Strike</td>";
-  //echo "<td style=background-color:#FFA500;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";	
-  //}elseif ($row['warning'] == 3){
-  //echo "<td style=background-color:#FF0000;><input class='form-control' type=text name=warn value='$row[warning]' .</td>";
-  //}
   echo "<td>"."<input class='form-control' type=text name=warn value='1' </td>";
-	
   echo "<td>"."<input class='form-control' type=text name=note value='' </td>";
   echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
   echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['uid']." </td>";
@@ -178,35 +130,18 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
 
 
 if (isset($_POST['update'])) {
-	
+
 $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();	
+$player = $result->fetch_object();
 
-//$message = "test";
-//$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-//mysqli_query($dbcon, $logQ);
-
-//	if ($_POST['warn'] != $player->warning){
-//		$message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." warning from ".$player->warning." to ".$_POST['warn'];
-//		//$message = "test";
-//		$logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-//		mysqli_query($dbcon, $logQ);
-//	}
-	
   if ($_POST['note'] != $player->notes) {
-    //$message = "Admin ".$user." has added the note ".$player->name."(".$player->playerid.")"." notes to ".$_POST['note'];
     $message = "Admin ".$user." has added the note (".$_POST['note'].") to ".$player->name."(".$player->playerid.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
   }
-	
-  //$UpdateQ = "UPDATE players SET notes='$_POST[note]', warning='$_POST[warn]' WHERE uid='$_POST[hidden]'";
-  //mysqli_query($dbcon, $UpdateQ);
-  //$UpdateN = "UPDATE notes SET notes='$_POST[note]' WHERE uid='$_POST[hidden]'";
   $UpdateN = "INSERT INTO notes (uid, staff_name, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$_POST[note]','$_POST[warn]')";
   mysqli_query($dbcon, $UpdateN);
-  //header("Location: rcon-Skick.php");
 };
 
 echo "</table></div>";

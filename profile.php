@@ -47,7 +47,7 @@ include('verifyPanel.php');
   </head>
 
   <body>
-  
+
 <?php
 include('header/header.php');
 ?>
@@ -56,12 +56,12 @@ include('header/header.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Profile Menu</h1>
 		  <p class="page-header">Allows you to edit your account.</p>
-		  
+
 <?php
 
 if (isset($_POST['updateButton'])) {
 $fail = false;
-	
+
   if ($_POST['curPass'] != "") {
     $curPass = $_POST['curPass'];
     $curPass = sha1($curPass);
@@ -70,7 +70,7 @@ $fail = false;
 
     $fail = true;
   }
-	
+
   if ($_POST['pass'] != "") {
     $pass = $_POST['pass'];
   } else
@@ -78,7 +78,7 @@ $fail = false;
 
     $fail = true;
   }
-	
+
   if ($_POST['pass1'] != "") {
     $pass1 = $_POST['pass1'];
   } else
@@ -86,28 +86,28 @@ $fail = false;
 
     $fail = true;
   }
-  if ($fail == false) {
-		
+  if ($fail === false) {
+
   loginconnect();
-	
+
   $SelectQ = "SELECT * FROM users WHERE username = '$user'";
   $result = mysqli_query($dbconL, $SelectQ);
   $dbPass = $result->fetch_object();
   $passR = $dbPass->password;
 
-	
+
   if ($passR == $curPass) {
-		
+
     if ($pass == $pass1) {
       //same
-			
+
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Password changed.</a></div>';
-				
+
         $pass = sha1($pass);
-				
+
         $UpdateQ = "UPDATE users SET password='$pass' WHERE username='$user'";
         mysqli_query($dbconL, $UpdateQ);
-		
+
     } else
       {
         //not same
@@ -115,17 +115,17 @@ $fail = false;
 
 
           echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Passwords do not match!</a></div>';
-				
+
       }
   }else {echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Current password is wrong!</a></div>'; }
-	
+
   }else {
     echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please fill both boxes!</a></div>';
-		
+
   }
 }//end of update
 ?>
-		 
+
 <div class='panel panel-info'>
 <div class='panel-heading'>
 <h3 class='panel-title'>User Info</h3>
@@ -133,8 +133,8 @@ $fail = false;
 <div class='panel-body'>
 <center><h4><?php echo $user; ?></h4>
 <br>
-	 
-<center><img alt="User Pic" src="images/man.png" class="img-circle img-responsive" width="150" height="150"> 
+
+<center><img alt="User Pic" src="images/man.png" class="img-circle img-responsive" width="150" height="150">
 
 <br>
 

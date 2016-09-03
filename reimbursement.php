@@ -53,13 +53,13 @@ if ($adminLev < 7) {
   </head>
 
   <body>
-  
+
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Reimbursement Logs</h1>
 		  <p class="page-header">Reimbursement Logs of the panel, allows you to see reimbursements.</p>
-		  
+
 		  <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
@@ -74,32 +74,29 @@ if ($adminLev < 7) {
 <?php
 echo "<form action=reimbursement.php method=post>";
   echo "<tr>";
-	
+
   echo "<td>"."<input class='form-control' type=text name=uid value='' </td>";
   echo "<td>"."<input class='form-control' type=text name=amount value='' </td>";
   echo "<td>"."<input class='form-control' type=text name=reason value=''</td>";
-
-
   echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Add"." </td>";
-  //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
-	
+
   echo "</tr>";
   echo "</form>";
 
 echo "</table></div>";
 
 if (isset($_POST['update'])) {
-	
-  //if ($adminLev > '6'){
-  //$UpdateQ = "INSERT INTO reimbursement_log (playerid, comp, reason, staff_name) VALUES ('$_POST[uid]', '$_POST[amount]', '$_POST[reason]',$user)";
-  $UpdateQ = "INSERT INTO reimbursement_log (playerid,comp,reason,staff_name) VALUES ('$_POST[uid]','$_POST[amount]','$_POST[reason]','$user');";
+  $uid = $_POST['uid'];
+  $amount = $_POST['amount'];
+  $reason = $_POST['reason'];
+
+  $UpdateQ = "INSERT INTO reimbursement_log (playerid,comp,reason,staff_name) VALUES ('$uid','$amount','$reason','$user');";
   mysqli_query($dbcon, $UpdateQ);
-//}
-} 
+}
 ?>
- 
-<br><br> 
- 
+
+<br><br>
+
 <?php
 
 $sqlget = "SELECT * FROM reimbursement_log";
@@ -107,7 +104,7 @@ $search_result = mysqli_query($dbcon, $sqlget) or die ('Connection could not be 
 include('header/header.php');
 
 ?>
-		 
+
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
@@ -118,15 +115,12 @@ include('header/header.php');
 					<th>Reason</th>
 					<th>Admin</th>
 					<th>Time Stamp</th>
-					
+
                 </tr>
               </thead>
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
-
-
-  echo "<form action=????.php method=post>";
   echo "<tr>";
   echo "<td>".$row['reimbursement_id']."</td>";
   echo "<td>".$row['playerid']." </td>";
@@ -134,9 +128,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
   echo "<td>".$row['reason']." </td>";
   echo "<td>".$row['staff_name']." </td>";
   echo "<td>".$row['timestamp']." </td>";
-
   echo "</tr>";
-  echo "</form>";
 }
 
 

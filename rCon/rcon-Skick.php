@@ -10,12 +10,12 @@ if ($adminLev < 3){
   header("Location: ../lvlError.php");
 }
 
-  require_once '../ArmaRConClass/rcon.php'; 
+  require_once '../ArmaRConClass/rcon.php';
 
 session_id ("user");
 session_start();
 ob_start();
- 
+
 include('../verifyPanel.php');
 Rconconnect();
 
@@ -32,14 +32,14 @@ if($uid == ''){
 }
 
 if($name == ''){
-  //header("Location: /home.php");
+
   echo "wtf";
 } else
 {
   echo "worked?";
   echo $name;
 }
-//else{
+
 
 echo $uid;
 echo "<br><br><br><br><br><br>";
@@ -49,14 +49,3 @@ echo $command;
 $kick = $rcon->command($command);
 
 header("Location: /players.php");
-
-
-//if ($kick){
-//	echo "Sent";
-//}else
-//{
-//echo "Failed";
-//}
-
-//header("Location: /home.php");
-?>

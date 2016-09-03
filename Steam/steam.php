@@ -57,34 +57,10 @@ include('../header/header.php');
   </head>
 
   <body>
-  
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Steam Menu</h1>
 		  <p class="page-header">Steam menu of the panel, allows you to see steam accounts.</p>
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 <?php
 
 include('../verifyPanel.php');
@@ -133,15 +109,13 @@ for ($i = 0; $i < 8; $i++) {
 $return = md5('BE'.$temp);
 }else {
 $return = "32 bit PHP, GUID will not work!";
-}	
+}
   echo "<form action=logs.php method=post>";
   echo "<tr>";
   echo "<td>".$row['name']."</td>";
   echo "<td>".$row['aliases']." </td>";
   echo "<td>".$row['playerid']." </td>";
   echo "<td>".$return."</td>";
-	
-  //echo "<td><a href='http://steamcommunity.com/profiles/" . $row["playerid"] . "'class ='button' class='btn btn-link'>Steam Account</a></td>";
   echo "<td><a href='http://steamcommunity.com/profiles/".$row["playerid"]."' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
   echo "</tr>";
   echo "</form>";

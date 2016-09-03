@@ -49,7 +49,7 @@ if ($adminLev < 3) {
   </head>
 
   <body>
-  
+
 <?php
 include('../header/header.php');
 ?>
@@ -58,7 +58,7 @@ include('../header/header.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Kick Menu</h1>
 		  <p class="page-header">Gives you the ability to kick a player off the server. This can be sent to the server for any player in the database, obviously if they are offline nothing will happen... Check the battleye list for players online!.</p>
-		  
+
 		  	<div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="Kmenu.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
@@ -69,31 +69,6 @@ include('../header/header.php');
 			<FORM METHOD="LINK" ACTION="rcon-check.php">
 			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
 			</FORM></div> <br><br><br>
-		 
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
@@ -117,17 +92,14 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be establ
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
   echo "<form action=SKPlayerv1.php method=post>";
   echo "<tr>";
-	
+
   echo "<td style='display:none;'>"."<input type=hidden name=hiddenUID value=".$row['playerid']." </td>";
   echo "<td>".$row['name']." </td>";
   echo "<td>".$row['aliases']." </td>";
   echo "<td>".$row['playerid']." </td>";
-
   echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick"." </td>";
-	
   echo "<td style='display:none;'>"."<input type=hidden name=hiddenName value=".$row['name']." </td>";
-  //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
-	
+
   echo "</tr>";
   echo "</form>";
 }
@@ -138,18 +110,15 @@ if (isset($_POST['update'])) {
 
 $sql = "SELECT * FROM `players` WHERE `playerid` = $_POST[hiddenUID]";
 $result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();	
+$player = $result->fetch_object();
 
   $name = $_POST['hiddenName'];
   $guid = $_POST['hiddenUID'];
   $_SESSION['SKguid'] = $guid;
-	
-  //if ($_POST['guid'] != ""){
+
     $message = "Admin ".$user." has kicked ".$player->name."(".$guid.")";
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
-  //}
-//echo $name;
   header("Location: rcon-Skick.php");
 };
 ?>

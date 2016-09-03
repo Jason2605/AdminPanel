@@ -53,7 +53,7 @@ if ($adminLev < 3) {
   </head>
 
   <body>
-  
+
 <?php
 
 include('verifyPanel.php');
@@ -67,7 +67,7 @@ if ($page1 == "" || $page1 == "1")
 {
   $page = 0;
 }else {
-	
+
   $page = ($page1*20) - 20;
 }
 
@@ -77,30 +77,7 @@ if ($page1 == "" || $page1 == "1")
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Log Menu</h1>
 		  <p class="page-header">Log menu of the panel, allows you to see the logs.</p>
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
+
 <?php
 $resultQ = "SELECT * FROM log ORDER BY logid DESC";
 $result = mysqli_query($dbcon, $resultQ) or die ('Connection could not be established');
@@ -141,11 +118,11 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be establ
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
   echo "<form action=logs.php method=post>";
   echo "<tr>";
-  //echo "<td>" .$row['uid']. "</td>";
+
   echo "<td>".$row['date_time']."</td>";
   echo "<td>".$row['user']." </td>";
   echo "<td>".$row['action']." </td>";
-	
+
   echo "</tr>";
   echo "</form>";
 }
@@ -155,7 +132,7 @@ echo "</table></div>";
               </tbody>
             </table>
 <nav>
-<ul class="pagination"> 
+<ul class="pagination">
 <?php if ($currentpage != 1) { ?>
 <li>
   <a href="logs.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
@@ -163,7 +140,7 @@ echo "</table></div>";
   </a>
 </li>
 <?php } else { ?>
-	
+
 <li class = "disabled">
   <a href="logs.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
 	<span aria-hidden="true">&laquo;</span>
@@ -185,18 +162,18 @@ if ($pageBefore < 1) {
   $amountPage = $amountPage + 2;
 }
 
-for ($b = $pageBefore; $b <= $amountPage; $b++) 
+for ($b = $pageBefore; $b <= $amountPage; $b++)
 {
   if ($b == $currentpage) {
   ?><li class = "active"><a href = "logs.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b." "; ?></a><li><?php
-	
+
   } else {
-		
+
   ?><li><a href = "logs.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b." "; ?></a><li><?php
   }
-	
-	
-	
+
+
+
 }
 ?>
 <?php if ($currentpage != $amount) { ?>
@@ -206,7 +183,7 @@ for ($b = $pageBefore; $b <= $amountPage; $b++)
   </a>
 </li>
 <?php } else { ?>
-	
+
 <li class = "disabled">
   <a href="logs.php?page=<?php echo $addPage; ?>" aria-label="Next">
 	<span aria-hidden="true">&raquo;</span>
@@ -216,17 +193,8 @@ for ($b = $pageBefore; $b <= $amountPage; $b++)
 <?php
 }
 ?>
-
-
-
-
-
-
 </ul>
-</nav>			
-			
-			
-
+</nav>
           </div>
         </div>
       </div>

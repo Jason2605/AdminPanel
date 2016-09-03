@@ -10,7 +10,7 @@ if ($adminLev < 3){
   header("Location: ../lvlError.php");
 }
 
-require_once '../ArmaRConClass/rcon.php'; 
+require_once '../ArmaRConClass/rcon.php';
 
 include('../verifyPanel.php');
 Rconconnect();
@@ -35,13 +35,3 @@ $addBan = $rcon->kick_player($guid, $reason);
 
 header("Location: /players.php");
 }
-
-//if ($addBan){
-//	echo "Sent";
-//}else
-//{
-//echo "Failed";
-//}
-
-//header("Location: /home.php");
-?>

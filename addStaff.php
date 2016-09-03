@@ -51,48 +51,23 @@ loginconnect();
   </head>
 
   <body>
-  
+
 <?php
 
 include('header/header.php');
 
 ?>
 
-    
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px"> Menu</h1>
 		  <p class="page-header">Staff menu of the panel, allows you to see and delete staff members.</p>
-		  
+
 		  	<div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="staff.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 			</FORM>
 			</div><br><br><br>
-		 
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
@@ -108,31 +83,30 @@ include('header/header.php');
 <?php
 echo "<form action=addStaff.php method=post>";
   echo "<tr>";
-	
+
   echo "<td>"."<input class='form-control' type=text name=username value='' </td>";
   echo "<td>"."<input class='form-control' type=text name=password value=''</td>";
   echo "<td>"."<input class='form-control' type=text name=adminlevel value='' </td>";
 
 
   echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Add"." </td>";
-  //echo "<td>" ."<input type=hidden name=hidden value=" .$row['ID'] . " </td>";
-	
+
   echo "</tr>";
   echo "</form>";
 
 echo "</table></div>";
 
 if (isset($_POST['update'])) {
-	
+
   if ($adminLev == '8') {
-		
+
   $username = mysqli_real_escape_string($dbconL, $_POST['username']);
-    $password = mysqli_real_escape_string($dbconL, $_POST['password']);	
+    $password = mysqli_real_escape_string($dbconL, $_POST['password']);
   $admin = mysqli_real_escape_string($dbconL, $_POST['adminlevel']);
 
     $intAdmin = (int) $admin;
   $encPass = sha1($password);
-		
+
   $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$password', '$intAdmin')";
   mysqli_query($dbconL, $UpdateQ);
 }

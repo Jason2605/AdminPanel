@@ -11,7 +11,7 @@ if ($adminLev < 7){
 }
 
 ob_start();
-require_once '../ArmaRConClass/rcon.php'; 
+require_once '../ArmaRConClass/rcon.php';
 
 include('../verifyPanel.php');
 Rconconnect();
@@ -21,14 +21,3 @@ $command = "#restart";
 $restart = $rcon->command($command);
 
 header("Location: ../home.php");
-
-
-//if ($addBan){
-//	echo "Sent";
-//}else
-//{
-//echo "Failed";
-//}
-
-//header("Location: /home.php");
-?>

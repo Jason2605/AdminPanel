@@ -6,7 +6,7 @@ $adminLev = $_SESSION['adminLevel'];
 if ($adminLev != 8) {
   header("Location: lvlError.php");
 }
-	
+
 $fail = false;
   if ($_POST['user'] != "") {
     $user = $_POST['user'];
@@ -15,7 +15,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['pass'] != "") {
     $pass = $_POST['pass'];
   } else
@@ -23,7 +23,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['host'] != "") {
     $host = $_POST['host'];
   } else
@@ -31,7 +31,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['name'] != "") {
     $name = $_POST['name'];
   } else
@@ -39,7 +39,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['lName'] != "") {
     $lName = $_POST['lName'];
   } else
@@ -47,7 +47,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['RHost'] != "") {
     $RHost = $_POST['RHost'];
   } else
@@ -55,7 +55,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['RPass'] != "") {
     $RPass = $_POST['RPass'];
   } else
@@ -63,7 +63,7 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
   if ($_POST['RPort'] != "") {
     $RPort = $_POST['RPort'];
     $RPort = (int) $RPort;
@@ -72,28 +72,28 @@ $fail = false;
     echo "error?";
     $fail = true;
   }
-	
+
 if (!$fail) {
 $filename = "verifyPanel.php";
 $ourFileName = $filename;
 $ourFileHandle = fopen($ourFileName, 'w');
 
 $written = "<?php
- 
+
 function masterconnect(){
-	
+
 	global "."$"."dbcon;
 	"."$"."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
 }
 
 function loginconnect(){
-	
+
 	global "."$"."dbconL;
 	"."$"."dbconL = mysqli_connect('$host', '$user', '$pass', '$lName');
 }
 
 function Rconconnect(){
-	
+
 	global "."$"."rcon;
 	"."$"."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
 }
@@ -115,7 +115,7 @@ global "."$"."RconPort;
 global "."$"."RconPass;
 "."$"."RconPass = '$RPass';
 
- 
+
 ?>
 ";
 
@@ -125,8 +125,6 @@ fclose($ourFileHandle);
 header("Location: settings.php");
 
 } else {
-	
+
   echo $fail;
 }
-
-?>
