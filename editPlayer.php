@@ -41,7 +41,7 @@ function before($this, $inthat)
       return substr($inthat, 0, strpos($inthat, $this));
 }
 
-function replace ($text)
+function replace($text)
 {
   return str_replace('[[', "", $text);
 }
@@ -152,12 +152,12 @@ if (isset($_POST['donUpdate'])) {
 
     if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
   $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
   mysqli_query($dbcon, $UpdateQ);
@@ -166,12 +166,12 @@ if (isset($_POST['donUpdate'])) {
 
   if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
   $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
   mysqli_query($dbcon, $UpdateQ);
@@ -179,12 +179,12 @@ if (isset($_POST['donUpdate'])) {
 
   if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   }
@@ -385,7 +385,7 @@ $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'"
 $result = mysqli_query($dbcon, $sql);
 
     $message = "Admin ".$user." has removed all licenses from ".$player->name."(".$player->playerid.")";
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
 
 };
 if (isset($_POST['give'])) {
@@ -395,7 +395,7 @@ $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'"
 $result = mysqli_query($dbcon, $sql);
 
     $message = "Admin ".$user." has added all licenses to ".$player->name."(".$player->playerid.")";
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
 
 };
 ?>

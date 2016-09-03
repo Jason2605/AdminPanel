@@ -166,7 +166,7 @@ $send = $_POST['global'];
 $_SESSION['send'] = $send;
 header("Location: rCon/rcon-mess.php");
     $message = "Admin ".$user." has sent a global message (".$send.")";
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }else {header("Location: ../lvlError.php"); }
 }
 
