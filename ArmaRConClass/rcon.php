@@ -145,18 +145,6 @@ class ARC {
         return $authCRC;
     }
 
-  public function getBansArray()
-    {
-        $bansRaw = $this->getBans();
-
-        $bans = $this->cleanList($bansRaw);
-        preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bans, $str);
-        $result = $this->formatList($str);
-
-        return $result;
-    }
-
-
     /**
      * Generates the message's CRC32 data
      *

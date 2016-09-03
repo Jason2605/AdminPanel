@@ -13,7 +13,7 @@ if ($adminLev < 1) {
   header("Location: ../index.php");
 }
 
-require_once '../ArmaRConClass/rcon.php'; 
+require_once '../ArmaRConClass/rcon.php';
 
 include('../verifyPanel.php');
 Rconconnect();
@@ -60,7 +60,7 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
   </head>
 
   <body>
-  
+
 <?php
 
 
@@ -88,7 +88,7 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
         </div>
       </div>
     </nav>
-	
+
     <div class="container-fluid">
       <div class="row">
         <div id="navbarside" class="col-sm-3 col-md-2 sidebar">
@@ -108,37 +108,12 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">BattleEye Logs</h1>
 		  <p class="page-header">BattleEye Logs.</p>
-		  
+
 		  	<div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="/players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 			</FORM>
 			</div><br><br><br>
-		 
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
