@@ -11,13 +11,6 @@ ob_start();
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=0" />
 <script src="scripts/jquery-1.12.3.min.js"></script>
 <script src="scripts/general.js"></script>
-
-
-
-
-
-
-
 </head>
 <body>
 
@@ -25,7 +18,7 @@ ob_start();
 		<div class ="logo"><a href="#">Admin<span>Panel</span></a></div>
 		<div class ="logoE"><a href="#">By Jason_000</a></div>
 	</div>
-	
+
 <div id = "login1">
 <form action="verifyCheck.php" method="post">
 
@@ -49,11 +42,11 @@ ob_start();
 	<script>
         $.backstretch([
 		  "images/img4.jpg",
-                  "images/img5.jpg",
-                  "images/img7.jpg",
+          "images/img5.jpg",
+          "images/img7.jpg",
 		  "images/img1.jpg",
-                  "images/img10.jpg",
-                  "images/img9.jpg",
+          "images/img10.jpg",
+          "images/img9.jpg",
 		  "images/img3.jpg",
 		  "images/img4.jpg",
 		  "images/img6.jpg",
@@ -63,13 +56,9 @@ ob_start();
             duration: 4000
         });
     </script>
-
-<?php
-
-?>
 </form>
 </div>
 
 
 </body>
-</html>                 
+</html>

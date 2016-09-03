@@ -94,11 +94,6 @@ if (isset($_POST['edit'])) {
   $url = '/editPlayer.php';
 echo '<META HTTP-EQUIV=Refresh CONTENT="0; URL='.$url.'">';
 }
-function filterTable($dbcon, $sqlget)
-{
-  $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
-  return $sqldata;
-}
 include('header/header.php');
 ?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

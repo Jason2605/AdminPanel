@@ -61,12 +61,6 @@ else {
   $search_result = filterTable($dbcon, $sqlget);
 }
 
-function filterTable($dbcon, $sqlget)
-{
-  $sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
-  return $sqldata;
-}
-
 include('header/header.php');
 ?>
 

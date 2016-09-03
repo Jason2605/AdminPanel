@@ -2,17 +2,17 @@
 session_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 
 if ($adminLev != 8) {
-  echo "<script src='scripts/na.js'></script>";
-  header("Location: lvlError.php");
+    echo "<script src='scripts/na.js'></script>";
+    header('Location: lvlError.php');
 }
 
-include('verifyPanel.php');
+include 'verifyPanel.php';
 loginconnect();
 ?>
 
@@ -54,7 +54,7 @@ loginconnect();
 
 <?php
 
-include('header/header.php');
+include 'header/header.php';
 
 ?>
 
@@ -81,35 +81,32 @@ include('header/header.php');
               </thead>
               <tbody>
 <?php
-echo "<form action=addStaff.php method=post>";
-  echo "<tr>";
+echo '<form action=addStaff.php method=post>';
+  echo '<tr>';
 
-  echo "<td>"."<input class='form-control' type=text name=username value='' </td>";
-  echo "<td>"."<input class='form-control' type=text name=password value=''</td>";
-  echo "<td>"."<input class='form-control' type=text name=adminlevel value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=username value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=password value=''</td>";
+  echo '<td>'."<input class='form-control' type=text name=adminlevel value='' </td>";
 
+  echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Add".' </td>';
 
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Add"." </td>";
+  echo '</tr>';
+  echo '</form>';
 
-  echo "</tr>";
-  echo "</form>";
-
-echo "</table></div>";
+echo '</table></div>';
 
 if (isset($_POST['update'])) {
+    if ($adminLev == '8') {
+        $username = mysqli_real_escape_string($dbconL, $_POST['username']);
+        $password = mysqli_real_escape_string($dbconL, $_POST['password']);
+        $admin = mysqli_real_escape_string($dbconL, $_POST['adminlevel']);
 
-  if ($adminLev == '8') {
+        $intAdmin = (int) $admin;
+        $encPass = sha1($password);
 
-  $username = mysqli_real_escape_string($dbconL, $_POST['username']);
-    $password = mysqli_real_escape_string($dbconL, $_POST['password']);
-  $admin = mysqli_real_escape_string($dbconL, $_POST['adminlevel']);
-
-    $intAdmin = (int) $admin;
-  $encPass = sha1($password);
-
-  $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$password', '$intAdmin')";
-  mysqli_query($dbconL, $UpdateQ);
-}
+        $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$password', '$intAdmin')";
+        mysqli_query($dbconL, $UpdateQ);
+    }
 }
 ?>
               </tbody>

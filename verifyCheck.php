@@ -98,6 +98,12 @@ function logIt("."$"."admin,"."$"."log,"."$"."dbcon){
         mysqli_query("."$"."dbcon, "."$"."logQ);
 }
 
+function filterTable("."$"."dbcon, "."$"."sqlget)
+{
+  "."$"."sqldata = mysqli_query("."$"."dbcon, "."$"."sqlget) or die ('Connection could not be established');
+  return "."$"."sqldata;
+}
+
 
 global "."$"."DBHost;
 "."$"."DBHost = '$host';
@@ -212,21 +218,13 @@ $sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `level`) VALUES
 
 $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die ('Connection could not be established or user already exists!');
 
-//$sqldel = "ALTER TABLE players DROP COLUMN notes;";
-
-//$sqldata5 = mysqli_query($dbconnect, $sqldel); //or die ('Connection could not be established or error deleting notes column!');
-
-//$sqledit = "ALTER TABLE players ADD notes VARCHAR(60);";
-
-//$sqldata3 = mysqli_query($dbconnect, $sqledit) or die ('Connection could not be established or column "notes" already exists!');
-
 $sqldelTime = "ALTER TABLE players DROP COLUMN joined;";
 
-$sqldata8 = mysqli_query($dbconnect, $sqldelTime); //or die ('Connection could not be established or error deleting joined column!');
+$sqldata8 = mysqli_query($dbconnect, $sqldelTime);
 
 $sqldel1 = "ALTER TABLE players DROP COLUMN warning;";
 
-$sqldata6 = mysqli_query($dbconnect, $sqldel1); //or die ('Connection could not be established or error deleting warning column!');
+$sqldata6 = mysqli_query($dbconnect, $sqldel1);
 
 $sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
 
