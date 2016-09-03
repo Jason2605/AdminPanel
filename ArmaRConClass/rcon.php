@@ -93,7 +93,7 @@ class ARC {
      * @param string  $RCONpassword        RCon password required by BattlEye
      * @param array  $options              Options array of ARC
      */
-    public function __construct($serverIP, $serverPort = 2302, $RCONpassword, array $options = array())
+    public function __construct($serverIP, $serverPort = 2306, $RCONpassword, array $options = array())
     {
         $this->serverIP = $serverIP;
         $this->serverPort = $serverPort;
@@ -144,7 +144,7 @@ class ARC {
 
         return $authCRC;
     }
-	
+
   public function getBansArray()
     {
         $bansRaw = $this->getBans();
@@ -281,7 +281,7 @@ class ARC {
      * @throws PacketException           If sending the heartbeat packet fails
      * @throws SocketException           If creating the socket fails
      */
-    public function connect($ServerIP = "", $ServerPort = "", $RConPassword = "")
+    public function connect($ServerIP = "", $ServerPort = 2306, $RConPassword = "")
     {
         if (!$this->disconnected) {
           $this->disconnect();
@@ -290,7 +290,7 @@ class ARC {
         if ($ServerIP != "") {
           $this->serverIP = $ServerIP;
         }
-        if ($ServerPort != "") {
+        if ($ServerPort != 2306) {
           $this->serverPort = $ServerPort;
         }
         if ($RConPassword != "") {
@@ -420,7 +420,7 @@ class ARC {
     {
         return $this->send("players") ? $this->get_answer() : false;
     }
-    
+
 
 
     /**
@@ -505,5 +505,3 @@ class ARC {
 class PacketException extends \Exception {}
 class SocketException extends \Exception {}
 class AuthorizationException extends \Exception {}
-
-
