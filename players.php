@@ -177,27 +177,27 @@ $player = $result->fetch_object();
 
   if ($_POST['csh'] != $player->cash) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['bankacc'] != $player->bankacc) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['adminlevel'] != $player->adminlevel) {
     $message = "Admin ".$user." changed ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 
@@ -212,12 +212,12 @@ $player = $result->fetch_object();
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 
@@ -232,7 +232,7 @@ $player = $result->fetch_object();
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 
@@ -247,27 +247,27 @@ $player = $result->fetch_object();
 
   if ($_POST['csh'] != $player->cash) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['bankacc'] != $player->bankacc) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
   if ($_POST['adminlevel'] != $player->adminlevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   }
 
 }

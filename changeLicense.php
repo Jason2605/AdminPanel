@@ -29,10 +29,10 @@ if ($licences[$num] == 0) {
 
   $licences[$num] = 1;
     $message = "Admin ".$user." has added license ".$id." to ".$player->name."(".$player->playerid.")";
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
 }elseif ($licences[$num] == 1) {
     $message = "Admin ".$user." has removed license ".$id." to ".$player->name."(".$player->playerid.")";
-    logIt($user,$message,$dbcon);
+    logIt($user, $message, $dbcon);
   $licences[$num] = 0;
 }
 
