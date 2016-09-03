@@ -91,6 +91,14 @@ function Rconconnect(){
 	global "."$"."rcon;
 	"."$"."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
 }
+
+function logIt("."$"."admin,"."$"."log,"."$"."dbcon){
+
+        "."$"."logQ = \"INSERT INTO log (user,action,level) VALUES ('"."$"."admin','"."$"."log',1)\";
+        mysqli_query("."$"."dbcon, "."$"."logQ);
+}
+
+
 global "."$"."DBHost;
 "."$"."DBHost = '$host';
 global "."$"."DBUser;

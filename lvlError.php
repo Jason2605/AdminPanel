@@ -8,40 +8,6 @@ if (!isset($_SESSION['logged'])) {
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
-$conecG = "work";
-$_SESSION['conecFail'] = $conecG;
-
-if ($adminLev < 1) {
-  header("Location: index.php");
-}
-
-include('verifyPanel.php');
-masterconnect();
-
-$players = 0;
-$money = 0;
-
-$sqlget = "SELECT * FROM players";
-$sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
-
-while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-	
-  $players++;
-  $money = $money + $row['cash'] + $row['bankacc'];
-}
-
-$sqlgetVeh = "SELECT * FROM vehicles";
-$sqldataVeh = mysqli_query($dbcon, $sqlgetVeh) or die ('Connection could not be established');
-
-$vehicles = 0;
-
-while ($rowVeh = mysqli_fetch_array($sqldataVeh, MYSQLI_ASSOC)) {
-	
-  $vehicles++;
-}
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +43,7 @@ while ($rowVeh = mysqli_fetch_array($sqldataVeh, MYSQLI_ASSOC)) {
   </head>
 
   <body>
-  
+
 <?php
 include('header/header.php');
 ?>

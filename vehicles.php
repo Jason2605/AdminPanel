@@ -46,7 +46,7 @@ $user = $_SESSION['user'];
   </head>
 
   <body>
-  
+
 <?php
 
 include('verifyPanel.php');
@@ -61,96 +61,64 @@ include('header/header.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Vehicle Menu</h1>
 		  <p class="page-header">Vehicle menu of the panel, allows you to change vehicle database values.</p>
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
 <?php
 if (isset($_POST['update'])) {
-	
-  if ($adminLev > 6) {	
-	
+
+  if ($adminLev > 6) {
+
 $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
-$vehicle = $result->fetch_object();	
-	
+$vehicle = $result->fetch_object();
+
   if ($_POST['classname'] != $vehicle->classname) {
     $message = "Admin ".$user." has changed the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-	
+
   if ($_POST['alive'] != $vehicle->alive) {
     $message = "Admin ".$user." has changed the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-	
+
   if ($_POST['active'] != $vehicle->active) {
     $message = "Admin ".$user." has changed the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-	
+
   if ($_POST['plate'] != $vehicle->plate) {
     $message = "Admin ".$user." has changed the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 $UpdateQ = "UPDATE vehicles SET classname='$_POST[classname]', alive='$_POST[alive]', active='$_POST[active]', plate='$_POST[plate]' WHERE id='$_POST[hidden]'";
 mysqli_query($dbcon, $UpdateQ);
 
   } else {
-		
+
     $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
 $result = mysqli_query($dbcon, $sql);
-$vehicle = $result->fetch_object();	
-	
+$vehicle = $result->fetch_object();
+
   if ($_POST['classname'] != $vehicle->classname) {
     $message = "Admin ".$user." tried to change the classname of vehicle ".$vehicle->id." from ".$vehicle->classname." to ".$_POST['classname'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-	
+
   if ($_POST['alive'] != $vehicle->alive) {
     $message = "Admin ".$user." tried to change the alive status of vehicle ".$vehicle->id." from ".$vehicle->alive." to ".$_POST['alive'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-	
+
   if ($_POST['active'] != $vehicle->active) {
     $message = "Admin ".$user." tried to change the active status of vehicle ".$vehicle->id." from ".$vehicle->active." to ".$_POST['active'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-	
+
   if ($_POST['plate'] != $vehicle->plate) {
     $message = "Admin ".$user." tried to change the the plate of vehicle ".$vehicle->id." from ".$vehicle->plate." to ".$_POST['plate'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
-		
+
   }
 
 };
@@ -178,21 +146,21 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
   echo "<tr>";
   echo "<td>".$row['id']."</td>";
   echo "<td>".$row['side']." </td>";
-	
+
   echo "<td>"."<input class='form-control' type=text name=classname value=".$row['classname']." </td>";
   echo "<td>".$row['pid']." </td>";
   echo "<td>".$row['type']." </td>";
-	
+
   echo "<td>"."<input class='form-control' type=text name=alive value=".$row['alive']." </td>";
   echo "<td>"."<input class='form-control' type=text name=active value=".$row['active']." </td>";
   echo "<td>"."<input class='form-control' type=text name=plate value=".$row['plate']." </td>";
-	
+
   echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
   echo "<td  style='display:none;'>"."<input type=hidden name=hidden value=".$row['id']." </td>";
-	
+
   echo "</tr>";
   echo "</form>";
-	
+
 }
 
 echo "</table></div>";

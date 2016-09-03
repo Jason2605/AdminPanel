@@ -40,6 +40,11 @@ function before($this, $inthat)
 {
       return substr($inthat, 0, strpos($inthat, $this));
 }
+
+function replace ($text)
+{
+  return str_replace('[[', "", $text);
+}
 ?>
 
 
@@ -147,14 +152,12 @@ if (isset($_POST['donUpdate'])) {
 
     if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
   $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
   mysqli_query($dbcon, $UpdateQ);
@@ -163,14 +166,12 @@ if (isset($_POST['donUpdate'])) {
 
   if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
   $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
   mysqli_query($dbcon, $UpdateQ);
@@ -178,14 +179,12 @@ if (isset($_POST['donUpdate'])) {
 
   if ($_POST['donatorlvl'] != $player->donatorlvl) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." donator level from ".$player->donatorlvl." to ".$_POST['donatorlvl'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['blacklist'] != $player->blacklist) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." blacklist status from ".$player->blacklist." to ".$_POST['blacklist'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   }
@@ -271,7 +270,7 @@ echo "<div id ='civlic'>";
   if ($player->civ_licenses !== '"[]"' && $player->civ_licenses !== '') {
 
     $return = stripArray($player->civ_licenses, 0);
-    $return = str_replace('[[', "", $return);
+    $return = replace($return);
 
 echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -282,7 +281,7 @@ echo "<div class='panel panel-info'>
 
 
   foreach ($return as $value) {
-    if (strpos($value, "1") !== 0) {
+    if (strpos($value, "1") == TRUE) {
       $name = before(',', $value);
       $display = explode("_", $name);
       $displayN = $display['2'];
@@ -304,7 +303,7 @@ echo "</div>";
 echo "<div id ='civlic1'>";
   if ($player->med_licenses !== '"[]"' && $player->med_licenses !== '') {
     $return = stripArray($player->med_licenses, 0);
-    $return = str_replace('[[', "", $return);
+    $return = replace($return);
 
 echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -314,7 +313,7 @@ echo "<div class='panel panel-info'>
 
 
   foreach ($return as $value) {
-    if (strpos($value, "1") !== 0) {
+    if (strpos($value, "1") == TRUE) {
       $name = before(',', $value);
       $display = explode("_", $name);
       $displayN = $display['2'];
@@ -338,7 +337,7 @@ echo "<div id ='civlic2'>";
   if ($player->cop_licenses !== '"[]"' && $player->cop_licenses !== '') {
 
     $return = stripArray($player->cop_licenses, 0);
-    $return = str_replace('[[', "", $return);
+    $return = replace($return);
 
   echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -347,7 +346,7 @@ echo "<div id ='civlic2'>";
   <div class='panel-body'>";
 
   foreach ($return as $value) {
-    if (strpos($value, "1") !== 0) {
+    if (strpos($value, "1") == TRUE) {
     $name = before(',', $value);
     $display = explode("_", $name);
     $displayN = $display['2'];
@@ -376,6 +375,7 @@ echo "</div>";
 
 
 
+//query
 
 
 if (isset($_POST['remove'])) {
@@ -385,8 +385,7 @@ $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'"
 $result = mysqli_query($dbcon, $sql);
 
     $message = "Admin ".$user." has removed all licenses from ".$player->name."(".$player->playerid.")";
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
 
 };
 if (isset($_POST['give'])) {
@@ -396,8 +395,7 @@ $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'"
 $result = mysqli_query($dbcon, $sql);
 
     $message = "Admin ".$user." has added all licenses to ".$player->name."(".$player->playerid.")";
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
 
 };
 ?>

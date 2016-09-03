@@ -166,8 +166,7 @@ $send = $_POST['global'];
 $_SESSION['send'] = $send;
 header("Location: rCon/rcon-mess.php");
     $message = "Admin ".$user." has sent a global message (".$send.")";
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }else {header("Location: ../lvlError.php"); }
 }
 

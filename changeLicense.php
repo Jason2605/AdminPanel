@@ -29,15 +29,13 @@ if ($licences[$num] == 0) {
 
   $licences[$num] = 1;
     $message = "Admin ".$user." has added license ".$id." to ".$player->name."(".$player->playerid.")";
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
 }elseif ($licences[$num] == 1) {
     $message = "Admin ".$user." has removed license ".$id." to ".$player->name."(".$player->playerid.")";
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   $licences[$num] = 0;
 }
 
 echo $licences;
 $sql = "UPDATE `players` SET `".$col."`='$licences' WHERE uid ='$uid'";
-$result = mysqli_query($dbcon, $sql); 
+$result = mysqli_query($dbcon, $sql);

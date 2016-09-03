@@ -79,20 +79,17 @@ $house = $result->fetch_object();
 
   if ($_POST['inventory'] != $house->inventory) {
     $message = "Admin ".$user." has changed the inventory of house ".$house->id." from ".$house->inventory." to ".$_POST['inventory'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['containers'] != $house->containers) {
     $message = "Admin ".$user."  has changed the containers of house ".$house->id;
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['owned'] != $house->owned) {
     $message = "Admin ".$user." has changed the owned status of house".$house->id." from ".$house->owned." to ".$_POST['owned'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 
@@ -108,20 +105,17 @@ $house = $result->fetch_object();
 
   if ($_POST['inventory'] != $house->inventory) {
     $message = "Admin ".$user." tried to change the inventory of house ".$house->id." from ".$house->inventory." to ".$_POST['inventory'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['containers'] != $house->containers) {
     $message = "Admin ".$user." tried to change the containers of house ".$house->id;
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['owned'] != $house->owned) {
     $message = "Admin ".$user." tried to change the owned status of house".$house->id." from ".$house->owned." to ".$_POST['owned'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 }

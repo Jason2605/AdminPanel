@@ -177,32 +177,27 @@ $player = $result->fetch_object();
 
   if ($_POST['csh'] != $player->cash) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['bankacc'] != $player->bankacc) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['adminlevel'] != $player->adminlevel) {
     $message = "Admin ".$user." changed ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 
@@ -217,14 +212,12 @@ $player = $result->fetch_object();
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 
@@ -239,8 +232,7 @@ $player = $result->fetch_object();
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 
@@ -255,32 +247,27 @@ $player = $result->fetch_object();
 
   if ($_POST['csh'] != $player->cash) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['bankacc'] != $player->bankacc) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['coplevel'] != $player->coplevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['mediclevel'] != $player->mediclevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
   if ($_POST['adminlevel'] != $player->adminlevel) {
     $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
+    logIt($user,$message,$dbcon);
   }
 
 }
