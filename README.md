@@ -1,5 +1,6 @@
 # AdminPanel
 <p align="center">
+<img src="https://api.codacy.com/project/badge/Grade/6329b086389946eeb2dc4a792d2eb50e"/>
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/quality-score.png?b=master" alt="Build Status">
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/build.png?b=master" alt="Build Status">
 <img src="https://codeclimate.com/github/Jason2605/AdminPanel/badges/gpa.svg" />
