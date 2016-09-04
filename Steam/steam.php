@@ -1,25 +1,26 @@
 <?php
+
 session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 1) {
-  header("Location: ../index.php");
+    header('Location: ../index.php');
 }
 
 if ($adminLev < 2) {
-  header("Location: ../lvlError.php");
+    header('Location: ../lvlError.php');
 }
 
 $max = PHP_INT_MAX;
 
-include('../header/header.php');
+include '../header/header.php';
 ?>
 
 
@@ -63,23 +64,21 @@ include('../header/header.php');
 		  <p class="page-header">Steam menu of the panel, allows you to see steam accounts.</p>
 <?php
 
-include('../verifyPanel.php');
+include '../verifyPanel.php';
 masterconnect();
 
-
-$sqlget = "SELECT * FROM players";
-$sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
+$sqlget = 'SELECT * FROM players';
+$sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 if (isset($_POST['delete'])) {
-  $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
-  mysqli_query($dbconL, $sql);
+    $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
+    mysqli_query($dbconL, $sql);
 }
 
-
 if (isset($_POST['update'])) {
-  $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$_POST[password]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-  mysqli_query($dbconL, $UpdateQ);
-};
+    $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$_POST[password]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
+    mysqli_query($dbconL, $UpdateQ);
+}
 
 ?>
           <div class="table-responsive">
@@ -96,32 +95,31 @@ if (isset($_POST['update'])) {
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-if ($max != 2147483647) {
+    if ($max != 2147483647) {
+        $steamID = $row['playerid'];
+        $temp = '';
 
-$steamID = $row['playerid'];
-$temp = '';
+        for ($i = 0; $i < 8; ++$i) {
+            $temp .= chr($steamID & 0xFF);
+            $steamID >>= 8;
+        }
 
-for ($i = 0; $i < 8; $i++) {
-  $temp .= chr($steamID & 0xFF);
-  $steamID >>= 8;
+        $return = md5('BE'.$temp);
+    } else {
+        $return = '32 bit PHP, GUID will not work!';
+    }
+    echo '<form action=logs.php method=post>';
+    echo '<tr>';
+    echo '<td>'.$row['name'].'</td>';
+    echo '<td>'.$row['aliases'].' </td>';
+    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$return.'</td>';
+    echo "<td><a href='http://steamcommunity.com/profiles/".$row['playerid']."' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
+    echo '</tr>';
+    echo '</form>';
 }
 
-$return = md5('BE'.$temp);
-}else {
-$return = "32 bit PHP, GUID will not work!";
-}
-  echo "<form action=logs.php method=post>";
-  echo "<tr>";
-  echo "<td>".$row['name']."</td>";
-  echo "<td>".$row['aliases']." </td>";
-  echo "<td>".$row['playerid']." </td>";
-  echo "<td>".$return."</td>";
-  echo "<td><a href='http://steamcommunity.com/profiles/".$row["playerid"]."' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
-  echo "</tr>";
-  echo "</form>";
-}
-
-echo "</table></div>";
+echo '</table></div>';
 ?>
               </tbody>
             </table>

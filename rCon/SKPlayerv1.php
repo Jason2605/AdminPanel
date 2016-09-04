@@ -1,16 +1,17 @@
 <?php
+
 session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: /index.php");
+    header('Location: /index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 3) {
-  header("Location: ../lvlError.php");
+    header('Location: ../lvlError.php');
 }
 ?>
 
@@ -51,7 +52,7 @@ if ($adminLev < 3) {
   <body>
 
 <?php
-include('../header/header.php');
+include '../header/header.php';
 ?>
 
 
@@ -82,45 +83,43 @@ include('../header/header.php');
               </thead>
               <tbody>
 <?php
-include('../verifyPanel.php');
+include '../verifyPanel.php';
 masterconnect();
 
-$sqlget = "SELECT * FROM players";
-$sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
-
+$sqlget = 'SELECT * FROM players';
+$sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-  echo "<form action=SKPlayerv1.php method=post>";
-  echo "<tr>";
+    echo '<form action=SKPlayerv1.php method=post>';
+    echo '<tr>';
 
-  echo "<td style='display:none;'>"."<input type=hidden name=hiddenUID value=".$row['playerid']." </td>";
-  echo "<td>".$row['name']." </td>";
-  echo "<td>".$row['aliases']." </td>";
-  echo "<td>".$row['playerid']." </td>";
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick"." </td>";
-  echo "<td style='display:none;'>"."<input type=hidden name=hiddenName value=".$row['name']." </td>";
+    echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$row['playerid'].' </td>';
+    echo '<td>'.$row['name'].' </td>';
+    echo '<td>'.$row['aliases'].' </td>';
+    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hiddenName value='.$row['name'].' </td>';
 
-  echo "</tr>";
-  echo "</form>";
+    echo '</tr>';
+    echo '</form>';
 }
 
-echo "</table></div>";
+echo '</table></div>';
 
 if (isset($_POST['update'])) {
+    $sql = "SELECT * FROM `players` WHERE `playerid` = $_POST[hiddenUID]";
+    $result = mysqli_query($dbcon, $sql);
+    $player = $result->fetch_object();
 
-$sql = "SELECT * FROM `players` WHERE `playerid` = $_POST[hiddenUID]";
-$result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();
+    $name = $_POST['hiddenName'];
+    $guid = $_POST['hiddenUID'];
+    $_SESSION['SKguid'] = $guid;
 
-  $name = $_POST['hiddenName'];
-  $guid = $_POST['hiddenUID'];
-  $_SESSION['SKguid'] = $guid;
-
-    $message = "Admin ".$user." has kicked ".$player->name."(".$guid.")";
+    $message = 'Admin '.$user.' has kicked '.$player->name.'('.$guid.')';
     $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
     mysqli_query($dbcon, $logQ);
-  header("Location: rcon-Skick.php");
-};
+    header('Location: rcon-Skick.php');
+}
 ?>
 <p><br></p>
               </tbody>

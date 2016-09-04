@@ -3,17 +3,16 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-include ('verifyPanel.php');
-
+include 'verifyPanel.php';
 
 if ($adminLev != 8) {
-  header("Location: lvlError.php");
+    header('Location: lvlError.php');
 }
 ?>
 
@@ -53,26 +52,26 @@ if ($adminLev != 8) {
   </head>
 
   <body>
-  
-  
 
-  
-  
+
+
+
+
 <?php
-include('header/header.php');
+include 'header/header.php';
 ?>
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Settings Menu</h1>
 		  <p class="page-header">Settings menu of the panel, allows you to change panel settings.</p>
-		  
+
 <div class='panel panel-info'>
 <div class='panel-heading'>
 <h3 class='panel-title'>Server Info</h3>
 </div>
 <div class='panel-body'>
-  
+
 <form action = "updateSettings.php" method="post">
   <h4>Database Host</h4>
   <input type="text" name= "host" class="form-control" value="<?php echo $DBHost; ?>">
@@ -80,7 +79,7 @@ include('header/header.php');
   <br>
   <h4>Username</h4>
   <input type="text" name= "user" class="form-control" value="<?php echo $DBUser; ?>">
-  
+
   <br>
   <h4>Password</h4>
   <input type="password" name= "pass" class="form-control" value="<?php echo $DBPass; ?>">
@@ -95,7 +94,7 @@ include('header/header.php');
 
   <h4>RCON Host</h4>
   <input type="text" name= "RHost" class="form-control" value="<?php echo $RconHost; ?>">
-  
+
   <br>
   <h4>RCON Pass</h4>
   <input type="password" name= "RPass" class="form-control" value="<?php echo $RconPass; ?>">
@@ -103,20 +102,19 @@ include('header/header.php');
   <br>
   <h4>RCON Port</h4>
   <input type="text" name= "RPort" class="form-control" value="<?php echo $RconPort; ?>">
-  
+
   <br>
   <button type="submit" name="updateButton" class="btn btn-primary btn-lg btn-block btn-outline">Update</button>
 </form>
-  
-</div>
-</div>	 
-<?php
 
+</div>
+</div>
+<?php
 
 
 ?>
 
-         
+
           </div>
         </div>
       </div>

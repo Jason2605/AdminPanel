@@ -12,7 +12,7 @@
 	<div id="navbar" class="navbar-collapse collapse">
 	  <ul class="nav navbar-nav navbar-right">
 		<li><a href="/home.php" style="color: #fff">Dashboard</a></li>
-		<li><a href="/settings.php" style="color: #fff">Settings</a></li>   
+		<li><a href="/settings.php" style="color: #fff">Settings</a></li>
 		<li><a href="/profile.php" style="color: #fff">Profile</a></li>
 		<li><a href="/help.php" style="color: #fff">Help</a></li>
 	  </ul>

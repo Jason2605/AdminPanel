@@ -1,52 +1,49 @@
 <?php
+
 session_start();
 ob_start();
 
 $adminLev = $_SESSION['adminLevel'];
 
-if (!isset($_SESSION['logged'])){
-    header("Location: ../index.php");
+if (!isset($_SESSION['logged'])) {
+    header('Location: ../index.php');
 }
-if ($adminLev < 4){
-  header("Location: ../lvlError.php");
+if ($adminLev < 4) {
+    header('Location: ../lvlError.php');
 }
 
   require_once '../ArmaRConClass/rcon.php';
 
-include('../verifyPanel.php');
+include '../verifyPanel.php';
 Rconconnect();
 
 $guid = $_SESSION['guid'];
 
+if ($guid == '') {
+    header('Location: ../home.php');
+} else {
+    echo $guid;
+    echo '<br>';
 
-if($guid == ''){
-  header("Location: ../home.php");
-}
-else{
+    $reason = $_SESSION['reason'];
 
-echo $guid;
-echo "<br>";
+    echo $reason;
+    echo '<br>';
 
-$reason = $_SESSION['reason'];
+    $time = $_SESSION['time'];
 
-echo $reason;
-echo "<br>";
+    if ($time == '') {
+        $time = 0;
+    }
 
-$time = $_SESSION['time'];
+    echo $time;
+    echo '<br>';
 
+    $intTime = (int) $time;
 
-if($time == ''){
-  $time = 0;
-}
+    echo $intTime;
 
-echo $time;
-echo "<br>";
+    $addBan = $rcon->add_ban($guid, $reason, $intTime);
 
-$intTime = (int)$time;
-
-echo $intTime;
-
-$addBan = $rcon->add_ban($guid, $reason, $intTime);
-
-header("Location: player.php");
+    header('Location: player.php');
 }

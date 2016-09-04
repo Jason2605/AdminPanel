@@ -3,18 +3,18 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-include('verifyPanel.php');
+include 'verifyPanel.php';
 masterconnect();
 
 if ($adminLev < 7) {
-  echo "<script src='scripts/na.js'></script>";
-  header("Location: lvlError.php");
+    echo "<script src='scripts/na.js'></script>";
+    header('Location: lvlError.php');
 }
 ?>
 
@@ -72,26 +72,26 @@ if ($adminLev < 7) {
               </thead>
               <tbody>
 <?php
-echo "<form action=reimbursement.php method=post>";
-  echo "<tr>";
+echo '<form action=reimbursement.php method=post>';
+  echo '<tr>';
 
-  echo "<td>"."<input class='form-control' type=text name=uid value='' </td>";
-  echo "<td>"."<input class='form-control' type=text name=amount value='' </td>";
-  echo "<td>"."<input class='form-control' type=text name=reason value=''</td>";
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Add"." </td>";
+  echo '<td>'."<input class='form-control' type=text name=uid value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=amount value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=reason value=''</td>";
+  echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Add".' </td>';
 
-  echo "</tr>";
-  echo "</form>";
+  echo '</tr>';
+  echo '</form>';
 
-echo "</table></div>";
+echo '</table></div>';
 
 if (isset($_POST['update'])) {
-  $uid = $_POST['uid'];
-  $amount = $_POST['amount'];
-  $reason = $_POST['reason'];
+    $uid = $_POST['uid'];
+    $amount = $_POST['amount'];
+    $reason = $_POST['reason'];
 
-  $UpdateQ = "INSERT INTO reimbursement_log (playerid,comp,reason,staff_name) VALUES ('$uid','$amount','$reason','$user');";
-  mysqli_query($dbcon, $UpdateQ);
+    $UpdateQ = "INSERT INTO reimbursement_log (playerid,comp,reason,staff_name) VALUES ('$uid','$amount','$reason','$user');";
+    mysqli_query($dbcon, $UpdateQ);
 }
 ?>
 
@@ -99,9 +99,9 @@ if (isset($_POST['update'])) {
 
 <?php
 
-$sqlget = "SELECT * FROM reimbursement_log";
-$search_result = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
-include('header/header.php');
+$sqlget = 'SELECT * FROM reimbursement_log';
+$search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+include 'header/header.php';
 
 ?>
 
@@ -121,20 +121,17 @@ include('header/header.php');
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
-  echo "<tr>";
-  echo "<td>".$row['reimbursement_id']."</td>";
-  echo "<td>".$row['playerid']." </td>";
-  echo "<td>".$row['comp']." </td>";
-  echo "<td>".$row['reason']." </td>";
-  echo "<td>".$row['staff_name']." </td>";
-  echo "<td>".$row['timestamp']." </td>";
-  echo "</tr>";
+    echo '<tr>';
+    echo '<td>'.$row['reimbursement_id'].'</td>';
+    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$row['comp'].' </td>';
+    echo '<td>'.$row['reason'].' </td>';
+    echo '<td>'.$row['staff_name'].' </td>';
+    echo '<td>'.$row['timestamp'].' </td>';
+    echo '</tr>';
 }
 
-
-
-
-echo "</table></div>";
+echo '</table></div>';
 ?>
               </tbody>
             </table>

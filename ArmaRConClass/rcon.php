@@ -278,7 +278,6 @@ class ARC
 
         if (!$this->socket) {
             throw new SocketException('[ARC] Failed to create socket!');
-            echo "$errstr ($errno)<br />\n";
         }
 
         $this->authorize();

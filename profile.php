@@ -3,13 +3,13 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-include('verifyPanel.php');
+include 'verifyPanel.php';
 ?>
 
 
@@ -49,7 +49,7 @@ include('verifyPanel.php');
   <body>
 
 <?php
-include('header/header.php');
+include 'header/header.php';
 ?>
 
 
@@ -60,69 +60,55 @@ include('header/header.php');
 <?php
 
 if (isset($_POST['updateButton'])) {
-$fail = false;
+    $fail = false;
 
-  if ($_POST['curPass'] != "") {
-    $curPass = $_POST['curPass'];
-    $curPass = sha1($curPass);
-  } else
-  {
+    if ($_POST['curPass'] != '') {
+        $curPass = $_POST['curPass'];
+        $curPass = sha1($curPass);
+    } else {
+        $fail = true;
+    }
 
-    $fail = true;
-  }
+    if ($_POST['pass'] != '') {
+        $pass = $_POST['pass'];
+    } else {
+        $fail = true;
+    }
 
-  if ($_POST['pass'] != "") {
-    $pass = $_POST['pass'];
-  } else
-  {
+    if ($_POST['pass1'] != '') {
+        $pass1 = $_POST['pass1'];
+    } else {
+        $fail = true;
+    }
+    if ($fail === false) {
+        loginconnect();
 
-    $fail = true;
-  }
+        $SelectQ = "SELECT * FROM users WHERE username = '$user'";
+        $result = mysqli_query($dbconL, $SelectQ);
+        $dbPass = $result->fetch_object();
+        $passR = $dbPass->password;
 
-  if ($_POST['pass1'] != "") {
-    $pass1 = $_POST['pass1'];
-  } else
-  {
-
-    $fail = true;
-  }
-  if ($fail === false) {
-
-  loginconnect();
-
-  $SelectQ = "SELECT * FROM users WHERE username = '$user'";
-  $result = mysqli_query($dbconL, $SelectQ);
-  $dbPass = $result->fetch_object();
-  $passR = $dbPass->password;
-
-
-  if ($passR == $curPass) {
-
-    if ($pass == $pass1) {
-      //same
+        if ($passR == $curPass) {
+            if ($pass == $pass1) {
+                //same
 
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Password changed.</a></div>';
 
-        $pass = sha1($pass);
+                $pass = sha1($pass);
 
-        $UpdateQ = "UPDATE users SET password='$pass' WHERE username='$user'";
-        mysqli_query($dbconL, $UpdateQ);
-
-    } else
-      {
-        //not same
-
-
+                $UpdateQ = "UPDATE users SET password='$pass' WHERE username='$user'";
+                mysqli_query($dbconL, $UpdateQ);
+            } else {
+                //not same
 
           echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Passwords do not match!</a></div>';
-
-      }
-  }else {echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Current password is wrong!</a></div>'; }
-
-  }else {
-    echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please fill both boxes!</a></div>';
-
-  }
+            }
+        } else {
+            echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Current password is wrong!</a></div>';
+        }
+    } else {
+        echo'<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please fill both boxes!</a></div>';
+    }
 }//end of update
 ?>
 

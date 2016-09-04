@@ -1,23 +1,24 @@
 <?php
+
 session_start();
 ob_start();
 $adminLev = $_SESSION['adminLevel'];
 
-if (!isset($_SESSION['logged'])){
-    header("Location: ../index.php");
+if (!isset($_SESSION['logged'])) {
+    header('Location: ../index.php');
 }
-if ($adminLev < 7){
-  header("Location: ../lvlError.php");
+if ($adminLev < 7) {
+    header('Location: ../lvlError.php');
 }
 
 ob_start();
 require_once '../ArmaRConClass/rcon.php';
 
-include('../verifyPanel.php');
+include '../verifyPanel.php';
 Rconconnect();
 
-$command = "#restart";
+$command = '#restart';
 
 $restart = $rcon->command($command);
 
-header("Location: ../home.php");
+header('Location: ../home.php');

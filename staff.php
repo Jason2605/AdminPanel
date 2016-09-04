@@ -3,14 +3,14 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev != 8) {
-  header("Location: lvlError.php");
+    header('Location: lvlError.php');
 }
 ?>
 
@@ -52,20 +52,20 @@ if ($adminLev != 8) {
 	margin-top: -40px;
 }
 </style>
-	
-	
-	
+
+
+
   </head>
 
   <body>
-  
+
 <?php
-include('header/header.php');
+include 'header/header.php';
 ?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Staff Menu</h1>
 		  <p class="page-header">Staff menu of the panel, allows you to see and delete staff members.</p>
-		  
+
 		  <div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="addStaff.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="New Staff User">
@@ -92,46 +92,42 @@ include('header/header.php');
       <div class="modal-footer">
         <FORM METHOD="LINK" ACTION="delete.php">
         <button type="submit" class="btn btn-danger">Reset</button>
-        
+
         <button type="button" class="btn btn-primary btn-outline" data-dismiss="modal">Close</button>
         </form>
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 			<br><br>
 <?php
 if ($adminLev != 8) {
-  echo "<script src='scripts/na.js'></script>";
-  header("Location: lvlError.php");
+    echo "<script src='scripts/na.js'></script>";
+    header('Location: lvlError.php');
 }
 
-include('verifyPanel.php');
+include 'verifyPanel.php';
 loginconnect();
 
-
-$sqlget = "SELECT * FROM users";
-$sqldata = mysqli_query($dbconL, $sqlget) or die ('Connection could not be established');
+$sqlget = 'SELECT * FROM users';
+$sqldata = mysqli_query($dbconL, $sqlget) or die('Connection could not be established');
 
 if (isset($_POST['delete'])) {
-  $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
-  mysqli_query($dbconL, $sql);
+    $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
+    mysqli_query($dbconL, $sql);
 }
 
-
 if (isset($_POST['update'])) {
-	
-  if ($_POST['password'] == "") {
-    $UpdateQ = "UPDATE users SET username='$_POST[username]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-
-  }else {
-    $password = $_POST['password'];
-    $pass = sha1($password);
-    $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-  }
-  mysqli_query($dbconL, $UpdateQ);
-};
+    if ($_POST['password'] == '') {
+        $UpdateQ = "UPDATE users SET username='$_POST[username]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
+    } else {
+        $password = $_POST['password'];
+        $pass = sha1($password);
+        $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
+    }
+    mysqli_query($dbconL, $UpdateQ);
+}
 
 ?>
           <div class="table-responsive">
@@ -148,21 +144,21 @@ if (isset($_POST['update'])) {
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-  echo "<form action=staff.php method=post>";
-  echo "<tr>";
-  echo "<td>"."<input class='form-control' type=text name=username value=".$row['username']." </td>";
-  echo "<td>"."<input class='form-control' type=text name=password placeholder='New password' </td>";
-  echo "<td>"."<input class='form-control' type=text name=adminlevel value=".$row['level']." </td>";
+    echo '<form action=staff.php method=post>';
+    echo '<tr>';
+    echo '<td>'."<input class='form-control' type=text name=username value=".$row['username'].' </td>';
+    echo '<td>'."<input class='form-control' type=text name=password placeholder='New password' </td>";
+    echo '<td>'."<input class='form-control' type=text name=adminlevel value=".$row['level'].' </td>';
 
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete"." </td>";
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
-  echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['ID']." </td>";
-	
-  echo "</tr>";
-  echo "</form>";
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete".' </td>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['ID'].' </td>';
+
+    echo '</tr>';
+    echo '</form>';
 }
 
-echo "</table></div>";
+echo '</table></div>';
 ?>
               </tbody>
             </table>

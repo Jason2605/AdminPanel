@@ -3,7 +3,7 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
@@ -49,13 +49,13 @@ $user = $_SESSION['user'];
 
 <?php
 
-include('verifyPanel.php');
+include 'verifyPanel.php';
 masterconnect();
 
-$sqlget = "SELECT * FROM houses";
-$sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
+$sqlget = 'SELECT * FROM houses';
+$sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
-include('header/header.php');
+include 'header/header.php';
 ?>
 
 
@@ -64,63 +64,57 @@ include('header/header.php');
 		  <p class="page-header">House menu of the panel, allows you to change house database values.</p>
 
 <?php
-$sqlget = "SELECT * FROM houses";
-$sqldata = mysqli_query($dbcon, $sqlget) or die ('Connection could not be established');
+$sqlget = 'SELECT * FROM houses';
+$sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 if (isset($_POST['update'])) {
+    if ($adminLev > 6) {
+        $id = $_POST['hidden'];
 
-if ($adminLev > 6) {
+        $sql = "SELECT * FROM `houses` WHERE `id` =$id ";
+        $result = mysqli_query($dbcon, $sql);
+        $house = $result->fetch_object();
 
-$id = $_POST['hidden'];
+        if ($_POST['inventory'] != $house->inventory) {
+            $message = 'Admin '.$user.' has changed the inventory of house '.$house->id.' from '.$house->inventory.' to '.$_POST['inventory'];
+            logIt($user, $message, $dbcon);
+        }
 
-$sql = "SELECT * FROM `houses` WHERE `id` =$id ";
-$result = mysqli_query($dbcon, $sql);
-$house = $result->fetch_object();
+        if ($_POST['containers'] != $house->containers) {
+            $message = 'Admin '.$user.'  has changed the containers of house '.$house->id;
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['inventory'] != $house->inventory) {
-    $message = "Admin ".$user." has changed the inventory of house ".$house->id." from ".$house->inventory." to ".$_POST['inventory'];
-    logIt($user, $message, $dbcon);
-  }
+        if ($_POST['owned'] != $house->owned) {
+            $message = 'Admin '.$user.' has changed the owned status of house'.$house->id.' from '.$house->owned.' to '.$_POST['owned'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['containers'] != $house->containers) {
-    $message = "Admin ".$user."  has changed the containers of house ".$house->id;
-    logIt($user, $message, $dbcon);
-  }
+        $UpdateQ = "UPDATE houses SET inventory='$_POST[inventory]', containers='$_POST[containers]', owned='$_POST[owned]' WHERE id='$_POST[hidden]'";
+        mysqli_query($dbcon, $UpdateQ);
+    } else {
+        $id = $_POST['hidden'];
 
-  if ($_POST['owned'] != $house->owned) {
-    $message = "Admin ".$user." has changed the owned status of house".$house->id." from ".$house->owned." to ".$_POST['owned'];
-    logIt($user, $message, $dbcon);
-  }
+        $sql = "SELECT * FROM `houses` WHERE `id` =$id ";
+        $result = mysqli_query($dbcon, $sql);
+        $house = $result->fetch_object();
 
+        if ($_POST['inventory'] != $house->inventory) {
+            $message = 'Admin '.$user.' tried to change the inventory of house '.$house->id.' from '.$house->inventory.' to '.$_POST['inventory'];
+            logIt($user, $message, $dbcon);
+        }
 
-$UpdateQ = "UPDATE houses SET inventory='$_POST[inventory]', containers='$_POST[containers]', owned='$_POST[owned]' WHERE id='$_POST[hidden]'";
-mysqli_query($dbcon, $UpdateQ);
-}else {
+        if ($_POST['containers'] != $house->containers) {
+            $message = 'Admin '.$user.' tried to change the containers of house '.$house->id;
+            logIt($user, $message, $dbcon);
+        }
 
-$id = $_POST['hidden'];
-
-$sql = "SELECT * FROM `houses` WHERE `id` =$id ";
-$result = mysqli_query($dbcon, $sql);
-$house = $result->fetch_object();
-
-  if ($_POST['inventory'] != $house->inventory) {
-    $message = "Admin ".$user." tried to change the inventory of house ".$house->id." from ".$house->inventory." to ".$_POST['inventory'];
-    logIt($user, $message, $dbcon);
-  }
-
-  if ($_POST['containers'] != $house->containers) {
-    $message = "Admin ".$user." tried to change the containers of house ".$house->id;
-    logIt($user, $message, $dbcon);
-  }
-
-  if ($_POST['owned'] != $house->owned) {
-    $message = "Admin ".$user." tried to change the owned status of house".$house->id." from ".$house->owned." to ".$_POST['owned'];
-    logIt($user, $message, $dbcon);
-  }
-
+        if ($_POST['owned'] != $house->owned) {
+            $message = 'Admin '.$user.' tried to change the owned status of house'.$house->id.' from '.$house->owned.' to '.$_POST['owned'];
+            logIt($user, $message, $dbcon);
+        }
+    }
 }
-
-};
 
 ?>
           <div class="table-responsive">
@@ -139,25 +133,25 @@ $house = $result->fetch_object();
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-  echo "<form action=houses.php method=post>";
-  echo "<tr>";
-  echo "<td>".$row['id']."</td>";
-  echo "<td>".$row['pid']." </td>";
-  echo "<td>".$row['pos']." </td>";
+    echo '<form action=houses.php method=post>';
+    echo '<tr>';
+    echo '<td>'.$row['id'].'</td>';
+    echo '<td>'.$row['pid'].' </td>';
+    echo '<td>'.$row['pos'].' </td>';
 
-  echo "<td>"."<input class='form-control' type=text name=inventory value=".$row['inventory']." </td>";
-  echo "<td>"."<input class='form-control' type=text name=containers value=".$row['containers']." </td>";
+    echo '<td>'."<input class='form-control' type=text name=inventory value=".$row['inventory'].' </td>';
+    echo '<td>'."<input class='form-control' type=text name=containers value=".$row['containers'].' </td>';
 
-  echo "<td>"."<input class='form-control' type=text name=owned value=".$row['owned']." </td>";
+    echo '<td>'."<input class='form-control' type=text name=owned value=".$row['owned'].' </td>';
 
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
-  echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['id']." </td>";
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
 
-  echo "</tr>";
-  echo "</form>";
+    echo '</tr>';
+    echo '</form>';
 }
 
-echo "</table></div>";
+echo '</table></div>';
 ?>
               </tbody>
             </table>

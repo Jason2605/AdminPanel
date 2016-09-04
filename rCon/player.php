@@ -3,14 +3,14 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: /index.php");
+    header('Location: /index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 4) {
-  header("Location: ../lvlError.php");
+    header('Location: ../lvlError.php');
 }
 ?>
 
@@ -49,16 +49,16 @@ if ($adminLev < 4) {
   </head>
 
   <body>
-  
+
 <?php
-include('../header/header.php');
+include '../header/header.php';
 ?>
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Ban Menu</h1>
 		  <p class="page-header">Ban menu of the panel, allows you to RCON ban players.</p>
-		  
+
 		  	<div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="/players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
@@ -69,7 +69,7 @@ include('../header/header.php');
 			<FORM METHOD="LINK" ACTION="rcon-check.php">
 			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
 			</FORM></div> <br><br><br>
-		 
+
 <!--
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -107,45 +107,40 @@ include('../header/header.php');
               </thead>
               <tbody>
 <?php
-echo "<form action=player.php method=post>";
-echo "<tr>";
+echo '<form action=player.php method=post>';
+echo '<tr>';
 
-echo "<td>"."<input class='form-control' type=text name=guid value='' </td>";
-echo "<td>"."<input class='form-control' type=text name=reason value=''</td>";
-echo "<td>"."<input class='form-control' type=text name=time value='' </td>";
+echo '<td>'."<input class='form-control' type=text name=guid value='' </td>";
+echo '<td>'."<input class='form-control' type=text name=reason value=''</td>";
+echo '<td>'."<input class='form-control' type=text name=time value='' </td>";
 
-echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Ban"." </td>";
+echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Ban".' </td>';
 
-echo "</tr>";
-echo "</form>";
+echo '</tr>';
+echo '</form>';
 
-
-
-
-echo "</table></div>";
-
+echo '</table></div>';
 
 if (isset($_POST['update'])) {
-	
-  $guid = $_POST['guid'];
-  $reason = $_POST['reason'];
-  $time = $_POST['time'];
-	
-  $_SESSION['guid'] = $guid;
-  $_SESSION['reason'] = $reason;
-  $_SESSION['time'] = $time;
-	
-  include('../verifyPanel.php');
-  masterconnect();
-	
-  if ($_POST['guid'] != "") {
-    $message = "Admin ".$user." has banned ".$guid." for ".$time." minutes under the reason of (".$reason.")";
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
-  }
-	
-  header("Location: rcon-ban.php");
-};
+    $guid = $_POST['guid'];
+    $reason = $_POST['reason'];
+    $time = $_POST['time'];
+
+    $_SESSION['guid'] = $guid;
+    $_SESSION['reason'] = $reason;
+    $_SESSION['time'] = $time;
+
+    include '../verifyPanel.php';
+    masterconnect();
+
+    if ($_POST['guid'] != '') {
+        $message = 'Admin '.$user.' has banned '.$guid.' for '.$time.' minutes under the reason of ('.$reason.')';
+        $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+        mysqli_query($dbcon, $logQ);
+    }
+
+    header('Location: rcon-ban.php');
+}
 ?>
 <p><br><br><br>To use the ban feature, batteye needs to use the GUID and not a player UID<br>NOTE: if the player is currently on the server please make sure you kick them else they will be banned however still playing until they have left!</p>
 <p>0 - Perm Ban, and the time is scaled in minutes!</p>

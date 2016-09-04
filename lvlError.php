@@ -3,7 +3,7 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
@@ -35,7 +35,7 @@ $user = $_SESSION['user'];
   <body>
 
 <?php
-include('header/header.php');
+include 'header/header.php';
 ?>
 
 

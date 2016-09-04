@@ -2,7 +2,7 @@
 session_start();
 
 if (!file_exists('verifyPanel.php')) {
-  header("Location: create.php");
+    header('Location: create.php');
 }
 ?>
 
@@ -55,16 +55,16 @@ function checkTime(i) {
     <input type="text" value="" placeholder="Username" id="username" name="username"/>
     <input type="password" value="" placeholder="Password" id="password" name="password"/>
 <?php
-$divStyle1='bobfdd';
+$divStyle1 = 'bobfdd';
 
-if (isset($_COOKIE['conecFail']) && $_COOKIE['conecFail'] == '1'){
-  //$divStyle1='style="display:none;"'; //hide div
-  print'<div style="color:red"><center>Database connection failed!</center></div>';
+if (isset($_COOKIE['conecFail']) && $_COOKIE['conecFail'] == '1') {
+    //$divStyle1='style="display:none;"'; //hide div
+  echo'<div style="color:red"><center>Database connection failed!</center></div>';
 }
 
-if (isset($_COOKIE['fail'])){
-  //$divStyle='style="display:none;"'; //hide div
-  print'<div style="color:red"><center>Username or password incorrect.</center></div>';
+if (isset($_COOKIE['fail'])) {
+    //$divStyle='style="display:none;"'; //hide div
+  echo'<div style="color:red"><center>Username or password incorrect.</center></div>';
 }
 ?>
     <button>Submit</button>
@@ -93,4 +93,4 @@ if (isset($_COOKIE['fail'])){
     </script>
 
 </body>
-</html>                 
+</html>

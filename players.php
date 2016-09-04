@@ -3,13 +3,13 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-include('verifyPanel.php');
+include 'verifyPanel.php';
 masterconnect();
 
 $max = PHP_INT_MAX;
@@ -53,48 +53,40 @@ $max = PHP_INT_MAX;
 
 <?php
 
-if (isset($_POST['search']))
-{
-  $valuetosearch = $_POST['SearchValue'];
-  $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`) LIKE '%".$valuetosearch."%'";
-  $search_result = filterTable($dbcon, $sqlget);
-}elseif (isset($_POST['orderBank']))
-{
-  $sqlget = "SELECT * FROM players ORDER BY bankacc DESC";
-  $search_result = filterTable($dbcon, $sqlget);
-}elseif (isset($_POST['orderCash']))
-{
-  $sqlget = "SELECT * FROM players ORDER BY cash DESC";
-  $search_result = filterTable($dbcon, $sqlget);
-}elseif (isset($_POST['orderCop']))
-{
-  $sqlget = "SELECT * FROM players ORDER BY coplevel DESC";
-  $search_result = filterTable($dbcon, $sqlget);
-}elseif (isset($_POST['orderMedic']))
-{
-  $sqlget = "SELECT * FROM players ORDER BY mediclevel DESC";
-  $search_result = filterTable($dbcon, $sqlget);
-}elseif (isset($_POST['orderAdmin']))
-{
-  $sqlget = "SELECT * FROM players ORDER BY adminlevel DESC";
-  $search_result = filterTable($dbcon, $sqlget);
+if (isset($_POST['search'])) {
+    $valuetosearch = $_POST['SearchValue'];
+    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`) LIKE '%".$valuetosearch."%'";
+    $search_result = filterTable($dbcon, $sqlget);
+} elseif (isset($_POST['orderBank'])) {
+    $sqlget = 'SELECT * FROM players ORDER BY bankacc DESC';
+    $search_result = filterTable($dbcon, $sqlget);
+} elseif (isset($_POST['orderCash'])) {
+    $sqlget = 'SELECT * FROM players ORDER BY cash DESC';
+    $search_result = filterTable($dbcon, $sqlget);
+} elseif (isset($_POST['orderCop'])) {
+    $sqlget = 'SELECT * FROM players ORDER BY coplevel DESC';
+    $search_result = filterTable($dbcon, $sqlget);
+} elseif (isset($_POST['orderMedic'])) {
+    $sqlget = 'SELECT * FROM players ORDER BY mediclevel DESC';
+    $search_result = filterTable($dbcon, $sqlget);
+} elseif (isset($_POST['orderAdmin'])) {
+    $sqlget = 'SELECT * FROM players ORDER BY adminlevel DESC';
+    $search_result = filterTable($dbcon, $sqlget);
+} else {
+    $sqlget = 'SELECT * FROM players';
+    $search_result = filterTable($dbcon, $sqlget);
 }
-else {
-  $sqlget = "SELECT * FROM players";
-  $search_result = filterTable($dbcon, $sqlget);
-}
-
 
 if (isset($_POST['edit'])) {
-  $uid = $_POST['hidden'];
-  $guid = $_POST['guid'];
-  $_SESSION['uidPlayer'] = $uid;
-  $_SESSION['guidPlayer'] = $guid;
+    $uid = $_POST['hidden'];
+    $guid = $_POST['guid'];
+    $_SESSION['uidPlayer'] = $uid;
+    $_SESSION['guidPlayer'] = $guid;
 
-  $url = '/editPlayer.php';
-echo '<META HTTP-EQUIV=Refresh CONTENT="0; URL='.$url.'">';
+    $url = '/editPlayer.php';
+    echo '<META HTTP-EQUIV=Refresh CONTENT="0; URL='.$url.'">';
 }
-include('header/header.php');
+include 'header/header.php';
 ?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Player Menu</h1>
@@ -161,158 +153,136 @@ include('header/header.php');
 <?php
 
 if (isset($_POST['update'])) {
+    if ($adminLev > 6) {
+        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
+        $result = mysqli_query($dbcon, $sql);
+        $player = $result->fetch_object();
 
+        if ($_POST['csh'] != $player->cash) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
+            logIt($user, $message, $dbcon);
+        }
 
+        if ($_POST['bankacc'] != $player->bankacc) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
+            logIt($user, $message, $dbcon);
+        }
 
-if ($adminLev > 6) {
+        if ($_POST['coplevel'] != $player->coplevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-$sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-$result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();
+        if ($_POST['mediclevel'] != $player->mediclevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['csh'] != $player->cash) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
-    logIt($user, $message, $dbcon);
-  }
+        if ($_POST['adminlevel'] != $player->adminlevel) {
+            $message = 'Admin '.$user.' changed '.$player->name.'('.$player->playerid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['bankacc'] != $player->bankacc) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
-    logIt($user, $message, $dbcon);
-  }
+        $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]', adminlevel='$_POST[adminlevel]', cash='$_POST[csh]', bankacc='$_POST[bankacc]' WHERE uid='$_POST[hidden]'";
+        mysqli_query($dbcon, $UpdateQ);
+    } elseif ($adminLev > 5) {
+        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
+        $result = mysqli_query($dbcon, $sql);
+        $player = $result->fetch_object();
 
-  if ($_POST['coplevel'] != $player->coplevel) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user, $message, $dbcon);
-  }
+        if ($_POST['coplevel'] != $player->coplevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['mediclevel'] != $player->mediclevel) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    logIt($user, $message, $dbcon);
-  }
+        if ($_POST['mediclevel'] != $player->mediclevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['adminlevel'] != $player->adminlevel) {
-    $message = "Admin ".$user." changed ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
-    logIt($user, $message, $dbcon);
-  }
+        $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]' WHERE uid='$_POST[hidden]'";
+        mysqli_query($dbcon, $UpdateQ);
+    } elseif ($adminLev > 4) {
+        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
+        $result = mysqli_query($dbcon, $sql);
+        $player = $result->fetch_object();
 
+        if ($_POST['coplevel'] != $player->coplevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-$UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]', adminlevel='$_POST[adminlevel]', cash='$_POST[csh]', bankacc='$_POST[bankacc]' WHERE uid='$_POST[hidden]'";
-mysqli_query($dbcon, $UpdateQ);
-} elseif ($adminLev > 5) {
+        $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]' WHERE uid ='$_POST[hidden]'";
+        mysqli_query($dbcon, $UpdateQ);
+    } else {
+        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
+        $result = mysqli_query($dbcon, $sql);
+        $player = $result->fetch_object();
 
-$sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-$result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();
+        if ($_POST['csh'] != $player->cash) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
+            logIt($user, $message, $dbcon);
+        }
 
+        if ($_POST['bankacc'] != $player->bankacc) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['coplevel'] != $player->coplevel) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user, $message, $dbcon);
-  }
+        if ($_POST['coplevel'] != $player->coplevel) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-  if ($_POST['mediclevel'] != $player->mediclevel) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    logIt($user, $message, $dbcon);
-  }
+        if ($_POST['mediclevel'] != $player->mediclevel) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            logIt($user, $message, $dbcon);
+        }
 
-
-$UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]' WHERE uid='$_POST[hidden]'";
-mysqli_query($dbcon, $UpdateQ);
-} elseif ($adminLev > 4) {
-
-$sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-$result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();
-
-
-  if ($_POST['coplevel'] != $player->coplevel) {
-    $message = "Admin ".$user." has changed ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user, $message, $dbcon);
-  }
-
-
-
-$UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]' WHERE uid ='$_POST[hidden]'";
-mysqli_query($dbcon, $UpdateQ);
-}else {
-
-$sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-$result = mysqli_query($dbcon, $sql);
-$player = $result->fetch_object();
-
-  if ($_POST['csh'] != $player->cash) {
-    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cash from ".$player->cash." to ".$_POST['csh'];
-    logIt($user, $message, $dbcon);
-  }
-
-  if ($_POST['bankacc'] != $player->bankacc) {
-    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." bank from ".$player->bankacc." to ".$_POST['bankacc'];
-    logIt($user, $message, $dbcon);
-  }
-
-  if ($_POST['coplevel'] != $player->coplevel) {
-    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." cop level from ".$player->coplevel." to ".$_POST['coplevel'];
-    logIt($user, $message, $dbcon);
-  }
-
-  if ($_POST['mediclevel'] != $player->mediclevel) {
-    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." medic level from ".$player->mediclevel." to ".$_POST['mediclevel'];
-    logIt($user, $message, $dbcon);
-  }
-
-  if ($_POST['adminlevel'] != $player->adminlevel) {
-    $message = "Admin ".$user." tried to change ".$player->name."(".$player->playerid.")"." admin level from ".$player->adminlevel." to ".$_POST['adminlevel'];
-    logIt($user, $message, $dbcon);
-  }
-
+        if ($_POST['adminlevel'] != $player->adminlevel) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
+            logIt($user, $message, $dbcon);
+        }
+    }
 }
-
-
-};
-
-
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
+    if ($max != 2147483647) {
+        $steamID = $row['playerid'];
+        $temp = '';
 
-if ($max != 2147483647) {
+        for ($i = 0; $i < 8; ++$i) {
+            $temp .= chr($steamID & 0xFF);
+            $steamID >>= 8;
+        }
 
-$steamID = $row['playerid'];
-$temp = '';
-
-for ($i = 0; $i < 8; $i++) {
-  $temp .= chr($steamID & 0xFF);
-  $steamID >>= 8;
+        $return = md5('BE'.$temp);
+    } else {
+        $return = 'GUID can not be used with 32 bit php!';
+    }
+    echo '<form action=players.php method=post>';
+    echo '<tr>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$row['playerid'].' </td>';
+    echo '<td>'.$row['uid'].'</td>';
+    echo '<td>'.$row['name'].' </td>';
+    echo '<td>'.$row['aliases'].' </td>';
+    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$return.'</td>';
+    //inputs
+  echo '<td>'."<input class='form-control' type=text name=csh value=".$row['cash'].' </td>';
+    echo '<td>'."<input class='form-control' type=text  name=bankacc value=".$row['bankacc'].' </td>';
+    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=coplevel value=".$row['coplevel'].' </td>';
+    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=mediclevel value=".$row['mediclevel'].' </td>';
+    echo "<td><input class='form-control' type=text style = 'width: 100%;' name=adminlevel value='$row[adminlevel]' .</td>";
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=Edit Player".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.' </td>';
+    echo '</tr>';
+    echo '</form>';
 }
 
-$return = md5('BE'.$temp);
-}else {
-$return = "GUID can not be used with 32 bit php!";
-}
-  echo "<form action=players.php method=post>";
-  echo "<tr>";
-  echo "<td style='display:none;'>"."<input type=hidden name=hiddenUID value=".$row['playerid']." </td>";
-  echo "<td>".$row['uid']."</td>";
-  echo "<td>".$row['name']." </td>";
-  echo "<td>".$row['aliases']." </td>";
-  echo "<td>".$row['playerid']." </td>";
-  echo "<td>".$return."</td>";
-	//inputs
-  echo "<td>"."<input class='form-control' type=text name=csh value=".$row['cash']." </td>";
-  echo "<td>"."<input class='form-control' type=text  name=bankacc value=".$row['bankacc']." </td>";
-  echo "<td>"."<input class='form-control' type=text style = 'width: 100%;' name=coplevel value=".$row['coplevel']." </td>";
-  echo "<td>"."<input class='form-control' type=text style = 'width: 100%;' name=mediclevel value=".$row['mediclevel']." </td>";
-  echo "<td><input class='form-control' type=text style = 'width: 100%;' name=adminlevel value='$row[adminlevel]' .</td>";
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Update"." </td>";
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=Edit Player"." </td>";
-  echo "<td style='display:none;'>"."<input type=hidden name=hidden value=".$row['uid']." </td>";
-  echo "<td style='display:none;'>"."<input type=hidden name=guid value=".$return." </td>";
-  echo "</tr>";
-  echo "</form>";
-}
-
-
-
-echo "</table></div>";
+echo '</table></div>';
 ?>
               </tbody>
             </table>

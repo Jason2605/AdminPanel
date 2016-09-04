@@ -2,17 +2,16 @@
 session_start();
 ob_start();
 
-if (!isset($_SESSION['logged'])){
-    header("Location: /index.php");
+if (!isset($_SESSION['logged'])) {
+    header('Location: /index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 3){
-  header("Location: ../lvlError.php");
+if ($adminLev < 3) {
+    header('Location: ../lvlError.php');
 }
-
 
 ?>
 
@@ -51,15 +50,15 @@ if ($adminLev < 3){
   </head>
 
   <body>
-  
+
 <?php
-include('../header/header.php');
+include '../header/header.php';
 ?>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Kick Menu</h1>
 		  <p class="page-header">Kick menu - This allows you to chose to kick the user through the use of RCON or the use of the server command, RCON allows you to give a reason for your kick however is a little more compilcated to use. Server kick however is very simple to use but is unable to give a reason!</p>
-			
+
 			<div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="/players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
@@ -70,7 +69,7 @@ include('../header/header.php');
 			<FORM METHOD="LINK" ACTION="rcon-check.php">
 			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
 			</FORM></div> <br><br><br>
-			
+
 <!--
 			<div class="btn-group btn-group-justified" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="Kplayer.php">
@@ -78,16 +77,16 @@ include('../header/header.php');
 			<button class="btn btn-primary btn-outline" type="submit">RCON Kick</button>
 			</div>
 			</FORM>
-		
+
 
 			<FORM METHOD="LINK" ACTION="SKPlayerv1.php">
 			<div class="btn-group" role="group">
 			<button class="btn btn-primary btn-outline" type="submit">Server Kick</button>
 			</div>
 			</FORM></div>
--->		
-			
-			
+-->
+
+
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
 
   <div class="btn-group" role="group">
@@ -104,8 +103,8 @@ include('../header/header.php');
   </div>
 
 </div>
-	
-		 
+
+
 <!--
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
@@ -131,7 +130,7 @@ include('../header/header.php');
           </div>
 -->
 
-          
+
           </div>
         </div>
       </div>

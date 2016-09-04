@@ -3,16 +3,16 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: index.php");
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
-$conecG = "work";
+$conecG = 'work';
 $_SESSION['conecFail'] = $conecG;
 
 if ($adminLev < 1) {
-  header("Location: index.php");
+    header('Location: index.php');
 }
 ?>
 
@@ -51,10 +51,10 @@ if ($adminLev < 1) {
   </head>
 
   <body>
-  
+
 <?php
 
-include('header/header.php');
+include 'header/header.php';
 
 ?>
 
@@ -62,7 +62,7 @@ include('header/header.php');
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Panel Help</h1>
 		  <p class="page-header">Help for the panel.</p>
-		 
+
 <div class='panel panel-info'>
 <div class='panel-heading'>
 <h3 class='panel-title'>Players</h3>

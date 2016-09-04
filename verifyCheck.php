@@ -1,150 +1,142 @@
 <?php
+
 if (!file_exists('verifyPanel.php')) {
+    $fail = false;
+    if ($_POST['user'] != '') {
+        $user = $_POST['user'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-$fail = false;
-  if ($_POST['user'] != "") {
-    $user = $_POST['user'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['pass'] != '') {
+        $pass = $_POST['pass'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['pass'] != "") {
-    $pass = $_POST['pass'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['host'] != '') {
+        $host = $_POST['host'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['host'] != "") {
-    $host = $_POST['host'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['name'] != '') {
+        $name = $_POST['name'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['name'] != "") {
-    $name = $_POST['name'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['lName'] != '') {
+        $lName = $_POST['lName'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['lName'] != "") {
-    $lName = $_POST['lName'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['RHost'] != '') {
+        $RHost = $_POST['RHost'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['RHost'] != "") {
-    $RHost = $_POST['RHost'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['RPass'] != '') {
+        $RPass = $_POST['RPass'];
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['RPass'] != "") {
-    $RPass = $_POST['RPass'];
-  } else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if ($_POST['RPort'] != '') {
+        $RPort = $_POST['RPort'];
+        $RPort = (int) $RPort;
+    } else {
+        echo 'error?';
+        $fail = true;
+    }
 
-  if ($_POST['RPort'] != "") {
-    $RPort = $_POST['RPort'];
-    $RPort = (int) $RPort;
-  }else
-  {
-    echo "error?";
-    $fail = true;
-  }
+    if (!$fail) {
+        $filename = 'verifyPanel.php';
+        $ourFileName = $filename;
+        $ourFileHandle = fopen($ourFileName, 'w');
 
-if (!$fail) {
-$filename = "verifyPanel.php";
-$ourFileName = $filename;
-$ourFileHandle = fopen($ourFileName, 'w');
-
-$written = "<?php
+        $written = '<?php
 
 function masterconnect(){
 
-	global "."$"."dbcon;
-	"."$"."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
+	global '.'$'.'dbcon;
+	'.'$'."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
 }
 
 function loginconnect(){
 
-	global "."$"."dbconL;
-	"."$"."dbconL = mysqli_connect('$host', '$user', '$pass', '$lName');
+	global ".'$'.'dbconL;
+	'.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$lName');
 }
 
 function Rconconnect(){
 
-	global "."$"."rcon;
-	"."$"."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
+	global ".'$'.'rcon;
+	'.'$'."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
 }
 
-function logIt("."$"."admin,"."$"."log,"."$"."dbcon){
+function logIt(".'$'.'admin,'.'$'.'log,'.'$'.'dbcon){
 
-        "."$"."logQ = \"INSERT INTO log (user,action,level) VALUES ('"."$"."admin','"."$"."log',1)\";
-        mysqli_query("."$"."dbcon, "."$"."logQ);
+        '.'$'."logQ = \"INSERT INTO log (user,action,level) VALUES ('".'$'."admin','".'$'."log',1)\";
+        mysqli_query(".'$'.'dbcon, '.'$'.'logQ);
 }
 
-function filterTable("."$"."dbcon, "."$"."sqlget)
+function filterTable('.'$'.'dbcon, '.'$'.'sqlget)
 {
-  "."$"."sqldata = mysqli_query("."$"."dbcon, "."$"."sqlget) or die ('Connection could not be established');
-  return "."$"."sqldata;
+  '.'$'.'sqldata = mysqli_query('.'$'.'dbcon, '.'$'."sqlget) or die ('Connection could not be established');
+  return ".'$'.'sqldata;
 }
 
 
-global "."$"."DBHost;
-"."$"."DBHost = '$host';
-global "."$"."DBUser;
-"."$"."DBUser = '$user';
-global "."$"."DBPass;
-"."$"."DBPass = '$pass';
-global "."$"."DBName;
-"."$"."DBName = '$name';
-global "."$"."DBLName;
-"."$"."DBLName = '$lName';
+global '.'$'.'DBHost;
+'.'$'."DBHost = '$host';
+global ".'$'.'DBUser;
+'.'$'."DBUser = '$user';
+global ".'$'.'DBPass;
+'.'$'."DBPass = '$pass';
+global ".'$'.'DBName;
+'.'$'."DBName = '$name';
+global ".'$'.'DBLName;
+'.'$'."DBLName = '$lName';
 
-global "."$"."RconHost;
-"."$"."RconHost = '$RHost';
-global "."$"."RconPort;
-"."$"."RconPort = $RPort;
-global "."$"."RconPass;
-"."$"."RconPass = '$RPass';
+global ".'$'.'RconHost;
+'.'$'."RconHost = '$RHost';
+global ".'$'.'RconPort;
+'.'$'."RconPort = $RPort;
+global ".'$'.'RconPass;
+'.'$'."RconPass = '$RPass';
 
 
 ?>
 ";
 
-fwrite($ourFileHandle, $written);
-fclose($ourFileHandle);
+        fwrite($ourFileHandle, $written);
+        fclose($ourFileHandle);
 
-$dbconnect = mysqli_connect($host, $user, $pass, $name) or die ('Database connection failed');
+        $dbconnect = mysqli_connect($host, $user, $pass, $name) or die('Database connection failed');
 
-$sqlDel = "DROP TABLE users;";
-$sqldata = mysqli_query($dbconnect, $sqlDel);
+        $sqlDel = 'DROP TABLE users;';
+        $sqldata = mysqli_query($dbconnect, $sqlDel);
 
-$sqlDel1 = "DROP TABLE log;";
-$sqldata1 = mysqli_query($dbconnect, $sqlDel1);
+        $sqlDel1 = 'DROP TABLE log;';
+        $sqldata1 = mysqli_query($dbconnect, $sqlDel1);
 
-$sqlDel2 = "DROP TABLE notes;";
-$sqldata2 = mysqli_query($dbconnect, $sqlDel2);
+        $sqlDel2 = 'DROP TABLE notes;';
+        $sqldata2 = mysqli_query($dbconnect, $sqlDel2);
 
-$sqlDel3 = "DROP TABLE reimbursement_log;";
-$sqldata3 = mysqli_query($dbconnect, $sqlDel3);
+        $sqlDel3 = 'DROP TABLE reimbursement_log;';
+        $sqldata3 = mysqli_query($dbconnect, $sqlDel3);
 
-$sqlmake = "
+        $sqlmake = '
 CREATE TABLE IF NOT EXISTS `log` (
   `logid` int(11) NOT NULL AUTO_INCREMENT,
   `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -155,11 +147,11 @@ CREATE TABLE IF NOT EXISTS `log` (
   UNIQUE KEY `logid` (`logid`),
   KEY `logid_2` (`logid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-";
+';
 
-$sqldata = mysqli_query($dbconnect, $sqlmake) or die ('Connection could not be established - LOG');
+        $sqldata = mysqli_query($dbconnect, $sqlmake) or die('Connection could not be established - LOG');
 
-$sqlmake2 = "
+        $sqlmake2 = "
 
 CREATE TABLE IF NOT EXISTS `users` (
 `ID` mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -169,9 +161,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 
-$sqldata1 = mysqli_query($dbconnect, $sqlmake2) or die ('Connection could not be established - USERS!');
+        $sqldata1 = mysqli_query($dbconnect, $sqlmake2) or die('Connection could not be established - USERS!');
 
-$sqlmake3 = "
+        $sqlmake3 = "
 
 CREATE TABLE IF NOT EXISTS `notes` (
 	`note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
@@ -189,9 +181,9 @@ AUTO_INCREMENT=6;
 
 ";
 
-$sqldata100 = mysqli_query($dbconnect, $sqlmake3) or die ('Connection could not be established - NOTES!');
+        $sqldata100 = mysqli_query($dbconnect, $sqlmake3) or die('Connection could not be established - NOTES!');
 
-$sqlmake4 = "
+        $sqlmake4 = "
 
 CREATE TABLE IF NOT EXISTS `reimbursement_log` (
 	`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -208,35 +200,32 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1;
 ";
 
-$sqldata9 = mysqli_query($dbconnect, $sqlmake4) or die ('Connection could not be established - REIM!');
+        $sqldata9 = mysqli_query($dbconnect, $sqlmake4) or die('Connection could not be established - REIM!');
 
-$sqldeluser = "DELETE FROM users WHERE username='AdminPanel';";
+        $sqldeluser = "DELETE FROM users WHERE username='AdminPanel';";
 
-$sqldatadel = mysqli_query($dbconnect, $sqldeluser) or die ('Connection could not be established - USER!');
+        $sqldatadel = mysqli_query($dbconnect, $sqldeluser) or die('Connection could not be established - USER!');
 
-$sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `level`) VALUES (1, 'AdminPanel','2b12e1a2252d642c09f640b63ed35dcc5690464a', '8');";
+        $sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `level`) VALUES (1, 'AdminPanel','2b12e1a2252d642c09f640b63ed35dcc5690464a', '8');";
 
-$sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die ('Connection could not be established or user already exists!');
+        $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die('Connection could not be established or user already exists!');
 
-$sqldelTime = "ALTER TABLE players DROP COLUMN joined;";
+        $sqldelTime = 'ALTER TABLE players DROP COLUMN joined;';
 
-$sqldata8 = mysqli_query($dbconnect, $sqldelTime);
+        $sqldata8 = mysqli_query($dbconnect, $sqldelTime);
 
-$sqldel1 = "ALTER TABLE players DROP COLUMN warning;";
+        $sqldel1 = 'ALTER TABLE players DROP COLUMN warning;';
 
-$sqldata6 = mysqli_query($dbconnect, $sqldel1);
+        $sqldata6 = mysqli_query($dbconnect, $sqldel1);
 
-$sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
+        $sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
 
-$sqldata4 = mysqli_query($dbconnect, $sqledit1) or die ('Connection could not be established or column "warning" already exists!');
+        $sqldata4 = mysqli_query($dbconnect, $sqledit1) or die('Connection could not be established or column "warning" already exists!');
 
-header("Location: index.php");
+        header('Location: index.php');
+    } else {
+        echo 'There has been an error setting up your database, please recheck all inputs';
+    }
 } else {
-
-  echo "There has been an error setting up your database, please recheck all inputs";
-}
-
-} else
-{
-  header("Location: index.php");
+    header('Location: index.php');
 }

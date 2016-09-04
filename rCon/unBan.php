@@ -1,16 +1,17 @@
 <?php
+
 session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header("Location: /index.php");
+    header('Location: /index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
 if ($adminLev < 7) {
-  header("Location: ../lvlError.php");
+    header('Location: ../lvlError.php');
 }
 ?>
 
@@ -51,7 +52,7 @@ if ($adminLev < 7) {
   <body>
 
 <?php
-include('../header/header.php');
+include '../header/header.php';
 ?>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -80,38 +81,35 @@ include('../header/header.php');
               </thead>
               <tbody>
 <?php
-  echo "<form action=unBan.php method=post>";
-  echo "<tr>";
+  echo '<form action=unBan.php method=post>';
+  echo '<tr>';
 
-  echo "<td>"."<input class='form-control' type=text name=banid value='' </td>";
-  echo "<td>"."<input class='form-control' type=text name=guid value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=banid value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=guid value='' </td>";
 
-  echo "<td>"."<input class='btn btn-primary btn-outline' type=submit name=update value=Un-Ban"." </td>";
+  echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Un-Ban".' </td>';
 
-  echo "</tr>";
-  echo "</form>";
-echo "</table></div>";
+  echo '</tr>';
+  echo '</form>';
+echo '</table></div>';
 
 if (isset($_POST['update'])) {
+    $banid = $_POST['banid'];
+    $guidUBan = $_POST['guidUBan'];
 
-  $banid = $_POST['banid'];
-  $guidUBan = $_POST['guidUBan'];
+    $_SESSION['banid'] = $banid;
+    $_SESSION['guidUBan'] = $guidUBan;
 
-  $_SESSION['banid'] = $banid;
-  $_SESSION['guidUBan'] = $guidUBan;
+    if ($guidUBan != '' and $banid != '') {
+        if ($_POST['banid'] != '') {
+            $message = 'Admin '.$user.' has unbanned '.$guidUBan;
+            $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
+            mysqli_query($dbcon, $logQ);
+        }
 
-
-  if ($guidUBan != "" and $banid != "") {
-
-  if ($_POST['banid'] != "") {
-    $message = "Admin ".$user." has unbanned ".$guidUBan;
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
-  }
-
-  header("Location: rcon-unBan.php");
-  }
-};
+        header('Location: rcon-unBan.php');
+    }
+}
 ?>
 <p><br><br><br>To unban a player you will need to get the ban ID from the Battleye List, and their GUID from the player menu!</p>
 
