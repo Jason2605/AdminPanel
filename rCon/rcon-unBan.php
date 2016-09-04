@@ -13,10 +13,6 @@ if ($adminLev < 7) {
 
   require_once '../ArmaRConClass/rcon.php';
 
-session_id('user');
-session_start();
-ob_start();
-
 include '../verifyPanel.php';
 Rconconnect();
 

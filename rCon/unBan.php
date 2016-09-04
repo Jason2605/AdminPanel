@@ -3,6 +3,9 @@
 session_start();
 ob_start();
 
+$user = $_SESSION['user'];
+$adminLev = $_SESSION['adminLevel'];
+
 if (!isset($_SESSION['logged'])) {
     header('Location: /index.php');
 }
@@ -13,6 +16,9 @@ $user = $_SESSION['user'];
 if ($adminLev < 7) {
     header('Location: ../lvlError.php');
 }
+
+include '../verifyPanel.php';
+masterconnect();
 ?>
 
 
@@ -30,7 +36,7 @@ if ($adminLev < 7) {
     <title>Admin Panel - UnBan</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -60,7 +66,7 @@ include '../header/header.php';
 		  <p class="page-header">UnBan menu of the panel, allows you to unban RCON banned players.</p>
 
 		  	<div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="/home.php">
+			<FORM METHOD="LINK" ACTION="/players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 			</FORM>
 			</div>
@@ -95,18 +101,14 @@ echo '</table></div>';
 
 if (isset($_POST['update'])) {
     $banid = $_POST['banid'];
-    $guidUBan = $_POST['guidUBan'];
+    $guidUBan = $_POST['guid'];
 
     $_SESSION['banid'] = $banid;
     $_SESSION['guidUBan'] = $guidUBan;
 
     if ($guidUBan != '' and $banid != '') {
-        if ($_POST['banid'] != '') {
-            $message = 'Admin '.$user.' has unbanned '.$guidUBan;
-            $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-            mysqli_query($dbcon, $logQ);
-        }
-
+        $message = 'Admin '.$user.' has unbanned '.$guidUBan;
+        logIt($user, $message, $dbcon);
         header('Location: rcon-unBan.php');
     }
 }

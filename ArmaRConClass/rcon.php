@@ -271,14 +271,13 @@ class ARC
             $this->RCONpassword = $RConPassword;
         }
 
-        $this->socket = fsockopen('udp://'.$this->serverIP, $this->serverPort, $errno, $errstr, $this->options['timeout_seconds']);
+        $this->socket = @fsockopen('udp://'.$this->serverIP, $this->serverPort, $errno, $errstr, $this->options['timeout_seconds']);
 
         stream_set_timeout($this->socket, $this->options['timeout_seconds']);
         stream_set_blocking($this->socket, true);
 
         if (!$this->socket) {
             throw new SocketException('[ARC] Failed to create socket!');
-            echo 'Error num: '.$errno.' Error: '.$errstr;
         }
 
         $this->authorize();
