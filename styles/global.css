@@ -130,8 +130,8 @@ div#header{
 }
 
 input[type=submit]{
-    padding:5px 20px; 
-    background:#ccc; 
+    padding:5px 20px;
+    background:#ccc;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
@@ -143,12 +143,9 @@ input[type=submit]{
 
 
 div#login{
-	width:600px; 
-	margin-top: 0%;
-	margin-bottom: auto;
-	margin-right:auto;
+	width:600px;
+    margin: auto;
 	font-weight: 300;
-	margin-left:auto;
 }
 
 div#txt{
@@ -159,12 +156,9 @@ color: white;
 }
 
 div#login1{
-	width:600px; 
+	width:600px;
 	margin-top: 100px;
-	margin-bottom: auto;
-	margin-right:auto;
 	font-weight: 300;
-	margin-left:auto;
 }
 
 
@@ -190,24 +184,24 @@ a.mobile {
 
 a.mobile:active {
 	background-color: #4A4A4A;
-	
+
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 568px) and (orientation : portrait) {
 
-	
+
 	.sidebar {
 		width: calc(100% + 280px);
 		display: none;
                 height: calc(100% + 115px);
 	}
-	
+
 	div#txt{
 		font-family: 'Open Sans';
 		font-size: 100px;
 		color: white;
 		margin-left: 30%;
 	}
-	
+
 	.content {
 	margin-left: 0px;
 	width: calc(100% + 280px);
@@ -223,13 +217,13 @@ a.mobile:active {
 		margin: 0 auto;
 	}
 
-	
+
 	a.mobile {
 		/*display: none;*/
                 width: calc(100% + 280px);
 	}
         div#login{
-	       	margin-bottom: 390px;    
+	       	margin-bottom: 390px;
 	}
 
 }
@@ -240,7 +234,7 @@ a.mobile:active {
 		display: none;
 		height: calc(100% + 255px);
 	}
-	
+
 	.content {
 		margin-left: 0px;
                 height: calc(100% + 500px);
@@ -253,11 +247,10 @@ a.mobile:active {
 		color: white;
 		margin-left: 92%;
 	}
-	
+
 	div#header{
 		width: 100%;
 		height: 50px;
-		background-color: #;
 		margin: 0 auto;
 	}
 	.content {
@@ -289,7 +282,7 @@ a.mobile:active {
 	.logoE {
 		float: left;
 		margin-top: 4px;
-		margin-left: (100% - 300px);
+		margin-left: calc(100% - 300px);
 	}
 	div#header{
 		width: calc(100% + 900px);
@@ -313,12 +306,6 @@ a.mobile:active {
         div#login{
             margin-left: 75%;
             margin-top: 20%;
-	       	margin-bottom: 40px;    
+	       	margin-bottom: 40px;
 	}
 }
-
-
-
-
-
-

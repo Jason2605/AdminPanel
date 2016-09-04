@@ -53,7 +53,7 @@ $vehicles = mysqli_num_rows($sqldataVeh);
     <title>Admin Panel - Dashboard</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -78,7 +78,7 @@ include 'header/header.php';
 ?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Dashboard</h1>
-		  <p class="page-header">Dashboard of the panel.</p>
+     	  <p class="page-header">Dashboard of the panel.</p>
 <?php
     //Max players
     echo '
@@ -160,9 +160,9 @@ $money = '$'.number_format($money, 2);
     echo    '</div>';
     echo    '</div>';
     echo    '<div class="row">';
-    echo '<div class="col-lg-2">';
+    echo    '<div class="col-lg-2">';
     echo    '</div>';
-    echo '<div class="col-lg-5">';
+    echo    '<div class="col-lg-5">';
 
     echo    "<div id='rcorners8'>";
     echo        "<div class='box-top'><center><h1>Help</h1></div>";
@@ -236,9 +236,6 @@ ob_end_flush();
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="dist/js/bootstrap.min.js"></script>

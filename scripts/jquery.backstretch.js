@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 
-;(function ($, window, undefined) {
+(function ($, window, undefined) {
   'use strict';
 
   /* PLUGIN DEFINITION
@@ -28,13 +28,13 @@
 
     return this.each(function () {
       var $this = $(this)
-        , obj = $this.data('backstretch');
+        , obj = $this.data("backstretch");
 
       // Do we already have an instance attached to this element?
       if (obj) {
 
         // Is this a method they're trying to execute?
-        if (typeof images == 'string' && typeof obj[images] == 'function') {
+        if (typeof images == "string" && typeof obj[images] == "function") {
           // Call the method
           obj[images](options);
 
@@ -50,21 +50,21 @@
       }
 
       obj = new Backstretch(this, images, options);
-      $this.data('backstretch', obj);
+      $this.data("backstretch", obj);
     });
   };
 
   // If no element is supplied, we'll attach to body
   $.backstretch = function (images, options) {
     // Return the instance
-    return $('body')
+    return $("body")
             .backstretch(images, options)
-            .data('backstretch');
+            .data("backstretch");
   };
 
   // Custom selector
   $.expr[':'].backstretch = function(elem) {
-    return $(elem).data('backstretch') !== undefined;
+    return $(elem).data("backstretch") !== undefined;
   };
 
   /* DEFAULTS
@@ -78,7 +78,7 @@
   };
 
   /* STYLES
-   * 
+   *
    * Baked-in styles that we'll apply to our elements.
    * In an effort to keep the plugin simple, these are not exposed as options.
    * That said, anyone can override these in their own stylesheet.
@@ -90,8 +90,8 @@
         , overflow: 'hidden'
         , margin: 0
         , padding: 0
-        , height: '100%'
-        , width: '100%'
+        , height: "100%"
+        , width: "100%"
         , zIndex: -999999
       }
     , img: {
@@ -122,7 +122,7 @@
     // Preload images
     $.each(this.images, function () {
       $('<img />')[0].src = this;
-    });    
+    });
 
     // Convenience reference to know if the container is body.
     this.isBody = container === document.body;
@@ -153,7 +153,7 @@
         , zIndex: zIndex === 'auto' ? 0 : zIndex
         , background: 'none'
       });
-      
+
       // Needs a higher z-index
       this.$wrap.css({zIndex: -999998});
     }
@@ -189,17 +189,17 @@
             , rootHeight = this.isBody ? (isMobile ? screen.height : (window.innerHeight ? window.innerHeight : this.$root.height() )) : this.$root.innerHeight()
             , bgHeight = bgWidth / this.$img.data('ratio')
             , bgOffset;
-			
-			
-			
+
+
+
 			 // Fixes triggering of resize before image ratio is known (iOS 6 at least)
             if (isNaN(bgHeight)) {
               return this;
             }
-            
+
             // Fixes ugly delayed resize while scrolling the location bar away on iOS
 
-   
+
             // Make adjustments based on image ratio
             if (bgHeight >= rootHeight) {
                 bgOffset = (bgHeight - rootHeight) / 2;
@@ -240,7 +240,7 @@
           , evtOptions = { relatedTarget: self.$container[0] };
 
         // Trigger the "before" event
-        self.$container.trigger($.Event('backstretch.before', evtOptions), [self, newIndex]); 
+        self.$container.trigger($.Event('backstretch.before', evtOptions), [self, newIndex]);
 
         // Set the new index
         this.index = newIndex;
@@ -254,7 +254,7 @@
                       .bind('load', function (e) {
                         var imgWidth = this.width || $(e.target).width()
                           , imgHeight = this.height || $(e.target).height();
-                        
+
                         // Save the ratio
                         $(this).data('ratio', imgWidth / imgHeight);
 
@@ -333,7 +333,7 @@
 
         // Remove Backstretch
         if(!preserveBackground) {
-          this.$wrap.remove();          
+          this.$wrap.remove();
         }
         this.$container.removeData('backstretch');
       }
@@ -368,23 +368,23 @@
     return !(
       // iOS 4.3 and older : Platform is iPhone/Pad/Touch and Webkit version is less than 534 (ios5)
       ((platform.indexOf( "iPhone" ) > -1 || platform.indexOf( "iPad" ) > -1  || platform.indexOf( "iPod" ) > -1 ) && wkversion && wkversion < 534) ||
-      
+
       // Opera Mini
       (window.operamini && ({}).toString.call( window.operamini ) === "[object OperaMini]") ||
       (operammobilematch && omversion < 7458) ||
-      
+
       //Android lte 2.1: Platform is Android and Webkit version is less than 533 (Android 2.2)
       (ua.indexOf( "Android" ) > -1 && wkversion && wkversion < 533) ||
-      
+
       // Firefox Mobile before 6.0 -
       (ffversion && ffversion < 6) ||
-      
+
       // WebOS less than 3
       ("palmGetResource" in window && wkversion && wkversion < 534) ||
-      
+
       // MeeGo
       (ua.indexOf( "MeeGo" ) > -1 && ua.indexOf( "NokiaBrowser/8.5.0" ) > -1) ||
-      
+
       // IE6
       (ieversion && ieversion <= 6)
     );
