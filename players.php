@@ -260,13 +260,22 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     } else {
         $return = 'GUID can not be used with 32 bit php!';
     }
+
+    if ($row['playerid'] != '' || $row['pid'] != '') {
+        if ($row['playerid'] == '') {
+            $pid = $row['pid'];
+        } else {
+            $pid = $row['playerid'];
+        }
+    }
+
     echo '<form action=players.php method=post>';
     echo '<tr>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$row['playerid'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$pid.' </td>';
     echo '<td>'.$row['uid'].'</td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$pid.' </td>';
     echo '<td>'.$return.'</td>';
     //inputs
   echo '<td>'."<input class='form-control' type=text name=csh value=".$row['cash'].' </td>';
