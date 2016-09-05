@@ -37,13 +37,6 @@ $fail = false;
       $fail = true;
   }
 
-  if ($_POST['lName'] != '') {
-      $lName = $_POST['lName'];
-  } else {
-      echo 'error?';
-      $fail = true;
-  }
-
   if ($_POST['RHost'] != '') {
       $RHost = $_POST['RHost'];
   } else {
@@ -82,7 +75,7 @@ function masterconnect(){
 function loginconnect(){
 
 	global ".'$'.'dbconL;
-	'.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$lName');
+	'.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$name');
 }
 
 function Rconconnect(){
@@ -98,8 +91,6 @@ global ".'$'.'DBPass;
 '.'$'."DBPass = '$pass';
 global ".'$'.'DBName;
 '.'$'."DBName = '$name';
-global ".'$'.'DBLName;
-'.'$'."DBLName = '$lName';
 
 global ".'$'.'RconHost;
 '.'$'."RconHost = '$RHost';

@@ -88,10 +88,6 @@ include 'header/header.php';
   <h4>Database Name</h4>
   <input type="text" name= "name" class="form-control" value="<?php echo $DBName; ?>">
 
-  <br>
-  <h4>Login Database Name</h4>
-  <input type="text" name= "lName" class="form-control" value="<?php echo $DBLName; ?>">
-
   <h4>RCON Host</h4>
   <input type="text" name= "RHost" class="form-control" value="<?php echo $RconHost; ?>">
 
