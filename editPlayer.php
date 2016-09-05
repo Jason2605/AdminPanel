@@ -310,7 +310,7 @@ echo "<div id ='civlic1'>";
               if ($name != '') {
                   $display = explode('_', $name);
                   $displayN = $display['2'];
-                  echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' onClick='post(this.id);'>".$displayN.'</button> ';
               }
           }
       }
@@ -341,7 +341,7 @@ echo "<div id ='civlic2'>";
               if ($name != '') {
                   $display = explode('_', $name);
                   $displayN = $display['2'];
-                  echo "<button type='button' id=".$name." class='btn btn-secondary btn-sm' onClick='post(this.id);'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' onClick='post(this.id);'>".$displayN.'</button> ';
               }
           }
       }
@@ -377,14 +377,14 @@ if (isset($_POST['give'])) {
 <script>
 
 $("button").click(function(){
-    $("button").toggleClass("btn-secondary btn-success");
+    $("button").toggleClass("btn-danger btn-success");
 });
 
 function post (id)
 {
 var newid = "#" + id;
 
-	$(newid).toggleClass("btn-secondary btn-success");
+	$(newid).toggleClass("btn-danger btn-success");
 
 	$.post('changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
 	function(data)
@@ -398,7 +398,7 @@ function post1 (id)
 {
 var newid = "#" + id;
 
-	 $(newid).toggleClass("btn-secondary btn-success");
+	 $(newid).toggleClass("btn-danger btn-success");
 
 	var newid = id;
 	$.post('changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},

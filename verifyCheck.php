@@ -210,18 +210,6 @@ AUTO_INCREMENT=1;
 
         $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die('Connection could not be established or user already exists!');
 
-        $sqldelTime = 'ALTER TABLE players DROP COLUMN joined;';
-
-        $sqldata8 = mysqli_query($dbconnect, $sqldelTime);
-
-        $sqldel1 = 'ALTER TABLE players DROP COLUMN warning;';
-
-        $sqldata6 = mysqli_query($dbconnect, $sqldel1);
-
-        $sqledit1 = "ALTER TABLE players ADD warning ENUM('1','2','3') NOT NULL;";
-
-        $sqldata4 = mysqli_query($dbconnect, $sqledit1) or die('Connection could not be established or column "warning" already exists!');
-
         header('Location: index.php');
     } else {
         echo 'There has been an error setting up your database, please recheck all inputs';
