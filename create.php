@@ -29,7 +29,6 @@ ob_start();
     <input type="text" value="" placeholder="DB Pass" id="password1" name="pass"/>
 	<input type="text" value="" placeholder="DB Host" id="host" name="host"/>
 	<input type="text" value="" placeholder="DB Name" id="name" name="name"/>
-	<input type="text" value="" placeholder="Login DB Name" id="lName" name="lName"/>
 	<input type="text" value="" placeholder="RCON Host" id="RHost" name="RHost"/>
 	<input type="text" value="" placeholder="RCON Pass" id="RPass" name="RPass"/>
 	<input type="text" value="" placeholder="RCON Port" id="RPort" name="RPort"/>
