@@ -26,12 +26,20 @@ $player = $result->fetch_object();
 $licences = $player->$col;
 $num = strpos($licences, $change['2']) + strlen($change['2']) + 2;
 
+if ($player->playerid != '' || $player->pid != '') {
+    if ($player->playerid == '') {
+        $pid = $player->pid;
+    } else {
+        $pid = $player->playerid;
+    }
+}
+
 if ($licences[$num] == 0) {
     $licences[$num] = 1;
-    $message = 'Admin '.$user.' has added license '.$id.' to '.$player->name.'('.$player->playerid.')';
+    $message = 'Admin '.$user.' has added license '.$id.' to '.$player->name.'('.$pid.')';
     logIt($user, $message, $dbcon);
 } elseif ($licences[$num] == 1) {
-    $message = 'Admin '.$user.' has removed license '.$id.' to '.$player->name.'('.$player->playerid.')';
+    $message = 'Admin '.$user.' has removed license '.$id.' to '.$player->name.'('.$$pid.')';
     logIt($user, $message, $dbcon);
     $licences[$num] = 0;
 }
