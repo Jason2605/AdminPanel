@@ -83,7 +83,7 @@ include 'header/header.php';
     //Max players
     echo '
     <div class="row">
-    <div class="col-lg-5">
+    <div class="col-md-4">
     ';
 
     echo    "<div id='rcorners1'>";
@@ -94,7 +94,7 @@ include 'header/header.php';
     echo    '</div>';
 
     echo    '</div>';
-    echo '<div class="col-lg-5">';
+    echo '<div class="col-md-4">';
 
     //Vehicles
 
@@ -106,7 +106,7 @@ include 'header/header.php';
     echo    '</div>';
 
     echo    '</div>';
-    echo '<div class="col-lg-1">';
+    echo '<div class="col-md-4">';
 
     //?
 $money = '$'.number_format($money, 2);
@@ -121,7 +121,7 @@ $money = '$'.number_format($money, 2);
     echo    '</div>';
     echo    '</div>';
     echo    '<div class="row">';
-    echo '<div class="col-lg-5">';
+    echo '<div class="col-lg-4">';
 
     echo    "<div id='rcorners5'>";
     echo        "<div class='box-top'><center><h1>Restart Server</h1></div>";
@@ -133,7 +133,7 @@ $money = '$'.number_format($money, 2);
     echo  '</form>';
 
     echo    '</div>';
-    echo '<div class="col-lg-5">';
+    echo '<div class="col-lg-4">';
 
     echo    "<div id='rcorners4'>";
     echo        "<div class='box-top'><center><h1>Global Message</h1></div>";
@@ -146,7 +146,7 @@ $money = '$'.number_format($money, 2);
     echo  '</form>';
 
     echo    '</div>';
-    echo '<div class="col-lg-1">';
+    echo '<div class="col-lg-4">';
 
     echo    "<div id='rcorners6'>";
     echo        "<div class='box-top'><center><h1>Stop Server</h1></div>";
@@ -160,9 +160,9 @@ $money = '$'.number_format($money, 2);
     echo    '</div>';
     echo    '</div>';
     echo    '<div class="row">';
-    echo    '<div class="col-lg-2">';
+    echo    '<div class="col-md-2">';
     echo    '</div>';
-    echo    '<div class="col-lg-5">';
+    echo    '<div class="col-lg-4">';
 
     echo    "<div id='rcorners8'>";
     echo        "<div class='box-top'><center><h1>Help</h1></div>";
@@ -175,7 +175,7 @@ $money = '$'.number_format($money, 2);
     echo  '</form>';
 
     echo    '</div>';
-    echo '<div class="col-lg-1">';
+    echo '<div class="col-lg-4">';
 
 if (isset($_POST['send'])) {
     if ($adminLev > 6) {
