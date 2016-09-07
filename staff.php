@@ -116,15 +116,21 @@ $sqldata = mysqli_query($dbconL, $sqlget) or die('Connection could not be establ
 if (isset($_POST['delete'])) {
     $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
     mysqli_query($dbconL, $sql);
+
+    echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Staff account deleted!</a></div>';
 }
 
 if (isset($_POST['update'])) {
     if ($_POST['password'] == '') {
         $UpdateQ = "UPDATE users SET username='$_POST[username]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
+
+        echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Username updated!</a></div>';
     } else {
         $password = $_POST['password'];
         $pass = sha1($password);
         $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
+
+        echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Password and/or username updated!</a></div>';
     }
     mysqli_query($dbconL, $UpdateQ);
 }

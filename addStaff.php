@@ -60,7 +60,7 @@ include 'header/header.php';
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 style = "margin-top: 70px"> Menu</h1>
+          <h1 style = "margin-top: 70px">Staff Menu</h1>
 		  <p class="page-header">Staff menu of the panel, allows you to see and delete staff members.</p>
 
 		  	<div class="btn-group" role="group" aria-label="...">
@@ -102,10 +102,18 @@ if (isset($_POST['update'])) {
         $admin = mysqli_real_escape_string($dbconL, $_POST['adminlevel']);
 
         $intAdmin = (int) $admin;
+
+        if ($intAdmin > 8 || $intAdmin < 1) {
+            echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please enter a level between 1 and 8!</a></div>';
+            die();
+        }
+
         $encPass = sha1($password);
 
         $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$encPass', '$intAdmin')";
         mysqli_query($dbconL, $UpdateQ);
+
+        echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">User successfully added!</a></div>';
     }
 }
 ?>
