@@ -104,7 +104,7 @@ if (isset($_POST['update'])) {
         $intAdmin = (int) $admin;
         $encPass = sha1($password);
 
-        $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$password', '$intAdmin')";
+        $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$encPass', '$intAdmin')";
         mysqli_query($dbconL, $UpdateQ);
     }
 }
