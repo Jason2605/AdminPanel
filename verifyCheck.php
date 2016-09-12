@@ -127,6 +127,9 @@ global ".'$'.'RconPass;
         $sqlDel3 = 'DROP TABLE reimbursement_log;';
         $sqldata3 = mysqli_query($dbconnect, $sqlDel3);
 
+        $sqlDel4 = 'DROP TABLE whitelist;';
+        $sqldata4 = mysqli_query($dbconnect, $sqlDel4);
+
         $sqlmake = '
 CREATE TABLE IF NOT EXISTS `log` (
   `logid` int(11) NOT NULL AUTO_INCREMENT,
@@ -192,6 +195,19 @@ AUTO_INCREMENT=1;
 ";
 
         $sqldata9 = mysqli_query($dbconnect, $sqlmake4) or die('Connection could not be established - REIM!');
+
+        $sqlmake5 =
+'
+      CREATE TABLE IF NOT EXISTS `whitelist` (
+      `id` int(0) NOT NULL AUTO_INCREMENT,
+      `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      `user` varchar(64) DEFAULT NULL,
+      `guid` varchar(64) DEFAULT NULL,
+      `uid` varchar(64) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+';
+        $sqldata10 = mysqli_query($dbconnect, $sqlmake5) or die('Connection could not be established - Whitelist!');
 
         $sqldeluser = "DELETE FROM users WHERE username='AdminPanel';";
 

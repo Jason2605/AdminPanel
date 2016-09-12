@@ -3,14 +3,17 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header('Location: /index.php');
+    header('Location: index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 3) {
-    header('Location: ../lvlError.php');
+include 'verifyPanel.php';
+masterconnect();
+
+if ($adminLev != 8) {
+    header('Location: lvlError.php');
 }
 ?>
 
@@ -26,7 +29,7 @@ if ($adminLev < 3) {
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Admin Panel - Kick</title>
+    <title>Admin Panel - Whitelist</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.css" rel="stylesheet">
@@ -50,86 +53,96 @@ if ($adminLev < 3) {
 
   <body>
 
-<?php
-
-include '../header/header.php';
-
-?>
-
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 style = "margin-top: 70px">Kick Menu</h1>
-		  <p class="page-header">Kick menu of the panel, allows you to RCON kick players.</p>
+          <h1 style = "margin-top: 70px">Battleye Whitelist</h1>
+		  <p class="page-header">Battleye whitelist, add GUID's which are immune to commands.</p>
 
-		  	<div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="Kmenu.php">
-			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
-			</FORM>
-			</div>
+          <div class="btn-group" role="group" aria-label="...">
+          <FORM METHOD="LINK" ACTION="staff.php">
+          <INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
+          </FORM>
+          </div><br><br>
 
-			<div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="rcon-check.php">
-			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
-			</FORM></div> <br><br><br>
+		  <div class="table-responsive">
+            <table class="table table-striped" style = "margin-top: -10px">
+              <thead>
+                <tr>
+					<th>Staff UID</th>
+                    <th>Staff GUID</th>
+                    <th>Add Whitelist</th>
+                </tr>
+              </thead>
+              <tbody>
 <?php
+echo '<form action=whitelist.php method=post>';
+  echo '<tr>';
+  echo '<td>'."<input class='form-control' type=text name=uid value='' </td>";
+  echo '<td>'."<input class='form-control' type=text name=guid value='' </td>";
+  echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Add".' </td>';
+
+  echo '</tr>';
+  echo '</form>';
+
+echo '</table></div>';
+
 if (isset($_POST['update'])) {
     $guid = $_POST['guid'];
     $uid = $_POST['uid'];
-    $reason = $_POST['reason'];
-    if ($guid != '' || $uid != '') {
-        include '../verifyPanel.php';
-        masterconnect();
 
-        $sqlget = 'SELECT uid,guid FROM whitelist';
-        $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
-
-        while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-            if ($row['uid'] == $uid) {
-                $whitelist = true;
-            }
-        }
-        if ($whitelist) {
-            echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">This is a whitelisted staff member!</a></div>';
-            $message = 'Admin '.$user.' tried to kick a whitelisted staff member - '.$uid;
-            logIt($user, $message, $dbcon);
-        } else {
-            $_SESSION['guid'] = $guid;
-            $_SESSION['reason'] = $reason;
-
-            header('Location: rcon-kick.php');
-        }
-    } else {
-        echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please fill in Battleye ID and UID!</a></div>';
-    }
+    $UpdateQ = "INSERT INTO whitelist (user,uid,guid) VALUES ('$user','$uid','$guid');";
+    mysqli_query($dbcon, $UpdateQ);
 }
+
+if (isset($_POST['delete'])) {
+    $sql = "DELETE FROM whitelist WHERE ID='$_POST[hidden]'";
+    mysqli_query($dbcon, $sql);
+
+    echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Staff GUID deleted!</a></div>';
+}
+?>
+
+<br><br>
+
+<?php
+
+$sqlget = 'SELECT * FROM whitelist';
+$search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+include 'header/header.php';
+
 ?>
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
-					<th>Battleye ID</th>
+					<th>Whitelist Id</th>
                     <th>UID</th>
-					<th>Reason</th>
-					<th>Update</th>
+					<th>GUID</th>
+					<th>Staff Added</th>
+					<th>Time Stamp</th>
+                    <th>Delete</th>
+
                 </tr>
               </thead>
               <tbody>
 <?php
-  echo '<form action=Kplayer.php method=post>';
-  echo '<tr>';
+while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
+    echo '<form action=whitelist.php method=post>';
+    echo '<tr>';
+    echo '<td>'.$row['id'].'</td>';
+    echo '<td>'.$row['uid'].'</td>';
+    echo '<td>'.$row['guid'].' </td>';
+    echo '<td>'.$row['user'].' </td>';
+    echo '<td>'.$row['date_time'].' </td>';
 
-  echo '<td>'."<input class='form-control' type=text name=guid value='' </td>";
-  echo '<td>'."<input class='form-control' type=text name=uid value='' </td>";
-  echo '<td>'."<input class='form-control' type=text name=reason value=''</td>";
-
-  echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick".' </td>';
-
-  echo '</tr>';
-  echo '</form>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
+    echo '</tr>';
+    echo '</form>';
+}
 
 echo '</table></div>';
 ?>
-<p>To use the kick feature you need to find the player ID, this is found by pressing the battleye list and typing in the [#] value. This is betwen 0-amount of players on server. So please check, this is NOT uid or GUID!</p>
               </tbody>
             </table>
           </div>

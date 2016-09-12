@@ -69,31 +69,40 @@ include '../header/header.php';
 			<FORM METHOD="LINK" ACTION="rcon-check.php">
 			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
 			</FORM></div> <br><br><br>
+<?php
+if (isset($_POST['update'])) {
+    $guid = $_POST['guid'];
+    $reason = $_POST['reason'];
+    $time = $_POST['time'];
 
-<!--
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
--->
+    include '../verifyPanel.php';
+    masterconnect();
+
+    $sql = 'SELECT uid,guid FROM whitelist';
+    $sqlinfo = mysqli_query($dbcon, $sql) or die('Connection could not be established');
+
+    while ($row = mysqli_fetch_array($sqlinfo, MYSQLI_ASSOC)) {
+        if ($row['guid'] == $guid) {
+            $whitelist = true;
+        }
+    }
+    if ($whitelist) {
+        echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">This is a whitelisted staff member!</a></div>';
+        $message = 'Admin '.$user.' tried to ban a whitelisted staff member - '.$guid;
+        logIt($user, $message, $dbcon);
+    } else {
+        $_SESSION['guid'] = $guid;
+        $_SESSION['reason'] = $reason;
+        $_SESSION['time'] = $time;
+
+        if ($_POST['guid'] != '') {
+            $message = 'Admin '.$user.' has banned '.$guid.' for '.$time.' minutes under the reason of ('.$reason.')';
+            logIt($user, $message, $dbcon);
+            header('Location: rcon-ban.php');
+        }
+    }
+}
+?>
 
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
@@ -120,27 +129,6 @@ echo '</tr>';
 echo '</form>';
 
 echo '</table></div>';
-
-if (isset($_POST['update'])) {
-    $guid = $_POST['guid'];
-    $reason = $_POST['reason'];
-    $time = $_POST['time'];
-
-    $_SESSION['guid'] = $guid;
-    $_SESSION['reason'] = $reason;
-    $_SESSION['time'] = $time;
-
-    include '../verifyPanel.php';
-    masterconnect();
-
-    if ($_POST['guid'] != '') {
-        $message = 'Admin '.$user.' has banned '.$guid.' for '.$time.' minutes under the reason of ('.$reason.')';
-        $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-        mysqli_query($dbcon, $logQ);
-    }
-
-    header('Location: rcon-ban.php');
-}
 ?>
 <p><br><br><br>To use the ban feature, batteye needs to use the GUID and not a player UID<br>NOTE: if the player is currently on the server please make sure you kick them else they will be banned however still playing until they have left!</p>
 <p>0 - Perm Ban, and the time is scaled in minutes!</p>

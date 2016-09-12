@@ -70,22 +70,6 @@ include '../header/header.php';
 			<button class="btn btn-primary btn-outline" type="submit">Check battleye list</button>
 			</FORM></div> <br><br><br>
 
-<!--
-			<div class="btn-group btn-group-justified" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="Kplayer.php">
-			<div class="btn-group" role="group">
-			<button class="btn btn-primary btn-outline" type="submit">RCON Kick</button>
-			</div>
-			</FORM>
-
-
-			<FORM METHOD="LINK" ACTION="SKPlayerv1.php">
-			<div class="btn-group" role="group">
-			<button class="btn btn-primary btn-outline" type="submit">Server Kick</button>
-			</div>
-			</FORM></div>
--->
-
 
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
 

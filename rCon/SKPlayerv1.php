@@ -86,17 +86,50 @@ include '../header/header.php';
 include '../verifyPanel.php';
 masterconnect();
 
+if (isset($_POST['update'])) {
+    $guid = $_POST['hiddenUID'];
+
+    $sql = 'SELECT uid,guid FROM whitelist';
+    $sqlinfo = mysqli_query($dbcon, $sql) or die('Connection could not be established');
+
+    while ($row = mysqli_fetch_array($sqlinfo, MYSQLI_ASSOC)) {
+        if ($row['uid'] == $guid) {
+            $whitelist = true;
+        }
+    }
+    if ($whitelist) {
+        echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">This is a whitelisted staff member!</a></div>';
+        $message = 'Admin '.$user.' tried to kick a whitelisted staff member - '.$guid;
+        logIt($user, $message, $dbcon);
+    } else {
+        $name = $_POST['hiddenName'];
+        $_SESSION['SKguid'] = $guid;
+
+        $message = 'Admin '.$user.' has kicked '.$player->name.'('.$guid.')';
+        logIt($user, $message, $dbcon);
+        header('Location: rcon-Skick.php');
+    }
+}
+
 $sqlget = 'SELECT * FROM players';
 $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
+    if ($row['playerid'] != '' || $row['pid'] != '') {
+        if ($row['playerid'] == '') {
+            $pid = $row['pid'];
+        } else {
+            $pid = $row['playerid'];
+        }
+    }
+
     echo '<form action=SKPlayerv1.php method=post>';
     echo '<tr>';
 
-    echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$row['playerid'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$pid.' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$pid.' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hiddenName value='.$row['name'].' </td>';
 
@@ -105,21 +138,6 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
 }
 
 echo '</table></div>';
-
-if (isset($_POST['update'])) {
-    $sql = "SELECT * FROM `players` WHERE `playerid` = $_POST[hiddenUID]";
-    $result = mysqli_query($dbcon, $sql);
-    $player = $result->fetch_object();
-
-    $name = $_POST['hiddenName'];
-    $guid = $_POST['hiddenUID'];
-    $_SESSION['SKguid'] = $guid;
-
-    $message = 'Admin '.$user.' has kicked '.$player->name.'('.$guid.')';
-    $logQ = "INSERT INTO log (user,action,level) VALUES ('$user','$message',1)";
-    mysqli_query($dbcon, $logQ);
-    header('Location: rcon-Skick.php');
-}
 ?>
 <p><br></p>
               </tbody>

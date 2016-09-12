@@ -71,9 +71,13 @@ include 'header/header.php';
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="New Staff User">
 			</FORM>
 		  </div>
+          <div class="btn-group" role="group" aria-label="...">
+            <FORM METHOD="LINK" ACTION="whitelist.php">
+            <INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Whitelist Staff User">
+            </FORM>
+          </div>
 		  <div class="btn-group" role="group" aria-label="...">
 			<INPUT class='btn btn-primary btn-outline'data-toggle="modal" data-target="#myModal" id="deletePan" name=delete VALUE="Reset Entire Panel">
-
 		  </div>
 
 <!-- Modal -->

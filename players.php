@@ -247,8 +247,16 @@ if (isset($_POST['update'])) {
 }
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
+    if ($row['playerid'] != '' || $row['pid'] != '') {
+        if ($row['playerid'] == '') {
+            $pid = $row['pid'];
+        } else {
+            $pid = $row['playerid'];
+        }
+    }
+
     if ($max != 2147483647) {
-        $steamID = $row['playerid'];
+        $steamID = $pid;
         $temp = '';
 
         for ($i = 0; $i < 8; ++$i) {
@@ -259,14 +267,6 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
         $return = md5('BE'.$temp);
     } else {
         $return = 'GUID can not be used with 32 bit php!';
-    }
-
-    if ($row['playerid'] != '' || $row['pid'] != '') {
-        if ($row['playerid'] == '') {
-            $pid = $row['pid'];
-        } else {
-            $pid = $row['playerid'];
-        }
     }
 
     echo '<form action=players.php method=post>';

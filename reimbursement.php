@@ -30,7 +30,7 @@ if ($adminLev < 7) {
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Admin Panel - Cash Logs</title>
+    <title>Admin Panel - Reimbursement Logs</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/dist/css/bootstrap.css" rel="stylesheet">

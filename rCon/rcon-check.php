@@ -98,7 +98,7 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
 				<li><a href="/gangs.php">Gangs</a></li>
 				<li><a href="/houses.php">Houses</a></li>
 				<li><a href="/logs.php">Logs</a></li>
-				<li><a href="/cashD.php">Cash Logs</a></li>
+				<li><a href="/reimbursement.php">Reimbursement Logs</a></li>
 				<li><a href="/staff.php">Staff</a></li>
 				<li><a href="/Steam/steam.php">Steam Accounts</a></li>
 				<li><a href="/logout.php">Log Out</a></li>
