@@ -2,7 +2,7 @@
 
 session_start();
 ob_start();
-$version = '4.4';
+$version = '';
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
@@ -21,6 +21,24 @@ $result = mysqli_query($dbcon, $sql);
 $player = $result->fetch_object();
 
 $username = $player->name;
+
+if ($player->playerid != '' || $player->pid != '') {
+    if ($player->playerid == '') {
+        $pid = $player->pid;
+    } else {
+        $pid = $player->playerid;
+    }
+}
+
+if ($player->donorlevel != '' || $player->donatorlvl != '') {
+    if ($player->donorlevel == '') {
+        $don = $player->donatorlvl;
+        $version = '4.0';
+    } else {
+        $don = $player->donorlevel;
+        $version = '4.4';
+    }
+}
 
 function stripArray($input, $type)
 {
@@ -112,7 +130,7 @@ include 'header/header.php';
 echo "<div class='lic'>";
 echo "<div id ='editPlayer'><center><h1>".$username.'</h1></center>';
 echo '<center><h4>UID: '.$player->uid.'</h3></center>';
-echo '<center><h4>Player ID: '.$player->playerid.'</h3></center>';
+echo '<center><h4>Player ID: '.$pid.'</h3></center>';
 echo '<center><h4>GUID: '.$guidPlayer.'</h3></center>';
 echo '<center><h4>Bank: $'.$player->bankacc.'</h3></center>';
 echo '<center><h4>Cash: $'.$player->cash.'</h3></center>';
@@ -149,43 +167,41 @@ if (isset($_POST['donUpdate'])) {
     $player = $result->fetch_object();
 
     if ($adminLev > 6) {
-        if ($version == '4.0') {
-            if ($_POST['donatorlvl'] != $player->donatorlvl) {
-                $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
-                logIt($user, $message, $dbcon);
-            }
-        } else {
-            if ($_POST['donorlevel'] != $player->donorlevel) {
-                $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' donator level from '.$player->donorlevel.' to '.$_POST['donorlevel'];
-                logIt($user, $message, $dbcon);
-            }
-        }
-        if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
-            logIt($user, $message, $dbcon);
-        }
-        $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
-        mysqli_query($dbcon, $UpdateQ);
-    } elseif ($adminLev > 4) {
-        if ($_POST['donatorlvl'] != $player->donatorlvl) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
+        if ($_POST['donatorlvl'] != $don) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
             logIt($user, $message, $dbcon);
         }
 
         if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
+            logIt($user, $message, $dbcon);
+        }
+        if ($version == '4.0') {
+            $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
+        } else {
+            $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donorlevel='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
+        }
+        mysqli_query($dbcon, $UpdateQ);
+    } elseif ($adminLev > 4) {
+        if ($_POST['donatorlvl'] != $player->donatorlvl) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
+            logIt($user, $message, $dbcon);
+        }
+
+        if ($_POST['blacklist'] != $player->blacklist) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
             logIt($user, $message, $dbcon);
         }
         $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
         mysqli_query($dbcon, $UpdateQ);
     } else {
-        if ($_POST['donatorlvl'] != $player->donatorlvl) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
+        if ($_POST['donatorlvl'] != $don) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
             logIt($user, $message, $dbcon);
         }
 
         if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
             logIt($user, $message, $dbcon);
         }
     }
@@ -197,11 +213,7 @@ $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be e
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo '<form action=editPlayer.php method=post>';
-    if ($version == '4.0') {
-        echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=".$row['donatorlvl'].' </td>';
-    } else {
-        echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=".$row['donorlevel'].' </td>';
-    }
+    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=".$don.' </td>';
     echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=blacklist value=".$row['blacklist'].' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update".' </td>';
     echo '</form>';
@@ -360,7 +372,7 @@ if (isset($_POST['remove'])) {
     $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
     $result = mysqli_query($dbcon, $sql);
 
-    $message = 'Admin '.$user.' has removed all licenses from '.$player->name.'('.$player->playerid.')';
+    $message = 'Admin '.$user.' has removed all licenses from '.$player->name.'('.$pid.')';
     logIt($user, $message, $dbcon);
 }
 if (isset($_POST['give'])) {
@@ -368,7 +380,7 @@ if (isset($_POST['give'])) {
     $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
     $result = mysqli_query($dbcon, $sql);
 
-    $message = 'Admin '.$user.' has added all licenses to '.$player->name.'('.$player->playerid.')';
+    $message = 'Admin '.$user.' has added all licenses to '.$player->name.'('.$pid.')';
     logIt($user, $message, $dbcon);
 }
 ?>

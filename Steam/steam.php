@@ -70,16 +70,6 @@ masterconnect();
 $sqlget = 'SELECT * FROM players';
 $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
-if (isset($_POST['delete'])) {
-    $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
-    mysqli_query($dbconL, $sql);
-}
-
-if (isset($_POST['update'])) {
-    $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$_POST[password]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-    mysqli_query($dbconL, $UpdateQ);
-}
-
 ?>
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
@@ -108,13 +98,22 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
     } else {
         $return = '32 bit PHP, GUID will not work!';
     }
+
+    if ($row['playerid'] != '' || $row['pid'] != '') {
+        if ($row['playerid'] == '') {
+            $pid = $row['pid'];
+        } else {
+            $pid = $row['playerid'];
+        }
+    }
+
     echo '<form action=logs.php method=post>';
     echo '<tr>';
     echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$pid.' </td>';
     echo '<td>'.$return.'</td>';
-    echo "<td><a href='http://steamcommunity.com/profiles/".$row['playerid']."' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
+    echo "<td><a href='http://steamcommunity.com/profiles/".$pid."' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
     echo '</tr>';
     echo '</form>';
 }
