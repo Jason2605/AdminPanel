@@ -12,8 +12,7 @@ if (!file_exists('verifyPanel.php')) {
     if ($_POST['pass'] != '') {
         $pass = $_POST['pass'];
     } else {
-        echo 'error?';
-        $fail = true;
+        $pass = '';
     }
 
     if ($_POST['host'] != '') {
