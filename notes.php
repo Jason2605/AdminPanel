@@ -6,10 +6,10 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 2) {
+if ($staffPerms['notes'] != '1') {
     header('Location: /lvlError.php');
 }
 

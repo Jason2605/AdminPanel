@@ -1,15 +1,7 @@
 <?php
 session_start();
-$adminLev = $_SESSION['adminLevel'];
 
 if (!isset($_SESSION['logged'])) {
-    header('Location: ../index.php');
-}
-if ($adminLev < 3) {
-    header('Location: ../lvlError.php');
-}
-
-if ($adminLev < 1) {
     header('Location: ../index.php');
 }
 

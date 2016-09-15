@@ -6,11 +6,11 @@ if (!isset($_SESSION['logged'])) {
     header('Location: /index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
+$staffPerms = $_SESSION['perms'];
 
-if ($adminLev < 3) {
-    header('Location: ../lvlError.php');
+if ($staffPerms['kick'] != '1') {
+    header('Location: lvlError.php');
 }
 ?>
 

@@ -2,6 +2,32 @@
 session_set_cookie_params(1209600);
 session_start();
 ob_start();
+
+function stripArray($input, $type)
+{
+    $array = array();
+
+    switch ($type) {
+        case 0:
+            $array = explode('],[', $input);
+            $array = str_replace('"[[', '', $array);
+            $array = str_replace(']]"', '', $array);
+            $array = str_replace('`', '', $array);
+            break;
+    }
+
+    return $array;
+}
+
+function before($this, $inthat)
+{
+    return substr($inthat, 0, strpos($inthat, $this));
+}
+
+function replace($text)
+{
+    return str_replace('[[', '', $text);
+}
 ?>
 
 <html>
@@ -46,7 +72,23 @@ if ($username && $password) {
         while ($row = mysqli_fetch_assoc($res)) {
             $dbusername = $row['username'];
             $dbpassword = $row['password'];
-            $adminLevel = $row['level'];
+            //$adminLevel = $row['level'];
+
+            if ($row['permissions'] !== '"[]"' || $row['permissions'] !== '') {
+                $return = stripArray($row['permissions'], 0);
+                $return = replace($return);
+
+                foreach ($return as $value) {
+                    $pos = strpos($value, '1');
+                    if ($pos !== false) {
+                        $name = before(',', $value);
+                        $perms[$name] = 1;
+                    } else {
+                        $name = before(',', $value);
+                        $perms[$name] = 0;
+                    }
+                }
+            }
         }
         if ($username == $dbusername && $encPass == $dbpassword) {
             if (isset($_COOKIE['conecFail'])):
@@ -64,7 +106,9 @@ if ($username && $password) {
 
             $_SESSION['user'] = $dbusername;
 
-            $_SESSION['adminLevel'] = $adminLevel;
+            //$_SESSION['adminLevel'] = $adminLevel;
+
+            $_SESSION['perms'] = $perms;
 
             header('Location: home.php');
         } else {

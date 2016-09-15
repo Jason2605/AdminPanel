@@ -2,13 +2,14 @@
 
 session_start();
 ob_start();
-$adminLev = $_SESSION['adminLevel'];
 
 if (!isset($_SESSION['logged'])) {
     header('Location: ../index.php');
 }
-if ($adminLev < 3) {
-    header('Location: ../lvlError.php');
+$staffPerms = $_SESSION['perms'];
+
+if ($staffPerms['kick'] != '1') {
+    header('Location: lvlError.php');
 }
 
   require_once '../ArmaRConClass/rcon.php';

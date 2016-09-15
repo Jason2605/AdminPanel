@@ -2,9 +2,9 @@
 
 session_start();
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 
-if ($adminLev != 8) {
+if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
 }
 

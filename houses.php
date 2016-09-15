@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 ?>
@@ -68,7 +68,7 @@ $sqlget = 'SELECT * FROM houses';
 $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 if (isset($_POST['update'])) {
-    if ($adminLev > 6) {
+    if ($staffPerms['housing'] == '1') {
         $id = $_POST['hidden'];
 
         $sql = "SELECT * FROM `houses` WHERE `id` =$id ";

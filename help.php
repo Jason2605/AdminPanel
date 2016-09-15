@@ -5,15 +5,7 @@ ob_start();
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
-
-$adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
-$conecG = 'work';
-$_SESSION['conecFail'] = $conecG;
-
-if ($adminLev < 1) {
-    header('Location: index.php');
-}
 ?>
 
 

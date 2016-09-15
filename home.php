@@ -7,15 +7,11 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 $conecG = 'work';
 $_SESSION['conecFail'] = $conecG;
-
-if ($adminLev < 1) {
-    header('Location: index.php');
-}
 
 include 'verifyPanel.php';
 masterconnect();
@@ -178,7 +174,7 @@ $money = '$'.number_format($money, 2);
     echo '<div class="col-lg-4">';
 
 if (isset($_POST['send'])) {
-    if ($adminLev > 6) {
+    if ($staffPerms['globalMessage'] == '1') {
         $send = $_POST['global'];
         $_SESSION['send'] = $send;
         header('Location: rCon/rcon-mess.php');
@@ -190,19 +186,15 @@ if (isset($_POST['send'])) {
 }
 
 if (isset($_POST['restart'])) {
-    if ($adminLev > 6) {
+    if ($staffPerms['restartServer'] == '1') {
         header('Location: rCon/rcon-restart.php');
     } else {
         header('Location: ../lvlError.php');
     }
 }
 
-if (isset($_POST['chat'])) {
-    header('Location: chatRoom/chatRoom.php');
-}
-
 if (isset($_POST['stop'])) {
-    if ($adminLev > 6) {
+    if ($staffPerms['stopServer'] == '1') {
         header('Location: rCon/rcon-stop.php');
     } else {
         header('Location: ../lvlError.php');

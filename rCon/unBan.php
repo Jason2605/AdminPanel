@@ -10,11 +10,12 @@ if (!isset($_SESSION['logged'])) {
     header('Location: /index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 7) {
-    header('Location: ../lvlError.php');
+$staffPerms = $_SESSION['perms'];
+
+if ($staffPerms['unban'] != '1') {
+    header('Location: lvlError.php');
 }
 
 include '../verifyPanel.php';

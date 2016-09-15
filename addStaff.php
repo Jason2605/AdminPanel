@@ -1,13 +1,15 @@
 <?php
 session_start();
+ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
+$perms = '[[`notes`,0],[`cop`,0],[`medic`,0],[`money`,0],[`IG-Admin`,0],[`editPlayer`,0],[`housing`,0],[`gangs`,0],[`vehicles`,0],[`logs`,0],[`steamView`,0],[`ban`,0],[`kick`,0],[`unban`,0],[`globalMessage`,0],[`restartServer`,0],[`stopServer`,0],[`superUser`,0]]';
 
-if ($adminLev != 8) {
+if ($staffPerms['superUser'] != '1') {
     echo "<script src='scripts/na.js'></script>";
     header('Location: lvlError.php');
 }
@@ -69,13 +71,30 @@ include 'header/header.php';
 			</FORM>
 			</div><br><br><br>
 
+<?php
+if (isset($_POST['update'])) {
+    if ($staffPerms['superUser'] == '1') {
+        $username = mysqli_real_escape_string($dbconL, $_POST['username']);
+        $password = mysqli_real_escape_string($dbconL, $_POST['password']);
+
+        $encPass = sha1($password);
+
+        $UpdateQ = "INSERT INTO users (username, password, permissions) VALUES ('$username', '$encPass', '$perms')";
+        mysqli_query($dbconL, $UpdateQ);
+
+        echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">User successfully added!</a></div>';
+    } else {
+        echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Nope...</a></div>';
+    }
+}
+?>
+
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
 					<th>Username</th>
 					<th>Password</th>
-					<th>Admin Level</th>
 					<th>Update</th>
                 </tr>
               </thead>
@@ -86,7 +105,6 @@ echo '<form action=addStaff.php method=post>';
 
   echo '<td>'."<input class='form-control' type=text name=username value='' </td>";
   echo '<td>'."<input class='form-control' type=text name=password value=''</td>";
-  echo '<td>'."<input class='form-control' type=text name=adminlevel value='' </td>";
 
   echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Add".' </td>';
 
@@ -94,28 +112,6 @@ echo '<form action=addStaff.php method=post>';
   echo '</form>';
 
 echo '</table></div>';
-
-if (isset($_POST['update'])) {
-    if ($adminLev == '8') {
-        $username = mysqli_real_escape_string($dbconL, $_POST['username']);
-        $password = mysqli_real_escape_string($dbconL, $_POST['password']);
-        $admin = mysqli_real_escape_string($dbconL, $_POST['adminlevel']);
-
-        $intAdmin = (int) $admin;
-
-        if ($intAdmin > 8 || $intAdmin < 1) {
-            echo '<div class="alert alert-danger" role="alert"><a href="#" class="alert-link">Please enter a level between 1 and 8!</a></div>';
-            die();
-        }
-
-        $encPass = sha1($password);
-
-        $UpdateQ = "INSERT INTO users (username, password, level) VALUES ('$username', '$encPass', '$intAdmin')";
-        mysqli_query($dbconL, $UpdateQ);
-
-        echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">User successfully added!</a></div>';
-    }
-}
 ?>
               </tbody>
             </table>

@@ -6,10 +6,10 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
-if ($adminLev != 8) {
+if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
 }
 ?>
@@ -106,8 +106,7 @@ include 'header/header.php';
 
 			<br><br>
 <?php
-if ($adminLev != 8) {
-    echo "<script src='scripts/na.js'></script>";
+if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
 }
 
@@ -126,17 +125,16 @@ if (isset($_POST['delete'])) {
 
 if (isset($_POST['update'])) {
     if ($_POST['password'] == '') {
-        $UpdateQ = "UPDATE users SET username='$_POST[username]', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-
+        $UpdateQ = "UPDATE users SET username='$_POST[username]' WHERE ID='$_POST[hidden]'";
+        mysqli_query($dbconL, $UpdateQ);
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Username updated!</a></div>';
     } else {
         $password = $_POST['password'];
         $pass = sha1($password);
-        $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass', level='$_POST[adminlevel]' WHERE ID='$_POST[hidden]'";
-
+        $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass' WHERE ID='$_POST[hidden]'";
+        mysqli_query($dbconL, $UpdateQ);
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Password and/or username updated!</a></div>';
     }
-    mysqli_query($dbconL, $UpdateQ);
 }
 
 ?>
@@ -146,9 +144,9 @@ if (isset($_POST['update'])) {
                 <tr>
 					<th>Username</th>
 					<th>Password</th>
-					<th>Admin Level</th>
 					<th>Delete</th>
 					<th>Update</th>
+					<th>Permissions</th>
                 </tr>
               </thead>
               <tbody>
@@ -158,14 +156,17 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo '<td>'."<input class='form-control' type=text name=username value=".$row['username'].' </td>';
     echo '<td>'."<input class='form-control' type=text name=password placeholder='New password' </td>";
-    echo '<td>'."<input class='form-control' type=text name=adminlevel value=".$row['level'].' </td>';
+    //echo '<td>'."<input class='form-control' type=text name=adminlevel value=".$row['level'].' </td>';
 
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete".' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['ID'].' </td>';
-
-    echo '</tr>';
     echo '</form>';
+    echo '<form action=permissions.php method=post>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit value=Edit".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hiddenId value='.$row['ID'].' </td>';
+    echo '</form>';
+    echo '</tr>';
 }
 
 echo '</table></div>';

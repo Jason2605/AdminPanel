@@ -8,7 +8,7 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 $uidPlayer = $_SESSION['uidPlayer'];
 $guidPlayer = $_SESSION['guidPlayer'];
@@ -95,11 +95,6 @@ function replace($text)
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -166,7 +161,7 @@ if (isset($_POST['donUpdate'])) {
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
-    if ($adminLev > 6) {
+    if ($staffPerms['editPlayer'] == '1') {
         if ($_POST['donatorlvl'] != $don) {
             $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
             logIt($user, $message, $dbcon);
@@ -181,18 +176,6 @@ if (isset($_POST['donUpdate'])) {
         } else {
             $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donorlevel='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
         }
-        mysqli_query($dbcon, $UpdateQ);
-    } elseif ($adminLev > 4) {
-        if ($_POST['donatorlvl'] != $player->donatorlvl) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
-            logIt($user, $message, $dbcon);
-        }
-        $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]' WHERE uid='$uidPlayer'";
         mysqli_query($dbcon, $UpdateQ);
     } else {
         if ($_POST['donatorlvl'] != $don) {
@@ -287,12 +270,20 @@ echo "<div id ='civlic'>";
               $name = before(',', $value);
               $display = explode('_', $name);
               $displayN = $display['2'];
-              echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+              if ($staffPerms['editPlayer'] == '1') {
+                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+              } else {
+                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
+              }
           } else {
               $name = before(',', $value);
               $display = explode('_', $name);
               $displayN = $display['2'];
-              echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+              if ($staffPerms['editPlayer'] == '1') {
+                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+              } else {
+                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
+              }
           }
       }
       echo '  </div>
@@ -316,13 +307,21 @@ echo "<div id ='civlic1'>";
               $name = before(',', $value);
               $display = explode('_', $name);
               $displayN = $display['2'];
-              echo "<button type='button' id=".$name." class='btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN.'</button> ';
+              if ($staffPerms['editPlayer'] == '1') {
+                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+              } else {
+                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
+              }
           } else {
               $name = before(',', $value);
               if ($name != '') {
                   $display = explode('_', $name);
                   $displayN = $display['2'];
-                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' onClick='post(this.id);'>".$displayN.'</button> ';
+                  if ($staffPerms['editPlayer'] == '1') {
+                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+                  } else {
+                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
+                  }
               }
           }
       }
@@ -347,13 +346,21 @@ echo "<div id ='civlic2'>";
               $name = before(',', $value);
               $display = explode('_', $name);
               $displayN = $display['2'];
-              echo "<button type='button' id=".$name." class='btn btn-success btn-sm' onClick='post1(this.id);'>".$displayN.'</button> ';
+              if ($staffPerms['editPlayer'] == '1') {
+                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+              } else {
+                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
+              }
           } else {
               $name = before(',', $value);
               if ($name != '') {
                   $display = explode('_', $name);
                   $displayN = $display['2'];
-                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' onClick='post(this.id);'>".$displayN.'</button> ';
+                  if ($staffPerms['editPlayer'] == '1') {
+                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+                  } else {
+                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
+                  }
               }
           }
       }
@@ -368,20 +375,24 @@ echo '</div>';
 //query
 
 if (isset($_POST['remove'])) {
-    $licReset = str_replace('1', '0', $player->civ_licenses);
-    $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
-    $result = mysqli_query($dbcon, $sql);
+    if ($staffPerms['editPlayer'] == '1') {
+        $licReset = str_replace('1', '0', $player->civ_licenses);
+        $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
+        $result = mysqli_query($dbcon, $sql);
 
-    $message = 'Admin '.$user.' has removed all licenses from '.$player->name.'('.$pid.')';
-    logIt($user, $message, $dbcon);
+        $message = 'Admin '.$user.' has removed all licenses from '.$player->name.'('.$pid.')';
+        logIt($user, $message, $dbcon);
+    }
 }
 if (isset($_POST['give'])) {
-    $licReset = str_replace('0', '1', $player->civ_licenses);
-    $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
-    $result = mysqli_query($dbcon, $sql);
+    if ($staffPerms['editPlayer'] == '1') {
+        $licReset = str_replace('0', '1', $player->civ_licenses);
+        $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
+        $result = mysqli_query($dbcon, $sql);
 
-    $message = 'Admin '.$user.' has added all licenses to '.$player->name.'('.$pid.')';
-    logIt($user, $message, $dbcon);
+        $message = 'Admin '.$user.' has added all licenses to '.$player->name.'('.$pid.')';
+        logIt($user, $message, $dbcon);
+    }
 }
 ?>
 

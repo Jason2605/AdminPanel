@@ -6,13 +6,13 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 masterconnect();
 
-if ($adminLev < 7) {
+if ($staffPerms['money'] != '1') {
     echo "<script src='scripts/na.js'></script>";
     header('Location: lvlError.php');
 }

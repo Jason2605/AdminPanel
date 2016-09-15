@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 ?>
@@ -63,7 +63,7 @@ include 'header/header.php';
 		  <p class="page-header">Vehicle menu of the panel, allows you to change vehicle database values.</p>
 <?php
 if (isset($_POST['update'])) {
-    if ($adminLev > 6) {
+    if ($staffPerms['vehicles'] == '1') {
         $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
         $result = mysqli_query($dbcon, $sql);
         $vehicle = $result->fetch_object();

@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 include 'verifyPanel.php';
@@ -153,97 +153,98 @@ include 'header/header.php';
 <?php
 
 if (isset($_POST['update'])) {
-    if ($adminLev > 6) {
-        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $player = $result->fetch_object();
+    $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
+    $result = mysqli_query($dbcon, $sql);
+    $player = $result->fetch_object();
 
-        if ($_POST['csh'] != $player->cash) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['bankacc'] != $player->bankacc) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['coplevel'] != $player->coplevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['mediclevel'] != $player->mediclevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['adminlevel'] != $player->adminlevel) {
-            $message = 'Admin '.$user.' changed '.$player->name.'('.$player->playerid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]', adminlevel='$_POST[adminlevel]', cash='$_POST[csh]', bankacc='$_POST[bankacc]' WHERE uid='$_POST[hidden]'";
-        mysqli_query($dbcon, $UpdateQ);
-    } elseif ($adminLev > 5) {
-        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $player = $result->fetch_object();
-
-        if ($_POST['coplevel'] != $player->coplevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['mediclevel'] != $player->mediclevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]', mediclevel='$_POST[mediclevel]' WHERE uid='$_POST[hidden]'";
-        mysqli_query($dbcon, $UpdateQ);
-    } elseif ($adminLev > 4) {
-        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $player = $result->fetch_object();
-
-        if ($_POST['coplevel'] != $player->coplevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        $UpdateQ = "UPDATE players SET coplevel='$_POST[coplevel]' WHERE uid ='$_POST[hidden]'";
-        mysqli_query($dbcon, $UpdateQ);
-    } else {
-        $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $player = $result->fetch_object();
-
-        if ($_POST['csh'] != $player->cash) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['bankacc'] != $player->bankacc) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['coplevel'] != $player->coplevel) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['mediclevel'] != $player->mediclevel) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['adminlevel'] != $player->adminlevel) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$player->playerid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
-            logIt($user, $message, $dbcon);
+    if ($player->playerid != '' || $player->pid != '') {
+        if ($player->playerid == '') {
+            $pid = $player->pid;
+        } else {
+            $pid = $player->playerid;
         }
     }
+
+    if ($staffPerms['money'] == '1') {
+        if ($_POST['csh'] != $player->cash) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
+            logIt($user, $message, $dbcon);
+
+            $cash = $_POST['csh'];
+        }
+
+        if ($_POST['bankacc'] != $player->bankacc) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
+            logIt($user, $message, $dbcon);
+
+            $bank = $_POST['bankacc'];
+        }
+    } else {
+        if ($_POST['csh'] != $player->cash) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
+            logIt($user, $message, $dbcon);
+
+            $cash = $player->cash;
+        }
+
+        if ($_POST['bankacc'] != $player->bankacc) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
+            logIt($user, $message, $dbcon);
+
+            $bank = $player->bank;
+        }
+    }
+
+    if ($staffPerms['cop'] == '1') {
+        if ($_POST['coplevel'] != $player->coplevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            logIt($user, $message, $dbcon);
+
+            $cop = $_POST['coplevel'];
+        }
+    } else {
+        if ($_POST['coplevel'] != $player->coplevel) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            logIt($user, $message, $dbcon);
+
+            $cop = $player->coplevel;
+        }
+    }
+
+    if ($staffPerms['medic'] == '1') {
+        if ($_POST['mediclevel'] != $player->mediclevel) {
+            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            logIt($user, $message, $dbcon);
+
+            $medic = $_POST['mediclevel'];
+        }
+    } else {
+        if ($_POST['mediclevel'] != $player->mediclevel) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            logIt($user, $message, $dbcon);
+
+            $medic = $player->mediclevel;
+        }
+    }
+
+    if ($staffPerms['IG-Admin'] == '1') {
+        if ($_POST['adminlevel'] != $player->adminlevel) {
+            $message = 'Admin '.$user.' changed '.$player->name.'('.$pid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
+            logIt($user, $message, $dbcon);
+
+            $admin = $_POST['adminlevel'];
+        }
+    } else {
+        if ($_POST['adminlevel'] != $player->adminlevel) {
+            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
+            logIt($user, $message, $dbcon);
+
+            $admin = $player->adminlevel;
+        }
+    }
+
+    $UpdateQ = "UPDATE players SET coplevel='$cop', mediclevel='$medic', adminlevel='$admin', cash='$cash', bankacc='$bank' WHERE uid='$_POST[hidden]'";
+    mysqli_query($dbcon, $UpdateQ);
 }
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {

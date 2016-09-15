@@ -6,12 +6,12 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
+$staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 
-if ($adminLev != 8) {
+if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
 }
 ?>

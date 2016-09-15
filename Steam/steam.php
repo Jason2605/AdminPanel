@@ -7,15 +7,12 @@ if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
 }
 
-$adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-if ($adminLev < 1) {
-    header('Location: ../index.php');
-}
+$staffPerms = $_SESSION['perms'];
 
-if ($adminLev < 2) {
-    header('Location: ../lvlError.php');
+if ($staffPerms['steamView'] != '1') {
+    header('Location: lvlError.php');
 }
 
 $max = PHP_INT_MAX;
@@ -85,8 +82,16 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be establi
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
+    if ($row['playerid'] != '' || $row['pid'] != '') {
+        if ($row['playerid'] == '') {
+            $pid = $row['pid'];
+        } else {
+            $pid = $row['playerid'];
+        }
+    }
+
     if ($max != 2147483647) {
-        $steamID = $row['playerid'];
+        $steamID = $pid;
         $temp = '';
 
         for ($i = 0; $i < 8; ++$i) {
@@ -97,14 +102,6 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
         $return = md5('BE'.$temp);
     } else {
         $return = '32 bit PHP, GUID will not work!';
-    }
-
-    if ($row['playerid'] != '' || $row['pid'] != '') {
-        if ($row['playerid'] == '') {
-            $pid = $row['pid'];
-        } else {
-            $pid = $row['playerid'];
-        }
     }
 
     echo '<form action=logs.php method=post>';
