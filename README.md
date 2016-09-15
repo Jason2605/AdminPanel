@@ -10,9 +10,9 @@
 AdminPanel was a project started after owning a community and my admins not knowing fully how to use database admin tools, so I created a very user friendly panel instead!
 
 The panel also has access to Rcon, meaning your server can be maintained and run without the need to be in-game or even your computer!
-<p align="center">
 
-PRE 2.5.0 UPDATE
+##PRE 2.5.0 UPDATE
+<p align="center">
 
 The panel by default comes with 8 levels 
 1: View Only. 2: View and Add Notes. 3: View and Kick Players. 
