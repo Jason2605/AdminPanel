@@ -157,6 +157,12 @@ if (isset($_POST['update'])) {
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
+    $cash = $player->cash;
+    $bank = $player->bankacc;
+    $cop = $player->coplevel;
+    $medic = $player->mediclevel;
+    $admin = $player->adminlevel;
+
     if ($player->playerid != '' || $player->pid != '') {
         if ($player->playerid == '') {
             $pid = $player->pid;
