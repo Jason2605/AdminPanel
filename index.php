@@ -11,6 +11,7 @@ if (!file_exists('verifyPanel.php')) {
 <title>Admin Panel - Home</title>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
+<link rel="stylesheet" type ="text/css" href="styles/dashboard.css" />
 
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=0" />
 <script src="scripts/jquery-1.12.3.min.js"></script>
@@ -42,8 +43,9 @@ function checkTime(i) {
 <meta name="viewport" content="width=device-width">
 <div id="background"></div>
 	<div id = "header">
-		<div class ="logo"><a href="#">Admin<span>Panel</span></a></div>
-		<div class ="logoE"><a href="#">By Jason_000</a></div>
+		<img class = "logo" src="images/Admin.png" alt="logo" />
+        <img class = "logoE" src="images/jason.png" alt="logoMe" />
+		<!-- <div class ="logoE"><a href="#">By Jason_000</a></div> -->
 	</div>
 <center><div id="txt"></div></center>
 <script>startTime();</script>

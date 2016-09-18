@@ -345,14 +345,7 @@ body {
  * Hide default border to remove 1px line.
  */
 .navbar-fixed-top {
-  border: 0;
-  /*background-color: #428bca;*/
   background-color: #428bca;
-}
-
-.navbar-brand {
-  color: #fff;
-  font-size: 1.5em;
 }
 
 .navbar-brand span {
