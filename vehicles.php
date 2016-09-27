@@ -34,15 +34,8 @@ $user = $_SESSION['user'];
     <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -52,8 +45,14 @@ $user = $_SESSION['user'];
 include 'verifyPanel.php';
 masterconnect();
 
-$sqlget = 'SELECT * FROM vehicles';
-$sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+if (isset($_POST['search'])) {
+    $valuetosearch = $_POST['SearchValue'];
+    $sqlget = "SELECT * FROM vehicles WHERE CONCAT (`pid`) LIKE '%".$valuetosearch."%'";
+    $sqldata = filterTable($dbcon, $sqlget);
+} else {
+    $sqlget = 'SELECT * FROM vehicles ORDER BY pid';
+    $sqldata = filterTable($dbcon, $sqlget);
+}
 
 include 'header/header.php';
 ?>
@@ -61,6 +60,21 @@ include 'header/header.php';
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Vehicle Menu</h1>
 		  <p class="page-header">Vehicle menu of the panel, allows you to change vehicle database values.</p>
+
+          <form action = "vehicles.php" method="post">
+          		  <div class ="searchBar">
+          			<div class="row">
+          			  <div class="col-lg-6">
+          				<div class="input-group">
+          				  <input type="text" class="form-control" style = "width: 300px; margin-top: 20px;" name="SearchValue" placeholder="UID...">
+          				  <span class="input-group-btn">
+          					<input class="btn btn-default" style = "margin-top: 20px;" name="search" type="submit" value="Search">
+          				  </span>
+          				</div><!-- /input-group -->
+          			  </div><!-- /.col-lg-6 -->
+          			</div><!-- /.row -->
+          		  </div>
+          </form><br>
 <?php
 if (isset($_POST['update'])) {
     if ($staffPerms['vehicles'] == '1') {
