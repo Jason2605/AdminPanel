@@ -21,7 +21,10 @@ The panel by default comes with 8 levels
 7: Edit all values apart from staff and settings. 
 8: Global.
 </p>
-
+##POST 2.5.0 UPDATE
+<p align="center">
+All staff users can now have individual permissions set on them.
+</p>
 ###Donate
 
 Donations are much appreciated! 
