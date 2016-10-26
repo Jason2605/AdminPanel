@@ -3,30 +3,18 @@ session_set_cookie_params(1209600);
 session_start();
 ob_start();
 
-function stripArray($input, $type)
+function remove($value)
 {
-    $array = array();
+    $value = replace('`', $value);
+    $value = replace('[[', $value);
+    $value = replace(']]', $value);
 
-    switch ($type) {
-        case 0:
-            $array = explode('],[', $input);
-            $array = str_replace('"[[', '', $array);
-            $array = str_replace(']]"', '', $array);
-            $array = str_replace('`', '', $array);
-            break;
-    }
-
-    return $array;
+    return $value;
 }
 
-function before($this, $inthat)
+function replace($string, $text)
 {
-    return substr($inthat, 0, strpos($inthat, $this));
-}
-
-function replace($text)
-{
-    return str_replace('[[', '', $text);
+    return str_replace($string, '', $text);
 }
 ?>
 
@@ -74,18 +62,16 @@ if ($username && $password) {
             $dbpassword = $row['password'];
             //$adminLevel = $row['level'];
 
-            if ($row['permissions'] !== '"[]"' || $row['permissions'] !== '') {
-                $return = stripArray($row['permissions'], 0);
-                $return = replace($return);
+            if ($row['permissions'] !== '"[]"' && $row['permissions'] !== '') {
+                $return = explode('],[', $row['permissions']);
 
                 foreach ($return as $value) {
-                    $pos = strpos($value, '1');
-                    if ($pos !== false) {
-                        $name = before(',', $value);
-                        $perms[$name] = 1;
+                    $val = remove($value);
+                    $newVal = explode(',', $val);
+                    if ($newVal[1] == 1) {
+                        $perms[$newVal[0]] = 1;
                     } else {
-                        $name = before(',', $value);
-                        $perms[$name] = 0;
+                        $perms[$newVal[0]] = 0;
                     }
                 }
             }
@@ -100,14 +86,8 @@ if ($username && $password) {
             endif;
 
             $_SESSION = array();
-
-            echo 'You are logged in!';
             $_SESSION['logged'] = 1;
-
             $_SESSION['user'] = $dbusername;
-
-            //$_SESSION['adminLevel'] = $adminLevel;
-
             $_SESSION['perms'] = $perms;
 
             header('Location: home.php');

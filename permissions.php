@@ -17,30 +17,18 @@ $sql = "SELECT * FROM `users` WHERE `ID` = $_POST[hiddenId]";
 $result = mysqli_query($dbcon, $sql);
 $user = $result->fetch_object();
 
-function stripArray($input, $type)
+function remove($value)
 {
-    $array = array();
+    $value = replace('`', $value);
+    $value = replace('[[', $value);
+    $value = replace(']]', $value);
 
-    switch ($type) {
-        case 0:
-            $array = explode('],[', $input);
-            $array = str_replace('"[[', '', $array);
-            $array = str_replace(']]"', '', $array);
-            $array = str_replace('`', '', $array);
-            break;
-    }
-
-    return $array;
+    return $value;
 }
 
-function before($this, $inthat)
+function replace($string, $text)
 {
-    return substr($inthat, 0, strpos($inthat, $this));
-}
-
-function replace($text)
-{
-    return str_replace('[[', '', $text);
+    return str_replace($string, '', $text);
 }
 ?>
 
@@ -81,8 +69,7 @@ include 'header/header.php';
 echo "<div id ='civlic'>";
 
   if ($user->permissions !== '"[]"' && $user->permissions !== '') {
-      $return = stripArray($user->permissions, 0);
-      $return = replace($return);
+      $return = explode('],[', $user->permissions);
 
       echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -91,13 +78,12 @@ echo "<div id ='civlic'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $pos = strpos($value, '1');
-          if ($pos !== false) {
-              $name = before(',', $value);
-              echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$name.'</button> ';
+          $val = remove($value);
+          $newVal = explode(',', $val);
+          if ($newVal[1] == 1) {
+              echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$newVal[0].'</button> ';
           } else {
-              $name = before(',', $value);
-              echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$name.'</button> ';
+              echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$newVal[0].'</button> ';
           }
       }
 
