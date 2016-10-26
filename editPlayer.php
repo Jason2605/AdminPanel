@@ -41,30 +41,18 @@ if ($player->donorlevel != '' || $player->donatorlvl != '') {
     }
 }
 
-function stripArray($input, $type)
+function remove($value)
 {
-    $array = array();
+    $value = replace('`', $value);
+    $value = replace('"[[', $value);
+    $value = replace(']]"', $value);
 
-    switch ($type) {
-        case 0:
-            $array = explode('],[', $input);
-            $array = str_replace('"[[', '', $array);
-            $array = str_replace(']]"', '', $array);
-            $array = str_replace('`', '', $array);
-            break;
-    }
-
-    return $array;
+    return $value;
 }
 
-function before($this, $inthat)
+function replace($string, $text)
 {
-    return substr($inthat, 0, strpos($inthat, $this));
-}
-
-function replace($text)
-{
-    return str_replace('[[', '', $text);
+    return str_replace($string, '', $text);
 }
 ?>
 
@@ -256,8 +244,7 @@ echo '</div>';
 echo "<div id ='civlic'>";
 
   if ($player->civ_licenses !== '"[]"' && $player->civ_licenses !== '') {
-      $return = stripArray($player->civ_licenses, 0);
-      $return = replace($return);
+      $return = explode('],[', $player->civ_licenses);
 
       echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -266,24 +253,23 @@ echo "<div id ='civlic'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $pos = strpos($value, '1');
-          if ($pos !== false) {
-              $name = before(',', $value);
-              $display = explode('_', $name);
+          $val = remove($value);
+          $newVal = explode(',', $val);
+          if ($newVal[1] == 1) {
+              $display = explode('_', $newVal[0]);
               $displayN = $display['2'];
               if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
               } else {
-                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
               }
           } else {
-              $name = before(',', $value);
-              $display = explode('_', $name);
+              $display = explode('_', $newVal[0]);
               $displayN = $display['2'];
               if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
               } else {
-                  echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
               }
           }
       }
@@ -291,10 +277,10 @@ echo "<div id ='civlic'>";
 </div>';
   }
 echo '</div>';
+
 echo "<div id ='civlic1'>";
-  if ($player->med_licenses !== '"[]"' && $player->med_licenses !== '') {
-      $return = stripArray($player->med_licenses, 0);
-      $return = replace($return);
+  if ($player->med_licenses !== '"[]"' && $player->med_licenses !== '[]') {
+      $return = explode('],[', $player->med_licenses);
 
       echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -303,25 +289,24 @@ echo "<div id ='civlic1'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $pos = strpos($value, '1');
-          if ($pos !== false) {
-              $name = before(',', $value);
-              $display = explode('_', $name);
+          $val = remove($value);
+          $newVal = explode(',', $val);
+          if ($newVal[1] == 1) {
+              $display = explode('_', $newVal[0]);
               $displayN = $display['2'];
               if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
               } else {
-                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
               }
           } else {
-              $name = before(',', $value);
-              if ($name != '') {
-                  $display = explode('_', $name);
+              if ($newVal[0] != '') {
+                  $display = explode('_', $newVal[0]);
                   $displayN = $display['2'];
                   if ($staffPerms['editPlayer'] == '1') {
-                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
                   } else {
-                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
+                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
                   }
               }
           }
@@ -332,8 +317,7 @@ echo "<div id ='civlic1'>";
 echo '</div>';
 echo "<div id ='civlic2'>";
   if ($player->cop_licenses !== '"[]"' && $player->cop_licenses !== '') {
-      $return = stripArray($player->cop_licenses, 0);
-      $return = replace($return);
+      $return = explode('],[', $player->cop_licenses);
 
       echo "<div class='panel panel-info'>
   <div class='panel-heading'>
@@ -342,25 +326,24 @@ echo "<div id ='civlic2'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $pos = strpos($value, '1');
-          if ($pos !== false) {
-              $name = before(',', $value);
-              $display = explode('_', $name);
+          $val = remove($value);
+          $newVal = explode(',', $val);
+          if ($newVal[1] == 1) {
+              $display = explode('_', $newVal[0]);
               $displayN = $display['2'];
               if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
               } else {
-                  echo "<button type='button' id=".$name." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
+                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
               }
           } else {
-              $name = before(',', $value);
-              if ($name != '') {
-                  $display = explode('_', $name);
+              if ($newVal[0] != '') {
+                  $display = explode('_', $newVal[0]);
                   $displayN = $display['2'];
                   if ($staffPerms['editPlayer'] == '1') {
-                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
+                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
                   } else {
-                      echo "<button type='button' id=".$name." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
+                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
                   }
               }
           }
