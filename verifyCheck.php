@@ -84,8 +84,8 @@ function logIt(".'$'.'admin,'.'$'.'log,'.'$'.'dbcon){
 
 function filterTable('.'$'.'dbcon, '.'$'.'sqlget)
 {
-  '.'$'.'sqldata = mysqli_query('.'$'.'dbcon, '.'$'."sqlget) or die ('Connection could not be established');
-  return ".'$'.'sqldata;
+  '.'$'.'sqldata = mysqli_query('.'$'.'dbcon, '.'$'.'sqlget);
+  return '.'$'.'sqldata;
 }
 
 

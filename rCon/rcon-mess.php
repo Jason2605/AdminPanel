@@ -9,7 +9,7 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['globalMessage'] != '1') {
-    header('Location: lvlError.php');
+    header('Location: ../lvlError.php');
 }
 
 require_once '../ArmaRConClass/rcon.php';
@@ -27,5 +27,5 @@ if ($mess == '') {
 
     $mess = $rcon->say_global($mess);
 
-    header('Location: /home.php');
+    header('Location: ../home.php');
 }

@@ -30,25 +30,10 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Battleye</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/styles/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <link href="styles/dashboard.css" rel="stylesheet">
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -71,10 +56,10 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" style="color: #fff">Dashboard</a></li>
-            <li><a href="#" style="color: #fff">Settings</a></li>
-            <li><a href="#" style="color: #fff">Profile</a></li>
-            <li><a href="#" style="color: #fff">Help</a></li>
+            <li><a href="../home.php" style="color: #fff">Dashboard</a></li>
+            <li><a href="../settings.php" style="color: #fff">Settings</a></li>
+            <li><a href="../profile.php" style="color: #fff">Profile</a></li>
+            <li><a href="../help.php" style="color: #fff">Help</a></li>
           </ul>
         </div>
       </div>
@@ -84,16 +69,16 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
       <div class="row">
         <div id="navbarside" class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-				<li><a href="/home.php">Dashboard</a></li>
-				<li><a href="/players.php">Players</a></li>
-				<li><a href="/vehicles.php">Vehicles</a></li>
-				<li><a href="/gangs.php">Gangs</a></li>
-				<li><a href="/houses.php">Houses</a></li>
-				<li><a href="/logs.php">Logs</a></li>
-				<li><a href="/reimbursement.php">Reimbursement Logs</a></li>
-				<li><a href="/staff.php">Staff</a></li>
-				<li><a href="/Steam/steam.php">Steam Accounts</a></li>
-				<li><a href="/logout.php">Log Out</a></li>
+				<li><a href="../home.php">Dashboard</a></li>
+				<li><a href="../players.php">Players</a></li>
+				<li><a href="../vehicles.php">Vehicles</a></li>
+				<li><a href="../gangs.php">Gangs</a></li>
+				<li><a href="../houses.php">Houses</a></li>
+				<li><a href="../logs.php">Logs</a></li>
+				<li><a href="../reimbursement.php">Reimbursement Logs</a></li>
+				<li><a href="../staff.php">Staff</a></li>
+				<li><a href="../Steam/steam.php">Steam Accounts</a></li>
+				<li><a href="../logout.php">Log Out</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -101,7 +86,7 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
 		  <p class="page-header">BattleEye Logs.</p>
 
 		  	<div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="/players.php">
+			<FORM METHOD="LINK" ACTION="../players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 			</FORM>
 			</div><br><br><br>

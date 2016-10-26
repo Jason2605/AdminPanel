@@ -10,7 +10,7 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['ban'] != '1') {
-    header('Location: lvlError.php');
+    header('Location: ../lvlError.php');
 }
 
   require_once '../ArmaRConClass/rcon.php';

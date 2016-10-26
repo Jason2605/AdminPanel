@@ -10,7 +10,7 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['kick'] != '1') {
-    header('Location: lvlError.php');
+    header('Location: ../lvlError.php');
 }
 
 require_once '../ArmaRConClass/rcon.php';
@@ -33,5 +33,5 @@ if ($guid == '') {
 
     $addBan = $rcon->kick_player($guid, $reason);
 
-    header('Location: /players.php');
+    header('Location: ../players.php');
 }
