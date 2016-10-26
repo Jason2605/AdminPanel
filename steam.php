@@ -17,7 +17,7 @@ if ($staffPerms['steamView'] != '1') {
 
 $max = PHP_INT_MAX;
 
-include '../header/header.php';
+include 'header/header.php';
 ?>
 
 
@@ -35,13 +35,13 @@ include '../header/header.php';
     <title>Admin Panel - Steam</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../styles/dashboard.css" rel="stylesheet">
+    <link href="styles/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -61,7 +61,7 @@ include '../header/header.php';
 		  <p class="page-header">Steam menu of the panel, allows you to see steam accounts.</p>
 <?php
 
-include '../verifyPanel.php';
+include 'verifyPanel.php';
 masterconnect();
 
 $sqlget = 'SELECT * FROM players';
@@ -104,7 +104,6 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
         $return = '32 bit PHP, GUID will not work!';
     }
 
-    echo '<form action=logs.php method=post>';
     echo '<tr>';
     echo '<td>'.$row['name'].'</td>';
     echo '<td>'.$row['aliases'].' </td>';
@@ -112,7 +111,6 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
     echo '<td>'.$return.'</td>';
     echo "<td><a href='http://steamcommunity.com/profiles/".$pid."' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";
     echo '</tr>';
-    echo '</form>';
 }
 
 echo '</table></div>';

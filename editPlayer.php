@@ -10,8 +10,9 @@ if (!isset($_SESSION['logged'])) {
 
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
-$uidPlayer = $_SESSION['uidPlayer'];
-$guidPlayer = $_SESSION['guidPlayer'];
+
+$uidPlayer = $_POST['hidden'];
+$guidPlayer = $_POST['guid'];
 
 include 'verifyPanel.php';
 masterconnect();
@@ -82,13 +83,13 @@ function replace($text)
     <title>Admin Panel - <?php echo $username; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/styles/dashboard.css" rel="stylesheet">
+    <link href="styles/dashboard.css" rel="stylesheet">
 
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->

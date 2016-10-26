@@ -43,15 +43,13 @@ function checkTime(i) {
 <meta name="viewport" content="width=device-width">
 <div id="background"></div>
 	<div id = "header">
-		<img class = "logo" src="images/Admin.png" alt="logo" />
-        <img class = "logoE" src="images/jason.png" alt="logoMe" />
-		<!-- <div class ="logoE"><a href="#">By Jason_000</a></div> -->
+        <div class ="logo"><a href="#">Admin<span>Panel</span></a></div>
+		<div class ="logoE"><a href="#">By Jason_000</a></div>
 	</div>
 <center><div id="txt"></div></center>
 <script>startTime();</script>
 <div id = "login">
 <form action="login.php" method="post">
-<div class="logo"></div>
 <div class="login-block">
     <h1>Login</h1>
     <input type="text" value="" placeholder="Username" id="username" name="username"/>

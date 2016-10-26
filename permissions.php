@@ -56,8 +56,8 @@ function replace($text)
     <meta name="author" content="">
 
     <title>Admin Panel - Permissions</title>
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="/styles/dashboard.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <link href="styles/dashboard.css" rel="stylesheet">
 
   </head>
 
@@ -71,7 +71,7 @@ include 'header/header.php';
 		<p class="page-header">Permission menu of the panel, allows you to change individual staff permissions.</p>
 
         <div class="btn-group" role="group" aria-label="...">
-        <FORM METHOD="LINK" ACTION="/staff.php">
+        <FORM METHOD="LINK" ACTION="staff.php">
         <INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
         </FORM>
         </div>

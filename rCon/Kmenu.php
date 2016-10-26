@@ -3,14 +3,14 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header('Location: /index.php');
+    header('Location: ../index.php');
 }
 
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 if ($staffPerms['kick'] != '1') {
-    header('Location: lvlError.php');
+    header('Location: ../lvlError.php');
 }
 
 ?>
@@ -30,15 +30,15 @@ if ($staffPerms['kick'] != '1') {
     <title>Admin Panel - Kick Menu</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
 
-    <link href="/styles/dashboard.css" rel="stylesheet">
+    <link href="../styles/dashboard.css" rel="stylesheet">
   </head>
 
   <body>
 
 <?php
-include '../header/header.php';
+include 'header/header.php';
 ?>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -46,7 +46,7 @@ include '../header/header.php';
 		  <p class="page-header">Kick menu - This allows you to chose to kick the user through the use of RCON or the use of the server command, RCON allows you to give a reason for your kick however is a little more compilcated to use. Server kick however is very simple to use but is unable to give a reason!</p>
 
 			<div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="/players.php">
+			<FORM METHOD="LINK" ACTION="../players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 			</FORM>
 			</div>

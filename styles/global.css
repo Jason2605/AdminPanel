@@ -100,18 +100,33 @@ div#header{
 
 
 .logo {
-    float: left;
-    margin-top: 5px;
-    height: 40px;
-    width: 200px;
+	float: left;
+	margin-top: 4px;
+	margin-left: 10px;
 }
 
 .logoE {
-    float: left;
-    margin-top: 5px;
-    height: 40px;
-    width: 200px;
-	margin-left: calc(100% - 400px);
+	float: left;
+	margin-top: 4px;
+	margin-left: calc(100% - 320px);
+}
+
+.logoE a {
+	font-size: 1.5em;
+	color: #fff;
+}
+
+.logoE a span {
+	font-weight: 300;
+}
+
+.logo a {
+	font-size: 1.6em;
+	color: #fff;
+}
+
+.logo a span {
+	font-weight: 300;
 }
 
 input[type=submit]{

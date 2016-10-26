@@ -10,7 +10,7 @@ $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 if ($staffPerms['notes'] != '1') {
-    header('Location: /lvlError.php');
+    header('Location: lvlError.php');
 }
 
 include 'verifyPanel.php';
@@ -67,7 +67,7 @@ include 'header/header.php';
 		  <p class="page-header">Notes Menu of the panel, allows you to set notes on players. Warning - 1 = no colour, nothing too bad. 2 = orange, small caution. 3 = Red, big caution.</p>
 
 <div class="btn-group" role="group" aria-label="...">
-<FORM METHOD="LINK" ACTION="/players.php">
+<FORM METHOD="LINK" ACTION="players.php">
 <INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 </FORM>
 </div>

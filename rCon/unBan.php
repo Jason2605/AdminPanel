@@ -7,7 +7,7 @@ $user = $_SESSION['user'];
 $adminLev = $_SESSION['adminLevel'];
 
 if (!isset($_SESSION['logged'])) {
-    header('Location: /index.php');
+    header('Location: ../index.php');
 }
 
 $user = $_SESSION['user'];
@@ -15,7 +15,7 @@ $user = $_SESSION['user'];
 $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['unban'] != '1') {
-    header('Location: lvlError.php');
+    header('Location: ../lvlError.php');
 }
 
 include '../verifyPanel.php';
@@ -37,13 +37,13 @@ masterconnect();
     <title>Admin Panel - UnBan</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/styles/dashboard.css" rel="stylesheet">
+    <link href="../styles/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -59,7 +59,7 @@ masterconnect();
   <body>
 
 <?php
-include '../header/header.php';
+include 'header/header.php';
 ?>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -67,7 +67,7 @@ include '../header/header.php';
 		  <p class="page-header">UnBan menu of the panel, allows you to unban RCON banned players.</p>
 
 		  	<div class="btn-group" role="group" aria-label="...">
-			<FORM METHOD="LINK" ACTION="/players.php">
+			<FORM METHOD="LINK" ACTION="../players.php">
 			<INPUT class='btn btn-primary btn-outline' TYPE="submit" VALUE="Back">
 			</FORM>
 			</div>

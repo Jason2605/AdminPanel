@@ -57,6 +57,8 @@ if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
+    if ($search_result == "") {$sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`) LIKE '%".$valuetosearch."%'";
+    $search_result = filterTable($dbcon, $sqlget);} 
 } elseif (isset($_POST['orderBank'])) {
     $sqlget = 'SELECT * FROM players ORDER BY bankacc DESC';
     $search_result = filterTable($dbcon, $sqlget);
@@ -77,15 +79,6 @@ if (isset($_POST['search'])) {
     $search_result = filterTable($dbcon, $sqlget);
 }
 
-if (isset($_POST['edit'])) {
-    $uid = $_POST['hidden'];
-    $guid = $_POST['guid'];
-    $_SESSION['uidPlayer'] = $uid;
-    $_SESSION['guidPlayer'] = $guid;
-
-    $url = '/editPlayer.php';
-    echo '<META HTTP-EQUIV=Refresh CONTENT="0; URL='.$url.'">';
-}
 include 'header/header.php';
 ?>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -275,13 +268,13 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     } else {
         $return = 'GUID can not be used with 32 bit php!';
     }
-
+    $alias = explode ('`',$row['aliases']);
     echo '<form action=players.php method=post>';
     echo '<tr>';
     echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$pid.' </td>';
     echo '<td>'.$row['uid'].'</td>';
     echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$row['aliases'].' </td>';
+    echo '<td>'.$alias[1].' </td>';
     echo '<td>'.$pid.' </td>';
     echo '<td>'.$return.'</td>';
     //inputs
@@ -291,12 +284,17 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=mediclevel value=".$row['mediclevel'].' </td>';
     echo "<td><input class='form-control' type=text style = 'width: 100%;' name=adminlevel value='$row[adminlevel]' .</td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.' </td>';
+    echo '</form>';
+    echo '<form action=editPlayer.php method=post>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=Edit Player".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.' </td>';
     echo '</tr>';
-    echo '</form>';
 }
+
+
 
 echo '</table></div>';
 ?>

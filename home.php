@@ -181,7 +181,7 @@ if (isset($_POST['send'])) {
         $message = 'Admin '.$user.' has sent a global message ('.$send.')';
         logIt($user, $message, $dbcon);
     } else {
-        header('Location: ../lvlError.php');
+        header('Location: lvlError.php');
     }
 }
 
@@ -189,7 +189,7 @@ if (isset($_POST['restart'])) {
     if ($staffPerms['restartServer'] == '1') {
         header('Location: rCon/rcon-restart.php');
     } else {
-        header('Location: ../lvlError.php');
+        header('Location: lvlError.php');
     }
 }
 
@@ -197,7 +197,7 @@ if (isset($_POST['stop'])) {
     if ($staffPerms['stopServer'] == '1') {
         header('Location: rCon/rcon-stop.php');
     } else {
-        header('Location: ../lvlError.php');
+        header('Location: lvlError.php');
     }
 }
 

@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 /* ------- The comments content ------- */
 
 .shoutbox {
@@ -234,7 +236,7 @@ div#rcorners4 {
     margin-bottom: 10px;
     border-radius: 15px 50px;
     background: #fff;
-    padding: 20px;
+    padding: 10px;
     width: auto;
     height: 200px;
 
@@ -348,9 +350,21 @@ body {
   background-color: #428bca;
 }
 
-.navbar-brand span {
-	font-weight: 300;
+.navbar-brand {
+  font-size: 1.5em;
+  color: #fff;
 }
+
+.navbar-brand span {
+  color: #fff;
+  font-weight: 300;
+}
+ 
+.navbar-brand a {
+  margin-left: 5px;
+  color: #fff;
+}
+	
 
 /*
  * Sidebar

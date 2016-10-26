@@ -7,15 +7,16 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	  </button>
-	  <!-- <a class="navbar-brand" href="#" style="color: #fff">Admin<span>Panel</span></a></a> -->
-      <img class = "navbar-brand" src="images/Admin.png" alt="logo" />
+	  
+          <div class="navbar-brand"><a href="#">Admin<span>Panel</span></a></div>
+
 	</div>
 	<div id="navbar" class="navbar-collapse collapse">
 	  <ul class="nav navbar-nav navbar-right">
-		<li><a href="/home.php" style="color: #fff">Dashboard</a></li>
-		<li><a href="/settings.php" style="color: #fff">Settings</a></li>
-		<li><a href="/profile.php" style="color: #fff">Profile</a></li>
-		<li><a href="/help.php" style="color: #fff">Help</a></li>
+		<li><a href="home.php" style="color: #fff">Dashboard</a></li>
+		<li><a href="settings.php" style="color: #fff">Settings</a></li>
+		<li><a href="profile.php" style="color: #fff">Profile</a></li>
+		<li><a href="help.php" style="color: #fff">Help</a></li>
 	  </ul>
 	</div>
   </div>
@@ -25,15 +26,15 @@
   <div class="row">
 	<div id="navbarside" class="col-sm-3 col-md-2 sidebar">
 	  <ul class="nav nav-sidebar">
-			<li><a href="/home.php">Dashboard</a></li>
-			<li><a href="/players.php">Players</a></li>
-			<li><a href="/vehicles.php">Vehicles</a></li>
-			<li><a href="/gangs.php">Gangs</a></li>
-			<li><a href="/houses.php">Houses</a></li>
-			<li><a href="/logs.php?page=1">Logs</a></li>
-			<li><a href="/reimbursement.php">Reimbursement Logs</a></li>
-			<li><a href="/staff.php">Staff</a></li>
-			<li><a href="/Steam/steam.php">Steam Accounts</a></li>
-			<li><a href="/logout.php">Log Out</a></li>
+			<li><a href="home.php">Dashboard</a></li>
+			<li><a href="players.php">Players</a></li>
+			<li><a href="vehicles.php">Vehicles</a></li>
+			<li><a href="gangs.php">Gangs</a></li>
+			<li><a href="houses.php">Houses</a></li>
+			<li><a href="logs.php?page=1">Logs</a></li>
+			<li><a href="reimbursement.php">Reimbursement Logs</a></li>
+			<li><a href="staff.php">Staff</a></li>
+			<li><a href="steam.php">Steam Accounts</a></li>
+			<li><a href="logout.php">Log Out</a></li>
 	  </ul>
 	</div>

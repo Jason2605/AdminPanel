@@ -10,7 +10,7 @@ $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
 if ($staffPerms['logs'] != '1') {
-    header('Location: /lvlError.php');
+    header('Location: lvlError.php');
 }
 ?>
 
