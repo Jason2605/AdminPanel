@@ -276,7 +276,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=Edit Player".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.' </td>';
-    echo '<form>';
+    echo '</form>';
     echo '</tr>';
 }
 
