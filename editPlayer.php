@@ -222,7 +222,7 @@ echo "<div id ='civlic'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          license($value);
+          license($value, $staffPerms);
       }
       echo '  </div>
 </div>';
@@ -240,7 +240,7 @@ echo "<div id ='civlic1'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          license($value);
+          license($value, $staffPerms);
       }
       echo '  </div>
 </div>';
@@ -257,7 +257,7 @@ echo "<div id ='civlic2'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          license($value);
+          license($value, $staffPerms);
       }
       echo '  </div>
 </div>';
