@@ -5,12 +5,13 @@ function playerID($player)
     if ($player->playerid != '' || $player->pid != '') {
         if ($player->playerid == '') {
             $pid = $player->pid;
-        } else {
-            $pid = $player->playerid;
-        }
-    }
 
-    return $pid;
+            return $pid;
+        }
+        $pid = $player->playerid;
+
+        return $pid;
+    }
 }
 
 function remove($value)
@@ -64,9 +65,10 @@ function guid($max, $pid)
         }
 
         $return = md5('BE'.$temp);
-    } else {
-        $return = 'GUID can not be used with 32 bit php!';
+
+        return $return;
     }
+    $return = 'GUID can not be used with 32 bit php!';
 
     return $return;
 }
