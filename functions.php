@@ -28,7 +28,7 @@ function replace($string, $text)
     return str_replace($string, '', $text);
 }
 
-function license($value)
+function license($value, $staffPerms)
 {
     $val = remove($value);
     $newVal = explode(',', $val);
