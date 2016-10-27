@@ -30,9 +30,9 @@ preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, 
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Battleye</title>
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="styles/dashboard.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="../styles/dashboard.css" rel="stylesheet">
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
   </head>
 
