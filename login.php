@@ -37,7 +37,7 @@ if ($username && $password) {
         $sqldata = mysqli_query($dbconL, $sql) or die('Connection could not be established - LOG');
 
         if (mysqli_num_rows($sqldata) == 0) {
-            $sqli = "INSERT INTO access (address) VALUES ('$_SERVER[REMOTE_ADDR]')";
+            $sqli = "INSERT INTO access (address,failed) VALUES ('$_SERVER[REMOTE_ADDR]',0)";
             $sqlinput = mysqli_query($dbconL, $sqli) or die('Connection could not be established - LOG');
 
             $sql = "SELECT * FROM access WHERE address = '$_SERVER[REMOTE_ADDR]'";
