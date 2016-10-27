@@ -66,6 +66,8 @@ if (!$fail) {
 
     $written = '<?php
 
+    include "functions.php";
+
     if (!isset($_SESSION["logged"])) {
     header("Location: index.php");
     }

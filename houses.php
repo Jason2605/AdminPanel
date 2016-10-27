@@ -44,9 +44,9 @@ include 'header/header.php';
 ?>
 
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 style = "margin-top: 70px">House Menu</h1>
-		  <p class="page-header">House menu of the panel, allows you to change house database values.</p>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h1 style = "margin-top: 70px">House Menu</h1>
+<p class="page-header">House menu of the panel, allows you to change house database values.</p>
 
 <?php
 $sqlget = 'SELECT * FROM houses';

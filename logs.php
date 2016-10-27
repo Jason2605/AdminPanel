@@ -57,9 +57,9 @@ if ($page1 == '' || $page1 == '1') {
 
 ?>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 style = "margin-top: 70px">Log Menu</h1>
-		  <p class="page-header">Log menu of the panel, allows you to see the logs.</p>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h1 style = "margin-top: 70px">Log Menu</h1>
+<p class="page-header">Log menu of the panel, allows you to see the logs.</p>
 
 <?php
 $resultQ = 'SELECT * FROM log ORDER BY logid DESC';

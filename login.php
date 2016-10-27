@@ -8,20 +8,6 @@ if (isset($_SESSION['logged'])) {
     header('home.php');
 }
 
-function remove($value)
-{
-    $value = replace('`', $value);
-    $value = replace('[[', $value);
-    $value = replace(']]', $value);
-
-    return $value;
-}
-
-function replace($string, $text)
-{
-    return str_replace($string, '', $text);
-}
-
 include 'verifyPanel.php';
 loginconnect();
 

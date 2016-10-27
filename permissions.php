@@ -17,19 +17,6 @@ $sql = "SELECT * FROM `users` WHERE `ID` = $_POST[hiddenId]";
 $result = mysqli_query($dbcon, $sql);
 $user = $result->fetch_object();
 
-function remove($value)
-{
-    $value = replace('`', $value);
-    $value = replace('[[', $value);
-    $value = replace(']]', $value);
-
-    return $value;
-}
-
-function replace($string, $text)
-{
-    return str_replace($string, '', $text);
-}
 ?>
 
 
