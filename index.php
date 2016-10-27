@@ -8,7 +8,7 @@ if (!file_exists('verifyPanel.php')) {
 
 <html>
 <head>
-<title>Admin Panel - Home</title>
+<title>Admin Panel - Login</title>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
 <link rel="stylesheet" type ="text/css" href="styles/dashboard.css" />

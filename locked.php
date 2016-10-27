@@ -11,7 +11,7 @@ session_destroy();
 
 <html>
 <head>
-<title>Admin Panel - Home</title>
+<title>Admin Panel - Locked</title>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
 <link rel="stylesheet" type ="text/css" href="styles/dashboard.css" />
