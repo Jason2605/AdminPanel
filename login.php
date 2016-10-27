@@ -1,7 +1,12 @@
 <?php
+
 session_set_cookie_params(1209600);
 session_start();
 ob_start();
+
+if (isset($_SESSION['logged'])) {
+    header('home.php');
+}
 
 function remove($value)
 {
@@ -15,16 +20,6 @@ function remove($value)
 function replace($string, $text)
 {
     return str_replace($string, '', $text);
-}
-?>
-
-<html>
-<script src="scripts/na.js"></script>
-</html>
-
-<?php
-if (isset($_COOKIE['logged'])) {
-    header('home.php');
 }
 
 include 'verifyPanel.php';
@@ -51,7 +46,27 @@ $password = mysqli_real_escape_string($dbconL, $_POST['password']);
 $encPass = sha1($password);
 
 if ($username && $password) {
-    $sqlget = "SELECT * FROM users WHERE username='$username'";
+    if (!isset($_SESSION['failedLogin'])) {
+        $sql = "SELECT * FROM access WHERE address = '$_SERVER[REMOTE_ADDR]'";
+        $sqldata = mysqli_query($dbconL, $sql) or die('Connection could not be established - LOG');
+
+        if (mysqli_num_rows($sqldata) == 0) {
+            $sqli = "INSERT INTO access (address) VALUES ('$_SERVER[REMOTE_ADDR]')";
+            $sqlinput = mysqli_query($dbconL, $sqli) or die('Connection could not be established - LOG');
+
+            $sql = "SELECT * FROM access WHERE address = '$_SERVER[REMOTE_ADDR]'";
+            $sqldata = mysqli_query($dbconL, $sql) or die('Connection could not be established - LOG');
+        }
+        $user = $sqldata->fetch_object();
+
+        $_SESSION['failedLogin'] = $user->failed;
+
+        if ($user->failed == 5) {
+            echo 'something went wrong';
+            header('Location: locked.php');
+        }
+    }
+    $sqlget = "SELECT * FROM users WHERE username ='$username' ";
     $res = mysqli_query($dbconL, $sqlget);
 
     $numrows = mysqli_num_rows($res);
@@ -60,7 +75,6 @@ if ($username && $password) {
         while ($row = mysqli_fetch_assoc($res)) {
             $dbusername = $row['username'];
             $dbpassword = $row['password'];
-            //$adminLevel = $row['level'];
 
             if ($row['permissions'] !== '"[]"' && $row['permissions'] !== '') {
                 $return = explode('],[', $row['permissions']);
@@ -76,35 +90,55 @@ if ($username && $password) {
                 }
             }
         }
+
+        //block
         if ($username == $dbusername && $encPass == $dbpassword) {
             if (isset($_COOKIE['conecFail'])):
-      setcookie('conecFail', '', time() - 7000000, '/');
+                setcookie('conecFail', '', time() - 7000000, '/');
             endif;
 
+            setcookie('fail', '0');
+
             if (isset($_COOKIE['fail'])):
-      setcookie('fail', '', time() - 7000000, '/');
+                setcookie('fail', '', time() - 7000000, '/');
             endif;
 
             $_SESSION = array();
             $_SESSION['logged'] = 1;
             $_SESSION['user'] = $dbusername;
             $_SESSION['perms'] = $perms;
+            $_SESSION['failedLogin'] = 0;
 
-            header('Location: home.php');
+            $sqlget = "UPDATE access SET failed = 0 WHERE address = '$_SERVER[REMOTE_ADDR]'";
+            $res = mysqli_query($dbconL, $sqlget);
+
+            if ($_SESSION['failedLogin'] >= 5) {
+                header('Location: locked.php');
+            } else {
+                header('Location: home.php');
+            }
         } else {
             echo 'Your user/password is incorrect!';
             setcookie('fail', '1');
-            echo "<script type='text/javascript'>alert('Login details incorrect!');</script>";
-            header('Location: index.php');
-        }
+            $_SESSION['failedLogin'] = $_SESSION['failedLogin'] + 1;
+            if ($_SESSION['failedLogin'] >= 5) {
+                header('Location: locked.php');
+            } else {
+                header('Location: index.php');
+            }
+        }//block
     } else {
         echo 'That user does not exist!';
         setcookie('fail', '1');
-        header('Location: index.php');
+        $_SESSION['failedLogin'] = $_SESSION['failedLogin'] + 1;
+        if ($_SESSION['failedLogin'] >= 5) {
+            header('Location: locked.php');
+        } else {
+            header('Location: index.php');
+        }
     }
 } else {
     echo 'please enter username/password!';
     setcookie('fail', '1');
     header('Location: index.php');
 }
-?>

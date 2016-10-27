@@ -1,9 +1,12 @@
 <?php
 session_start();
+include 'verifyPanel.php';
+masterconnect();
 
-if (!file_exists('verifyPanel.php')) {
-    header('Location: create.php');
-}
+$sqlget = "UPDATE access SET failed = 5 WHERE address = '$_SERVER[REMOTE_ADDR]'";
+$res = mysqli_query($dbcon, $sqlget);
+
+session_destroy();
 ?>
 
 <html>
@@ -12,6 +15,7 @@ if (!file_exists('verifyPanel.php')) {
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
 <link rel="stylesheet" type ="text/css" href="styles/dashboard.css" />
+<link href="dist/css/bootstrap.css" rel="stylesheet">
 
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=0" />
 <script src="scripts/jquery-1.12.3.min.js"></script>
@@ -34,10 +38,6 @@ function checkTime(i) {
     return i;
 }
 </script>
-
-
-
-
 </head>
 <body>
 <meta name="viewport" content="width=device-width">
@@ -46,28 +46,9 @@ function checkTime(i) {
         <div class ="logo"><a href="#">Admin<span>Panel</span></a></div>
 		<div class ="logoE"><a href="#">By Jason_000</a></div>
 	</div>
-<center><div id="txt"></div></center>
+<center><div id="txt"></div>
 <script>startTime();</script>
-<div id = "login">
-<form action="login.php" method="post">
-<div class="login-block">
-    <h1>Login</h1>
-    <input type="text" value="" placeholder="Username" id="username" name="username"/>
-    <input type="password" value="" placeholder="Password" id="password" name="password"/>
-<?php
-
-if (isset($_COOKIE['conecFail']) && $_COOKIE['conecFail'] == '1') {
-    echo'<div style="color:red"><center>Database connection failed!</center></div>';
-}
-
-if (isset($_COOKIE['fail']) && $_COOKIE['fail'] == '1') {
-    echo'<div style="color:red"><center>Username or password incorrect.</center></div>';
-}
-?>
-    <button>Submit</button>
-</div>
-
-</form>
+<div class="alert alert-danger" role="alert">Your network has been suspended due to too many invalid login attempts, please see the administrator of the website to be unblocked.</div></center>
 </div>
 
     <script src="scripts/jquery.backstretch.js"></script>
