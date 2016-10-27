@@ -24,16 +24,9 @@ $user = $_SESSION['user'];
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Vehicles</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
-
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
   </head>

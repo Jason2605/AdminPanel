@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged'])) {
 }
 
 $staffPerms = $_SESSION['perms'];
-$perms = '[[`notes`,0],[`cop`,0],[`medic`,0],[`money`,0],[`IG-Admin`,0],[`editPlayer`,0],[`housing`,0],[`gangs`,0],[`vehicles`,0],[`logs`,0],[`steamView`,0],[`ban`,0],[`kick`,0],[`unban`,0],[`globalMessage`,0],[`restartServer`,0],[`stopServer`,0],[`superUser`,0]]';
+$perms = '"[[`notes`,0],[`cop`,0],[`medic`,0],[`money`,0],[`IG-Admin`,0],[`editPlayer`,0],[`housing`,0],[`gangs`,0],[`vehicles`,0],[`logs`,0],[`steamView`,0],[`ban`,0],[`kick`,0],[`unban`,0],[`globalMessage`,0],[`restartServer`,0],[`stopServer`,0],[`superUser`,0]]"';
 
 if ($staffPerms['superUser'] != '1') {
     echo "<script src='scripts/na.js'></script>";
@@ -31,25 +31,10 @@ loginconnect();
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Staff</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>

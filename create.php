@@ -5,7 +5,7 @@ ob_start();
 
 <html>
 <head>
-<title>Admin Panel - Home</title>
+<title>Admin Panel - Create</title>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=0" />

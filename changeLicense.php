@@ -26,13 +26,7 @@ $player = $result->fetch_object();
 $licences = $player->$col;
 $num = strpos($licences, $change['2']) + strlen($change['2']) + 2;
 
-if ($player->playerid != '' || $player->pid != '') {
-    if ($player->playerid == '') {
-        $pid = $player->pid;
-    } else {
-        $pid = $player->playerid;
-    }
-}
+$pid = playerID($player);
 
 if ($licences[$num] == 0) {
     $licences[$num] = 1;

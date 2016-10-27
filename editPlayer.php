@@ -23,13 +23,7 @@ $player = $result->fetch_object();
 
 $username = $player->name;
 
-if ($player->playerid != '' || $player->pid != '') {
-    if ($player->playerid == '') {
-        $pid = $player->pid;
-    } else {
-        $pid = $player->playerid;
-    }
-}
+$pid = playerID($player);
 
 if ($player->donorlevel != '' || $player->donatorlvl != '') {
     if ($player->donorlevel == '') {
@@ -40,20 +34,6 @@ if ($player->donorlevel != '' || $player->donatorlvl != '') {
         $version = '4.4';
     }
 }
-
-function remove($value)
-{
-    $value = replace('`', $value);
-    $value = replace('"[[', $value);
-    $value = replace(']]"', $value);
-
-    return $value;
-}
-
-function replace($string, $text)
-{
-    return str_replace($string, '', $text);
-}
 ?>
 
 
@@ -63,25 +43,14 @@ function replace($string, $text)
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - <?php echo $username; ?></title>
-
-    <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
-
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
   </head>
@@ -253,25 +222,7 @@ echo "<div id ='civlic'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $val = remove($value);
-          $newVal = explode(',', $val);
-          if ($newVal[1] == 1) {
-              $display = explode('_', $newVal[0]);
-              $displayN = $display['2'];
-              if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
-              } else {
-                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
-              }
-          } else {
-              $display = explode('_', $newVal[0]);
-              $displayN = $display['2'];
-              if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
-              } else {
-                  echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
-              }
-          }
+          license($value);
       }
       echo '  </div>
 </div>';
@@ -289,27 +240,7 @@ echo "<div id ='civlic1'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $val = remove($value);
-          $newVal = explode(',', $val);
-          if ($newVal[1] == 1) {
-              $display = explode('_', $newVal[0]);
-              $displayN = $display['2'];
-              if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
-              } else {
-                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
-              }
-          } else {
-              if ($newVal[0] != '') {
-                  $display = explode('_', $newVal[0]);
-                  $displayN = $display['2'];
-                  if ($staffPerms['editPlayer'] == '1') {
-                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
-                  } else {
-                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
-                  }
-              }
-          }
+          license($value);
       }
       echo '  </div>
 </div>';
@@ -326,27 +257,7 @@ echo "<div id ='civlic2'>";
   <div class='panel-body'>";
 
       foreach ($return as $value) {
-          $val = remove($value);
-          $newVal = explode(',', $val);
-          if ($newVal[1] == 1) {
-              $display = explode('_', $newVal[0]);
-              $displayN = $display['2'];
-              if ($staffPerms['editPlayer'] == '1') {
-                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>".$displayN.'</button> ';
-              } else {
-                  echo "<button type='button' id=".$newVal[0]." class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>".$displayN.'</button> ';
-              }
-          } else {
-              if ($newVal[0] != '') {
-                  $display = explode('_', $newVal[0]);
-                  $displayN = $display['2'];
-                  if ($staffPerms['editPlayer'] == '1') {
-                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>".$displayN.'</button> ';
-                  } else {
-                      echo "<button type='button' id=".$newVal[0]." class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >".$displayN.'</button> ';
-                  }
-              }
-          }
+          license($value);
       }
       echo '  </div>
 </div>';

@@ -14,50 +14,29 @@ if ($staffPerms['superUser'] != '1') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Staff</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 	<style type="text/css">
 	.deletePanel {
 	margin-left: 150px;
 	margin-top: -40px;
 }
 </style>
-
-
-
-  </head>
-
-  <body>
+</head>
+<body>
 
 <?php
 include 'header/header.php';
@@ -156,8 +135,6 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo '<td>'."<input class='form-control' type=text name=username value=".$row['username'].' </td>';
     echo '<td>'."<input class='form-control' type=text name=password placeholder='New password' </td>";
-    //echo '<td>'."<input class='form-control' type=text name=adminlevel value=".$row['level'].' </td>';
-
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete".' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['ID'].' </td>';

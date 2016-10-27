@@ -239,20 +239,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
             $pid = $row['playerid'];
         }
     }
-
-    if ($max != 2147483647) {
-        $steamID = $pid;
-        $temp = '';
-
-        for ($i = 0; $i < 8; ++$i) {
-            $temp .= chr($steamID & 0xFF);
-            $steamID >>= 8;
-        }
-
-        $return = md5('BE'.$temp);
-    } else {
-        $return = 'GUID can not be used with 32 bit php!';
-    }
+    $return = guid($max, $pid);
     $alias = explode('`', $row['aliases']);
     echo '<form action=players.php method=post>';
     echo '<tr>';

@@ -30,18 +30,9 @@ masterconnect();
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Players</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
   </head>
@@ -62,9 +53,9 @@ if (isset($_POST['search'])) {
 include 'header/header.php';
 ?>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 style = "margin-top: 70px">Notes Menu</h1>
-		  <p class="page-header">Notes Menu of the panel, allows you to set notes on players. Warning - 1 = no colour, nothing too bad. 2 = orange, small caution. 3 = Red, big caution.</p>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<h1 style = "margin-top: 70px">Notes Menu</h1>
+<p class="page-header">Notes Menu of the panel, allows you to set notes on players. Warning - 1 = no colour, nothing too bad. 2 = orange, small caution. 3 = Red, big caution.</p>
 
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="players.php">
@@ -124,8 +115,10 @@ if (isset($_POST['update'])) {
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
+    $pid = playerID($value);
+
     if ($_POST['note'] != $player->notes) {
-        $message = 'Admin '.$user.' has added the note ('.$_POST['note'].') to '.$player->name.'('.$player->playerid.')';
+        $message = 'Admin '.$user.' has added the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
         logIt($user, $message, $dbcon);
     }
     $UpdateN = "INSERT INTO notes (uid, staff_name, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$_POST[note]','$_POST[warn]')";
