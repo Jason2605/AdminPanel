@@ -1,9 +1,13 @@
 <?php
 
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$start = $time;
+$debug = false;
+
+if ($debug) {
+    $time = microtime();
+    $time = explode(' ', $time);
+    $time = $time[1] + $time[0];
+    $start = $time;
+}
 
 $request = $_GET['request'];
 $uid = $_GET['id'];
@@ -40,7 +44,6 @@ switch ($request) {
         }
 
         echo json_encode($all, JSON_PRETTY_PRINT);
-        echo '<br>'.$uid;
         break;
 
     case search:
@@ -150,10 +153,12 @@ switch ($request) {
     default: echo 'rip';
 }
 
-//echo '<br>';
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$finish = $time;
-$total_time = round(($finish - $start), 4);
-//echo 'Page generated in '.$total_time.' seconds.';
+if ($debug) {
+    echo '<br>';
+    $time = microtime();
+    $time = explode(' ', $time);
+    $time = $time[1] + $time[0];
+    $finish = $time;
+    $total_time = round(($finish - $start), 4);
+    echo 'Page generated in '.$total_time.' seconds.';
+}
