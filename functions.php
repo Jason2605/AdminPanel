@@ -72,3 +72,16 @@ function guid($max, $pid)
 
     return $return;
 }
+
+function logIt($admin, $log, $dbcon)
+{
+    $logQ = "INSERT INTO log (user,action,level) VALUES ($admin,$log,1)";
+    mysqli_query($dbcon, $logQ);
+}
+
+function filterTable($dbcon, $sqlget)
+{
+    $sqldata = mysqli_query($dbcon, $sqlget);
+
+    return $sqldata;
+}

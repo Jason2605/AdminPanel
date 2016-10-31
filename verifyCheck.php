@@ -82,20 +82,7 @@ function Rconconnect(){
 	'.'$'."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
 }
 
-function logIt(".'$'.'admin,'.'$'.'log,'.'$'.'dbcon){
-
-        '.'$'."logQ = \"INSERT INTO log (user,action,level) VALUES ('".'$'."admin','".'$'."log',1)\";
-        mysqli_query(".'$'.'dbcon, '.'$'.'logQ);
-}
-
-function filterTable('.'$'.'dbcon, '.'$'.'sqlget)
-{
-  '.'$'.'sqldata = mysqli_query('.'$'.'dbcon, '.'$'.'sqlget);
-  return '.'$'.'sqldata;
-}
-
-
-global '.'$'.'DBHost;
+global ".'$'.'DBHost;
 '.'$'."DBHost = '$host';
 global ".'$'.'DBUser;
 '.'$'."DBUser = '$user';
