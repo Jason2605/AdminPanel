@@ -66,62 +66,49 @@ if (!$fail) {
 
     $written = '<?php
 
-    include "functions.php";
+include "functions.php";
 
-    if (!isset($_SESSION["logged"])) {
-    header("Location: index.php");
-    }
+if (!isset($_SESSION["logged"])) {
+header("Location: index.php");
+}
 
-    function masterconnect(){
+function masterconnect(){
 
-    global '.'$'.'dbcon;
-    '.'$'."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
-    }
+global '.'$'.'dbcon;
+'.'$'."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
+}
 
-    function loginconnect(){
+function loginconnect(){
 
-    global ".'$'.'dbconL;
-    '.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$name');
-    }
+global ".'$'.'dbconL;
+'.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$name');
+}
 
-    function Rconconnect(){
+function Rconconnect(){
 
-    global ".'$'.'rcon;
-    '.'$'."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
-    }
+global ".'$'.'rcon;
+'.'$'."rcon = new \Nizarii\ArmaRConClass\ARC('$RHost', $RPort, '$RPass');
+}
 
-    function logIt(".'$'.'admin,'.'$'.'log,'.'$'.'dbcon){
+global ".'$'.'DBHost;
+'.'$'."DBHost = '$host';
+global ".'$'.'DBUser;
+'.'$'."DBUser = '$user';
+global ".'$'.'DBPass;
+'.'$'."DBPass = '$pass';
+global ".'$'.'DBName;
+'.'$'."DBName = '$name';
 
-    '.'$'."logQ = \"INSERT INTO log (user,action,level) VALUES ('".'$'."admin','".'$'."log',1)\";
-    mysqli_query(".'$'.'dbcon, '.'$'.'logQ);
-    }
-
-    function filterTable('.'$'.'dbcon, '.'$'.'sqlget)
-    {
-    '.'$'.'sqldata = mysqli_query('.'$'.'dbcon, '.'$'.'sqlget);
-    return '.'$'.'sqldata;
-    }
-
-
-    global '.'$'.'DBHost;
-    '.'$'."DBHost = '$host';
-    global ".'$'.'DBUser;
-    '.'$'."DBUser = '$user';
-    global ".'$'.'DBPass;
-    '.'$'."DBPass = '$pass';
-    global ".'$'.'DBName;
-    '.'$'."DBName = '$name';
-
-    global ".'$'.'RconHost;
-    '.'$'."RconHost = '$RHost';
-    global ".'$'.'RconPort;
-    '.'$'."RconPort = $RPort;
-    global ".'$'.'RconPass;
-    '.'$'."RconPass = '$RPass';
+global ".'$'.'RconHost;
+'.'$'."RconHost = '$RHost';
+global ".'$'.'RconPort;
+'.'$'."RconPort = $RPort;
+global ".'$'.'RconPass;
+'.'$'."RconPass = '$RPass';
 
 
-    ?>
-    ";
+?>
+";
 
     fwrite($ourFileHandle, $written);
     fclose($ourFileHandle);
