@@ -72,6 +72,8 @@ include 'header/header.php';
 	   	  </div>
 		  <div class="btn-group" role="group" aria-label="...">
 		  <input class = 'btn btn-primary btn-outline' type='submit' name='give' value='Give All Civ Licenses'>
+          <input type=hidden name=hidden value= <?php echo $uidPlayer; ?> >
+          <input type=hidden name=guid value= <?php echo $guidPlayer; ?> >
 		  </div></form> <br>
 
 <div class='panel panel-info'>
@@ -115,7 +117,7 @@ echo "<div class='panel panel-info'>
 <?php
 
 if (isset($_POST['donUpdate'])) {
-    $sql = "SELECT * FROM `players` WHERE `uid` = $uidPlayer";
+    $sql = "SELECT * FROM `players` WHERE `uid` = '$uidPlayer'";
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
@@ -148,7 +150,7 @@ if (isset($_POST['donUpdate'])) {
     }
 }
 
-$sqlget = "SELECT * FROM players WHERE uid=$uidPlayer;";
+$sqlget = "SELECT * FROM players WHERE uid='$uidPlayer';";
 $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
@@ -157,6 +159,8 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=".$don.' </td>';
     echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=blacklist value=".$row['blacklist'].' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$uidPlayer.' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$guidPlayer.' </td>';
     echo '</form>';
 
     echo '</tr>';
@@ -280,6 +284,7 @@ if (isset($_POST['remove'])) {
     }
 }
 if (isset($_POST['give'])) {
+    $uidPlayer = $_POST['hidden'];
     if ($staffPerms['editPlayer'] == '1') {
         $licReset = str_replace('0', '1', $player->civ_licenses);
         $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
