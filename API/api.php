@@ -1,13 +1,9 @@
 <?php
 
-$debug = false;
-
-if ($debug) {
-    $time = microtime();
-    $time = explode(' ', $time);
-    $time = $time[1] + $time[0];
-    $start = $time;
-}
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$start = $time;
 
 $request = $_GET['request'];
 $uid = $_GET['id'];
@@ -20,7 +16,7 @@ include 'apiFunctions.php';
 
 switch ($request) {
 
-    case all:
+    case all: {
         masterconnect();
         $allArray = allPlayerFunctions($dbcon);
         $all = [];
@@ -44,9 +40,11 @@ switch ($request) {
         }
 
         echo json_encode($all, JSON_PRETTY_PRINT);
+        echo '<br>'.$uid;
         break;
+    }
 
-    case search:
+    case search: {
         masterconnect();
         $allArray = searchPlayer($dbcon, $uid);
         if ($allArray != 'NoID') {
@@ -65,11 +63,13 @@ switch ($request) {
                 $all[player][$i][arrested] = $row['arrested'];
                 $all[player][$i][blacklist] = $row['blacklist'];
             }
+
             echo json_encode($all, JSON_PRETTY_PRINT);
         }
         break;
+    }
 
-    case money:
+    case money: {
         masterconnect();
         $money = 0;
         $sqldata = searchMoney($dbcon);
@@ -79,14 +79,16 @@ switch ($request) {
         }
         echo $money;
         break;
+    }
 
-    case players:
+    case players: {
         masterconnect();
         $count = countPlayers($dbcon);
         echo $count;
         break;
+    }
 
-    case wanted:
+    case wanted: {
         masterconnect();
         $sqldata = wantedList($dbcon);
         $wanted = [];
@@ -98,42 +100,48 @@ switch ($request) {
         }
         echo json_encode($wanted, JSON_PRETTY_PRINT);
         break;
+    }
 
-    case vehicles:
+    case vehicles: {
         masterconnect();
         $count = countVehicles($dbcon);
         echo $count;
         break;
+    }
 
-    case coplevel:
+    case coplevel: {
         masterconnect();
         $copArray = searchLevel($dbcon, 'coplevel');
         $player = returnLevel($copArray, 'coplevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
+    }
 
-    case mediclevel:
+    case mediclevel: {
         masterconnect();
         $medicArray = searchLevel($dbcon, 'mediclevel');
         $player = returnLevel($medicArray, 'mediclevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
+    }
 
-    case donorlevel:
+    case donorlevel: {
         masterconnect();
         $donorArray = searchLevel($dbcon, 'donorlevel');
         $player = returnLevel($donorArray, 'donorlevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
+    }
 
-    case adminlevel:
+    case adminlevel: {
         masterconnect();
         $adminArray = searchLevel($dbcon, 'adminlevel');
         $player = returnLevel($adminArray, 'adminlevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
+    }
 
-    case gangs:
+    case gangs: {
         masterconnect();
         $gangArray = searchGangs($dbcon);
         $i = 0;
@@ -148,15 +156,14 @@ switch ($request) {
         }
         echo json_encode($gangs, JSON_PRETTY_PRINT);
         break;
+    }
 
-    default: echo 'rip';
+    default: {echo 'rip'; }
 }
-if ($debug) {
-    echo '<br>';
-    $time = microtime();
-    $time = explode(' ', $time);
-    $time = $time[1] + $time[0];
-    $finish = $time;
-    $total_time = round(($finish - $start), 4);
-    echo 'Page generated in '.$total_time.' seconds.';
-}
+//echo '<br>';
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$finish = $time;
+$total_time = round(($finish - $start), 4);
+//echo 'Page generated in '.$total_time.' seconds.';
