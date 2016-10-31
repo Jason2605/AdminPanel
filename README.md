@@ -4,6 +4,9 @@
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/quality-score.png?b=master" alt="Build Status">
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/build.png?b=master" alt="Build Status">
 <img src="https://codeclimate.com/github/Jason2605/AdminPanel/badges/gpa.svg" />
+       <a href="https://discord.gg/kZCTRPk">
+        <img src="https://img.shields.io/badge/Discord-Join%20chat%20→-738bd7.svg" alt="Join the chat at https://discord.gg/kZCTRPk">
+       </a>
 </p>
 
 ##AdminPanel Info
