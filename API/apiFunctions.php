@@ -3,7 +3,7 @@
 function searchMoney($dbcon)
 {
     $sqlget = 'SELECT cash,bankacc FROM players';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
 
     return $sqldata;
 }
@@ -11,7 +11,7 @@ function searchMoney($dbcon)
 function wantedList($dbcon)
 {
     $sqlget = 'SELECT wantedID,wantedName,wantedCrimes,wantedBounty FROM wanted';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
 
     return $sqldata;
 }
@@ -19,7 +19,7 @@ function wantedList($dbcon)
 function searchGangs($dbcon)
 {
     $sqlget = 'SELECT owner,name,members,maxmembers FROM gangs';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
 
     return $sqldata;
 }
@@ -27,7 +27,7 @@ function searchGangs($dbcon)
 function countPlayers($dbcon)
 {
     $sqlget = 'SELECT uid FROM players';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
     $count = mysqli_num_rows($sqldata);
 
     return $count;
@@ -36,7 +36,7 @@ function countPlayers($dbcon)
 function countVehicles($dbcon)
 {
     $sqlget = 'SELECT id FROM vehicles';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
     $count = mysqli_num_rows($sqldata);
 
     return $count;
@@ -58,7 +58,7 @@ function returnLevel($array, $search)
 function searchLevel($dbcon, $value)
 {
     $sqlget = 'SELECT name,pid,'.$value.' FROM players ORDER BY '.$value.' DESC';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
 
     return $sqldata;
 }
@@ -66,7 +66,7 @@ function searchLevel($dbcon, $value)
 function allPlayerFunctions($dbcon)
 {
     $sqlget = 'SELECT name,pid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
 
     return $sqldata;
 }
@@ -75,7 +75,7 @@ function searchPlayer($dbcon, $uid)
 {
     if ($uid != '') {
         $sqlget = "SELECT name,pid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players WHERE pid = '$uid'";
-        $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+        $sqldata = mysqli_query($dbcon, $sqlget);
 
         return $sqldata;
     }
