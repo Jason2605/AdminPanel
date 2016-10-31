@@ -60,10 +60,6 @@ if (!file_exists('verifyPanel.php')) {
 
 include "functions.php";
 
-if (!isset($_SESSION["logged"])) {
-    header("Location: index.php");
-}
-
 function masterconnect(){
 
 	global '.'$'.'dbcon;
