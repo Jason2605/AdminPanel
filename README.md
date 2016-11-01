@@ -14,20 +14,6 @@ AdminPanel was a project started after owning a community and my admins not know
 
 The panel also has access to Rcon, meaning your server can be maintained and run without the need to be in-game or even your computer!
 
-##PRE 2.5.0 UPDATE
-<p align="center">
-
-The panel by default comes with 8 levels 
-1: View Only. 2: View and Add Notes. 3: View and Kick Players. 
-4: View and Ban Players. 5: Edit Cop level and Blacklist status. 
-6: Edit Cop/Medic level and Blacklist status. 
-7: Edit all values apart from staff and settings. 
-8: Global.
-</p>
-##POST 2.5.0 UPDATE
-<p align="center">
-All staff users can now have individual permissions set on them.
-</p>
 ###Donate
 
 Donations are much appreciated! 
