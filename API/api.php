@@ -15,7 +15,7 @@ $len = strlen($uid);
 if ($len != 17) {
     $uid = '';
 }
-include 'verifyPanel.php';
+include '../verifyPanel.php';
 include 'apiFunctions.php';
 
 switch ($request) {
