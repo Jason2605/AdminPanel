@@ -45,4 +45,4 @@ $command = '#kick '.$uid;
 echo $command;
 $kick = $rcon->command($command);
 
-header('Location: /players.php');
+header('Location: ../players.php');
