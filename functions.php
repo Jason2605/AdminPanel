@@ -75,7 +75,7 @@ function guid($max, $pid)
 
 function logIt($admin, $log, $dbcon)
 {
-    $logQ = "INSERT INTO log (user,action,level) VALUES ($admin,$log,1)";
+    $logQ = "INSERT INTO log (user,action,level) VALUES ('$admin','$log',1)";
     mysqli_query($dbcon, $logQ);
 }
 
