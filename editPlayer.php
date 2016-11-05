@@ -21,7 +21,7 @@ $sql = "SELECT * FROM `players` WHERE uid = '$uidPlayer'";
 $result = mysqli_query($dbcon, $sql);
 $player = $result->fetch_object();
 
-$username = $player->name;
+$username = utf8_encode($player->name);
 
 $pid = playerID($player);
 
@@ -123,12 +123,12 @@ if (isset($_POST['donUpdate'])) {
 
     if ($staffPerms['editPlayer'] == '1') {
         if ($_POST['donatorlvl'] != $don) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
             logIt($user, $message, $dbcon);
         }
 
         if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
             logIt($user, $message, $dbcon);
         }
         if ($version == '4.0') {
@@ -139,12 +139,12 @@ if (isset($_POST['donUpdate'])) {
         mysqli_query($dbcon, $UpdateQ);
     } else {
         if ($_POST['donatorlvl'] != $don) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
             logIt($user, $message, $dbcon);
         }
 
         if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
             logIt($user, $message, $dbcon);
         }
     }
@@ -279,7 +279,7 @@ if (isset($_POST['remove'])) {
         $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
         $result = mysqli_query($dbcon, $sql);
 
-        $message = 'Admin '.$user.' has removed all licenses from '.$player->name.'('.$pid.')';
+        $message = 'Admin '.$user.' has removed all licenses from '.utf8_encode($player->name).'('.$pid.')';
         logIt($user, $message, $dbcon);
     }
 }
@@ -290,7 +290,7 @@ if (isset($_POST['give'])) {
         $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
         $result = mysqli_query($dbcon, $sql);
 
-        $message = 'Admin '.$user.' has added all licenses to '.$player->name.'('.$pid.')';
+        $message = 'Admin '.$user.' has added all licenses to '.utf8_encode($player->name).'('.$pid.')';
         logIt($user, $message, $dbcon);
     }
 }

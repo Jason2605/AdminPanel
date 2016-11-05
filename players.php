@@ -151,44 +151,44 @@ if (isset($_POST['update'])) {
 
     if ($staffPerms['money'] == '1') {
         if ($_POST['csh'] != $player->cash) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
             logIt($user, $message, $dbcon);
 
             $cash = $_POST['csh'];
         }
 
         if ($_POST['bankacc'] != $player->bankacc) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
             logIt($user, $message, $dbcon);
 
             $bank = $_POST['bankacc'];
         }
     } else {
         if ($_POST['csh'] != $player->cash) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' cash from '.$player->cash.' to '.$_POST['csh'];
             logIt($user, $message, $dbcon);
 
             $cash = $player->cash;
         }
 
         if ($_POST['bankacc'] != $player->bankacc) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' bank from '.$player->bankacc.' to '.$_POST['bankacc'];
             logIt($user, $message, $dbcon);
 
-            $bank = $player->bank;
+            $bank = $player->bankacc;
         }
     }
 
     if ($staffPerms['cop'] == '1') {
         if ($_POST['coplevel'] != $player->coplevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
             logIt($user, $message, $dbcon);
 
             $cop = $_POST['coplevel'];
         }
     } else {
         if ($_POST['coplevel'] != $player->coplevel) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' cop level from '.$player->coplevel.' to '.$_POST['coplevel'];
             logIt($user, $message, $dbcon);
 
             $cop = $player->coplevel;
@@ -197,14 +197,14 @@ if (isset($_POST['update'])) {
 
     if ($staffPerms['medic'] == '1') {
         if ($_POST['mediclevel'] != $player->mediclevel) {
-            $message = 'Admin '.$user.' has changed '.$player->name.'('.$pid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
             logIt($user, $message, $dbcon);
 
             $medic = $_POST['mediclevel'];
         }
     } else {
         if ($_POST['mediclevel'] != $player->mediclevel) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' medic level from '.$player->mediclevel.' to '.$_POST['mediclevel'];
             logIt($user, $message, $dbcon);
 
             $medic = $player->mediclevel;
@@ -213,14 +213,14 @@ if (isset($_POST['update'])) {
 
     if ($staffPerms['IG-Admin'] == '1') {
         if ($_POST['adminlevel'] != $player->adminlevel) {
-            $message = 'Admin '.$user.' changed '.$player->name.'('.$pid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
+            $message = 'Admin '.$user.' changed '.utf8_encode($player->name).'('.$pid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
             logIt($user, $message, $dbcon);
 
             $admin = $_POST['adminlevel'];
         }
     } else {
         if ($_POST['adminlevel'] != $player->adminlevel) {
-            $message = 'Admin '.$user.' tried to change '.$player->name.'('.$pid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' admin level from '.$player->adminlevel.' to '.$_POST['adminlevel'];
             logIt($user, $message, $dbcon);
 
             $admin = $player->adminlevel;
@@ -245,8 +245,8 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$pid.' </td>';
     echo '<td>'.$row['uid'].'</td>';
-    echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$alias[1].' </td>';
+    echo '<td>'.utf8_encode($row['name']).' </td>';
+    echo '<td>'.utf8_encode($alias[1]).' </td>';
     echo '<td>'.$pid.' </td>';
     echo '<td>'.$return.'</td>';
     //inputs
