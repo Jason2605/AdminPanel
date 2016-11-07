@@ -123,8 +123,6 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
         echo '<td style=background-color:#FFA500;>'.$row['note_text'].' </td>';
         echo '<td style=background-color:#FFA500;>'.$row['staff_name'].' </td>';
         echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
         echo '<td style=background-color:#FFA500;>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
         echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
         echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
