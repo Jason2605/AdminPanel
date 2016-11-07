@@ -39,10 +39,10 @@ $max = PHP_INT_MAX;
 
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
-    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`) LIKE '%".$valuetosearch."%'";
+    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
     if ($search_result == '') {
-        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`) LIKE '%".$valuetosearch."%'";
+        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`) LIKE '%".$valuetosearch."%'";
         $search_result = filterTable($dbcon, $sqlget);
     }
 } elseif (isset($_POST['orderBank'])) {
@@ -97,7 +97,7 @@ include 'header/header.php';
 			<div class="row">
 			  <div class="col-lg-6">
 				<div class="input-group">
-				  <input type="text" class="form-control" style = "width: 300px;" name="SearchValue" placeholder="Player name/UID...">
+				  <input type="text" class="form-control" style = "width: 300px;" name="SearchValue" placeholder="Player name/UID/ID...">
 				  <span class="input-group-btn">
 					<input class="btn btn-default" name="search" type="submit" value="Search">
 				  </span>
