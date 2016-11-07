@@ -154,6 +154,8 @@ CREATE TABLE IF NOT EXISTS `notes` (
 	`note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
 	`uid` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
 	`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+    `name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+    `alias` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
 	`note_text` VARCHAR(255) NOT NULL,
 	`warning` ENUM('1','2','3') NOT NULL,
 	`note_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

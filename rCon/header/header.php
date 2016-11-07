@@ -31,7 +31,8 @@
 			<li><a href="../gangs.php">Gangs</a></li>
 			<li><a href="../houses.php">Houses</a></li>
 			<li><a href="../logs.php?page=1">Logs</a></li>
-			<li><a href="../reimbursement.php">Reimbursement Logs</a></li>
+            <li><a href="../reimbursement.php">Reimbursement Logs</a></li>
+			<li><a href="../notesView.php">Notes</a></li>
 			<li><a href="../staff.php">Staff</a></li>
 			<li><a href="../Steam/steam.php">Steam Accounts</a></li>
 			<li><a href="../logout.php">Log Out</a></li>
