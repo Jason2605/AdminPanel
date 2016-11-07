@@ -115,13 +115,14 @@ if (isset($_POST['update'])) {
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
-    $pid = playerID($value);
+    $pid = playerID($player);
 
     if ($_POST['note'] != $player->notes) {
         $message = 'Admin '.$user.' has added the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
         logIt($user, $message, $dbcon);
-
-        $UpdateN = "INSERT INTO notes (uid, staff_name, name, alias, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$player->name', '$player->aliases', '$_POST[note]','$_POST[warn]')";
+        $note = $_POST['note'];
+        $note = '"'.$note.'"';
+        $UpdateN = "INSERT INTO notes (uid, staff_name, name, alias, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$player->name', '$player->aliases', '$note','$_POST[warn]')";
         mysqli_query($dbcon, $UpdateN);
     }
 }

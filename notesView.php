@@ -50,12 +50,29 @@ if (isset($_POST['search'])) {
     $search_result = filterTable($dbcon, $sqlget);
 }
 
+if (isset($_POST['update'])) {
+    $noteID = $_POST['note_id'];
+    $uid = $_POST['uid'];
+    $name = $_POST['name'];
+    $text = $_POST['note_text'];
+    $admin = $_POST['admin'];
+
+    if ($staffPerms['superUser'] == '1') {
+        $sql = "DELETE FROM notes WHERE note_id='$noteID'";
+        mysqli_query($dbcon, $sql);
+        $message = 'Note ('.$text.') placed on user ('.$name.' ID - '.$uid.') by '.$admin.' was deleted by '.$user;
+        logIt($user, $message, $dbcon);
+    } else {
+        $message = 'Note ('.$text.') placed on user ('.$name.' ID - '.$uid.') by '.$admin.' was attempted to be deleted by '.$user;
+        logIt($user, $message, $dbcon);
+    }
+}
 include 'header/header.php';
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 style = "margin-top: 70px">Notes View</h1>
-<p class="page-header">Notes View, Allows you too see all of the notes set.</p>
+<p class="page-header">Notes View, allows you too see all of the notes set.</p>
 
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="players.php">
@@ -90,7 +107,8 @@ include 'header/header.php';
 					<th>Player Alias</th>
                     <th>Player Note</th>
                     <th>Staff Member</th>
-					<th>Timestamp</th>
+                    <th>Timestamp</th>
+					<th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,18 +123,38 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
         echo '<td style=background-color:#FFA500;>'.$row['note_text'].' </td>';
         echo '<td style=background-color:#FFA500;>'.$row['staff_name'].' </td>';
         echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
+        echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
+        echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
+        echo '<td style=background-color:#FFA500;>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
     } elseif ($row['warning'] == 3) {
         echo '<td style=background-color:#FF0000;>'.$row['name'].' </td>';
         echo '<td style=background-color:#FF0000;>'.$row['alias'].' </td>';
         echo '<td style=background-color:#FF0000;>'.$row['note_text'].' </td>';
         echo '<td style=background-color:#FF0000;>'.$row['staff_name'].' </td>';
         echo '<td style=background-color:#FF0000;>'.$row['note_updated'].' </td>';
+        echo '<td style=background-color:#FF0000;>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
     } else {
         echo '<td>'.$row['name'].' </td>';
         echo '<td>'.$row['alias'].' </td>';
         echo '<td>'.$row['note_text'].' </td>';
         echo '<td>'.$row['staff_name'].' </td>';
         echo '<td>'.$row['note_updated'].' </td>';
+        echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
+        echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
     }
 
     echo '</tr>';
