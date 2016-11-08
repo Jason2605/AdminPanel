@@ -115,45 +115,24 @@ include 'header/header.php';
 <?php
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notesView.php method=post>';
-    echo '<tr>';
-
     if ($row['warning'] == 2) {
-        echo '<td style=background-color:#FFA500;>'.$row['name'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['alias'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['note_text'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['staff_name'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
-        echo '<td style=background-color:#FFA500;>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
+        echo '<tr class = "warning">';
     } elseif ($row['warning'] == 3) {
-        echo '<td style=background-color:#FF0000;>'.$row['name'].' </td>';
-        echo '<td style=background-color:#FF0000;>'.$row['alias'].' </td>';
-        echo '<td style=background-color:#FF0000;>'.$row['note_text'].' </td>';
-        echo '<td style=background-color:#FF0000;>'.$row['staff_name'].' </td>';
-        echo '<td style=background-color:#FF0000;>'.$row['note_updated'].' </td>';
-        echo '<td style=background-color:#FF0000;>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
+        echo '<tr class = "danger">';
     } else {
-        echo '<td>'.$row['name'].' </td>';
-        echo '<td>'.$row['alias'].' </td>';
-        echo '<td>'.$row['note_text'].' </td>';
-        echo '<td>'.$row['staff_name'].' </td>';
-        echo '<td>'.$row['note_updated'].' </td>';
-        echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
-        echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
+        echo '<tr>';
     }
+    echo '<td>'.$row['name'].' </td>';
+    echo '<td>'.$row['alias'].' </td>';
+    echo '<td>'.$row['note_text'].' </td>';
+    echo '<td>'.$row['staff_name'].' </td>';
+    echo '<td>'.$row['note_updated'].' </td>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
 
     echo '</tr>';
     echo '</form>';

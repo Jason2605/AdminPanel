@@ -193,21 +193,17 @@ echo "<div class='panel panel-info'>
 $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
-    echo '<tr>';
-
     if ($row['warning'] == 2) {
-        echo '<td style=background-color:#FFA500;>'.$row['staff_name'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['note_text'].' </td>';
-        echo '<td style=background-color:#FFA500;>'.$row['note_updated'].' </td>';
+        echo '<tr class = "warning">';
     } elseif ($row['warning'] == 3) {
-        echo '<td style=background-color:#FF0000;>'.$row['staff_name'].' </td>';
-        echo '<td style=background-color:#FF0000;>'.$row['note_text'].' </td>';
-        echo '<td style=background-color:#FF0000;>'.$row['note_updated'].' </td>';
+        echo '<tr class = "danger">';
     } else {
-        echo '<td>'.$row['staff_name'].' </td>';
-        echo '<td>'.$row['note_text'].' </td>';
-        echo '<td>'.$row['note_updated'].' </td>';
+        echo '<tr>';
     }
+
+    echo '<td>'.$row['staff_name'].' </td>';
+    echo '<td>'.$row['note_text'].' </td>';
+    echo '<td>'.$row['note_updated'].' </td>';
     echo '</tr>';
 }
   echo '</table></div>';
