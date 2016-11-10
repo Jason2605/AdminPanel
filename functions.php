@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(0);
 function playerID($player)
 {
     if ($player->playerid != '' || $player->pid != '') {

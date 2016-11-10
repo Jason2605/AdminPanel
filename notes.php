@@ -117,7 +117,7 @@ if (isset($_POST['update'])) {
 
     $pid = playerID($player);
 
-    if ($_POST['note'] != $player->notes) {
+    if ($_POST['note'] != $player->note_text) {
         $message = 'Admin '.$user.' has added the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
         logIt($user, $message, $dbcon);
         $note = $_POST['note'];
