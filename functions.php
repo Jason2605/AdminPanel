@@ -86,3 +86,17 @@ function filterTable($dbcon, $sqlget)
 
     return $sqldata;
 }
+
+function outputSelection($max, $column, $value)
+{
+    ++$max;
+    echo "<td><select class='form-control' name = ".$column.'>';
+    for ($i = 0; $i < $max; ++$i) {
+        if ($value == $i) {
+            echo "<option selected = 'selected'>$i</option>";
+        } else {
+            echo "<option>$i</option>";
+        }
+    }
+    echo '</select></td>';
+}

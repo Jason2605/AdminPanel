@@ -8,9 +8,9 @@ ob_start();
 <title>Admin Panel - Create</title>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
-<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=0" />
-<script src="scripts/jquery-1.12.3.min.js"></script>
-<script src="scripts/general.js"></script>
+<link href="dist/css/bootstrap.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -20,18 +20,43 @@ ob_start();
 	</div>
 
 <div id = "login1">
-<form action="verifyCheck.php" method="post">
+<form class = "form-inline" action="verifyCheck.php" method="post">
 
 <div class="logo"></div>
 <div class="login-block">
     <h1>Create Server</h1>
-    <input type="text" value="" placeholder="DB User" id="username1" name="user"/>
-    <input type="text" value="" placeholder="DB Pass" id="password1" name="pass"/>
-	<input type="text" value="" placeholder="DB Host" id="host" name="host"/>
-	<input type="text" value="" placeholder="DB Name" id="name" name="name"/>
-	<input type="text" value="" placeholder="RCON Host" id="RHost" name="RHost"/>
-	<input type="text" value="" placeholder="RCON Pass" id="RPass" name="RPass"/>
-	<input type="text" value="" placeholder="RCON Port" id="RPort" name="RPort"/>
+
+	<div class="panel panel-info">
+	<div class="panel-heading">Database Settings</div>
+    	<div class="panel-body">
+
+	    	<input type="text" value="" placeholder="DB User" id="username1" name="user"/>
+	    	<input type="text" value="" placeholder="DB Pass" id="password1" name="pass"/>
+			<input type="text" value="" placeholder="DB Host" id="host" name="host"/>
+			<input type="text" value="" placeholder="DB Name" id="name" name="name"/>
+		</div>
+	</div>
+
+
+	<div class="panel panel-info">
+    <div class="panel-heading">RCON Settings</div>
+    	<div class="panel-body">
+			<input type="text" value="" placeholder="RCON Host" id="RHost" name="RHost"/>
+			<input type="text" value="" placeholder="RCON Pass" id="RPass" name="RPass"/>
+			<input type="text" value="" placeholder="RCON Port" id="RPort" name="RPort"/>
+		</div>
+	</div>
+
+<div class="panel panel-info">
+<div class="panel-heading">General Settings</div>
+	<div class="panel-body">
+		<input type="text" value="" placeholder="Max Cop Level" id="maxCop" name="maxCop"/>
+		<input type="text" value="" placeholder="Max Medic Level" id="maxMedic" name="maxMedic"/>
+		<input type="text" value="" placeholder="Max Admin Level" id="maxAdmin" name="maxAdmin"/>
+		<input type="text" value="" placeholder="Max Donator Level" id="maxDonator" name="maxDonator"/>
+	</div>
+</div>
+
 	<button>Submit</button>
 </div>
 

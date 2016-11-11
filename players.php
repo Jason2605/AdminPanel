@@ -253,9 +253,9 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     //inputs
     echo '<td>'."<input class='form-control' type=text name=csh value=".$row['cash'].' </td>';
     echo '<td>'."<input class='form-control' type=text  name=bankacc value=".$row['bankacc'].' </td>';
-    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=coplevel value=".$row['coplevel'].' </td>';
-    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=mediclevel value=".$row['mediclevel'].' </td>';
-    echo "<td><input class='form-control' type=text style = 'width: 100%;' name=adminlevel value='$row[adminlevel]' .</td>";
+    outputSelection($maxCop, 'coplevel', $row['coplevel']);
+    outputSelection($maxMedic, 'mediclevel', $row['mediclevel']);
+    outputSelection($maxAdmin, 'adminlevel', $row['adminlevel']);
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.' </td>';

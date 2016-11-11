@@ -59,6 +59,36 @@ $fail = false;
       $fail = true;
   }
 
+  //max level checks
+
+  if ($_POST['maxCop'] != '') {
+      $maxCop = $_POST['maxCop'];
+      $maxCop = (int) $maxCop;
+  } else {
+      $maxCop = 7;
+  }
+
+  if ($_POST['maxMedic'] != '') {
+      $maxMedic = $_POST['maxMedic'];
+      $maxMedic = (int) $maxMedic;
+  } else {
+      $maxMedic = 5;
+  }
+
+  if ($_POST['maxAdmin'] != '') {
+      $maxAdmin = $_POST['maxAdmin'];
+      $maxAdmin = (int) $maxAdmin;
+  } else {
+      $maxAdmin = 5;
+  }
+
+  if ($_POST['maxDonator'] != '') {
+      $maxDonator = $_POST['maxDonator'];
+      $maxDonator = (int) $maxDonator;
+  } else {
+      $maxDonator = 5;
+  }
+
 if (!$fail) {
     $filename = 'verifyPanel.php';
     $ourFileName = $filename;
@@ -102,6 +132,14 @@ global ".'$'.'RconPort;
 global ".'$'.'RconPass;
 '.'$'."RconPass = '$RPass';
 
+global ".'$'.'maxCop;
+'.'$'."maxCop = $maxCop;
+global ".'$'.'maxMedic;
+'.'$'."maxMedic = $maxMedic;
+global ".'$'.'maxAdmin;
+'.'$'."maxAdmin = $maxAdmin;
+global ".'$'.'maxDonator;
+'.'$'."maxDonator = $maxDonator;
 
 ?>
 ";

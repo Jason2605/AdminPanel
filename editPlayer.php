@@ -156,8 +156,8 @@ $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be e
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo '<form action=editPlayer.php method=post>';
-    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=donatorlvl value=".$don.' </td>';
-    echo '<td>'."<input class='form-control' type=text style = 'width: 100%;' name=blacklist value=".$row['blacklist'].' </td>';
+    outputSelection($maxDonator, 'donatorlvl', $don);
+    outputSelection(1, 'blacklist', $row['blacklist']);
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$uidPlayer.' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$guidPlayer.' </td>';

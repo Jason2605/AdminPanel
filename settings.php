@@ -74,6 +74,23 @@ include 'header/header.php';
   <input type="text" name= "RPort" class="form-control" value="<?php echo $RconPort; ?>">
 
   <br>
+  <h4>Max Cop Level</h4>
+  <input type="text" name= "maxCop" class="form-control" value="<?php echo $maxCop; ?>">
+
+  <br>
+  <h4>Max Medic Level</h4>
+  <input type="text" name= "maxMedic" class="form-control" value="<?php echo $maxMedic; ?>">
+
+  <br>
+  <h4>Max Admin Level</h4>
+  <input type="text" name= "maxAdmin" class="form-control" value="<?php echo $maxAdmin; ?>">
+
+  <br>
+  <h4>Max Donator Level</h4>
+  <input type="text" name= "maxDonator" class="form-control" value="<?php echo $maxDonator; ?>">
+
+
+  <br>
   <button type="submit" name="updateButton" class="btn btn-primary btn-lg btn-block btn-outline">Update</button>
 </form>
 
