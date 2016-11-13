@@ -27,14 +27,7 @@ if ($staffPerms['logs'] != '1') {
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Logs</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="styles/dashboard.css" rel="stylesheet">
   </head>
 
@@ -159,8 +152,8 @@ for ($b = $pageBefore; $b <= $amountPage; ++$b) {
 
     }
 }
-?>
-<?php if ($currentpage != $amount) {
+
+if ($currentpage != $amount) {
     ?>
 <li>
   <a href="logs.php?page=<?php echo $addPage; ?>" aria-label="Next">
@@ -173,7 +166,7 @@ for ($b = $pageBefore; $b <= $amountPage; ++$b) {
     ?>
 
 <li class = "disabled">
-  <a href="logs.php?page=<?php echo $addPage; ?>" aria-label="Next">
+  <a href="logs.php?page=<?php echo $minusPage; ?>" aria-label="Next">
 	<span aria-hidden="true">&raquo;</span>
   </a>
 </li>

@@ -13,6 +13,35 @@ $user = $_SESSION['user'];
 include 'verifyPanel.php';
 masterconnect();
 
+$page1 = $_GET['page'];
+
+if ($page1 == '' || $page1 == '1') {
+    $page = 0;
+} else {
+    $page = ($page1 * 50) - 50;
+}
+
+$resultQ = 'SELECT uid FROM players';
+$result = mysqli_query($dbcon, $resultQ) or die('Connection could not be established');
+
+$count = mysqli_num_rows($result);
+$amount = $count / 50;
+$amount = ceil($amount) + 1;
+
+$currentpage = $page1;
+
+$minusPage = $currentpage - 1;
+
+if ($minusPage < 1) {
+    $minusPage = 1;
+}
+
+$addPage = $currentpage + 1;
+
+if ($addPage > $amount) {
+    $addPage = $amount;
+}
+
 $max = PHP_INT_MAX;
 ?>
 
@@ -46,22 +75,22 @@ if (isset($_POST['search'])) {
         $search_result = filterTable($dbcon, $sqlget);
     }
 } elseif (isset($_POST['orderBank'])) {
-    $sqlget = 'SELECT * FROM players ORDER BY bankacc DESC';
+    $sqlget = 'SELECT * FROM players ORDER BY bankacc DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 } elseif (isset($_POST['orderCash'])) {
-    $sqlget = 'SELECT * FROM players ORDER BY cash DESC';
+    $sqlget = 'SELECT * FROM players ORDER BY cash DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 } elseif (isset($_POST['orderCop'])) {
-    $sqlget = 'SELECT * FROM players ORDER BY coplevel DESC';
+    $sqlget = 'SELECT * FROM players ORDER BY coplevel DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 } elseif (isset($_POST['orderMedic'])) {
-    $sqlget = 'SELECT * FROM players ORDER BY mediclevel DESC';
+    $sqlget = 'SELECT * FROM players ORDER BY mediclevel DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 } elseif (isset($_POST['orderAdmin'])) {
-    $sqlget = 'SELECT * FROM players ORDER BY adminlevel DESC';
+    $sqlget = 'SELECT * FROM players ORDER BY adminlevel DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 } else {
-    $sqlget = 'SELECT * FROM players';
+    $sqlget = 'SELECT * FROM players limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 }
 
@@ -270,6 +299,81 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
 
 echo '</table></div>';
 ?>
+
+<nav>
+<ul class="pagination">
+<?php if ($currentpage != 1) {
+    ?>
+<li>
+  <a href="players.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+	<span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+<?php
+
+} else {
+    ?>
+
+<li class = "disabled">
+  <a href="players.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+	<span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+
+<?php
+
+}
+$amountPage = $currentpage + 2;
+$pageBefore = $currentpage - 2;
+
+if ($pageBefore == 0) {
+    $pageBefore = 1;
+    $amountPage = $amountPage + 1;
+}
+
+if ($pageBefore < 1) {
+    $pageBefore = 1;
+    $amountPage = $amountPage + 2;
+}
+for ($b = $pageBefore; $b <= $amountPage; ++$b) {
+    if ($b >= $amount) {
+        ?><li class = "disabled"><a href = "players.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+    } else {
+        if ($b == $currentpage) {
+            ?><li class = "active"><a href = "players.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+        } else {
+            ?><li><a href = "players.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+        }
+    }
+}
+
+if ($currentpage != $amount) {
+    ?>
+<li>
+  <a href="players.php?page=<?php echo $addPage; ?>" aria-label="Next">
+	<span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+<?php
+
+} else {
+    ?>
+
+<li class = "disabled">
+  <a href="players.php?page=<?php echo $minusPage; ?>" aria-label="Next">
+	<span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+
+<?php
+
+}
+?>
+</ul>
+</nav>
               </tbody>
             </table>
           </div>
