@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0);
+//error_reporting(0);
 function playerID($player)
 {
     if ($player->playerid != '' || $player->pid != '') {
@@ -87,10 +87,12 @@ function filterTable($dbcon, $sqlget)
     return $sqldata;
 }
 
-function outputSelection($max, $column, $value)
+function outputSelection($max, $column, $value, $uid)
 {
     ++$max;
-    echo "<td><select class='form-control' name = ".$column.'>';
+    echo '<td>' ?>
+    <select class='form-control' onChange = "dbSave(this.value, '<?php echo $uid; ?>', '<?php echo $column; ?>' )" />
+    <?php
     for ($i = 0; $i < $max; ++$i) {
         if ($value == $i) {
             echo "<option selected = 'selected'>$i</option>";

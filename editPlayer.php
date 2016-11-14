@@ -25,15 +25,6 @@ $username = utf8_encode($player->name);
 
 $pid = playerID($player);
 
-if ($player->donorlevel != '' || $player->donatorlvl != '') {
-    if ($player->donorlevel == '') {
-        $don = $player->donatorlvl;
-        $version = '4.0';
-    } else {
-        $don = $player->donorlevel;
-        $version = '4.4';
-    }
-}
 ?>
 
 
@@ -109,60 +100,29 @@ echo "<div class='panel panel-info'>
                 <tr>
 					<th>Donator Level</th>
 					<th>Blacklisted</th>
-					<th>Update</th>
                 </tr>
               </thead>
               <tbody>
 
 <?php
 
-if (isset($_POST['donUpdate'])) {
-    $sql = "SELECT * FROM `players` WHERE `uid` = '$uidPlayer'";
-    $result = mysqli_query($dbcon, $sql);
-    $player = $result->fetch_object();
-
-    if ($staffPerms['editPlayer'] == '1') {
-        if ($_POST['donatorlvl'] != $don) {
-            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
-            logIt($user, $message, $dbcon);
-        }
-        if ($version == '4.0') {
-            $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donatorlvl='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
-        } else {
-            $UpdateQ = "UPDATE players SET blacklist='$_POST[blacklist]', donorlevel='$_POST[donatorlvl]' WHERE uid='$uidPlayer'";
-        }
-        mysqli_query($dbcon, $UpdateQ);
-    } else {
-        if ($_POST['donatorlvl'] != $don) {
-            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' donator level from '.$player->donatorlvl.' to '.$_POST['donatorlvl'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['blacklist'] != $player->blacklist) {
-            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' blacklist status from '.$player->blacklist.' to '.$_POST['blacklist'];
-            logIt($user, $message, $dbcon);
-        }
-    }
-}
-
 $sqlget = "SELECT * FROM players WHERE uid='$uidPlayer';";
 $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
-    echo '<tr>';
-    echo '<form action=editPlayer.php method=post>';
-    outputSelection($maxDonator, 'donatorlvl', $don);
-    outputSelection(1, 'blacklist', $row['blacklist']);
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=donUpdate value=Update".' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$uidPlayer.' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$guidPlayer.' </td>';
-    echo '</form>';
+    if ($row['donorlevel'] != '' || $row['donatorlvl'] != '') {
+        if ($row['donorlevel'] == '') {
+            $don = $row['donatorlvl'];
+            $version = 'donatorlvl';
+        } else {
+            $don = $row['donorlevel'];
+            $version = 'donorlevel';
+        }
+    }
 
+    echo '<tr>';
+    outputSelection($maxDonator, $version, $don, $row['uid']);
+    outputSelection(1, 'blacklist', $row['blacklist'], $row['uid']);
     echo '</tr>';
 }
   echo '</table></div>';
@@ -189,7 +149,7 @@ echo "<div class='panel panel-info'>
 
 <?php
 
-  $sqlget = "SELECT * FROM notes WHERE uid=$uidPlayer;";
+$sqlget = "SELECT * FROM notes WHERE uid=$uidPlayer;";
 $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
@@ -206,7 +166,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$row['note_updated'].' </td>';
     echo '</tr>';
 }
-  echo '</table></div>';
+echo '</table></div>';
 echo '</div>';
 echo '</div>';
 
@@ -259,15 +219,11 @@ echo "<div id ='civlic2'>";
       foreach ($return as $value) {
           license($value, $staffPerms);
       }
-      echo '  </div>
-</div>';
+      echo '</div></div>';
   }
-echo '</div>';
-echo '</div>';
+echo '</div></div>';
 echo "<div id ='licCheck'><h5></h5>";
 echo '</div>';
-
-//query
 
 if (isset($_POST['remove'])) {
     if ($staffPerms['editPlayer'] == '1') {
@@ -305,7 +261,7 @@ var newid = "#" + id;
 
 	$(newid).toggleClass("btn-danger btn-success");
 
-	$.post('changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
+	$.post('Backend/changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
 	function(data)
 	{
 
@@ -320,13 +276,20 @@ var newid = "#" + id;
 	 $(newid).toggleClass("btn-danger btn-success");
 
 	var newid = id;
-	$.post('changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
+	$.post('Backend/changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
 	function(data)
 	{
 
 	});
 }
 
+function dbSave(value, uid, column){
+
+    $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
+    function(){
+        //alert("Sent values.");
+    });
+}
 </script>
               </tbody>
             </table>
@@ -335,15 +298,8 @@ var newid = "#" + id;
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
   </body>
 </html>
