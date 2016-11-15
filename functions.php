@@ -102,3 +102,26 @@ function outputSelection($max, $column, $value, $uid)
     }
     echo '</select></td>';
 }
+
+function logs($perms, $column, $pid, $user, $dbcon, $player, $val)
+{
+    if ($perms == '1') {
+        if ($val != $player->$column) {
+            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' '.$column.' from '.$player->$column.' to '.$val;
+            logIt($user, $message, $dbcon);
+
+            $return = $val;
+
+            return $return;
+        }
+    } else {
+        if ($val != $player->$column) {
+            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' '.$column.' from '.$player->$column.' to '.$val;
+            logIt($user, $message, $dbcon);
+
+            $return = $player->$column;
+
+            return $return;
+        }
+    }
+}

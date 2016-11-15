@@ -31,29 +31,6 @@ if ($player->playerid != '' || $player->pid != '') {
     }
 }
 
-function logs($perms, $column, $pid, $user, $dbcon, $player, $val)
-{
-    if ($perms == '1') {
-        if ($val != $player->$column) {
-            $message = 'Admin '.$user.' has changed '.utf8_encode($player->name).'('.$pid.')'.' '.$column.' from '.$player->$column.' to '.$val;
-            logIt($user, $message, $dbcon);
-
-            $return = $val;
-
-            return $return;
-        }
-    } else {
-        if ($val != $player->$column) {
-            $message = 'Admin '.$user.' tried to change '.utf8_encode($player->name).'('.$pid.')'.' '.$column.' from '.$player->$column.' to '.$val;
-            logIt($user, $message, $dbcon);
-
-            $return = $player->$column;
-
-            return $return;
-        }
-    }
-}
-
 switch ($_POST['column']) {
     case 'cash':
         $cash = logs($staffPerms['money'], 'cash', $pid, $user, $dbcon, $player, $_POST['editval']);

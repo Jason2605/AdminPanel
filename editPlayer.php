@@ -56,7 +56,7 @@ include 'header/header.php';
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Edit Player</h1>
 		  <p class="page-header">Edit player menu of the panel, allows you to change values in more depth.</p>
-
+          <div id="alert-area"></div>
 		  <form action='editPlayer.php' method='post'>
 		  <div class="btn-group" role="group" aria-label="...">
 		  <input class = 'btn btn-primary btn-outline' type='submit' name='remove' value='Reset Civ Licenses'>
@@ -283,7 +283,14 @@ var newid = "#" + id;
 	});
 }
 
+function newAlert (type, message) {
+    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
+    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
+}
+
 function dbSave(value, uid, column){
+
+    newAlert('alert-success', 'Value Updated!');
 
     $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
     function(){

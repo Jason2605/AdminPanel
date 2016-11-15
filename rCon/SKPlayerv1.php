@@ -29,25 +29,10 @@ if ($staffPerms['kick'] != '1') {
     <link rel="icon" href="../../favicon.ico">
 
     <title>Admin Panel - Kick</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="../dist/css/bootstrap.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="../styles/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -128,8 +113,20 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
     echo '<tr>';
 
     echo "<td style='display:none;'>".'<input type=hidden name=hiddenUID value='.$pid.' </td>';
-    echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$row['aliases'].' </td>';
+    echo '<td>'.$row['name'].' </td>'; ?>
+    <td>
+    <?php echo '<button class="btn btn-primary btn-outline" type="button" data-toggle="collapse" data-target="#'.$row['uid'].'" aria-expanded="false" aria-controls="'.$row['uid'].'" >'; ?>
+      Toggle Aliases
+    </button>
+    <?php echo '<div class="collapse" id='.$row['uid'].' >' ?>
+      <div class="well">
+        <?php echo $row['aliases']; ?>
+      </div>
+    </div>
+</td>
+    <?php
+
+
     echo '<td>'.$pid.' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Kick".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hiddenName value='.$row['name'].' </td>';
@@ -153,7 +150,7 @@ echo '</table></div>';
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="/dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

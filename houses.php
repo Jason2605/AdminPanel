@@ -18,7 +18,6 @@ $user = $_SESSION['user'];
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
@@ -42,44 +41,13 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be establi
 
 include 'header/header.php';
 ?>
-
-
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 style = "margin-top: 70px">House Menu</h1>
 <p class="page-header">House menu of the panel, allows you to change house database values.</p>
-
+<div id="alert-area"></div>
 <?php
 $sqlget = 'SELECT * FROM houses';
 $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
-
-if (isset($_POST['update'])) {
-    if ($staffPerms['housing'] == '1') {
-        $id = $_POST['hidden'];
-
-        $sql = "SELECT * FROM `houses` WHERE `id` =$id ";
-        $result = mysqli_query($dbcon, $sql);
-        $house = $result->fetch_object();
-
-        if ($_POST['owned'] != $house->owned) {
-            $message = 'Admin '.$user.' has changed the owned status of house'.$house->id.' from '.$house->owned.' to '.$_POST['owned'];
-            logIt($user, $message, $dbcon);
-        }
-
-        $UpdateQ = "UPDATE houses SET owned='$_POST[owned]' WHERE id='$_POST[hidden]'";
-        mysqli_query($dbcon, $UpdateQ);
-    } else {
-        $id = $_POST['hidden'];
-
-        $sql = "SELECT * FROM `houses` WHERE `id` =$id ";
-        $result = mysqli_query($dbcon, $sql);
-        $house = $result->fetch_object();
-
-        if ($_POST['owned'] != $house->owned) {
-            $message = 'Admin '.$user.' tried to change the owned status of house'.$house->id.' from '.$house->owned.' to '.$_POST['owned'];
-            logIt($user, $message, $dbcon);
-        }
-    }
-}
 
 ?>
           <div class="table-responsive">
@@ -90,25 +58,24 @@ if (isset($_POST['update'])) {
 					<th>Owner UID</th>
 					<th>House Pos</th>
 					<th>Owned</th>
-					<th>Update</th>
-                    <th>Edit</th>
+                    <th>Containers</th>
                 </tr>
               </thead>
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-    echo '<form action=houses.php method=post>';
+    //echo '<form action=houses.php method=post>';
     echo '<tr>';
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['pid'].' </td>';
     echo '<td>'.$row['pos'].' </td>';
-    echo '<td>'."<input class='form-control' type=text name=owned value=".$row['owned'].' </td>';
 
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
-    echo '</form>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'owned')"; type=text value= "<?php echo $row['owned']; ?>" >
+    <?php
+    echo '</td>';
     echo '<form action=editHouses.php method=post>';
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit value=Edit".' </td>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit value=View".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
     echo '</form>';
     echo '</tr>';
@@ -116,6 +83,32 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
 
 echo '</table></div>';
 ?>
+
+<script>
+
+function newAlert (type, message) {
+    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
+    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
+}
+
+
+function dbSave(value, uid, column){
+
+    alert(value);
+    alert(uid);
+    alert(column);
+
+
+    newAlert('alert-success', 'Value Updated!');
+
+    $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
+    function(){
+        alert("Sent values.");
+    });
+}
+
+
+</script>
               </tbody>
             </table>
           </div>

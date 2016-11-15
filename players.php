@@ -99,6 +99,7 @@ include 'header/header.php';
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Player Menu</h1>
 		  <p class="page-header">Player menu of the panel, allows you to change players database values.</p>
+          <div id="alert-area"></div>
 
 		  <div class="btn-group" role="group" aria-label="...">
 			<FORM METHOD="LINK" ACTION="rCon/player.php">
@@ -176,11 +177,11 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$pid.' </td>';
     echo '<td>'.$return.'</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'cash')"; type=text value= "<?php echo $row['cash']; ?>"
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'cash')"; type=text value= "<?php echo $row['cash']; ?>" >
     <?php
     echo '</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'bankacc')"; type=text value= "<?php echo $row['bankacc']; ?>"
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'bankacc')"; type=text value= "<?php echo $row['bankacc']; ?>" >
     <?php
     echo '</td>';
     outputSelection($maxCop, 'coplevel', $row['coplevel'], $row['uid']);
@@ -273,13 +274,23 @@ if ($currentpage != $amount) {
 </nav>
 <script>
 
+function newAlert (type, message) {
+    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
+    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
+}
+
+
 function dbSave(value, uid, column){
+
+    newAlert('alert-success', 'Value Updated!');
 
     $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
     function(){
         //alert("Sent values.");
     });
 }
+
+
 </script>
               </tbody>
             </table>
