@@ -53,6 +53,7 @@ include 'header/header.php';
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Vehicle Menu</h1>
 		  <p class="page-header">Vehicle menu of the panel, allows you to change vehicle database values.</p>
+          <div id="alert-area"></div>
 
           <form action = "vehicles.php" method="post">
           		  <div class ="searchBar">
@@ -68,62 +69,7 @@ include 'header/header.php';
           			</div><!-- /.row -->
           		  </div>
           </form><br>
-<?php
-if (isset($_POST['update'])) {
-    if ($staffPerms['vehicles'] == '1') {
-        $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $vehicle = $result->fetch_object();
 
-        if ($_POST['classname'] != $vehicle->classname) {
-            $message = 'Admin '.$user.' has changed the classname of vehicle '.$vehicle->id.' from '.$vehicle->classname.' to '.$_POST['classname'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['alive'] != $vehicle->alive) {
-            $message = 'Admin '.$user.' has changed the alive status of vehicle '.$vehicle->id.' from '.$vehicle->alive.' to '.$_POST['alive'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['active'] != $vehicle->active) {
-            $message = 'Admin '.$user.' has changed the active status of vehicle '.$vehicle->id.' from '.$vehicle->active.' to '.$_POST['active'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['plate'] != $vehicle->plate) {
-            $message = 'Admin '.$user.' has changed the the plate of vehicle '.$vehicle->id.' from '.$vehicle->plate.' to '.$_POST['plate'];
-            logIt($user, $message, $dbcon);
-        }
-
-        $UpdateQ = "UPDATE vehicles SET classname='$_POST[classname]', alive='$_POST[alive]', active='$_POST[active]', plate='$_POST[plate]' WHERE id='$_POST[hidden]'";
-        mysqli_query($dbcon, $UpdateQ);
-    } else {
-        $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $vehicle = $result->fetch_object();
-
-        if ($_POST['classname'] != $vehicle->classname) {
-            $message = 'Admin '.$user.' tried to change the classname of vehicle '.$vehicle->id.' from '.$vehicle->classname.' to '.$_POST['classname'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['alive'] != $vehicle->alive) {
-            $message = 'Admin '.$user.' tried to change the alive status of vehicle '.$vehicle->id.' from '.$vehicle->alive.' to '.$_POST['alive'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['active'] != $vehicle->active) {
-            $message = 'Admin '.$user.' tried to change the active status of vehicle '.$vehicle->id.' from '.$vehicle->active.' to '.$_POST['active'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['plate'] != $vehicle->plate) {
-            $message = 'Admin '.$user.' tried to change the the plate of vehicle '.$vehicle->id.' from '.$vehicle->plate.' to '.$_POST['plate'];
-            logIt($user, $message, $dbcon);
-        }
-    }
-}
-?>
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
@@ -136,34 +82,57 @@ if (isset($_POST['update'])) {
 					<th>Alive</th>
 					<th>Active</th>
 					<th>Plate</th>
-					<th>Update</th>
                 </tr>
               </thead>
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-    echo '<form action=vehicles.php method=post>';
+    //echo '<form action=vehicles.php method=post>';
     echo '<tr>';
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['side'].' </td>';
 
-    echo '<td>'."<input class='form-control' type=text name=classname value=".$row['classname'].' </td>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'classname')"; type=text value= "<?php echo $row['classname']; ?>" >
+    <?php
+
     echo '<td>'.$row['pid'].' </td>';
     echo '<td>'.$row['type'].' </td>';
 
-    echo '<td>'."<input class='form-control' type=text name=alive value=".$row['alive'].' </td>';
-    echo '<td>'."<input class='form-control' type=text name=active value=".$row['active'].' </td>';
-    echo '<td>'."<input class='form-control' type=text name=plate value=".$row['plate'].' </td>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'alive')"; type=text value= "<?php echo $row['alive']; ?>" >
+    <?php
 
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
-    echo "<td  style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active')"; type=text value= "<?php echo $row['active']; ?>" >
+    <?php
 
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'plate')"; type=text value= "<?php echo $row['plate']; ?>" >
+    <?php
     echo '</tr>';
-    echo '</form>';
 }
 
 echo '</table></div>';
 ?>
+
+<script>
+function newAlert (type, message) {
+    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
+    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
+}
+
+
+function dbSave(value, uid, column){
+
+    newAlert('alert-success', 'Value Updated!');
+
+    $.post('Backend/updateVehicles.php',{column:column, editval:value, id:uid},
+    function(){
+        //alert("Sent values.");
+    });
+}
+</script>
               </tbody>
             </table>
           </div>

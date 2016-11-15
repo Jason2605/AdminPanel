@@ -24,6 +24,26 @@ switch ($_POST['column']) {
         $UpdateQ = "UPDATE houses SET $_POST[column]='$owned' WHERE id='$_POST[id]'";
     break;
 
+    case 'ownedCrate':
+        $ownedCrate = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $UpdateQ = "UPDATE containers SET owned='$owned' WHERE id='$_POST[id]'";
+    break;
+
+    case 'active':
+        $active = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $UpdateQ = "UPDATE containers SET $_POST[column]='$owned' WHERE id='$_POST[id]'";
+    break;
+
+    case 'gear':
+        $gear = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $UpdateQ = "UPDATE containers SET $_POST[column]='$gear' WHERE id='$_POST[id]'";
+    break;
+
+    case 'inventory':
+        $inventory = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $UpdateQ = "UPDATE containers SET $_POST[column]='$inventory' WHERE id='$_POST[id]'";
+    break;
+
     default:
         $message = 'ERROR';
         logIt($user, $message, $dbcon);

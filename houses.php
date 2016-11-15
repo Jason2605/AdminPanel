@@ -94,16 +94,11 @@ function newAlert (type, message) {
 
 function dbSave(value, uid, column){
 
-    alert(value);
-    alert(uid);
-    alert(column);
-
-
     newAlert('alert-success', 'Value Updated!');
 
     $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
     function(){
-        alert("Sent values.");
+        //alert("Sent values.");
     });
 }
 
