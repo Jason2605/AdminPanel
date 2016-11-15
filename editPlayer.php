@@ -61,11 +61,61 @@ include 'header/header.php';
 		  <div class="btn-group" role="group" aria-label="...">
 		  <input class = 'btn btn-primary btn-outline' type='submit' name='remove' value='Reset Civ Licenses'>
 	   	  </div>
-		  <div class="btn-group" role="group" aria-label="...">
-		  <input class = 'btn btn-primary btn-outline' type='submit' name='give' value='Give All Civ Licenses'>
+          <div class="btn-group" role="group" aria-label="...">
+          <input class = 'btn btn-primary btn-outline' type='submit' name='give' value='Give All Civ Licenses'>
+          </div>
           <input type=hidden name=hidden value= <?php echo $uidPlayer; ?> >
           <input type=hidden name=guid value= <?php echo $guidPlayer; ?> >
-		  </div></form> <br>
+          <div class="btn-group" role="group" aria-label="...">
+          <button type="button" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal">Player Inventory</button>
+          </div></form>
+
+          <br>
+
+
+
+<div class="modal fade bd-example-modal-lg" id='myModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title" id="myModalLabel">Player Inventory</h4>
+    </div>
+    <div class="modal-body">
+
+        <div class='panel panel-info'>
+            <div class='panel-heading'>
+                <h3 class='panel-title'>Civilian Inventory</h3>
+            </div>
+            <div class='panel-body'>
+                <div class="well well-lg"><pre> <?php echo $player->civ_gear; ?> </pre></div>
+            </div>
+        </div>
+
+        <div class='panel panel-info'>
+            <div class='panel-heading'>
+                <h3 class='panel-title'>Cop Inventory</h3>
+            </div>
+            <div class='panel-body'>
+                <div class="well well-lg"><pre> <?php echo $player->cop_gear; ?> </pre></div>
+            </div>
+        </div>
+
+        <div class='panel panel-info'>
+            <div class='panel-heading'>
+                <h3 class='panel-title'>Medic Inventory</h3>
+            </div>
+            <div class='panel-body'>
+                <div class="well well-lg"><pre> <?php echo $player->med_gear; ?> </pre></div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+</div>
 
 <div class='panel panel-info'>
   <div class='panel-heading'>
