@@ -3,15 +3,11 @@
 session_start();
 ob_start();
 
-$user = $_SESSION['user'];
-$adminLev = $_SESSION['adminLevel'];
-
 if (!isset($_SESSION['logged'])) {
     header('Location: ../index.php');
 }
 
 $user = $_SESSION['user'];
-
 $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['unban'] != '1') {
