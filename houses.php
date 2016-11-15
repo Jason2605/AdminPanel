@@ -83,27 +83,6 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
 
 echo '</table></div>';
 ?>
-
-<script>
-
-function newAlert (type, message) {
-    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
-    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
-}
-
-
-function dbSave(value, uid, column){
-
-    newAlert('alert-success', 'Value Updated!');
-
-    $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
-    function(){
-        //alert("Sent values.");
-    });
-}
-
-
-</script>
               </tbody>
             </table>
           </div>
@@ -117,9 +96,6 @@ function dbSave(value, uid, column){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="dist/js/saveDB.js"></script>
   </body>
 </html>

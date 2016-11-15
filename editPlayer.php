@@ -261,7 +261,7 @@ var newid = "#" + id;
 
 	$(newid).toggleClass("btn-danger btn-success");
 
-	$.post('Backend/changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
+	$.post('Backend/changeLicense.php',{id:id,uid:'<?php echo $uidPlayer ?>'},
 	function(data)
 	{
 
@@ -276,26 +276,11 @@ var newid = "#" + id;
 	 $(newid).toggleClass("btn-danger btn-success");
 
 	var newid = id;
-	$.post('Backend/changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
+	$.post('Backend/changeLicense.php',{id:id,uid: '<?php echo $uidPlayer; ?>'},
 	function(data)
 	{
 
 	});
-}
-
-function newAlert (type, message) {
-    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
-    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
-}
-
-function dbSave(value, uid, column){
-
-    newAlert('alert-success', 'Value Updated!');
-
-    $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
-    function(){
-        //alert("Sent values.");
-    });
 }
 </script>
               </tbody>
@@ -308,5 +293,6 @@ function dbSave(value, uid, column){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/saveDB.js"></script>
   </body>
 </html>
