@@ -177,11 +177,11 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$pid.' </td>';
     echo '<td>'.$return.'</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'cash')"; type=text value= "<?php echo $row['cash']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'cash', '<?php echo $row['cash']; ?>')"; type=text value= "<?php echo $row['cash']; ?>" >
     <?php
     echo '</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'bankacc')"; type=text value= "<?php echo $row['bankacc']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'bankacc', '<?php echo $row['bankacc']; ?>')"; type=text value= "<?php echo $row['bankacc']; ?>" >
     <?php
     echo '</td>';
     outputSelection($maxCop, 'coplevel', $row['coplevel'], $row['uid']);
@@ -280,14 +280,18 @@ function newAlert (type, message) {
 }
 
 
-function dbSave(value, uid, column){
+function dbSave(value, uid, column, original){
 
-    newAlert('alert-success', 'Value Updated!');
+        if (value != original) {
 
-    $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
-    function(){
-        //alert("Sent values.");
-    });
+            newAlert('alert-success', 'Value Updated!');
+
+            $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
+            function(){
+                //alert("Sent values.");
+            });
+        };
+
 }
 
 

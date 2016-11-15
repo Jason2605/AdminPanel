@@ -261,7 +261,7 @@ var newid = "#" + id;
 
 	$(newid).toggleClass("btn-danger btn-success");
 
-	$.post('Backend/changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
+	$.post('Backend/changeLicense.php',{id:id,uid:'<?php echo $uidPlayer; ?>'},
 	function(data)
 	{
 
@@ -276,7 +276,7 @@ var newid = "#" + id;
 	 $(newid).toggleClass("btn-danger btn-success");
 
 	var newid = id;
-	$.post('Backend/changeLicense.php',{id:id,uid:<?php echo $uidPlayer?>},
+	$.post('Backend/changeLicense.php',{id:id,uid:'<?php echo $uidPlayer; ?>'},
 	function(data)
 	{
 
@@ -288,14 +288,18 @@ function newAlert (type, message) {
     $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
 }
 
-function dbSave(value, uid, column){
+function dbSave(value, uid, column, original){
 
-    newAlert('alert-success', 'Value Updated!');
+        if (value != original) {
 
-    $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
-    function(){
-        //alert("Sent values.");
-    });
+            newAlert('alert-success', 'Value Updated!');
+
+            $.post('Backend/updatePlayers.php',{column:column, editval:value, uid:uid},
+            function(){
+                //alert("Sent values.");
+            });
+        };
+
 }
 </script>
               </tbody>

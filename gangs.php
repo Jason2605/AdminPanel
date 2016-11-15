@@ -74,23 +74,23 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
     echo '<td>'.$row['name'].' </td>';
 
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'members')"; type=text value= '<?php echo $row['members']; ?>' >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'members', '<?php echo $row['members']; ?>')"; type=text value= '<?php echo $row['members']; ?>' >
     <?php
     echo '</td>';
 
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'maxmembers')"; type=text value= "<?php echo $row['maxmembers']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'maxmembers', '<?php echo $row['maxmembers']; ?>')"; type=text value= "<?php echo $row['maxmembers']; ?>" >
     <?php
     echo '</td>';
 
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'bank')"; type=text value= "<?php echo $row['bank']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'bank', '<?php echo $row['bank']; ?>')"; type=text value= "<?php echo $row['bank']; ?>" >
     <?php
     echo '</td>';
 
 
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active')"; type=text value= "<?php echo $row['active']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active', '<?php echo $row['active']; ?>')"; type=text value= "<?php echo $row['active']; ?>" >
     <?php
     echo '</td>';
 
@@ -113,14 +113,18 @@ echo '</table></div>';
     }
 
 
-    function dbSave(value, uid, column){
+    function dbSave(value, uid, column, original){
 
-        newAlert('alert-success', 'Value Updated!');
+            if (value != original) {
 
-        $.post('Backend/updateGangs.php',{column:column, editval:value, id:uid},
-        function(){
-            //alert("Sent values.");
-        });
+                newAlert('alert-success', 'Value Updated!');
+
+                $.post('Backend/updateGangs.php',{column:column, editval:value, id:uid},
+                function(){
+                    //alert("Sent values.");
+                });
+            };
+
     }
     </script>
 

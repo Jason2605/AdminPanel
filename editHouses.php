@@ -66,19 +66,19 @@ $search_result = mysqli_query($dbcon, $sqlget) or die('Connection could not be e
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'inventory')"; type=text value= '<?php echo $row['inventory']; ?>' >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'inventory', '<?php echo $row['inventory']; ?>')"; type=text value= '<?php echo $row['inventory']; ?>' >
     <?php
     echo '</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'gear')"; type=text value= '<?php echo $row['gear']; ?>' >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'gear', '<?php echo $row['gear']; ?>')"; type=text value= '<?php echo $row['gear']; ?>' >
     <?php
     echo '</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active')"; type=text value= "<?php echo $row['active']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active', '<?php echo $row['active']; ?>')"; type=text value= "<?php echo $row['active']; ?>" >
     <?php
     echo '</td>';
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'ownedCrate')"; type=text value= "<?php echo $row['owned']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'ownedCrate', '<?php echo $row['owned']; ?>')"; type=text value= "<?php echo $row['owned']; ?>" >
     <?php
     echo '</td>';
     echo '</tr>';
@@ -93,14 +93,18 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
   }
 
 
-  function dbSave(value, uid, column){
+  function dbSave(value, uid, column, original){
 
-      newAlert('alert-success', 'Value Updated!');
+          if (value != original) {
 
-      $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
-      function(){
-          //alert("Sent values.");
-      });
+              newAlert('alert-success', 'Value Updated!');
+
+              $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
+              function(){
+                  //alert("Sent values.");
+              });
+          };
+
   }
   </script>
               </tbody>

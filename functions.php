@@ -91,7 +91,7 @@ function outputSelection($max, $column, $value, $uid)
 {
     ++$max;
     echo '<td>' ?>
-    <select class='form-control' onChange = "dbSave(this.value, '<?php echo $uid; ?>', '<?php echo $column; ?>' )" />
+    <select class='form-control' onChange = "dbSave(this.value, '<?php echo $uid; ?>', '<?php echo $column; ?>', '<?php echo $value; ?>' )" />
     <?php
     for ($i = 0; $i < $max; ++$i) {
         if ($value == $i) {

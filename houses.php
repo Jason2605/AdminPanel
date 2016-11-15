@@ -44,6 +44,7 @@ include 'header/header.php';
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 style = "margin-top: 70px">House Menu</h1>
 <p class="page-header">House menu of the panel, allows you to change house database values.</p>
+
 <div id="alert-area"></div>
 <?php
 $sqlget = 'SELECT * FROM houses';
@@ -64,20 +65,21 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be establi
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-    //echo '<form action=houses.php method=post>';
+
     echo '<tr>';
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['pid'].' </td>';
     echo '<td>'.$row['pos'].' </td>';
 
     echo '<td>' ?>
-    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'owned')"; type=text value= "<?php echo $row['owned']; ?>" >
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'owned', '<?php echo $row['owned']; ?>')" type=text value= "<?php echo $row['owned']; ?>" >
     <?php
     echo '</td>';
     echo '<form action=editHouses.php method=post>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit value=View".' </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
     echo '</form>';
+
     echo '</tr>';
 }
 
@@ -92,14 +94,18 @@ function newAlert (type, message) {
 }
 
 
-function dbSave(value, uid, column){
+function dbSave(value, uid, column, original){
 
-    newAlert('alert-success', 'Value Updated!');
+        if (value != original) {
 
-    $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
-    function(){
-        //alert("Sent values.");
-    });
+            newAlert('alert-success', 'Value Updated!');
+
+            $.post('Backend/updateHouses.php',{column:column, editval:value, id:uid},
+            function(){
+                //alert("Sent values.");
+            });
+        };
+
 }
 
 
