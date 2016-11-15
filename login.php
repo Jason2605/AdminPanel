@@ -12,12 +12,12 @@ include 'verifyPanel.php';
 loginconnect();
 
 if (!$dbconL) {
-    echo 'Bruh';
+    echo 'Database connection error';
     setcookie('conecFail', '1');
     header('Location: index.php');
     die;
 } else {
-    echo 'connected fam';
+    echo 'Database connected';
 
     if (isset($_COOKIE['conecFail'])):
   setcookie('conecFail', '', time() - 7000000, '/');

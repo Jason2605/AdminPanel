@@ -9,6 +9,37 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
+include 'verifyPanel.php';
+masterconnect();
+
+$resultQ = 'SELECT id FROM vehicles';
+$result = mysqli_query($dbcon, $resultQ) or die('Connection could not be established');
+
+$page1 = $_GET['page'];
+
+if ($page1 == '' || $page1 == '1') {
+    $page = 0;
+} else {
+    $page = ($page1 * 100) - 100;
+}
+
+$count = mysqli_num_rows($result);
+$amount = $count / 100;
+$amount = ceil($amount) + 1;
+
+$currentpage = $page1;
+
+$minusPage = $currentpage - 1;
+
+if ($minusPage < 1) {
+    $minusPage = 1;
+}
+
+$addPage = $currentpage + 1;
+
+if ($addPage > $amount) {
+    $addPage = $amount;
+}
 ?>
 
 
@@ -35,17 +66,16 @@ $user = $_SESSION['user'];
 
 <?php
 
-include 'verifyPanel.php';
-masterconnect();
-
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM vehicles WHERE CONCAT (`pid`) LIKE '%".$valuetosearch."%'";
     $sqldata = filterTable($dbcon, $sqlget);
 } else {
-    $sqlget = 'SELECT * FROM vehicles ORDER BY pid';
+    $sqlget = 'SELECT * FROM vehicles ORDER BY id DESC limit '.$page.',100';
     $sqldata = filterTable($dbcon, $sqlget);
 }
+
+
 
 include 'header/header.php';
 ?>
@@ -115,6 +145,82 @@ while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
 
 echo '</table></div>';
 ?>
+
+
+<nav>
+<ul class="pagination">
+<?php if ($currentpage != 1) {
+    ?>
+<li>
+  <a href="vehicles.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+	<span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+<?php
+
+} else {
+    ?>
+
+<li class = "disabled">
+  <a href="vehicles.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+	<span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+
+<?php
+
+}
+$amountPage = $currentpage + 2;
+$pageBefore = $currentpage - 2;
+
+if ($pageBefore == 0) {
+    $pageBefore = 1;
+    $amountPage = $amountPage + 1;
+}
+
+if ($pageBefore < 1) {
+    $pageBefore = 1;
+    $amountPage = $amountPage + 2;
+}
+for ($b = $pageBefore; $b <= $amountPage; ++$b) {
+    if ($b >= $amount) {
+        ?><li class = "disabled"><a href = "vehicles.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+    } else {
+        if ($b == $currentpage) {
+            ?><li class = "active"><a href = "vehicles.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+        } else {
+            ?><li><a href = "vehicles.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+        }
+    }
+}
+
+if ($currentpage != $amount) {
+    ?>
+<li>
+  <a href="vehicles.php?page=<?php echo $addPage; ?>" aria-label="Next">
+	<span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+<?php
+
+} else {
+    ?>
+
+<li class = "disabled">
+  <a href="vehicles.php?page=<?php echo $minusPage; ?>" aria-label="Next">
+	<span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+
+<?php
+
+}
+?>
+</ul>
+</nav>
 
 <script>
 function newAlert (type, message) {
