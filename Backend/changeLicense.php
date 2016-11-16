@@ -4,13 +4,13 @@ session_start();
 ob_start();
 
 if (!isset($_SESSION['logged'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 
 $adminLev = $_SESSION['adminLevel'];
 $user = $_SESSION['user'];
 
-include 'verifyPanel.php';
+include '../verifyPanel.php';
 masterconnect();
 
 $id = $_POST['id'];

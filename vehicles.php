@@ -9,6 +9,37 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
+include 'verifyPanel.php';
+masterconnect();
+
+$resultQ = 'SELECT id FROM vehicles';
+$result = mysqli_query($dbcon, $resultQ) or die('Connection could not be established');
+
+$page1 = $_GET['page'];
+
+if ($page1 == '' || $page1 == '1') {
+    $page = 0;
+} else {
+    $page = ($page1 * 100) - 100;
+}
+
+$count = mysqli_num_rows($result);
+$amount = $count / 100;
+$amount = ceil($amount) + 1;
+
+$currentpage = $page1;
+
+$minusPage = $currentpage - 1;
+
+if ($minusPage < 1) {
+    $minusPage = 1;
+}
+
+$addPage = $currentpage + 1;
+
+if ($addPage > $amount) {
+    $addPage = $amount;
+}
 ?>
 
 
@@ -35,17 +66,16 @@ $user = $_SESSION['user'];
 
 <?php
 
-include 'verifyPanel.php';
-masterconnect();
-
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM vehicles WHERE CONCAT (`pid`) LIKE '%".$valuetosearch."%'";
     $sqldata = filterTable($dbcon, $sqlget);
 } else {
-    $sqlget = 'SELECT * FROM vehicles ORDER BY pid';
+    $sqlget = 'SELECT * FROM vehicles ORDER BY id DESC limit '.$page.',100';
     $sqldata = filterTable($dbcon, $sqlget);
 }
+
+
 
 include 'header/header.php';
 ?>
@@ -53,6 +83,7 @@ include 'header/header.php';
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Vehicle Menu</h1>
 		  <p class="page-header">Vehicle menu of the panel, allows you to change vehicle database values.</p>
+          <div id="alert-area"></div>
 
           <form action = "vehicles.php" method="post">
           		  <div class ="searchBar">
@@ -68,62 +99,7 @@ include 'header/header.php';
           			</div><!-- /.row -->
           		  </div>
           </form><br>
-<?php
-if (isset($_POST['update'])) {
-    if ($staffPerms['vehicles'] == '1') {
-        $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $vehicle = $result->fetch_object();
 
-        if ($_POST['classname'] != $vehicle->classname) {
-            $message = 'Admin '.$user.' has changed the classname of vehicle '.$vehicle->id.' from '.$vehicle->classname.' to '.$_POST['classname'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['alive'] != $vehicle->alive) {
-            $message = 'Admin '.$user.' has changed the alive status of vehicle '.$vehicle->id.' from '.$vehicle->alive.' to '.$_POST['alive'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['active'] != $vehicle->active) {
-            $message = 'Admin '.$user.' has changed the active status of vehicle '.$vehicle->id.' from '.$vehicle->active.' to '.$_POST['active'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['plate'] != $vehicle->plate) {
-            $message = 'Admin '.$user.' has changed the the plate of vehicle '.$vehicle->id.' from '.$vehicle->plate.' to '.$_POST['plate'];
-            logIt($user, $message, $dbcon);
-        }
-
-        $UpdateQ = "UPDATE vehicles SET classname='$_POST[classname]', alive='$_POST[alive]', active='$_POST[active]', plate='$_POST[plate]' WHERE id='$_POST[hidden]'";
-        mysqli_query($dbcon, $UpdateQ);
-    } else {
-        $sql = "SELECT * FROM `vehicles` WHERE `id` = $_POST[hidden]";
-        $result = mysqli_query($dbcon, $sql);
-        $vehicle = $result->fetch_object();
-
-        if ($_POST['classname'] != $vehicle->classname) {
-            $message = 'Admin '.$user.' tried to change the classname of vehicle '.$vehicle->id.' from '.$vehicle->classname.' to '.$_POST['classname'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['alive'] != $vehicle->alive) {
-            $message = 'Admin '.$user.' tried to change the alive status of vehicle '.$vehicle->id.' from '.$vehicle->alive.' to '.$_POST['alive'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['active'] != $vehicle->active) {
-            $message = 'Admin '.$user.' tried to change the active status of vehicle '.$vehicle->id.' from '.$vehicle->active.' to '.$_POST['active'];
-            logIt($user, $message, $dbcon);
-        }
-
-        if ($_POST['plate'] != $vehicle->plate) {
-            $message = 'Admin '.$user.' tried to change the the plate of vehicle '.$vehicle->id.' from '.$vehicle->plate.' to '.$_POST['plate'];
-            logIt($user, $message, $dbcon);
-        }
-    }
-}
-?>
           <div class="table-responsive">
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
@@ -136,34 +112,137 @@ if (isset($_POST['update'])) {
 					<th>Alive</th>
 					<th>Active</th>
 					<th>Plate</th>
-					<th>Update</th>
                 </tr>
               </thead>
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-    echo '<form action=vehicles.php method=post>';
+    //echo '<form action=vehicles.php method=post>';
     echo '<tr>';
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['side'].' </td>';
 
-    echo '<td>'."<input class='form-control' type=text name=classname value=".$row['classname'].' </td>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'classname', '<?php echo $row['classname']; ?>')"; type=text value= "<?php echo $row['classname']; ?>" >
+    <?php
+
     echo '<td>'.$row['pid'].' </td>';
     echo '<td>'.$row['type'].' </td>';
 
-    echo '<td>'."<input class='form-control' type=text name=alive value=".$row['alive'].' </td>';
-    echo '<td>'."<input class='form-control' type=text name=active value=".$row['active'].' </td>';
-    echo '<td>'."<input class='form-control' type=text name=plate value=".$row['plate'].' </td>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'alive', '<?php echo $row['alive']; ?>')"; type=text value= "<?php echo $row['alive']; ?>" >
+    <?php
 
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
-    echo "<td  style='display:none;'>".'<input type=hidden name=hidden value='.$row['id'].' </td>';
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active', '<?php echo $row['active']; ?>')"; type=text value= "<?php echo $row['active']; ?>" >
+    <?php
 
+    echo '<td>' ?>
+    <input class="form-control" onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'plate', '<?php echo $row['plate']; ?>')"; type=text value= "<?php echo $row['plate']; ?>" >
+    <?php
     echo '</tr>';
-    echo '</form>';
 }
 
 echo '</table></div>';
 ?>
+
+
+<nav>
+<ul class="pagination">
+<?php if ($currentpage != 1) {
+    ?>
+<li>
+  <a href="vehicles.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+	<span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+<?php
+
+} else {
+    ?>
+
+<li class = "disabled">
+  <a href="vehicles.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+	<span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+
+<?php
+
+}
+$amountPage = $currentpage + 2;
+$pageBefore = $currentpage - 2;
+
+if ($pageBefore == 0) {
+    $pageBefore = 1;
+    $amountPage = $amountPage + 1;
+}
+
+if ($pageBefore < 1) {
+    $pageBefore = 1;
+    $amountPage = $amountPage + 2;
+}
+for ($b = $pageBefore; $b <= $amountPage; ++$b) {
+    if ($b >= $amount) {
+        ?><li class = "disabled"><a href = "vehicles.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+    } else {
+        if ($b == $currentpage) {
+            ?><li class = "active"><a href = "vehicles.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+        } else {
+            ?><li><a href = "vehicles.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+
+        }
+    }
+}
+
+if ($currentpage != $amount) {
+    ?>
+<li>
+  <a href="vehicles.php?page=<?php echo $addPage; ?>" aria-label="Next">
+	<span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+<?php
+
+} else {
+    ?>
+
+<li class = "disabled">
+  <a href="vehicles.php?page=<?php echo $minusPage; ?>" aria-label="Next">
+	<span aria-hidden="true">&raquo;</span>
+  </a>
+</li>
+
+<?php
+
+}
+?>
+</ul>
+</nav>
+
+<script>
+function newAlert (type, message) {
+    $("#alert-area").append($("<div class='alert " + type + " fade in' data-alert><p> " + message + " </p></div>"));
+    $(".alert").delay(2000).fadeOut("slow", function () { $(this).remove(); });
+}
+
+
+function dbSave(value, uid, column, original){
+
+        if (value != original) {
+
+            newAlert('alert-success', 'Value Updated!');
+
+            $.post('Backend/updateVehicles.php',{column:column, editval:value, id:uid},
+            function(){
+                //alert("Sent values.");
+            });
+        };
+
+}
+</script>
               </tbody>
             </table>
           </div>
