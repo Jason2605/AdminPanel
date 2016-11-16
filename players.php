@@ -42,6 +42,27 @@ if ($addPage > $amount) {
 }
 
 $max = PHP_INT_MAX;
+
+switch ($_GET['search']){
+    case "cash":
+        $search = "cash";
+    break;
+    case "bank":
+        $search = "bank";
+    break;
+    case "cop":
+        $search = "cop";
+    break;
+    case "medic":
+        $search = "medic";
+    break;
+    case "admin":
+        $search = "admin";
+    break;
+    default:
+        $search = "Nope";
+    break;
+}
 ?>
 
 
@@ -74,19 +95,19 @@ if (isset($_POST['search'])) {
         $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`) LIKE '%".$valuetosearch."%'";
         $search_result = filterTable($dbcon, $sqlget);
     }
-} elseif (isset($_POST['orderBank'])) {
+} elseif (isset($_POST['orderBank']) || $_GET['search'] == 'bank') {
     $sqlget = 'SELECT * FROM players ORDER BY bankacc DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
-} elseif (isset($_POST['orderCash'])) {
+} elseif (isset($_POST['orderCash']) || $_GET['search'] == 'cash') {
     $sqlget = 'SELECT * FROM players ORDER BY cash DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
-} elseif (isset($_POST['orderCop'])) {
+} elseif (isset($_POST['orderCop']) || $_GET['search'] == 'cop') {
     $sqlget = 'SELECT * FROM players ORDER BY coplevel DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
-} elseif (isset($_POST['orderMedic'])) {
+} elseif (isset($_POST['orderMedic']) || $_GET['search'] == 'medic') {
     $sqlget = 'SELECT * FROM players ORDER BY mediclevel DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
-} elseif (isset($_POST['orderAdmin'])) {
+} elseif (isset($_POST['orderAdmin']) || $_GET['search'] == 'admin') {
     $sqlget = 'SELECT * FROM players ORDER BY adminlevel DESC limit '.$page.',50';
     $search_result = filterTable($dbcon, $sqlget);
 } else {
@@ -149,11 +170,11 @@ include 'header/header.php';
 					<th>Alias</th>
 					<th>UID</th>
 					<th>GUID</th>
-					<th><form action = "players.php" method="post"><input class='btn-link' type='submit' name='orderCash' value="Player Cash"></form></th>
-					<th><form action = "players.php" method="post"><input class='btn-link' type='submit' name='orderBank' value="Player Bank"></form></th>
-					<th><form action = "players.php" method="post"><input class='btn-link' type='submit' name='orderCop' value="Cop Level"></form></th>
-					<th><form action = "players.php" method="post"><input class='btn-link' type='submit' name='orderMedic' value="Medic Level"></form></th>
-					<th><form action = "players.php" method="post"><input class='btn-link' type='submit' name='orderAdmin' value="Admin Level"></form></th>
+					<th><form action = "players.php?search=cash" method="post"><input class='btn-link' type='submit' name='orderCash' value="Player Cash"></form></th>
+					<th><form action = "players.php?search=bank" method="post"><input class='btn-link' type='submit' name='orderBank' value="Player Bank"></form></th>
+					<th><form action = "players.php?search=cop" method="post"><input class='btn-link' type='submit' name='orderCop' value="Cop Level"></form></th>
+					<th><form action = "players.php?search=medic" method="post"><input class='btn-link' type='submit' name='orderMedic' value="Medic Level"></form></th>
+					<th><form action = "players.php?search=admin" method="post"><input class='btn-link' type='submit' name='orderAdmin' value="Admin Level"></form></th>
 					<th>View Stats</th>
                 </tr>
               </thead>
@@ -203,7 +224,7 @@ echo '</table></div>';
 <?php if ($currentpage != 1) {
     ?>
 <li>
-  <a href="players.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+  <a href="players.php?search=<?php echo $search; ?>&page=<?php echo $minusPage; ?>" aria-label="Previous">
 	<span aria-hidden="true">&laquo;</span>
   </a>
 </li>
@@ -213,7 +234,7 @@ echo '</table></div>';
     ?>
 
 <li class = "disabled">
-  <a href="players.php?page=<?php echo $minusPage; ?>" aria-label="Previous">
+  <a href="players.php?search=<?php echo $search; ?>&page=<?php echo $minusPage; ?>" aria-label="Previous">
 	<span aria-hidden="true">&laquo;</span>
   </a>
 </li>
@@ -235,14 +256,14 @@ if ($pageBefore < 1) {
 }
 for ($b = $pageBefore; $b <= $amountPage; ++$b) {
     if ($b >= $amount) {
-        ?><li class = "disabled"><a href = "players.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+        ?><li class = "disabled"><a href = "players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
 
     } else {
         if ($b == $currentpage) {
-            ?><li class = "active"><a href = "players.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+            ?><li class = "active"><a href = "players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
 
         } else {
-            ?><li><a href = "players.php?page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
+            ?><li><a href = "players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>" style = "text-decoration:none"><?php  echo $b.' '; ?></a><li><?php
 
         }
     }
@@ -251,7 +272,7 @@ for ($b = $pageBefore; $b <= $amountPage; ++$b) {
 if ($currentpage != $amount) {
     ?>
 <li>
-  <a href="players.php?page=<?php echo $addPage; ?>" aria-label="Next">
+  <a href="players.php?search=<?php echo $search; ?>&page=<?php echo $addPage; ?>" aria-label="Next">
 	<span aria-hidden="true">&raquo;</span>
   </a>
 </li>
@@ -261,7 +282,7 @@ if ($currentpage != $amount) {
     ?>
 
 <li class = "disabled">
-  <a href="players.php?page=<?php echo $minusPage; ?>" aria-label="Next">
+  <a href='players.php?search=<?php echo $search; ?>&page=<?php echo $minusPage; ?>' aria-label="Next">
 	<span aria-hidden="true">&raquo;</span>
   </a>
 </li>
