@@ -10,10 +10,12 @@ if ($debug) {
 }
 
 $request = $_GET['request'];
-$uid = $_GET['id'];
-$len = strlen($uid);
-if ($len != 17) {
-    $uid = '';
+if ($request == 'search') {
+    $uid = $_GET['id'];
+    $len = strlen($uid);
+    if ($len != 17) {
+        $uid = '';
+    }
 }
 include '../verifyPanel.php';
 include 'apiFunctions.php';

@@ -330,17 +330,18 @@ body {
 }
 
 .searchBar {
-	margin-left: calc(100% - 375px);
+	margin-left: 60%;
 	margin-top: -30px;
+}
+
+.searchBar-Bar {
+    width: 300px;
 }
 
 .searchBarCash {
 	margin-left: calc(100% - 375px);
 }
 
-.form-control {
-
-}
 
 /*
  * Top navigation
@@ -359,12 +360,12 @@ body {
   color: #fff;
   font-weight: 300;
 }
- 
+
 .navbar-brand a {
   margin-left: 5px;
   color: #fff;
 }
-	
+
 
 /*
  * Sidebar
@@ -441,9 +442,6 @@ color: white;
     padding-right: 40px;
     padding-left: 40px;
   }
-}
-.main .page-header {
-  margin-top: 0;
 }
 
 .btn-outline {

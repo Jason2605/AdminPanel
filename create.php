@@ -9,8 +9,15 @@ ob_start();
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type ="text/css" href="styles/global.css" />
 <link href="dist/css/bootstrap.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
+<script src="scripts/jquery-1.12.3.min.js"></script>
+<script src="scripts/jquery.backstretch.js"></script>
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
 </head>
 <body>
 
@@ -60,9 +67,6 @@ ob_start();
 	<button>Submit</button>
 </div>
 
-
-<script src="scripts/jquery.js"></script>
-<script src="scripts/jquery.backstretch.js"></script>
 	<script>
         $.backstretch([
 		  "images/img4.jpg",

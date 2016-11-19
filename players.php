@@ -43,24 +43,24 @@ if ($addPage > $amount) {
 
 $max = PHP_INT_MAX;
 
-switch ($_GET['search']){
-    case "cash":
-        $search = "cash";
+switch ($_GET['search']) {
+    case 'cash':
+        $search = 'cash';
     break;
-    case "bank":
-        $search = "bank";
+    case 'bank':
+        $search = 'bank';
     break;
-    case "cop":
-        $search = "cop";
+    case 'cop':
+        $search = 'cop';
     break;
-    case "medic":
-        $search = "medic";
+    case 'medic':
+        $search = 'medic';
     break;
-    case "admin":
-        $search = "admin";
+    case 'admin':
+        $search = 'admin';
     break;
     default:
-        $search = "Nope";
+        $search = 'Nope';
     break;
 }
 ?>
@@ -71,16 +71,22 @@ switch ($_GET['search']){
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <title>Admin Panel - Players</title>
     <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
     <link href="styles/dashboard.css" rel="stylesheet">
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!-- normal script imports etc  -->
+    <script src="scripts/jquery-1.12.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="scripts/jquery.backstretch.js"></script>
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
   </head>
 
   <body>
@@ -209,9 +215,9 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     outputSelection($maxMedic, 'mediclevel', $row['mediclevel'], $row['uid']);
     outputSelection($maxAdmin, 'adminlevel', $row['adminlevel'], $row['uid']);
     echo '<form action=editPlayer.php method=post>';
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=View".' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.' </td>';
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=View".' ></td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].'> </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=guid value='.$return.'> </td>';
     echo '</form>';
     echo '</tr>';
 }

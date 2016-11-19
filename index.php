@@ -20,7 +20,14 @@ if (!file_exists('verifyPanel.php')) {
 <link rel="stylesheet" type ="text/css" href="styles/dashboard.css" />
 
 <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=0" />
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
 <script src="scripts/jquery-1.12.3.min.js"></script>
+<script src="scripts/jquery.backstretch.js"></script>
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
 
 <script>
 function startTime() {
@@ -76,7 +83,6 @@ if (isset($_COOKIE['fail']) && $_COOKIE['fail'] == '1') {
 </form>
 </div>
 
-    <script src="scripts/jquery.backstretch.js"></script>
 	<script>
         $.backstretch([
 		  "images/img4.jpg",
