@@ -81,6 +81,29 @@ if (!file_exists('verifyPanel.php')) {
         $maxDonator = 5;
     }
 
+    if ($_POST['apiUser'] != '') {
+        $apiUser = $_POST['apiUser'];
+    } else {
+        $apiUser = 'default';
+    }
+
+    if ($_POST['apiPass'] != '') {
+        $apiPass = $_POST['apiPass'];
+    } else {
+        $apiPass = 5;
+    }
+
+    if ($_POST['apiEnable'] != '') {
+        if ($_POST['apiEnable'] == '1' || $_POST['apiEnable'] == '0') {
+            $apiEnable = $_POST['apiEnable'];
+            $apiEnable = (int) $apiEnable;
+        } else {
+            $apiEnable = 1;
+        }
+    } else {
+        $apiEnable = 1;
+    }
+
     if (!$fail) {
         $filename = 'verifyPanel.php';
         $ourFileName = $filename;
@@ -132,6 +155,13 @@ global ".'$'.'maxAdmin;
 '.'$'."maxAdmin = $maxAdmin;
 global ".'$'.'maxDonator;
 '.'$'."maxDonator = $maxDonator;
+
+global ".'$'.'apiUser;
+'.'$'."apiUser = $apiUser;
+global ".'$'.'apiPass;
+'.'$'."apiPass = $apiPass;
+global ".'$'.'apiEnable;
+'.'$'."apiEnable = $apiEnable;
 
 ?>
 ";

@@ -64,6 +64,15 @@ ob_start();
 	</div>
 </div>
 
+<div class="panel panel-info">
+<div class="panel-heading">API Settings</div>
+	<div class="panel-body">
+		<input type="text" value="" placeholder="API Enable (1 or 0)" id="apiEnable" name="apiUser"/>
+		<input type="text" value="" placeholder="API Username" id="apiUser" name="apiUser"/>
+		<input type="text" value="" placeholder="API Password" id="apiPass" name="apiPass"/>
+	</div>
+</div>
+
 	<button>Submit</button>
 </div>
 

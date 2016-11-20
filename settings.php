@@ -92,6 +92,29 @@ include 'header/header.php';
   <h4>Max Donator Level</h4>
   <input type="text" name= "maxDonator" class="form-control" value="<?php echo $maxDonator; ?>">
 
+  <br>
+  <h4>API Username</h4>
+  <input type="text" name= "apiUser" class="form-control" value="<?php echo $apiUser; ?>">
+
+  <br>
+  <h4>API Password</h4>
+  <input type="text" name= "apiPass" class="form-control" value="<?php echo $apiPass; ?>">
+
+  <br>
+  <h4>API Enabled</h4>
+  <select class='form-control'name = 'apiEnable'>
+     <?php if ($apiEnable == 1) {
+    echo '<option>0</option>';
+    echo '<option selected="selected">1</option>';
+} else {
+    echo '<option selected="selected">0</option>';
+    echo '<option>1</option>';
+}
+
+     ?>
+
+  </select>
+
 
   <br>
   <button type="submit" name="updateButton" class="btn btn-primary btn-lg btn-block btn-outline">Update</button>

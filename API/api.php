@@ -1,26 +1,28 @@
 <?php
 
-$debug = false;
-
-if ($debug) {
-    $time = microtime();
-    $time = explode(' ', $time);
-    $time = $time[1] + $time[0];
-    $start = $time;
-}
-
-$request = $_GET['request'];
-if ($request == 'search') {
-    $uid = $_GET['id'];
-    $len = strlen($uid);
-    if ($len != 17) {
-        $uid = '';
-    }
-}
 include '../verifyPanel.php';
-include 'apiFunctions.php';
+if ($apiEnable == 1) {
+    if ($apiUser == $_GET['user'] && $apiPass == $_GET['pass']) {
+        $debug = false;
 
-switch ($request) {
+        if ($debug) {
+            $time = microtime();
+            $time = explode(' ', $time);
+            $time = $time[1] + $time[0];
+            $start = $time;
+        }
+
+        $request = $_GET['request'];
+        if ($request == 'search') {
+            $uid = $_GET['id'];
+            $len = strlen($uid);
+            if ($len != 17) {
+                $uid = '';
+            }
+        }
+        include 'apiFunctions.php';
+
+        switch ($request) {
 
     case all:
         masterconnect();
@@ -69,6 +71,8 @@ switch ($request) {
             }
 
             echo json_encode($all, JSON_PRETTY_PRINT);
+        } else {
+            echo 'rip';
         }
         break;
 
@@ -155,12 +159,18 @@ switch ($request) {
     default: echo 'rip';
 }
 
-if ($debug) {
-    echo '<br>';
-    $time = microtime();
-    $time = explode(' ', $time);
-    $time = $time[1] + $time[0];
-    $finish = $time;
-    $total_time = round(($finish - $start), 4);
-    echo 'Page generated in '.$total_time.' seconds.';
+        if ($debug) {
+            echo '<br>';
+            $time = microtime();
+            $time = explode(' ', $time);
+            $time = $time[1] + $time[0];
+            $finish = $time;
+            $total_time = round(($finish - $start), 4);
+            echo 'Page generated in '.$total_time.' seconds.';
+        }
+    } else {
+        echo 'Invalid credentials';
+    }
+} else {
+    echo 'Disabled';
 }
