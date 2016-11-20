@@ -9,9 +9,10 @@
     <img src="https://img.shields.io/badge/Mac_OS_X-64_bit-blue.svg" />
 </a>
 
-<a href="https://discord.gg/kZCTRPk">
-<img src="https://img.shields.io/badge/Discord-Join%20chat%20→-738bd7.svg"alt="Join the chat at https://discord.gg/kZCTRPk>
+      <a href="https://discord.gg/kZCTRPk">
+         <img src="https://img.shields.io/badge/Discord-Join%20chat%20→-738bd7.svg" alt="Join the chat at https://discord.gg/kZCTRPk">		 
 </a>
+
 
 
 </p>
