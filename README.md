@@ -4,10 +4,12 @@
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/quality-score.png?b=master" alt="Build Status">
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/build.png?b=master" alt="Build Status">
 <img src="https://codeclimate.com/github/Jason2605/AdminPanel/badges/gpa.svg" />
-<a href="https://discord.gg/kZCTRPk">
+
 <a href = "https://drive.google.com/open?id=0B5NOvZ674-GMWkpTU2JQNWxEN2M">
     <img src="https://img.shields.io/badge/Mac_OS_X-64_bit-blue.svg" />
 </a>
+
+<a href="https://discord.gg/kZCTRPk">
 <img src="https://img.shields.io/badge/Discord-Join%20chat%20→-738bd7.svg"alt="Join the chat at https://discord.gg/kZCTRPk>
 </a>
 
