@@ -10,11 +10,11 @@
 </a>
 
 <a href = "https://drive.google.com/open?id=0B5NOvZ674-GMX3JTcEZxUU5ZTWc">
-    <img src="https://img.shields.io/badge/Windows_64_Bit_bit-blue.svg" />
+    <img src="https://img.shields.io/badge/Windows-64_bit-green.svg" />
 </a>
 
 <a href = "https://drive.google.com/open?id=0B5NOvZ674-GMRjJoQ2hsT25aRVk">
-    <img src="https://img.shields.io/badge/Windows_32_Bit_bit-blue.svg" />
+    <img src="https://img.shields.io/badge/Windows-32_bit-yellow.svg" />
 </a>
 
 <a href="https://discord.gg/kZCTRPk">
