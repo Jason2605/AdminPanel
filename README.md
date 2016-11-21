@@ -5,23 +5,21 @@
 <img src="https://scrutinizer-ci.com/g/Jason2605/AdminPanel/badges/build.png?b=master" alt="Build Status">
 <img src="https://codeclimate.com/github/Jason2605/AdminPanel/badges/gpa.svg" />
 
-<a href = "https://drive.google.com/open?id=0B5NOvZ674-GMWkpTU2JQNWxEN2M">
+<a href = "https://drive.google.com/open?id=0B5NOvZ674-GMUFgweDJPZGZNbk0">
     <img src="https://img.shields.io/badge/Mac_OS_X-64_bit-blue.svg" />
 </a>
 
-<a href = "https://drive.google.com/open?id=0B5NOvZ674-GMX3JTcEZxUU5ZTWc">
+<a href = "https://drive.google.com/open?id=0B5NOvZ674-GMLUh4UnNGWW5TWGs">
     <img src="https://img.shields.io/badge/Windows-64_bit-green.svg" />
 </a>
 
-<a href = "https://drive.google.com/open?id=0B5NOvZ674-GMRjJoQ2hsT25aRVk">
+<a href = "https://drive.google.com/open?id=0B5NOvZ674-GMcDV3elFvcVQ4Ym8">
     <img src="https://img.shields.io/badge/Windows-32_bit-yellow.svg" />
 </a>
 
 <a href="https://discord.gg/kZCTRPk">
     <img src="https://img.shields.io/badge/Discord-Join%20chat%20→-738bd7.svg" alt="Join the chat at https://discord.gg/kZCTRPk">		 
 </a>
-
-
 
 </p>
 
