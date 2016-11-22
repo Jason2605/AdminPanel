@@ -1,5 +1,13 @@
 <?php
 session_start();
+$debug = true;
+
+if ($debug) {
+    $time = microtime();
+    $time = explode(' ', $time);
+    $time = $time[1] + $time[0];
+    $start = $time;
+}
 
 if (!isset($_SESSION['logged'])) {
     header('Location: ../index.php');
@@ -13,8 +21,8 @@ Rconconnect();
 $check = $rcon->get_players();
 preg_match_all("#(\d+)\s+(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d+\b)\s+(\d+)\s+([0-9a-fA-F]+)\(\w+\)\s([\S ]+)$#im", $check, $players);
 
-$bansRaw = $rcon->get_bans();
-preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, $str);
+//$bansRaw = $rcon->get_bans();
+//preg_match_all("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw, $str);
 ?>
 
 
@@ -124,6 +132,7 @@ echo '</table></div>';
               <tbody>
 <?php
 $ii = 0;
+/*
 foreach ($str[0] as $ban) {
     echo '<tr><td>'.$str[1][$ii].'</td>';
     echo '<td>'.$str[2][$ii].'</td>';
@@ -131,7 +140,18 @@ foreach ($str[0] as $ban) {
     echo '<td>'.$str[4][$ii].'</td></tr>';
     ++$ii;
 }
+*/
 echo '</table></div>';
+
+if ($debug) {
+    echo '<br>';
+    $time = microtime();
+    $time = explode(' ', $time);
+    $time = $time[1] + $time[0];
+    $finish = $time;
+    $total_time = round(($finish - $start), 4);
+    echo 'Page generated in '.$total_time.' seconds.';
+}
 ?>
               </tbody>
             </table>

@@ -9,36 +9,6 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Admin Panel - Houses</title>
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="styles/dashboard.css" rel="stylesheet">
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <!-- normal script imports etc  -->
-    <script src="scripts/jquery-1.12.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="scripts/jquery.backstretch.js"></script>
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
-  </head>
-
-  <body>
-
-<?php
-
 include 'verifyPanel.php';
 masterconnect();
 
@@ -71,7 +41,6 @@ $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be establi
               <tbody>
 <?php
 while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
-
     echo '<tr>';
     echo '<td>'.$row['id'].'</td>';
     echo '<td>'.$row['pid'].' </td>';

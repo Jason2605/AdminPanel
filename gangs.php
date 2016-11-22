@@ -7,9 +7,7 @@ if (!isset($_SESSION['logged'])) {
 }
 
 $user = $_SESSION['user'];
-
 $staffPerms = $_SESSION['perms'];
-
 ?>
 
 

@@ -14,30 +14,6 @@ include 'verifyPanel.php';
 if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
 }
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>Admin Panel - Settings</title>
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <link href="styles/dashboard.css" rel="stylesheet">
-	<link href="styles/global.css" rel="stylesheet">
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <!-- normal script imports etc  -->
-    <script src="scripts/jquery-1.12.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="scripts/jquery.backstretch.js"></script>
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
-  </head>
-  <body>
-<?php
 include 'header/header.php';
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

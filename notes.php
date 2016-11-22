@@ -15,37 +15,6 @@ if ($staffPerms['notes'] != '1') {
 
 include 'verifyPanel.php';
 masterconnect();
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Admin Panel - Notes</title>
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <link href="styles/dashboard.css" rel="stylesheet">
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <!-- normal script imports etc  -->
-    <script src="scripts/jquery-1.12.3.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="scripts/jquery.backstretch.js"></script>
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
-
-  </head>
-
-  <body>
-
-<?php
 
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
