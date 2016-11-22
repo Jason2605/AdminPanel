@@ -61,10 +61,6 @@ echo '</div>';
 ?>
 <script>
 
-$("button").click(function(){
-    $("button").toggleClass("btn-danger btn-success");
-});
-
 function post (id)
 {
 var newid = "#" + id;

@@ -275,10 +275,6 @@ if (isset($_POST['give'])) {
 
 <script>
 
-$("button").click(function(){
-    $("button").toggleClass("btn-danger btn-success");
-});
-
 function post (id)
 {
 var newid = "#" + id;
