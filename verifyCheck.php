@@ -157,9 +157,9 @@ global ".'$'.'maxDonator;
 '.'$'."maxDonator = $maxDonator;
 
 global ".'$'.'apiUser;
-'.'$'."apiUser = $apiUser;
+'.'$'."apiUser = '$apiUser';
 global ".'$'.'apiPass;
-'.'$'."apiPass = $apiPass;
+'.'$'."apiPass = '$apiPass';
 global ".'$'.'apiEnable;
 '.'$'."apiEnable = $apiEnable;
 
