@@ -5,7 +5,7 @@ session_start();
 ob_start();
 
 if (isset($_SESSION['logged'])) {
-    header('home.php');
+    header('Location: home.php');
 }
 
 include 'verifyPanel.php';
