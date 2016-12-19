@@ -65,9 +65,9 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
+                    <th>ID</th>
 					<th>Name</th>
 					<th>Alias</th>
-                    			<th>UID</th>
 					<th>Warning</th>
 					<th>New Notes</th>
 					<th>Update</th>
@@ -78,10 +78,9 @@ include 'header/header.php';
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notes.php method=post>';
     echo '<tr>';
-
+    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'."<input class='form-control' type=text name=warn value='1' </td>";
     echo '<td>'."<input class='form-control' type=text name=note value='' </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
