@@ -82,7 +82,6 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
     echo '<td>'.$row['uid'].' </td>';
-    echo '<td><div class="form-group"><label>Select Type:</label><select class="form-control" name="warn"><option>1</option><option>2</option><option>3</option></select></div></td>';
     echo '<td>'."<input class='form-control' type=text name=warn value='1' </td>";
     echo '<td>'."<input class='form-control' type=text name=note value='' </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
