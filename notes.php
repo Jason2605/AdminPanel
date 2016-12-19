@@ -20,6 +20,10 @@ if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
+    if ($search_result == '') {
+        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`) LIKE '%".$valuetosearch."%'";
+        $search_result = filterTable($dbcon, $sqlget);
+    }
 } else {
     $sqlget = 'SELECT * FROM players';
     $search_result = filterTable($dbcon, $sqlget);
@@ -63,7 +67,7 @@ include 'header/header.php';
                 <tr>
 					<th>Name</th>
 					<th>Alias</th>
-                                        <th>UID</th>
+                    <th>UID</th>
 					<th>Warning</th>
 					<th>New Notes</th>
 					<th>Update</th>
@@ -78,6 +82,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
     echo '<td>'.$row['uid'].' </td>';
+    echo '<td><div class="form-group"><label>Select Type:</label><select class="form-control" name="warn"><option>1</option><option>2</option><option>3</option></select></div></td>';
     echo '<td>'."<input class='form-control' type=text name=warn value='1' </td>";
     echo '<td>'."<input class='form-control' type=text name=note value='' </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
