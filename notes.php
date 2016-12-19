@@ -18,7 +18,7 @@ masterconnect();
 
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
-    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`) LIKE '%".$valuetosearch."%'";
+    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
 } else {
     $sqlget = 'SELECT * FROM players';
@@ -44,7 +44,7 @@ include 'header/header.php';
 			<div class="row">
 			  <div class="col-lg-6">
 				<div class="input-group">
-				  <input type="text" class="form-control" style = "width: 300px; " name="SearchValue" placeholder="Player name...">
+				  <input type="text" class="form-control" style = "width: 300px; " name="SearchValue" placeholder="Player name/UID/ID...">
 				  <span class="input-group-btn">
 					<input class="btn btn-default"  name="search" type="submit" value="Search">
 				  </span>
