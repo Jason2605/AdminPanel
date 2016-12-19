@@ -63,8 +63,7 @@ include 'header/header.php';
                 <tr>
 					<th>Name</th>
 					<th>Alias</th>
-                    <th>UID</th>
-
+                                        <th>UID</th>
 					<th>Warning</th>
 					<th>New Notes</th>
 					<th>Update</th>
