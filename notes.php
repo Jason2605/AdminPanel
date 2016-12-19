@@ -63,6 +63,7 @@ include 'header/header.php';
                 <tr>
 					<th>Name</th>
 					<th>Alias</th>
+                    <th>UID</th>
 
 					<th>Warning</th>
 					<th>New Notes</th>
@@ -77,6 +78,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
 
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
+    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'."<input class='form-control' type=text name=warn value='1' </td>";
     echo '<td>'."<input class='form-control' type=text name=note value='' </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
