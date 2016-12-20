@@ -5,41 +5,41 @@ if (!file_exists('verifyPanel.php')) {
     if ($_POST['user'] != '') {
         $user = $_POST['user'];
     } else {
-        echo 'error?';
+        echo 'Invalid User ';
         $fail = true;
     }
 
     if ($_POST['pass'] != '') {
         $pass = $_POST['pass'];
     } else {
-        $pass = '';
+        $pass = 'Invalid Password ';
     }
 
     if ($_POST['host'] != '') {
         $host = $_POST['host'];
     } else {
-        echo 'error?';
+        echo 'Invalid Host ';
         $fail = true;
     }
 
     if ($_POST['name'] != '') {
         $name = $_POST['name'];
     } else {
-        echo 'error?';
+        echo 'Invalid DB Name ';
         $fail = true;
     }
 
     if ($_POST['RHost'] != '') {
         $RHost = $_POST['RHost'];
     } else {
-        echo 'error?';
+        echo 'Invalid RCON Host ';
         $fail = true;
     }
 
     if ($_POST['RPass'] != '') {
         $RPass = $_POST['RPass'];
     } else {
-        echo 'error?';
+        echo 'Invalid RCON Password ';
         $fail = true;
     }
 
@@ -47,7 +47,7 @@ if (!file_exists('verifyPanel.php')) {
         $RPort = $_POST['RPort'];
         $RPort = (int) $RPort;
     } else {
-        echo 'error?';
+        echo 'Invalid RCON Port ';
         $fail = true;
     }
 
@@ -90,7 +90,7 @@ if (!file_exists('verifyPanel.php')) {
     if ($_POST['apiPass'] != '') {
         $apiPass = $_POST['apiPass'];
     } else {
-        $apiPass = 5;
+        $apiPass = 'password';
     }
 
     if ($_POST['apiEnable'] != '') {
