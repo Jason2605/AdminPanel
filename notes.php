@@ -18,8 +18,12 @@ masterconnect();
 
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
-    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`) LIKE '%".$valuetosearch."%'";
+    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
+    if ($search_result == '') {
+        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`) LIKE '%".$valuetosearch."%'";
+        $search_result = filterTable($dbcon, $sqlget);
+    }
 } else {
     $sqlget = 'SELECT * FROM players';
     $search_result = filterTable($dbcon, $sqlget);
@@ -44,7 +48,7 @@ include 'header/header.php';
 			<div class="row">
 			  <div class="col-lg-6">
 				<div class="input-group">
-				  <input type="text" class="form-control" style = "width: 300px; " name="SearchValue" placeholder="Player name...">
+				  <input type="text" class="form-control" style = "width: 300px; " name="SearchValue" placeholder="Player name/UID/ID...">
 				  <span class="input-group-btn">
 					<input class="btn btn-default"  name="search" type="submit" value="Search">
 				  </span>
@@ -61,9 +65,9 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
+			                <th>ID</th>
 					<th>Name</th>
 					<th>Alias</th>
-                                        <th>UID</th>
 					<th>Warning</th>
 					<th>New Notes</th>
 					<th>Update</th>
@@ -74,10 +78,9 @@ include 'header/header.php';
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notes.php method=post>';
     echo '<tr>';
-
+    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'."<input class='form-control' type=text name=warn value='1' </td>";
     echo '<td>'."<input class='form-control' type=text name=note value='' </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
