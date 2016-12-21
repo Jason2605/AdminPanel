@@ -34,7 +34,7 @@ include 'header/header.php';
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 style = "margin-top: 70px">Notes Menu</h1>
-<p class="page-header">Notes Menu of the panel, allows you to set notes on players. Warning - 1 = no colour, nothing too bad. 2 = orange, small caution. 3 = Red, big caution.</p>
+<p class="page-header">Notes Menu of the panel, allows you to set notes on players.</p>
 
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="players.php">
@@ -68,7 +68,7 @@ include 'header/header.php';
 			                <th>ID</th>
 					<th>Name</th>
 					<th>Alias</th>
-					<th>Warning</th>
+					<th>Warning Type</th>
 					<th>New Notes</th>
 					<th>Update</th>
                 </tr>
@@ -81,10 +81,10 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'."<input class='form-control' type=text name=warn value='1' </td>";
-    echo '<td>'."<input class='form-control' type=text name=note value='' </td>";
-    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].' </td>';
+    echo '<td>'."<select class='form-control' name='warn'><option value='1' selected='selected'>Warning</option><option value='2'>Caution</option><option value='3'>Big Caution</option></select> </td>";
+    echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
+    echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].'> </td>';
     echo '</tr>';
     echo '</form>';
 }
