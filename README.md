@@ -50,4 +50,6 @@ Just drop these files into a webserver. Everything else is configured from the p
 Default user is Username: AdminPanel Password: Admin1234
 Please change this after the first login.
 
+The Default API Username and Password if not specified: Username: default Password: password
+
 Thanks for the support!
