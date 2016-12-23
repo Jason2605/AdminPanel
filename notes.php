@@ -65,7 +65,7 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
-			                <th>ID</th>
+			                <th>Player ID</th>
 					<th>Name</th>
 					<th>Alias</th>
 					<th>Note Type</th>
