@@ -78,9 +78,9 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
+                    <th>Player ID</th>
 					<th>Player Warned</th>
 					<th>Player Alias</th>
-                    <th>Player UID</th>
                     <th>Player Note</th>
                     <th>Staff Member</th>
                     <th>Timestamp</th>
@@ -95,12 +95,14 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
         echo '<tr class = "warning">';
     } elseif ($row['warning'] == 3) {
         echo '<tr class = "danger">';
+    } elseif ($row['warning'] == 4) {
+        echo '<tr class = "success">';
     } else {
         echo '<tr>';
     }
+    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['alias'].' </td>';
-    echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['note_text'].' </td>';
     echo '<td>'.$row['staff_name'].' </td>';
     echo '<td>'.$row['note_updated'].' </td>';

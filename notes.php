@@ -68,7 +68,7 @@ include 'header/header.php';
 			                <th>ID</th>
 					<th>Name</th>
 					<th>Alias</th>
-					<th>Warning Type</th>
+					<th>Note Type</th>
 					<th>New Notes</th>
 					<th>Update</th>
                 </tr>
@@ -81,7 +81,7 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'."<select class='form-control' name='warn'><option value='1' selected='selected'>Warning</option><option value='2'>Caution</option><option value='3'>Big Caution</option></select> </td>";
+    echo '<td>'."<select class='form-control' name='warn'><option value='4'>Commendation</option><option value='1' selected='selected'>Warning</option><option value='2'>Caution</option><option value='3'>Big Caution</option></select> </td>";
     echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].'> </td>';
