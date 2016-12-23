@@ -79,7 +79,7 @@ include 'header/header.php';
               <thead>
                 <tr>
                     <th>Player ID</th>
-					<th>Player Warned</th>
+					<th>Player</th>
 					<th>Player Alias</th>
                     <th>Player Note</th>
                     <th>Staff Member</th>
