@@ -79,12 +79,12 @@ include 'header/header.php';
               <thead>
                 <tr>
                     <th>Player ID</th>
-					<th>Player</th>
-					<th>Player Alias</th>
+                    <th>Player</th>
+                    <th>Player Alias</th>
                     <th>Player Note</th>
                     <th>Staff Member</th>
                     <th>Timestamp</th>
-					<th>Delete</th>
+                    <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
