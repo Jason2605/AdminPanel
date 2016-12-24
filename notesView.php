@@ -91,14 +91,22 @@ include 'header/header.php';
 <?php
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notesView.php method=post>';
-    if ($row['warning'] == 2) {
-        echo '<tr class = "warning">';
-    } elseif ($row['warning'] == 3) {
-        echo '<tr class = "danger">';
-    } elseif ($row['warning'] == 4) {
-        echo '<tr class = "success">';
-    } else {
-        echo '<tr>';
+    switch ($row['warning']) {
+        case 1:
+            echo '<tr class = "warning">';
+            break;
+        case 2:
+            echo '<tr class = "warning">';
+            break;
+        case 3:
+            echo '<tr class = "danger">';
+            break;
+        case 4:
+            echo '<tr class = "success">';
+            break;
+        default:
+            echo '<tr>';
+            break;
     }
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
