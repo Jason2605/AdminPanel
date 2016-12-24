@@ -93,19 +93,19 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notesView.php method=post>';
     switch ($row['warning']) {
         case 1:
-            echo '<tr class = "warning">';
+            echo '<tr>';
             break;
         case 2:
             echo '<tr class = "warning">';
             break;
         case 3:
-            echo '<tr class = "danger">';
+            echo '<tr class = "warning">';
             break;
         case 4:
-            echo '<tr class = "success">';
+            echo '<tr class = "danger">';
             break;
-        default:
-            echo '<tr>';
+        case 5:
+            echo '<tr class = "success">';
             break;
     }
     echo '<td>'.$row['uid'].' </td>';
