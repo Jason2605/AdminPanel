@@ -99,12 +99,9 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
             echo '<tr class = "warning">';
             break;
         case 3:
-            echo '<tr class = "warning">';
-            break;
-        case 4:
             echo '<tr class = "danger">';
             break;
-        case 5:
+        case 4:
             echo '<tr class = "success">';
             break;
     }
