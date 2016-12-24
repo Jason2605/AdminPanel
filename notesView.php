@@ -92,7 +92,7 @@ include 'header/header.php';
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notesView.php method=post>';
     switch ($row['warning']) {
-        case default:
+        default:
             echo '<tr>';
             break;
         case 2:
