@@ -27,7 +27,7 @@ include 'header/header.php';
 ?>
 
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 style = "margin-top: 70px">Edit Player</h1>
 		  <p class="page-header">Edit player menu of the panel, allows you to change values in more depth.</p>
           <div id="alert-area"></div>
@@ -42,8 +42,8 @@ include 'header/header.php';
           <input type=hidden name=guid value= <?php echo $guidPlayer; ?> >
           <div class="btn-group" role="group" aria-label="...">
           <button type="button" class="btn btn-primary btn-outline" data-toggle="modal" data-target="#myModal">Player Inventory</button>
-          </div></form>
-
+          </form>
+    </div>
           <br>
 
 

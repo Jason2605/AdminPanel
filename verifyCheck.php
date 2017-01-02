@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `notes` (
     `name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
     `alias` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
 	`note_text` VARCHAR(255) NOT NULL,
-	`warning` ENUM('1','2','3') NOT NULL,
+	`warning` ENUM('1','2','3','4') NOT NULL,
 	`note_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (`note_id`),
 	UNIQUE INDEX `note_id` (`note_id`)
