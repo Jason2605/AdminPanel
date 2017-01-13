@@ -21,7 +21,7 @@ if (isset($_POST['search'])) {
     $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
     if ($search_result == '') {
-        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
+        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
         $search_result = filterTable($dbcon, $sqlget);
     }
 } else {
