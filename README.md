@@ -46,6 +46,7 @@ Download the latest version from <a href = "https://github.com/Jason2605/AdminPa
 ###Install
 
 Just drop these files into a webserver. Everything else is configured from the panel itself so no need for file configuration!
+Note - The DB info is that of your Arma 3 Altis Life Database.
 
 Default user is Username: AdminPanel Password: Admin1234
 Please change this after the first login.
