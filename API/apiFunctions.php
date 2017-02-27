@@ -8,6 +8,14 @@ function searchMoney($dbcon)
     return $sqldata;
 }
 
+function showRich($dbcon, $amount)
+{
+    $sqlget = 'SELECT name,pid,aliases,cash,bankacc FROM players ORDER BY bankacc limit '.$amount;
+    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+
+    return $sqldata;
+}
+
 function wantedList($dbcon)
 {
     $sqlget = 'SELECT wantedID,wantedName,wantedCrimes,wantedBounty FROM wanted';
