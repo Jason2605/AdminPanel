@@ -14,10 +14,10 @@
 <p>AdminPanel now has a brand new API available to be used, 
 it returns the data in json so many languages can use it for various things.
 
-The panel currently has 11 functions which you can use at this moment in time.
+The panel currently has 12 functions which you can use at this moment in time.
 </p>
 * all - This returns info about every player in your database and things such as total amount of money, and player count.
-* search - This allows you to get information about a certain player.
+* search - This allows you to get information about a certain player(use the players id ex.76561198035548503).
 * money - Returns amount of money throught the entire server.
 * players - Returns the amount of players in the database.
 * wanted - Returns the players wanted and what they are wanted for.
@@ -27,6 +27,7 @@ The panel currently has 11 functions which you can use at this moment in time.
 * donorlevel - Returns a list of all the players with the highest donor level first.
 * adminlevel - Returns a list of all the players with the highest admin level first.
 * gangs - Returns the information about all the gangs on the server.
+* richlist - Returns a default of the richest 10 players (ordered by bank), you can add the optional 'limit' to the url to change the number of players returned
 
 <p>The API was made to help out people who are using things such as IPS where you dont want to add 
 queries etc into the code itself so instead you can just use the API to simply get the data instead. 
@@ -34,7 +35,8 @@ However it can be used for various other things such as discord bots and more.</
 
 Examples
 
-* http://adminpanel.vilayer.me/AdminPanel/API/api.php?request=all
-* http://adminpanel.vilayer.me/AdminPanel/API/test3.php
+* http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=all
+* http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=richlist
+* http://139.59.163.114/Other/Admin/AdminPanel_V2/API/apiExample.php
 
 
