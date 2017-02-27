@@ -18,7 +18,7 @@ The panel currently has 12 functions which you can use at this moment in time.
 </p>
 * all - This returns info about every player in your database and things such as total amount of money, and player count.
 * search - This allows you to get information about a certain player(use the players id ex.76561198035548503).
-* money - Returns amount of money throught the entire server.
+* money - Returns amount of money through out the entire server.
 * players - Returns the amount of players in the database.
 * wanted - Returns the players wanted and what they are wanted for.
 * vehicles - Returns the amount of vehicles in the database.
