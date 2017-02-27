@@ -10,7 +10,7 @@ function searchMoney($dbcon)
 
 function showRich($dbcon, $amount)
 {
-    $sqlget = 'SELECT name,pid,aliases,cash,bankacc FROM players ORDER BY bankacc limit '.$amount;
+    $sqlget = 'SELECT name,pid,aliases,cash,bankacc FROM players ORDER BY bankacc DESC limit '.$amount;
     $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
 
     return $sqldata;
