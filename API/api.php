@@ -1,6 +1,6 @@
 <?php
 
-include '../verifyPanel.php';
+include '../Backend/verifyPanel.php';
 if ($apiEnable == 1) {
     if ($apiUser == $_GET['user'] && $apiPass == $_GET['pass']) {
         $debug = false;
@@ -21,12 +21,13 @@ if ($apiEnable == 1) {
             }
         }
         include 'apiFunctions.php';
+        loginconnect();
 
         switch ($request) {
 
     case all:
-        masterconnect();
-        $allArray = allPlayerFunctions($dbcon);
+
+        $allArray = allPlayerFunctions($dbconL);
         $all = [];
         $all[totalMoney] = 0;
         $all[playerCount] = 0;
@@ -51,8 +52,8 @@ if ($apiEnable == 1) {
         break;
 
     case search:
-        masterconnect();
-        $allArray = searchPlayer($dbcon, $uid);
+
+        $allArray = searchPlayer($dbconL, $uid);
         if ($allArray != 'NoID') {
             $all = [];
             while ($row = mysqli_fetch_array($allArray, MYSQLI_ASSOC)) {
@@ -77,9 +78,9 @@ if ($apiEnable == 1) {
         break;
 
     case money:
-        masterconnect();
+
         $money = 0;
-        $sqldata = searchMoney($dbcon);
+        $sqldata = searchMoney($dbconL);
 
         while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
             $money = $money + $row['cash'] + $row['bankacc'];
@@ -87,15 +88,35 @@ if ($apiEnable == 1) {
         echo $money;
         break;
 
+    case richlist:
+        if (isset($_GET['limit'])) {
+            $limit = $_GET['limit'];
+        } else {
+            $limit = 10;
+        }
+        $money = 0;
+        $sqldata = showRich($dbconL, $limit);
+
+        while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
+            $i = $row['pid'];
+            $all[player][$i][name] = $row['name'];
+            $all[player][$i][pid] = $row['pid'];
+            $all[player][$i][aliases] = $row['aliases'];
+            $all[player][$i][cash] = $row['cash'];
+            $all[player][$i][bank] = $row['bankacc'];
+        }
+        echo json_encode($all, JSON_PRETTY_PRINT);
+        break;
+
     case players:
-        masterconnect();
-        $count = countPlayers($dbcon);
+
+        $count = countPlayers($dbconL);
         echo $count;
         break;
 
     case wanted:
-        masterconnect();
-        $sqldata = wantedList($dbcon);
+
+        $sqldata = wantedList($dbconL);
         $wanted = [];
         while ($row = mysqli_fetch_array($sqldata, MYSQLI_ASSOC)) {
             $i = $row['wantedID'];
@@ -107,42 +128,42 @@ if ($apiEnable == 1) {
         break;
 
     case vehicles:
-        masterconnect();
-        $count = countVehicles($dbcon);
+
+        $count = countVehicles($dbconL);
         echo $count;
         break;
 
     case coplevel:
-        masterconnect();
-        $copArray = searchLevel($dbcon, 'coplevel');
+
+        $copArray = searchLevel($dbconL, 'coplevel');
         $player = returnLevel($copArray, 'coplevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
 
     case mediclevel:
-        masterconnect();
-        $medicArray = searchLevel($dbcon, 'mediclevel');
+
+        $medicArray = searchLevel($dbconL, 'mediclevel');
         $player = returnLevel($medicArray, 'mediclevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
 
     case donorlevel:
-        masterconnect();
-        $donorArray = searchLevel($dbcon, 'donorlevel');
+
+        $donorArray = searchLevel($dbconL, 'donorlevel');
         $player = returnLevel($donorArray, 'donorlevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
 
     case adminlevel:
-        masterconnect();
-        $adminArray = searchLevel($dbcon, 'adminlevel');
+
+        $adminArray = searchLevel($dbconL, 'adminlevel');
         $player = returnLevel($adminArray, 'adminlevel');
         echo json_encode($player, JSON_PRETTY_PRINT);
         break;
 
     case gangs:
-        masterconnect();
-        $gangArray = searchGangs($dbcon);
+
+        $gangArray = searchGangs($dbconL);
         $i = 0;
         $gangs = [];
         while ($row = mysqli_fetch_array($gangArray, MYSQLI_ASSOC)) {
