@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 
-$json = file_get_contents('http://adminpanel.vilayer.me/AdminPanel/API/api.php?request=all');
+$json = file_get_contents('http://139.59.163.114/Other/Admin/AdminPanel_V2/API/apiExample.php');
 
 //var_dump($json);
 
@@ -26,7 +26,7 @@ $response = json_decode($json, true);
               <h3 class='panel-title'>Players</h3>
           </div>
           <div class='panel-body'>
-              <p> <?php echo 'Total money on your server is: '.$response[totalMoney]; ?> </p>
+              <p> <?php echo 'Total money on your server is: '.$response; ?> </p>
           </div>
       </div>
 
