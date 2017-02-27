@@ -37,6 +37,7 @@ Examples
 
 * http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=all
 * http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=richlist
+* http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=richlist&limit=2
 * http://139.59.163.114/Other/Admin/AdminPanel_V2/API/apiExample.php
 
 
