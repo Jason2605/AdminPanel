@@ -9,13 +9,15 @@
        </a>
 </p>
 
-##AdminPanel API Info
+## AdminPanel API Info
 
 <p>AdminPanel now has a brand new API available to be used, 
 it returns the data in json so many languages can use it for various things.
 
 The panel currently has 12 functions which you can use at this moment in time.
 </p>
+
+
 * all - This returns info about every player in your database and things such as total amount of money, and player count.
 * search - This allows you to get information about a certain player(use the players id ex.76561198035548503).
 * money - Returns amount of money through out the entire server.
@@ -39,5 +41,3 @@ Examples
 * http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=richlist
 * http://139.59.163.114/Other/Admin/AdminPanel_V2/API/api.php?user=test&pass=test&request=richlist&limit=2
 * http://139.59.163.114/Other/Admin/AdminPanel_V2/API/apiExample.php
-
-
