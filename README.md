@@ -26,24 +26,24 @@
 
 
 
-##AdminPanel Info
+## AdminPanel Info
 AdminPanel was a project started after owning a community and my admins not knowing fully how to use database admin tools, so I created a very user friendly panel instead!
 
 The panel also has access to Rcon, meaning your server can be maintained and run without the need to be in-game or even your computer!
 
-###Donate
+### Donate
 
 Donations are much appreciated!
 
-###Screenshots
+### Screenshots
 
 See the AdminPanel in action <a href = "https://www.flickr.com/photos/140721778@N03/">here!</a> (Screenshots are now outdated, please look for the white theme, not the colourful one.)
 
-###Download
+### Download
 
 Download the latest version from <a href = "https://github.com/Jason2605/AdminPanel/releases">here!</a>
 
-###Install
+### Install
 
 Just drop these files into a webserver. Everything else is configured from the panel itself so no need for file configuration!
 Note - The DB info is that of your Arma 3 Altis Life Database.
