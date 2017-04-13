@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `log` (
 CREATE TABLE IF NOT EXISTS `users` (
 `ID` mediumint(9) NOT NULL AUTO_INCREMENT,
 `username` varchar(60) NOT NULL,
-`password` varchar(60) NOT NULL,
+`password` varchar(80) NOT NULL,
 `permissions` text NOT NULL,
 PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
@@ -287,7 +287,7 @@ AUTO_INCREMENT=1;
 
         $sqldatadel = mysqli_query($dbconnect, $sqldeluser) or die('Connection could not be established - USER!');
 
-        $sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `permissions`) VALUES (1, 'AdminPanel','2b12e1a2252d642c09f640b63ed35dcc5690464a', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');";
+        $sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `permissions`) VALUES (1, 'AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');";
 
         $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die('Connection could not be established or user already exists!');
 
