@@ -29,7 +29,7 @@ if (!$dbconL) {
 $username = mysqli_real_escape_string($dbconL, $_POST['username']);
 $password = mysqli_real_escape_string($dbconL, $_POST['password']);
 
-$encPass = sha1($password);
+$encPass = hash('sha256', $password);
 
 if ($username && $password) {
     if (!isset($_SESSION['failedLogin'])) {
