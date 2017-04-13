@@ -41,7 +41,7 @@ if (isset($_POST['update'])) {
         $username = mysqli_real_escape_string($dbconL, $_POST['username']);
         $password = mysqli_real_escape_string($dbconL, $_POST['password']);
 
-        $encPass = sha1($password);
+        $encPass = hash('sha256', $password);
 
         $UpdateQ = "INSERT INTO users (username, password, permissions) VALUES ('$username', '$encPass', '$perms')";
         mysqli_query($dbconL, $UpdateQ);
