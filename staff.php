@@ -82,7 +82,7 @@ if (isset($_POST['update'])) {
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Username updated!</a></div>';
     } else {
         $password = $_POST['password'];
-        $pass = sha1($password);
+        $pass = hash('sha256', $password);
         $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass' WHERE ID='$_POST[hidden]'";
         mysqli_query($dbconL, $UpdateQ);
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Password and/or username updated!</a></div>';
