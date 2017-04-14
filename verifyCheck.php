@@ -28,6 +28,12 @@ if (!file_exists('verifyPanel.php')) {
         echo 'Invalid DB Name ';
         $fail = true;
     }
+	
+    if ($_POST['port'] != '') {
+        $port = $_POST['port'];
+    } else {
+        $port = 3306;
+    }
 
     if ($_POST['RHost'] != '') {
         $RHost = $_POST['RHost'];
@@ -116,13 +122,13 @@ include "functions.php";
 function masterconnect(){
 
 	global '.'$'.'dbcon;
-	'.'$'."dbcon = mysqli_connect('$host', '$user', '$pass', '$name') or die ('Database connection failed');
+	'.'$'."dbcon = mysqli_connect('$host', '$user', '$pass', '$name', '$port') or die ('Database connection failed');
 }
 
 function loginconnect(){
 
 	global ".'$'.'dbconL;
-	'.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$name');
+	'.'$'."dbconL = mysqli_connect('$host', '$user', '$pass', '$name', '$port');
 }
 
 function Rconconnect(){
@@ -190,95 +196,90 @@ global ".'$'.'apiEnable;
         $sqldata5 = mysqli_query($dbconnect, $sqlDel5);
 
         $sqlmake = '
-CREATE TABLE IF NOT EXISTS `log` (
-  `logid` int(11) NOT NULL AUTO_INCREMENT,
-  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `user` varchar(64) DEFAULT NULL,
-  `action` varchar(255) DEFAULT NULL,
-  `level` int(11) NOT NULL,
-  PRIMARY KEY (`logid`),
-  UNIQUE KEY `logid` (`logid`),
-  KEY `logid_2` (`logid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-';
+	CREATE TABLE IF NOT EXISTS `log` (
+	  `logid` int(11) NOT NULL AUTO_INCREMENT,
+	  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  `user` varchar(64) DEFAULT NULL,
+	  `action` varchar(255) DEFAULT NULL,
+	  `level` int(11) NOT NULL,
+	  PRIMARY KEY (`logid`),
+	  UNIQUE KEY `logid` (`logid`),
+	  KEY `logid_2` (`logid`)
+	) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+	';
 
         $sqldata = mysqli_query($dbconnect, $sqlmake) or die('Connection could not be established - LOG');
 
         $sqlmake2 = '
 
-CREATE TABLE IF NOT EXISTS `users` (
-`ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-`username` varchar(60) NOT NULL,
-`password` varchar(80) NOT NULL,
-`permissions` text NOT NULL,
-PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
+	CREATE TABLE IF NOT EXISTS `users` (
+	    `ID` mediumint(9) NOT NULL AUTO_INCREMENT,
+	    `username` varchar(60) NOT NULL,
+	    `password` varchar(80) NOT NULL,
+	    `permissions` text NOT NULL,
+	    PRIMARY KEY (`ID`)
+	) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
 
         $sqldata1 = mysqli_query($dbconnect, $sqlmake2) or die('Connection could not be established - USERS!');
 
         $sqlmake3 = "
 
-CREATE TABLE IF NOT EXISTS `notes` (
-	`note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
-	`uid` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-	`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-    `name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-    `alias` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-	`note_text` VARCHAR(255) NOT NULL,
-	`warning` ENUM('1','2','3','4') NOT NULL,
-	`note_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`note_id`),
-	UNIQUE INDEX `note_id` (`note_id`)
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=6;
-
-";
+	CREATE TABLE IF NOT EXISTS `notes` (
+	    `note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
+	    `uid` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+	    `staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+	    `name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+	    `alias` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+            `note_text` VARCHAR(255) NOT NULL,
+	    `warning` ENUM('1','2','3','4') NOT NULL,
+	    `note_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	    PRIMARY KEY (`note_id`),
+	    UNIQUE INDEX `note_id` (`note_id`)
+	) COLLATE='latin1_swedish_ci' ENGINE=InnoDB AUTO_INCREMENT=6;
+	";
 
         $sqldata100 = mysqli_query($dbconnect, $sqlmake3) or die('Connection could not be established - NOTES!');
 
         $sqlmake4 = "
 
-CREATE TABLE IF NOT EXISTS `reimbursement_log` (
-	`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
-	`playerid` VARCHAR(50) NOT NULL,
-	`comp` INT(100) NOT NULL DEFAULT '0',
-	`reason` VARCHAR(255) NOT NULL,
-	`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-	`timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`reimbursement_id`),
-	UNIQUE INDEX `reimbursement_id` (`reimbursement_id`)
-)
-COLLATE='latin1_swedish_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=1;
-";
+	CREATE TABLE IF NOT EXISTS `reimbursement_log` (
+		`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
+		`playerid` VARCHAR(50) NOT NULL,
+		`comp` INT(100) NOT NULL DEFAULT '0',
+		`reason` VARCHAR(255) NOT NULL,
+		`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+		`timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		PRIMARY KEY (`reimbursement_id`),
+		UNIQUE INDEX `reimbursement_id` (`reimbursement_id`)
+	)
+	COLLATE='latin1_swedish_ci'
+	ENGINE=InnoDB
+	AUTO_INCREMENT=1;
+	";
 
         $sqldata9 = mysqli_query($dbconnect, $sqlmake4) or die('Connection could not be established - REIM!');
 
-        $sqlmake5 =
-'
-      CREATE TABLE IF NOT EXISTS `whitelist` (
-      `id` int(0) NOT NULL AUTO_INCREMENT,
-      `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      `user` varchar(64) DEFAULT NULL,
-      `guid` varchar(64) DEFAULT NULL,
-      `uid` varchar(64) DEFAULT NULL,
-      PRIMARY KEY (`id`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-';
+        $sqlmake5 = '
+        CREATE TABLE IF NOT EXISTS `whitelist` (
+            `id` int(0) NOT NULL AUTO_INCREMENT,
+            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            `user` varchar(64) DEFAULT NULL,
+            `guid` varchar(64) DEFAULT NULL,
+            `uid` varchar(64) DEFAULT NULL,
+            PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+	';
         $sqldata10 = mysqli_query($dbconnect, $sqlmake5) or die('Connection could not be established - Whitelist!');
 
         $sqlmake6 = '
         CREATE TABLE `access` (
-        `accessID` int(11) NOT NULL AUTO_INCREMENT,
-        `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        `address` varchar(64) DEFAULT NULL,
-        `failed` int(11) NOT NULL,
-        PRIMARY KEY (`accessID`),
-        UNIQUE KEY `accessID` (`accessID`),
-        KEY `accessID_1` (`accessID`)
+            `accessID` int(11) NOT NULL AUTO_INCREMENT,
+            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            `address` varchar(64) DEFAULT NULL,
+            `failed` int(11) NOT NULL,
+            PRIMARY KEY (`accessID`),
+            UNIQUE KEY `accessID` (`accessID`),
+            KEY `accessID_1` (`accessID`)
         ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 ';
         $sqlMakeAccess = mysqli_query($dbconnect, $sqlmake6) or die('Connection could not be established - Access!');
