@@ -65,11 +65,11 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
-			                <th>Player ID</th>
+			        <th>Player ID</th>
 					<th>Name</th>
 					<th>Alias</th>
-					<th>Note Type</th>
-					<th>New Notes</th>
+					<th>Warning Points</th>
+					<th>Case Notes</th>
 					<th>Update</th>
                 </tr>
               </thead>
@@ -81,16 +81,16 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
     echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'."<select class='form-control' name='warn'><option value='4'>Commendation</option><option value='1' selected='selected'>Warning</option><option value='2'>Caution</option><option value='3'>Big Caution</option></select> </td>";
+	echo '<td>'."<input class='form-control' type=warn name=warn value=''> </td>";
     echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].'> </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['playerid'].'> </td>';
     echo '</tr>';
     echo '</form>';
 }
 
 if (isset($_POST['update'])) {
-    $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
+    $sql = "SELECT * FROM `players` WHERE `playerid` = $_POST[hidden]";
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
@@ -101,8 +101,43 @@ if (isset($_POST['update'])) {
         logIt($user, $message, $dbcon);
         $note = $_POST['note'];
         $note = '"'.$note.'"';
-        $UpdateN = "INSERT INTO notes (uid, staff_name, name, alias, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$player->name', '$player->aliases', '$note','$_POST[warn]')";
-        mysqli_query($dbcon, $UpdateN);
+        
+		$UpdateN = 'INSERT INTO notes (uid, staff_name, name, alias, note_text, warning)'
+            . ' VALUES ( ?, ? , ? , ? , ? , ? )';
+
+		if( $sth = mysqli_prepare($dbcon,$UpdateN) ) {
+		  mysqli_stmt_bind_param($sth,'ssssss'
+			 ,$_POST['hidden']
+			 ,$user
+			 ,$player->name
+			 ,$player->aliases
+			 ,$_POST['note']
+			 ,$_POST['warn']
+		  );
+		  if( mysqli_stmt_execute($sth) ) {
+			 // statement execution successful
+		  } else {
+			 printf("Error: %s\n",mysqli_stmt_error($sth));
+		  }
+		} else {
+		  printf("Error: %s\n",mysqli_error($dbcon));
+		}
+		
+		$UpdateN2 = 'UPDATE players SET warning = warning + ? WHERE playerid = ? ';
+		
+		if( $sth2 = mysqli_prepare($dbcon,$UpdateN2) ) {
+		  mysqli_stmt_bind_param($sth2,'ss'
+			,$_POST['warn']
+			,$_POST['hidden']
+		  );
+		  if( mysqli_stmt_execute($sth2) ) {
+			 // statement execution successful
+		  } else {
+			 printf("1Error: %s\n",mysqli_stmt_error($sth2));
+		  }
+		} else {
+		  printf("2Error: %s\n",mysqli_error($dbcon));
+		}
     }
 }
 
