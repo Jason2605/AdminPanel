@@ -175,7 +175,7 @@ global ".'$'.'apiEnable;
         fwrite($ourFileHandle, $written);
         fclose($ourFileHandle);
 
-        $dbconnect = mysqli_connect($host, $user, $pass, $name) or die('Database connection failed');
+        $dbconnect = mysqli_connect($host, $user, $pass, $name, $port) or die('Database connection failed');
 
         $sqlDel = 'DROP TABLE users;';
         $sqldata = mysqli_query($dbconnect, $sqlDel);
