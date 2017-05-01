@@ -37,7 +37,7 @@ Donations are much appreciated!
 
 ### Screenshots
 
-See the AdminPanel in action <a href = "https://www.flickr.com/photos/140721778@N03/">here!</a> (Screenshots are now outdated, please look for the white theme, not the colourful one.)
+See the AdminPanel in action <a href = "https://www.flickr.com/photos/140721778@N03/albums/72157667459890313">here!</a> (Screenshots are now outdated, please look for the white theme, not the colourful one.)
 
 ### Download
 
