@@ -74,7 +74,11 @@ function searchLevel($dbcon, $value)
 function allPlayerFunctions($dbcon)
 {
     $sqlget = 'SELECT name,pid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
+    if (!$sqldata) {
+        $sqlget = 'SELECT name,playerid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players';
+        $sqldata = mysqli_query($dbcon, $sqlget);
+    }
 
     return $sqldata;
 }
@@ -83,7 +87,11 @@ function searchPlayer($dbcon, $uid)
 {
     if ($uid != '') {
         $sqlget = "SELECT name,pid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players WHERE pid = '$uid'";
-        $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+        $sqldata = mysqli_query($dbcon, $sqlget);
+        if (!$sqldata) {
+            $sqlget = "SELECT name,playerid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players WHERE pid = '$uid'";
+            $sqldata = mysqli_query($dbcon, $sqlget);
+        }
 
         return $sqldata;
     }
