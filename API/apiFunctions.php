@@ -11,7 +11,11 @@ function searchMoney($dbcon)
 function showRich($dbcon, $amount)
 {
     $sqlget = 'SELECT name,pid,aliases,cash,bankacc FROM players ORDER BY bankacc DESC limit '.$amount;
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
+    if (!$sqldata) {
+        $sqlget = 'SELECT name,playerid,aliases,cash,bankacc FROM players ORDER BY bankacc DESC limit '.$amount;
+        $sqldata = mysqli_query($dbcon, $sqlget);
+    }
 
     return $sqldata;
 }
@@ -54,10 +58,14 @@ function returnLevel($array, $search)
 {
     $player = [];
     while ($row = mysqli_fetch_array($array, MYSQLI_ASSOC)) {
-        $i = $row['pid'];
-        $player[$i][name] = $row['name'];
-        $player[$i][uid] = $row['pid'];
-        $player[$i][level] = $row[$search];
+        if ($row['pid']) {
+            $i = $row['pid'];
+        } else {
+            $i = $row['playerid'];
+        }
+        $player[$i]['name'] = $row['name'];
+        $player[$i]['uid'] = $i;
+        $player[$i]['level'] = $row[$search];
     }
 
     return $player;
@@ -66,7 +74,11 @@ function returnLevel($array, $search)
 function searchLevel($dbcon, $value)
 {
     $sqlget = 'SELECT name,pid,'.$value.' FROM players ORDER BY '.$value.' DESC';
-    $sqldata = mysqli_query($dbcon, $sqlget) or die('Connection could not be established');
+    $sqldata = mysqli_query($dbcon, $sqlget);
+    if (!$sqldata) {
+        $sqlget = 'SELECT name,playerid,'.$value.' FROM players ORDER BY '.$value.' DESC';
+        $sqldata = mysqli_query($dbcon, $sqlget);
+    }
 
     return $sqldata;
 }
@@ -89,7 +101,7 @@ function searchPlayer($dbcon, $uid)
         $sqlget = "SELECT name,pid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players WHERE pid = '$uid'";
         $sqldata = mysqli_query($dbcon, $sqlget);
         if (!$sqldata) {
-            $sqlget = "SELECT name,playerid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players WHERE pid = '$uid'";
+            $sqlget = "SELECT name,playerid,aliases,cash,bankacc,coplevel,mediclevel,donorlevel,adminlevel,arrested,blacklist FROM players WHERE playerid = '$uid'";
             $sqldata = mysqli_query($dbcon, $sqlget);
         }
 
