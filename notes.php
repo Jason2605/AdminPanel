@@ -33,8 +33,8 @@ include 'header/header.php';
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 style = "margin-top: 70px">Notes Menu</h1>
-<p class="page-header">Notes Menu of the panel, allows you to set notes on players.</p>
+<h1 style = "margin-top: 70px">Warning Menu</h1>
+<p class="page-header">Warning Menu of the panel, allows you to set points and notes on players.</p>
 
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="players.php">
@@ -65,9 +65,9 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
-			        <th>Player ID</th>
+			        <th>UID</th>
 					<th>Name</th>
-					<th>Alias</th>
+					<th>Player ID</th>
 					<th>Warning Points</th>
 					<th>Case Notes</th>
 					<th>Update</th>
@@ -80,8 +80,8 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<tr>';
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$row['aliases'].' </td>';
-	echo '<td>'."<input class='form-control' type=warn name=warn value=''> </td>";
+    echo '<td>'.$row['playerid'].' </td>';
+	echo '<td>'."<input class='form-control' type=warning name=warning value=''> </td>";
     echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['playerid'].'> </td>';
@@ -97,10 +97,12 @@ if (isset($_POST['update'])) {
     $pid = playerID($player);
 
     if ($_POST['note'] != $player->note_text) {
-        $message = 'Admin '.$user.' has added the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
+        $message = 'Admin '.$user.' has added '.$_POST['warning'].' warning points and the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
         logIt($user, $message, $dbcon);
         $note = $_POST['note'];
         $note = '"'.$note.'"';
+		$warning = $_POST['warning'];
+        $warning = '"'.$warning.'"';
         
 		$UpdateN = 'INSERT INTO notes (uid, staff_name, name, alias, note_text, warning)'
             . ' VALUES ( ?, ? , ? , ? , ? , ? )';
@@ -112,7 +114,7 @@ if (isset($_POST['update'])) {
 			 ,$player->name
 			 ,$player->aliases
 			 ,$_POST['note']
-			 ,$_POST['warn']
+			 ,$_POST['warning']
 		  );
 		  if( mysqli_stmt_execute($sth) ) {
 			 // statement execution successful
@@ -127,7 +129,7 @@ if (isset($_POST['update'])) {
 		
 		if( $sth2 = mysqli_prepare($dbcon,$UpdateN2) ) {
 		  mysqli_stmt_bind_param($sth2,'ss'
-			,$_POST['warn']
+			,$_POST['warning']
 			,$_POST['hidden']
 		  );
 		  if( mysqli_stmt_execute($sth2) ) {
