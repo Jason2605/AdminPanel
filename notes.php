@@ -84,20 +84,20 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
 	echo '<td>'."<input class='form-control' type=warning name=warning value=''> </td>";
     echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['playerid'].'> </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].'> </td>';
     echo '</tr>';
     echo '</form>';
 }
 
 if (isset($_POST['update'])) {
-    $sql = "SELECT * FROM `players` WHERE `playerid` = $_POST[hidden]";
+    $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
     $result = mysqli_query($dbcon, $sql);
     $player = $result->fetch_object();
 
     $pid = playerID($player);
 
     if ($_POST['note'] != $player->note_text) {
-        $message = 'Admin '.$user.' has added '.$_POST['warning'].' warning points and the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
+        $message = 'Admin '.$user.' has added '.$_POST['warning'].' warning points and the note ('.$_POST['note'].') to '.$player->name.'('.$_POST['hidden'].')';
         logIt($user, $message, $dbcon);
         $note = $_POST['note'];
         $note = '"'.$note.'"';
@@ -125,7 +125,7 @@ if (isset($_POST['update'])) {
 		  printf("Error: %s\n",mysqli_error($dbcon));
 		}
 		
-		$UpdateN2 = 'UPDATE players SET warning = warning + ? WHERE playerid = ? ';
+		$UpdateN2 = 'UPDATE players SET warning = warning + ? WHERE uid = ? ';
 		
 		if( $sth2 = mysqli_prepare($dbcon,$UpdateN2) ) {
 		  mysqli_stmt_bind_param($sth2,'ss'
