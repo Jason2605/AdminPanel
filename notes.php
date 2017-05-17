@@ -33,7 +33,7 @@ include 'header/header.php';
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 style = "margin-top: 70px">Warning Menu</h1>
+<h1 style = "margin-top: 70px">Warning Panel</h1>
 <p class="page-header">Warning Menu of the panel, allows you to set points and notes on players.<br> If warning points are 30+ please go to SMT to get them banned from the server.</p>
 
 <div class="btn-group" role="group" aria-label="...">
