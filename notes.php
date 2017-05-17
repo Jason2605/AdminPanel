@@ -18,10 +18,10 @@ masterconnect();
 
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
-    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
+    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`warning`,`uid`,`aliases`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
     if ($search_result == '') {
-        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
+        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`warning`,`uid`,`aliases`) LIKE '%".$valuetosearch."%'";
         $search_result = filterTable($dbcon, $sqlget);
     }
 } else {
@@ -34,7 +34,7 @@ include 'header/header.php';
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 <h1 style = "margin-top: 70px">Warning Menu</h1>
-<p class="page-header">Warning Menu of the panel, allows you to set points and notes on players.</p>
+<p class="page-header">Warning Menu of the panel, allows you to set points and notes on players.<br> If warning points are 30+ please go to SMT to get them banned from the server.</p>
 
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="players.php">
@@ -67,7 +67,7 @@ include 'header/header.php';
                 <tr>
 			        <th>UID</th>
 					<th>Name</th>
-					<th>Player ID</th>
+					<th>Current Points</th>
 					<th>Warning Points</th>
 					<th>Case Notes</th>
 					<th>Update</th>
@@ -77,10 +77,11 @@ include 'header/header.php';
 <?php
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notes.php method=post>';
+
     echo '<tr>';
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$row['playerid'].' </td>';
+    echo '<td>'.$row['warning'].' </td>';
 	echo '<td>'."<input class='form-control' type=warning name=warning value=''> </td>";
     echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
