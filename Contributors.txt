@@ -1,0 +1,3 @@
+Jarret(itsJarrett): For much needed cleanups and additions to the panel
+
+Trahax/BigJ: Big thanks to these two, they have tested the panel thoroughly and reported many security flaws/bugs within the panel
