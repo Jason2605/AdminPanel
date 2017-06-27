@@ -28,7 +28,7 @@ if (!file_exists('verifyPanel.php')) {
         echo 'Invalid DB Name ';
         $fail = true;
     }
-	
+
     if ($_POST['port'] != '') {
         $port = $_POST['port'];
     } else {
@@ -113,7 +113,6 @@ if (!file_exists('verifyPanel.php')) {
     if (!$fail) {
         $filename = 'verifyPanel.php';
         $ourFileName = $filename;
-        $ourFileHandle = fopen($ourFileName, 'w');
 
         $written = '<?php
 
@@ -172,8 +171,6 @@ global ".'$'.'apiEnable;
 ?>
 ";
 
-        fwrite($ourFileHandle, $written);
-        fclose($ourFileHandle);
 
         $dbconnect = mysqli_connect($host, $user, $pass, $name, $port) or die('Database connection failed');
 
@@ -291,6 +288,10 @@ global ".'$'.'apiEnable;
         $sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `permissions`) VALUES (1, 'AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');";
 
         $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die('Connection could not be established or user already exists!');
+
+		$ourFileHandle = fopen($ourFileName, 'w');
+        fwrite($ourFileHandle, $written);
+        fclose($ourFileHandle);
 
         header('Location: index.php');
     } else {
