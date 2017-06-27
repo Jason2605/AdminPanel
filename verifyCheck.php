@@ -174,120 +174,112 @@ global ".'$'.'apiEnable;
 
         $dbconnect = mysqli_connect($host, $user, $pass, $name, $port) or die('Database connection failed');
 
-        $sqlDel = 'DROP TABLE users;';
-        $sqldata = mysqli_query($dbconnect, $sqlDel);
+		$sql = array();
 
-        $sqlDel1 = 'DROP TABLE log;';
-        $sqldata1 = mysqli_query($dbconnect, $sqlDel1);
+        array_push($sql, 'DROP TABLE IF EXISTS `users`;');
+        array_push($sql, 'DROP TABLE IF EXISTS `log`;');
+        array_push($sql, 'DROP TABLE IF EXISTS `notes`;');
+        array_push($sql, 'DROP TABLE IF EXISTS `reimbursement_log`;');
+        array_push($sql, 'DROP TABLE IF EXISTS `whitelist`;');
+        array_push($sql, 'DROP TABLE IF EXISTS `access`;');
+        array_push($sql, '
+			CREATE TABLE IF NOT EXISTS `log` (
+				`logid` int(11) NOT NULL AUTO_INCREMENT,
+				`date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				`user` varchar(64) DEFAULT NULL,
+				`action` varchar(255) DEFAULT NULL,
+				`level` int(11) NOT NULL,
+				PRIMARY KEY (`logid`),
+				UNIQUE KEY `logid` (`logid`),
+				KEY `logid_2` (`logid`)
+			) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+		');
 
-        $sqlDel2 = 'DROP TABLE notes;';
-        $sqldata2 = mysqli_query($dbconnect, $sqlDel2);
+        array_push($sql, '
+			CREATE TABLE IF NOT EXISTS `users` (
+			    `ID` mediumint(9) NOT NULL AUTO_INCREMENT,
+			    `username` varchar(60) NOT NULL,
+			    `password` varchar(80) NOT NULL,
+			    `permissions` text NOT NULL,
+			    PRIMARY KEY (`ID`)
+			) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;'
+		);
 
-        $sqlDel3 = 'DROP TABLE reimbursement_log;';
-        $sqldata3 = mysqli_query($dbconnect, $sqlDel3);
+        array_push($sql, "
+			CREATE TABLE IF NOT EXISTS `notes` (
+			    `note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
+			    `uid` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+			    `staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+			    `name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+			    `alias` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+		            `note_text` VARCHAR(255) NOT NULL,
+			    `warning` ENUM('1','2','3','4') NOT NULL,
+			    `note_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+			    PRIMARY KEY (`note_id`),
+			    UNIQUE INDEX `note_id` (`note_id`)
+			) COLLATE='latin1_swedish_ci' ENGINE=InnoDB AUTO_INCREMENT=6;"
+		);
 
-        $sqlDel4 = 'DROP TABLE whitelist;';
-        $sqldata4 = mysqli_query($dbconnect, $sqlDel4);
+		array_push($sql, "
+			CREATE TABLE IF NOT EXISTS `reimbursement_log` (
+				`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
+				`playerid` VARCHAR(50) NOT NULL,
+				`comp` INT(100) NOT NULL DEFAULT '0',
+				`reason` VARCHAR(255) NOT NULL,
+				`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+				`timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				PRIMARY KEY (`reimbursement_id`),
+				UNIQUE INDEX `reimbursement_id` (`reimbursement_id`)
+			)
+			COLLATE='latin1_swedish_ci'
+			ENGINE=InnoDB
+			AUTO_INCREMENT=1;"
+		);
 
-        $sqlDel5 = 'DROP TABLE access;';
-        $sqldata5 = mysqli_query($dbconnect, $sqlDel5);
+		array_push($sql, "
+			CREATE TABLE IF NOT EXISTS `reimbursement_log` (
+				`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
+				`playerid` VARCHAR(50) NOT NULL,
+				`comp` INT(100) NOT NULL DEFAULT '0',
+				`reason` VARCHAR(255) NOT NULL,
+				`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
+				`timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+				PRIMARY KEY (`reimbursement_id`),
+				UNIQUE INDEX `reimbursement_id` (`reimbursement_id`)
+			)
+			COLLATE='latin1_swedish_ci'
+			ENGINE=InnoDB
+			AUTO_INCREMENT=1;"
+		);
 
-        $sqlmake = '
-	CREATE TABLE IF NOT EXISTS `log` (
-	  `logid` int(11) NOT NULL AUTO_INCREMENT,
-	  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	  `user` varchar(64) DEFAULT NULL,
-	  `action` varchar(255) DEFAULT NULL,
-	  `level` int(11) NOT NULL,
-	  PRIMARY KEY (`logid`),
-	  UNIQUE KEY `logid` (`logid`),
-	  KEY `logid_2` (`logid`)
-	) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-	';
+        array_push($sql, '
+	        CREATE TABLE IF NOT EXISTS `whitelist` (
+	            `id` int(0) NOT NULL AUTO_INCREMENT,
+	            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	            `user` varchar(64) DEFAULT NULL,
+	            `guid` varchar(64) DEFAULT NULL,
+	            `uid` varchar(64) DEFAULT NULL,
+	            PRIMARY KEY (`id`)
+	        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;'
+		);
 
-        $sqldata = mysqli_query($dbconnect, $sqlmake) or die('Connection could not be established - LOG');
+        array_push($sql, '
+	        CREATE TABLE `access` (
+	            `accessID` int(11) NOT NULL AUTO_INCREMENT,
+	            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	            `address` varchar(64) DEFAULT NULL,
+	            `failed` int(11) NOT NULL,
+	            PRIMARY KEY (`accessID`),
+	            UNIQUE KEY `accessID` (`accessID`),
+	            KEY `accessID_1` (`accessID`)
+	        ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;'
+		);
 
-        $sqlmake2 = '
+		array_push($sql, "INSERT INTO `users` (`username`, `password`, `permissions`) VALUES ('AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');");
 
-	CREATE TABLE IF NOT EXISTS `users` (
-	    `ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-	    `username` varchar(60) NOT NULL,
-	    `password` varchar(80) NOT NULL,
-	    `permissions` text NOT NULL,
-	    PRIMARY KEY (`ID`)
-	) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;';
-
-        $sqldata1 = mysqli_query($dbconnect, $sqlmake2) or die('Connection could not be established - USERS!');
-
-        $sqlmake3 = "
-
-	CREATE TABLE IF NOT EXISTS `notes` (
-	    `note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
-	    `uid` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-	    `staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-	    `name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-	    `alias` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-            `note_text` VARCHAR(255) NOT NULL,
-	    `warning` ENUM('1','2','3','4') NOT NULL,
-	    `note_updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	    PRIMARY KEY (`note_id`),
-	    UNIQUE INDEX `note_id` (`note_id`)
-	) COLLATE='latin1_swedish_ci' ENGINE=InnoDB AUTO_INCREMENT=6;
-	";
-
-        $sqldata100 = mysqli_query($dbconnect, $sqlmake3) or die('Connection could not be established - NOTES!');
-
-        $sqlmake4 = "
-
-	CREATE TABLE IF NOT EXISTS `reimbursement_log` (
-		`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
-		`playerid` VARCHAR(50) NOT NULL,
-		`comp` INT(100) NOT NULL DEFAULT '0',
-		`reason` VARCHAR(255) NOT NULL,
-		`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-		`timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-		PRIMARY KEY (`reimbursement_id`),
-		UNIQUE INDEX `reimbursement_id` (`reimbursement_id`)
-	)
-	COLLATE='latin1_swedish_ci'
-	ENGINE=InnoDB
-	AUTO_INCREMENT=1;
-	";
-
-        $sqldata9 = mysqli_query($dbconnect, $sqlmake4) or die('Connection could not be established - REIM!');
-
-        $sqlmake5 = '
-        CREATE TABLE IF NOT EXISTS `whitelist` (
-            `id` int(0) NOT NULL AUTO_INCREMENT,
-            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            `user` varchar(64) DEFAULT NULL,
-            `guid` varchar(64) DEFAULT NULL,
-            `uid` varchar(64) DEFAULT NULL,
-            PRIMARY KEY (`id`)
-        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-	';
-        $sqldata10 = mysqli_query($dbconnect, $sqlmake5) or die('Connection could not be established - Whitelist!');
-
-        $sqlmake6 = '
-        CREATE TABLE `access` (
-            `accessID` int(11) NOT NULL AUTO_INCREMENT,
-            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            `address` varchar(64) DEFAULT NULL,
-            `failed` int(11) NOT NULL,
-            PRIMARY KEY (`accessID`),
-            UNIQUE KEY `accessID` (`accessID`),
-            KEY `accessID_1` (`accessID`)
-        ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-';
-        $sqlMakeAccess = mysqli_query($dbconnect, $sqlmake6) or die('Connection could not be established - Access!');
-
-        $sqldeluser = "DELETE FROM users WHERE username='AdminPanel';";
-
-        $sqldatadel = mysqli_query($dbconnect, $sqldeluser) or die('Connection could not be established - USER!');
-
-        $sqlinsert = "INSERT INTO `users` (`ID`, `username`, `password`, `permissions`) VALUES (1, 'AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');";
-
-        $sqldata2 = mysqli_query($dbconnect, $sqlinsert) or die('Connection could not be established or user already exists!');
+		foreach ($sql as $x) {
+			mysqli_query($dbconnect, $x) or die(`Error while executing SQL statement`);
+		}
 
 		$ourFileHandle = fopen($ourFileName, 'w');
         fwrite($ourFileHandle, $written);
