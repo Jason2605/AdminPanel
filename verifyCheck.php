@@ -176,13 +176,13 @@ global ".'$'.'apiEnable;
 
 		$sql = array();
 
-        array_push($sql, 'DROP TABLE IF EXISTS `users`;');
-        array_push($sql, 'DROP TABLE IF EXISTS `log`;');
-        array_push($sql, 'DROP TABLE IF EXISTS `notes`;');
-        array_push($sql, 'DROP TABLE IF EXISTS `reimbursement_log`;');
-        array_push($sql, 'DROP TABLE IF EXISTS `whitelist`;');
-        array_push($sql, 'DROP TABLE IF EXISTS `access`;');
-        array_push($sql, '
+        $sql[] = 'DROP TABLE IF EXISTS `users`;';
+        $sql[] = 'DROP TABLE IF EXISTS `log`;';
+        $sql[] = 'DROP TABLE IF EXISTS `notes`;';
+        $sql[] = 'DROP TABLE IF EXISTS `reimbursement_log`;';
+        $sql[] = 'DROP TABLE IF EXISTS `whitelist`;';
+        $sql[] = 'DROP TABLE IF EXISTS `access`;';
+        $sql[] = '
 			CREATE TABLE IF NOT EXISTS `log` (
 				`logid` int(11) NOT NULL AUTO_INCREMENT,
 				`date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -193,9 +193,9 @@ global ".'$'.'apiEnable;
 				UNIQUE KEY `logid` (`logid`),
 				KEY `logid_2` (`logid`)
 			) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
-		');
+		';
 
-        array_push($sql, '
+        $sql[] = '
 			CREATE TABLE IF NOT EXISTS `users` (
 			    `ID` mediumint(9) NOT NULL AUTO_INCREMENT,
 			    `username` varchar(60) NOT NULL,
@@ -203,9 +203,9 @@ global ".'$'.'apiEnable;
 			    `permissions` text NOT NULL,
 			    PRIMARY KEY (`ID`)
 			) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;'
-		);
+		;
 
-        array_push($sql, "
+        $sql[] = "
 			CREATE TABLE IF NOT EXISTS `notes` (
 			    `note_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing note_id of each user, unique index',
 			    `uid` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
@@ -218,9 +218,9 @@ global ".'$'.'apiEnable;
 			    PRIMARY KEY (`note_id`),
 			    UNIQUE INDEX `note_id` (`note_id`)
 			) COLLATE='latin1_swedish_ci' ENGINE=InnoDB AUTO_INCREMENT=6;"
-		);
+		;
 
-		array_push($sql, "
+		$sql[] = "
 			CREATE TABLE IF NOT EXISTS `reimbursement_log` (
 				`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
 				`playerid` VARCHAR(50) NOT NULL,
@@ -234,9 +234,9 @@ global ".'$'.'apiEnable;
 			COLLATE='latin1_swedish_ci'
 			ENGINE=InnoDB
 			AUTO_INCREMENT=1;"
-		);
+		;
 
-		array_push($sql, "
+		$sql[] = "
 			CREATE TABLE IF NOT EXISTS `reimbursement_log` (
 				`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
 				`playerid` VARCHAR(50) NOT NULL,
@@ -250,9 +250,9 @@ global ".'$'.'apiEnable;
 			COLLATE='latin1_swedish_ci'
 			ENGINE=InnoDB
 			AUTO_INCREMENT=1;"
-		);
+		;
 
-        array_push($sql, '
+        $sql[] = '
 	        CREATE TABLE IF NOT EXISTS `whitelist` (
 	            `id` int(0) NOT NULL AUTO_INCREMENT,
 	            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -261,9 +261,9 @@ global ".'$'.'apiEnable;
 	            `uid` varchar(64) DEFAULT NULL,
 	            PRIMARY KEY (`id`)
 	        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;'
-		);
+		;
 
-        array_push($sql, '
+        $sql[] = '
 	        CREATE TABLE `access` (
 	            `accessID` int(11) NOT NULL AUTO_INCREMENT,
 	            `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -273,12 +273,12 @@ global ".'$'.'apiEnable;
 	            UNIQUE KEY `accessID` (`accessID`),
 	            KEY `accessID_1` (`accessID`)
 	        ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;'
-		);
+		;
 
-		array_push($sql, "INSERT INTO `users` (`username`, `password`, `permissions`) VALUES ('AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');");
+		$sql[] = "INSERT INTO `users` (`username`, `password`, `permissions`) VALUES ('AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"';";
 
 		foreach ($sql as $x) {
-			mysqli_query($dbconnect, $x) or die(`Error while executing SQL statement`);
+			mysqli_query($dbconnect, $x) or die('Error while executing SQL statement');
 		}
 
 		$ourFileHandle = fopen($ourFileName, 'w');
