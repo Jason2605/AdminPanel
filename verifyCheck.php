@@ -275,7 +275,7 @@ global ".'$'.'apiEnable;
 	        ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;'
 		;
 
-		$sql[] = "INSERT INTO `users` (`username`, `password`, `permissions`) VALUES ('AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"';";
+		$sql[] = "INSERT INTO `users` (`username`, `password`, `permissions`) VALUES ('AdminPanel','60fe74406e7f353ed979f350f2fbb6a2e8690a5fa7d1b0c32983d1d8b3f95f67', '\"[[`notes`,1],[`cop`,1],[`medic`,1],[`money`,1],[`IG-Admin`,1],[`editPlayer`,1],[`housing`,1],[`gangs`,1],[`vehicles`,1],[`logs`,1],[`steamView`,1],[`ban`,1],[`kick`,1],[`unban`,1],[`globalMessage`,1],[`restartServer`,1],[`stopServer`,1],[`superUser`,1]]\"');";
 
 		foreach ($sql as $x) {
 			mysqli_query($dbconnect, $x) or die('Error while executing SQL statement');
