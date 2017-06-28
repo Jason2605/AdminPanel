@@ -20,10 +20,10 @@ masterconnect();
 
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
-    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
+    $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`warning`,`uid`,`aliases`) LIKE '%".$valuetosearch."%'";
     $search_result = filterTable($dbcon, $sqlget);
     if ($search_result == '') {
-        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";
+        $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`warning`,`uid`,`aliases`) LIKE '%".$valuetosearch."%'";
         $search_result = filterTable($dbcon, $sqlget);
     }
 } else {
@@ -35,8 +35,8 @@ include 'header/header.php';
 ?>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<h1 style = "margin-top: 70px">Notes Menu</h1>
-<p class="page-header">Notes Menu of the panel, allows you to set notes on players.</p>
+<h1 style = "margin-top: 70px">Warning Panel</h1>
+<p class="page-header">Warning Menu of the panel, allows you to set points and notes on players.<br> If warning points are 30+ please go to SMT to get them banned from the server.</p>
 
 <div class="btn-group" role="group" aria-label="...">
 <FORM METHOD="LINK" ACTION="players.php">
@@ -67,11 +67,11 @@ include 'header/header.php';
             <table class="table table-striped" style = "margin-top: -10px">
               <thead>
                 <tr>
-			                <th>Player ID</th>
+			        <th>UID</th>
 					<th>Name</th>
-					<th>Alias</th>
-					<th>Note Type</th>
-					<th>New Notes</th>
+					<th>Current Points</th>
+					<th>Warning Points</th>
+					<th>Case Notes</th>
 					<th>Update</th>
                 </tr>
               </thead>
@@ -79,11 +79,12 @@ include 'header/header.php';
 <?php
 while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
     echo '<form action=notes.php method=post>';
+
     echo '<tr>';
     echo '<td>'.$row['uid'].' </td>';
     echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$row['aliases'].' </td>';
-    echo '<td>'."<select class='form-control' name='warn'><option value='4'>Commendation</option><option value='1' selected='selected'>Warning</option><option value='2'>Caution</option><option value='3'>Big Caution</option></select> </td>";
+    echo '<td>'.$row['warning'].' </td>';
+	echo '<td>'."<input class='form-control' type=warning name=warning value=''> </td>";
     echo '<td>'."<input class='form-control' type=text name=note value=''> </td>";
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Update".'> </td>';
     echo "<td style='display:none;'>".'<input type=hidden name=hidden value='.$row['uid'].'> </td>';
@@ -99,12 +100,49 @@ if (isset($_POST['update'])) {
     $pid = playerID($player);
 
     if ($_POST['note'] != $player->note_text) {
-        $message = 'Admin '.$user.' has added the note ('.$_POST['note'].') to '.$player->name.'('.$pid.')';
+        $message = 'Admin '.$user.' has added '.$_POST['warning'].' warning points and the note ('.$_POST['note'].') to '.$player->name.'('.$_POST['hidden'].')';
         logIt($user, $message, $dbcon);
         $note = $_POST['note'];
         $note = '"'.$note.'"';
-        $UpdateN = "INSERT INTO notes (uid, staff_name, name, alias, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$player->name', '$player->aliases', '$note','$_POST[warn]')";
-        mysqli_query($dbcon, $UpdateN);
+		$warning = $_POST['warning'];
+        $warning = '"'.$warning.'"';
+        
+		$UpdateN = 'INSERT INTO notes (uid, staff_name, name, alias, note_text, warning)'
+            . ' VALUES ( ?, ? , ? , ? , ? , ? )';
+
+		if( $sth = mysqli_prepare($dbcon,$UpdateN) ) {
+		  mysqli_stmt_bind_param($sth,'ssssss'
+			 ,$_POST['hidden']
+			 ,$user
+			 ,$player->name
+			 ,$player->aliases
+			 ,$_POST['note']
+			 ,$_POST['warning']
+		  );
+		  if( mysqli_stmt_execute($sth) ) {
+			 // statement execution successful
+		  } else {
+			 printf("Error: %s\n",mysqli_stmt_error($sth));
+		  }
+		} else {
+		  printf("Error: %s\n",mysqli_error($dbcon));
+		}
+		
+		$UpdateN2 = 'UPDATE players SET warning = warning + ? WHERE uid = ? ';
+		
+		if( $sth2 = mysqli_prepare($dbcon,$UpdateN2) ) {
+		  mysqli_stmt_bind_param($sth2,'ss'
+			,$_POST['warning']
+			,$_POST['hidden']
+		  );
+		  if( mysqli_stmt_execute($sth2) ) {
+			 // statement execution successful
+		  } else {
+			 printf("1Error: %s\n",mysqli_stmt_error($sth2));
+		  }
+		} else {
+		  printf("2Error: %s\n",mysqli_error($dbcon));
+		}
     }
 }
 

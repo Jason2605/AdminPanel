@@ -103,6 +103,7 @@ echo "<div id ='editPlayer'><center><h1>".$username.'</h1></center>';
 echo '<center><h4>UID: '.$player->uid.'</h3></center>';
 echo '<center><h4>Player ID: '.$pid.'</h3></center>';
 echo '<center><h4>GUID: '.$guidPlayer.'</h3></center>';
+echo '<center><h4>Warning Points: '.$player->warning.'</h3></center>';
 echo '<center><h4>Bank: $'.$player->bankacc.'</h3></center>';
 echo '<center><h4>Cash: $'.$player->cash.'</h3></center>';
 echo '<center><h4>Cop Level: '.$player->coplevel.'</h3></center>';
