@@ -4,6 +4,7 @@ ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 
 $staffPerms = $_SESSION['perms'];
@@ -13,7 +14,9 @@ include 'verifyPanel.php';
 
 if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
+    die();
 }
+
 include 'header/header.php';
 ?>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

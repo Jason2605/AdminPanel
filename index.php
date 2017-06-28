@@ -4,11 +4,13 @@ session_start();
 if (isset($_SESSION['failedLogin'])) {
     if ($_SESSION['failedLogin'] >= 5) {
         header('Location: locked.php');
+        die();
     }
 }
 
 if (!file_exists('verifyPanel.php')) {
     header('Location: create.php');
+    die();
 }
 ?>
 

@@ -4,6 +4,7 @@ ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 
 $staffPerms = $_SESSION['perms'];
@@ -15,7 +16,9 @@ masterconnect();
 if ($staffPerms['money'] != '1') {
     echo "<script src='scripts/na.js'></script>";
     header('Location: lvlError.php');
+    die();
 }
+
 include 'header/header.php';
 ?>
 

@@ -6,6 +6,7 @@ $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
+    die();
 }
 
 $fail = false;
@@ -178,6 +179,7 @@ global ".'$'.'apiEnable;
     fclose($ourFileHandle);
 
     header('Location: settings.php');
+    die();
 } else {
     echo $fail;
 }

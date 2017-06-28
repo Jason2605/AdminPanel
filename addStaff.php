@@ -4,14 +4,15 @@ ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 
 $staffPerms = $_SESSION['perms'];
 $perms = '"[[`notes`,0],[`cop`,0],[`medic`,0],[`money`,0],[`IG-Admin`,0],[`editPlayer`,0],[`housing`,0],[`gangs`,0],[`vehicles`,0],[`logs`,0],[`steamView`,0],[`ban`,0],[`kick`,0],[`unban`,0],[`globalMessage`,0],[`restartServer`,0],[`stopServer`,0],[`superUser`,0]]"';
 
 if ($staffPerms['superUser'] != '1') {
-    echo "<script src='scripts/na.js'></script>";
     header('Location: lvlError.php');
+    die();
 }
 
 include 'verifyPanel.php';

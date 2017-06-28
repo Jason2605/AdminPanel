@@ -5,6 +5,7 @@ ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 
 $staffPerms = $_SESSION['perms'];
@@ -143,6 +144,7 @@ if (isset($_POST['send'])) {
         logIt($user, $message, $dbcon);
     } else {
         header('Location: lvlError.php');
+        die();
     }
 }
 
@@ -153,6 +155,7 @@ if (isset($_POST['restart'])) {
         header('Location: rCon/rcon-restart.php');
     } else {
         header('Location: lvlError.php');
+        die();
     }
 }
 
@@ -163,11 +166,13 @@ if (isset($_POST['stop'])) {
         header('Location: rCon/rcon-stop.php');
     } else {
         header('Location: lvlError.php');
+        die();
     }
 }
 
 if (isset($_POST['help'])) {
     header('Location: help.php');
+    die();
 }
 ob_end_flush();
 ?>

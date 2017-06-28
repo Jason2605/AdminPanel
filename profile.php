@@ -4,7 +4,9 @@ ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
+
 $user = $_SESSION['user'];
 include 'verifyPanel.php';
 include 'header/header.php';

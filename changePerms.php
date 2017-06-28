@@ -8,6 +8,7 @@ $user = $_SESSION['user'];
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 
 if ($staffPerms['superUser'] == '1') {

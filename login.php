@@ -6,6 +6,7 @@ ob_start();
 
 if (isset($_SESSION['logged'])) {
     header('Location: home.php');
+    die();
 }
 
 include 'verifyPanel.php';
@@ -15,7 +16,7 @@ if (!$dbconL) {
     echo 'Database connection error';
     setcookie('conecFail', '1');
     header('Location: index.php');
-    die;
+    die();
 } else {
     echo 'Database connected';
 
@@ -50,6 +51,7 @@ if ($username && $password) {
         if ($user->failed == 5) {
             echo 'something went wrong';
             header('Location: locked.php');
+            die();
         }
     }
     $sqlget = "SELECT * FROM users WHERE username ='$username' ";
@@ -100,8 +102,10 @@ if ($username && $password) {
 
             if ($_SESSION['failedLogin'] >= 5) {
                 header('Location: locked.php');
+                die();
             } else {
                 header('Location: home.php');
+                die();
             }
         } else {
             echo 'Your user/password is incorrect!';
@@ -109,8 +113,10 @@ if ($username && $password) {
             $_SESSION['failedLogin'] = $_SESSION['failedLogin'] + 1;
             if ($_SESSION['failedLogin'] >= 5) {
                 header('Location: locked.php');
+                die();
             } else {
                 header('Location: index.php');
+                die();
             }
         }//block
     } else {
@@ -119,12 +125,15 @@ if ($username && $password) {
         $_SESSION['failedLogin'] = $_SESSION['failedLogin'] + 1;
         if ($_SESSION['failedLogin'] >= 5) {
             header('Location: locked.php');
+            die();
         } else {
             header('Location: index.php');
+            die();
         }
     }
 } else {
     echo 'please enter username/password!';
     setcookie('fail', '1');
     header('Location: index.php');
+    die();
 }

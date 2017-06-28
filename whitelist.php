@@ -4,6 +4,7 @@ ob_start();
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 
 $staffPerms = $_SESSION['perms'];
@@ -14,6 +15,7 @@ masterconnect();
 
 if ($staffPerms['superUser'] != '1') {
     header('Location: lvlError.php');
+    die();
 }
 include 'header/header.php';
 ?>

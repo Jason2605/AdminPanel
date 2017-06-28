@@ -6,6 +6,7 @@ $version = '';
 
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
 $user = $_SESSION['user'];
 $id = $_POST['hiddenId'];

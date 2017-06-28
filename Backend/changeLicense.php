@@ -7,6 +7,7 @@ $staffPerms = $_SESSION['perms'];
 
 if (!isset($_SESSION['logged'])) {
     header('Location: ../index.php');
+    die();
 }
 
 if ($staffPerms['editPlayer'] == '1') {

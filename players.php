@@ -3,32 +3,41 @@ session_start();
 ob_start();
 if (!isset($_SESSION['logged'])) {
     header('Location: index.php');
+    die();
 }
+
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
+
 include 'verifyPanel.php';
 masterconnect();
+
 $page1 = $_GET['page'];
 if ($page1 == '' || $page1 == '1') {
     $page = 0;
 } else {
     $page = ($page1 * 50) - 50;
 }
+
 $resultQ = 'SELECT uid FROM players';
 $result = mysqli_query($dbcon, $resultQ) or die('Connection could not be established');
 $count = mysqli_num_rows($result);
+
 $amount = $count / 50;
 $amount = ceil($amount) + 1;
 $currentpage = $page1;
 $minusPage = $currentpage - 1;
+
 if ($minusPage < 1) {
     $minusPage = 1;
 }
+
 $addPage = $currentpage + 1;
 if ($addPage > $amount) {
     $addPage = $amount;
 }
 $max = PHP_INT_MAX;
+
 switch ($_GET['search']) {
     case 'cash':
         $search = 'cash';
@@ -49,6 +58,7 @@ switch ($_GET['search']) {
         $search = 'Nope';
         break;
 }
+
 if (isset($_POST['search'])) {
     $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%".$valuetosearch."%'";

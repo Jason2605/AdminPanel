@@ -11,6 +11,7 @@ if ($debug) {
 
 if (!isset($_SESSION['logged'])) {
     header('Location: ../index.php');
+    die();
 }
 
 require_once '../ArmaRConClass/rcon.php';
