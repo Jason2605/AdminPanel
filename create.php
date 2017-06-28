@@ -35,7 +35,7 @@ ob_start();
 				    <div class="panel-heading">Database Settings</div>
 				    <div class="panel-body">
 					<input type="text" value="" placeholder="DB User" id="username1" name="user"/>
-					<input type="text" value="" placeholder="DB Pass" id="password1" name="pass"/>
+					<input type="password" value="" placeholder="DB Pass" id="password1" name="pass"/>
 					<input type="text" value="" placeholder="DB Host" id="host" name="host"/>
 					<input type="text" value="" placeholder="DB Name" id="name" name="name"/>
 					<input type="text" value="" placeholder="DB Port... Leave blank for 3306" id="port" name="port"/>
@@ -47,7 +47,7 @@ ob_start();
 				    <div class="panel-heading">RCON Settings</div>
 				    <div class="panel-body">
 					<input type="text" value="" placeholder="RCON Host" id="RHost" name="RHost"/>
-					<input type="text" value="" placeholder="RCON Pass" id="RPass" name="RPass"/>
+					<input type="password" value="" placeholder="RCON Pass" id="RPass" name="RPass"/>
 					<input type="text" value="" placeholder="RCON Port" id="RPort" name="RPort"/>
 				     </div>
 				</div>
@@ -67,7 +67,7 @@ ob_start();
 				    <div class="panel-body">
 					<input type="text" value="" placeholder="API Enable (1 or 0)" id="apiEnable" name="apiEnable"/>
 					<input type="text" value="" placeholder="API Username" id="apiUser" name="apiUser"/>
-					<input type="text" value="" placeholder="API Password" id="apiPass" name="apiPass"/>
+					<input type="password" value="" placeholder="API Password" id="apiPass" name="apiPass"/>
 				    </div>
 				</div>
 
