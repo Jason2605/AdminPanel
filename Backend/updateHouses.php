@@ -1,54 +1,54 @@
 <?php
 
-session_start();
-ob_start();
+session_start ();
+ob_start ();
 
-if (!isset($_SESSION['logged'])) {
-    header('Location: ../index.php');
+if (!isset($_SESSION[ 'logged' ])) {
+    header ('Location: ../index.php');
     die();
 }
 
-$staffPerms = $_SESSION['perms'];
-$user = $_SESSION['user'];
+$staffPerms = $_SESSION[ 'perms' ];
+$user = $_SESSION[ 'user' ];
 
 include '../verifyPanel.php';
-masterconnect();
+masterconnect ();
 
 $sql = "SELECT * FROM `houses` WHERE `id` = $_POST[id]";
-$result = mysqli_query($dbcon, $sql);
-$houses = $result->fetch_object();
+$result = mysqli_query ($dbcon, $sql);
+$houses = $result->fetch_object ();
 
-switch ($_POST['column']) {
+switch ($_POST[ 'column' ]) {
 
     case 'owned':
-        $owned = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $owned = logs ($staffPerms[ 'housing' ], $_POST[ 'column' ], $houses->pid, $user, $dbcon, $houses, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE houses SET $_POST[column]='$owned' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'ownedCrate':
-        $ownedCrate = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $ownedCrate = logs ($staffPerms[ 'housing' ], $_POST[ 'column' ], $houses->pid, $user, $dbcon, $houses, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE containers SET owned='$owned' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'active':
-        $active = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $active = logs ($staffPerms[ 'housing' ], $_POST[ 'column' ], $houses->pid, $user, $dbcon, $houses, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE containers SET $_POST[column]='$owned' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'gear':
-        $gear = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $gear = logs ($staffPerms[ 'housing' ], $_POST[ 'column' ], $houses->pid, $user, $dbcon, $houses, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE containers SET $_POST[column]='$gear' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'inventory':
-        $inventory = logs($staffPerms['housing'], $_POST['column'], $houses->pid, $user, $dbcon, $houses, $_POST['editval']);
+        $inventory = logs ($staffPerms[ 'housing' ], $_POST[ 'column' ], $houses->pid, $user, $dbcon, $houses, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE containers SET $_POST[column]='$inventory' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     default:
         $message = 'ERROR';
-        logIt($user, $message, $dbcon);
-    break;
+        logIt ($user, $message, $dbcon);
+        break;
 }
 
-mysqli_query($dbcon, $UpdateQ);
+mysqli_query ($dbcon, $UpdateQ);

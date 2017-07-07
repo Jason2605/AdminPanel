@@ -1,49 +1,49 @@
 <?php
 
-session_start();
-ob_start();
+session_start ();
+ob_start ();
 
-if (!isset($_SESSION['logged'])) {
-    header('Location: ../index.php');
+if (!isset($_SESSION[ 'logged' ])) {
+    header ('Location: ../index.php');
     die();
 }
 
-$staffPerms = $_SESSION['perms'];
-$user = $_SESSION['user'];
+$staffPerms = $_SESSION[ 'perms' ];
+$user = $_SESSION[ 'user' ];
 
 include '../verifyPanel.php';
-masterconnect();
+masterconnect ();
 
 $sql = "SELECT * FROM `gangs` WHERE `id` = $_POST[id]";
-$result = mysqli_query($dbcon, $sql);
-$gang = $result->fetch_object();
+$result = mysqli_query ($dbcon, $sql);
+$gang = $result->fetch_object ();
 
-switch ($_POST['column']) {
+switch ($_POST[ 'column' ]) {
 
     case 'maxmembers':
-        $maxmembers = logs($staffPerms['gangs'], $_POST['column'], $gang->pid, $user, $dbcon, $gang, $_POST['editval']);
+        $maxmembers = logs ($staffPerms[ 'gangs' ], $_POST[ 'column' ], $gang->pid, $user, $dbcon, $gang, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE gangs SET $_POST[column]='$maxmembers' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'members':
-        $members = logs($staffPerms['gangs'], $_POST['column'], $gang->pid, $user, $dbcon, $gang, $_POST['editval']);
+        $members = logs ($staffPerms[ 'gangs' ], $_POST[ 'column' ], $gang->pid, $user, $dbcon, $gang, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE gangs SET $_POST[column]='$members' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'bank':
-        $bank = logs($staffPerms['gangs'], $_POST['column'], $gang->pid, $user, $dbcon, $gang, $_POST['editval']);
+        $bank = logs ($staffPerms[ 'gangs' ], $_POST[ 'column' ], $gang->pid, $user, $dbcon, $gang, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE gangs SET $_POST[column]='$bank' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     case 'active':
-        $active = logs($staffPerms['gangs'], $_POST['column'], $gang->pid, $user, $dbcon, $gang, $_POST['editval']);
+        $active = logs ($staffPerms[ 'gangs' ], $_POST[ 'column' ], $gang->pid, $user, $dbcon, $gang, $_POST[ 'editval' ]);
         $UpdateQ = "UPDATE gangs SET $_POST[column]='$active' WHERE id='$_POST[id]'";
-    break;
+        break;
 
     default:
         $message = 'ERROR';
-        logIt($user, $message, $dbcon);
-    break;
+        logIt ($user, $message, $dbcon);
+        break;
 }
 
-mysqli_query($dbcon, $UpdateQ);
+mysqli_query ($dbcon, $UpdateQ);
