@@ -1,28 +1,28 @@
 <?php
 
-session_start();
-ob_start();
+session_start ();
+ob_start ();
 
 if (!isset($_SESSION['logged'])) {
-    header('Location: ../index.php');
+    header ('Location: ../index.php');
     die();
 }
 
 $staffPerms = $_SESSION['perms'];
 
 if ($staffPerms['restartServer'] != '1') {
-    header('Location: lvlError.php');
+    header ('Location: lvlError.php');
     die();
 }
 
-ob_start();
+ob_start ();
 require_once '../ArmaRConClass/rcon.php';
 
 include '../verifyPanel.php';
-Rconconnect();
+Rconconnect ();
 
 $command = '#restart';
 
-$restart = $rcon->command($command);
+$restart = $rcon->command ($command);
 
-header('Location: ../home.php');
+header ('Location: ../home.php');
