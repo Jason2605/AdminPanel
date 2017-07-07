@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-if ($staffPerms[ 'notes' ] != '1') {
+if ($staffPerms['notes'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -18,8 +18,8 @@ if ($staffPerms[ 'notes' ] != '1') {
 include 'verifyPanel.php';
 masterconnect ();
 
-if (isset($_POST[ 'search' ])) {
-    $valuetosearch = $_POST[ 'SearchValue' ];
+if (isset($_POST['search'])) {
+    $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM notes WHERE CONCAT (`name`) LIKE '%" . $valuetosearch . "%' ORDER BY note_id DESC";
     $search_result = filterTable ($dbcon, $sqlget);
 } else {
@@ -27,14 +27,14 @@ if (isset($_POST[ 'search' ])) {
     $search_result = filterTable ($dbcon, $sqlget);
 }
 
-if (isset($_POST[ 'update' ])) {
-    $noteID = $_POST[ 'note_id' ];
-    $uid = $_POST[ 'uid' ];
-    $name = $_POST[ 'name' ];
-    $text = $_POST[ 'note_text' ];
-    $admin = $_POST[ 'admin' ];
+if (isset($_POST['update'])) {
+    $noteID = $_POST['note_id'];
+    $uid = $_POST['uid'];
+    $name = $_POST['name'];
+    $text = $_POST['note_text'];
+    $admin = $_POST['admin'];
 
-    if ($staffPerms[ 'superUser' ] == '1') {
+    if ($staffPerms['superUser'] == '1') {
         $sql = "DELETE FROM notes WHERE note_id='$noteID'";
         mysqli_query ($dbcon, $sql);
         $message = 'Note (' . $text . ') placed on user (' . $name . ' ID - ' . $uid . ') by ' . $admin . ' was deleted by ' . $user;
@@ -94,7 +94,7 @@ include 'header/header.php';
             <?php
             while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
                 echo '<form action=notesView.php method=post>';
-                switch ($row[ 'warning' ]) {
+                switch ($row['warning']) {
                     default:
                         echo '<tr>';
                         break;
@@ -108,18 +108,18 @@ include 'header/header.php';
                         echo '<tr class = "success">';
                         break;
                 }
-                echo '<td>' . $row[ 'uid' ] . ' </td>';
-                echo '<td>' . $row[ 'name' ] . ' </td>';
-                echo '<td>' . $row[ 'alias' ] . ' </td>';
-                echo '<td>' . $row[ 'note_text' ] . ' </td>';
-                echo '<td>' . $row[ 'staff_name' ] . ' </td>';
-                echo '<td>' . $row[ 'note_updated' ] . ' </td>';
+                echo '<td>' . $row['uid'] . ' </td>';
+                echo '<td>' . $row['name'] . ' </td>';
+                echo '<td>' . $row['alias'] . ' </td>';
+                echo '<td>' . $row['note_text'] . ' </td>';
+                echo '<td>' . $row['staff_name'] . ' </td>';
+                echo '<td>' . $row['note_updated'] . ' </td>';
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=update value=Delete" . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=note_id value=' . $row[ 'note_id' ] . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=uid value=' . $row[ 'uid' ] . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=name value=' . $row[ 'name' ] . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=note_text value=' . $row[ 'note_text' ] . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=admin value=' . $row[ 'staff_name' ] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=note_id value=' . $row['note_id'] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=uid value=' . $row['uid'] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=name value=' . $row['name'] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=note_text value=' . $row['note_text'] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=admin value=' . $row['staff_name'] . ' </td>';
 
                 echo '</tr>';
                 echo '</form>';

@@ -4,16 +4,16 @@ session_start ();
 ob_start ();
 $version = '';
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-$uidPlayer = $_POST[ 'hidden' ];
-$guidPlayer = $_POST[ 'guid' ];
+$uidPlayer = $_POST['hidden'];
+$guidPlayer = $_POST['guid'];
 
 include 'verifyPanel.php';
 masterconnect ();
@@ -143,19 +143,19 @@ include 'header/header.php';
                 $search_result = mysqli_query ($dbcon, $sqlget) or die('Connection could not be established');
 
                 while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
-                    if ($row[ 'donorlevel' ] != '' || $row[ 'donatorlvl' ] != '') {
-                        if ($row[ 'donorlevel' ] == '') {
-                            $don = $row[ 'donatorlvl' ];
+                    if ($row['donorlevel'] != '' || $row['donatorlvl'] != '') {
+                        if ($row['donorlevel'] == '') {
+                            $don = $row['donatorlvl'];
                             $version = 'donatorlvl';
                         } else {
-                            $don = $row[ 'donorlevel' ];
+                            $don = $row['donorlevel'];
                             $version = 'donorlevel';
                         }
                     }
 
                     echo '<tr>';
-                    outputSelection ($maxDonator, $version, $don, $row[ 'uid' ]);
-                    outputSelection (1, 'blacklist', $row[ 'blacklist' ], $row[ 'uid' ]);
+                    outputSelection ($maxDonator, $version, $don, $row['uid']);
+                    outputSelection (1, 'blacklist', $row['blacklist'], $row['uid']);
                     echo '</tr>';
                 }
                 echo '</table></div>';
@@ -186,17 +186,17 @@ include 'header/header.php';
                         $search_result = mysqli_query ($dbcon, $sqlget) or die('Connection could not be established');
 
                         while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
-                            if ($row[ 'warning' ] == 2) {
+                            if ($row['warning'] == 2) {
                                 echo '<tr class = "warning">';
-                            } elseif ($row[ 'warning' ] == 3) {
+                            } elseif ($row['warning'] == 3) {
                                 echo '<tr class = "danger">';
                             } else {
                                 echo '<tr>';
                             }
 
-                            echo '<td>' . $row[ 'staff_name' ] . ' </td>';
-                            echo '<td>' . $row[ 'note_text' ] . ' </td>';
-                            echo '<td>' . $row[ 'note_updated' ] . ' </td>';
+                            echo '<td>' . $row['staff_name'] . ' </td>';
+                            echo '<td>' . $row['note_text'] . ' </td>';
+                            echo '<td>' . $row['note_updated'] . ' </td>';
                             echo '</tr>';
                         }
                         echo '</table></div>';
@@ -258,8 +258,8 @@ include 'header/header.php';
                         echo "<div id ='licCheck'><h5></h5>";
                         echo '</div>';
 
-                        if (isset($_POST[ 'remove' ])) {
-                            if ($staffPerms[ 'editPlayer' ] == '1') {
+                        if (isset($_POST['remove'])) {
+                            if ($staffPerms['editPlayer'] == '1') {
                                 $licReset = str_replace ('1', '0', $player->civ_licenses);
                                 $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
                                 $result = mysqli_query ($dbcon, $sql);
@@ -268,9 +268,9 @@ include 'header/header.php';
                                 logIt ($user, $message, $dbcon);
                             }
                         }
-                        if (isset($_POST[ 'give' ])) {
-                            $uidPlayer = $_POST[ 'hidden' ];
-                            if ($staffPerms[ 'editPlayer' ] == '1') {
+                        if (isset($_POST['give'])) {
+                            $uidPlayer = $_POST['hidden'];
+                            if ($staffPerms['editPlayer'] == '1') {
                                 $licReset = str_replace ('0', '1', $player->civ_licenses);
                                 $sql = "UPDATE `players` SET `civ_licenses`='$licReset' WHERE uid ='$uidPlayer'";
                                 $result = mysqli_query ($dbcon, $sql);

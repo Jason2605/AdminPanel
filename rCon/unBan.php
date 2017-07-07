@@ -3,15 +3,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
-$staffPerms = $_SESSION[ 'perms' ];
+$user = $_SESSION['user'];
+$staffPerms = $_SESSION['perms'];
 
-if ($staffPerms[ 'unban' ] != '1') {
+if ($staffPerms['unban'] != '1') {
     header ('Location: ../lvlError.php');
     die();
 }
@@ -95,12 +95,12 @@ include 'header/header.php';
             echo '</form>';
             echo '</table></div>';
 
-            if (isset($_POST[ 'update' ])) {
-                $banid = $_POST[ 'banid' ];
-                $guidUBan = $_POST[ 'guid' ];
+            if (isset($_POST['update'])) {
+                $banid = $_POST['banid'];
+                $guidUBan = $_POST['guid'];
 
-                $_SESSION[ 'banid' ] = $banid;
-                $_SESSION[ 'guidUBan' ] = $guidUBan;
+                $_SESSION['banid'] = $banid;
+                $_SESSION['guidUBan'] = $guidUBan;
 
                 if ($guidUBan != '' and $banid != '') {
                     $message = 'Admin ' . $user . ' has unbanned ' . $guidUBan;

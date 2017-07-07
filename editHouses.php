@@ -4,15 +4,15 @@ session_start ();
 ob_start ();
 $version = '';
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-$houseID = $_POST[ 'hidden' ];
+$houseID = $_POST['hidden'];
 
 include 'verifyPanel.php';
 masterconnect ();
@@ -44,26 +44,26 @@ include 'header/header.php';
                 echo '<tr>';
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'inventory', '<?php echo $row[ 'inventory' ]; ?>')"
-					   ; type=text value='<?php echo $row[ 'inventory' ]; ?>'>
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'inventory', '<?php echo $row['inventory']; ?>')"
+					   ; type=text value='<?php echo $row['inventory']; ?>'>
                 <?php
                 echo '</td>';
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'gear', '<?php echo $row[ 'gear' ]; ?>')"
-					   ; type=text value='<?php echo $row[ 'gear' ]; ?>'>
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'gear', '<?php echo $row['gear']; ?>')"
+					   ; type=text value='<?php echo $row['gear']; ?>'>
                 <?php
                 echo '</td>';
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'active', '<?php echo $row[ 'active' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'active' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active', '<?php echo $row['active']; ?>')"
+					   ; type=text value="<?php echo $row['active']; ?>">
                 <?php
                 echo '</td>';
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'ownedCrate', '<?php echo $row[ 'owned' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'owned' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'ownedCrate', '<?php echo $row['owned']; ?>')"
+					   ; type=text value="<?php echo $row['owned']; ?>">
                 <?php
                 echo '</td>';
                 echo '</tr>';

@@ -3,13 +3,13 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
-$staffPerms = $_SESSION[ 'perms' ];
+$staffPerms = $_SESSION['perms'];
 
-if ($staffPerms[ 'stopServer' ] != '1') {
+if ($staffPerms['stopServer'] != '1') {
     header ('Location: ../lvlError.php');
     die();
 }

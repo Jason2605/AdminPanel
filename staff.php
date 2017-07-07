@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-if ($staffPerms[ 'superUser' ] != '1') {
+if ($staffPerms['superUser'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -61,7 +61,7 @@ include 'header/header.php';
 
 	<br><br>
     <?php
-    if ($staffPerms[ 'superUser' ] != '1') {
+    if ($staffPerms['superUser'] != '1') {
         header ('Location: lvlError.php');
     }
 
@@ -71,20 +71,20 @@ include 'header/header.php';
     $sqlget = 'SELECT * FROM users';
     $sqldata = mysqli_query ($dbconL, $sqlget) or die('Connection could not be established');
 
-    if (isset($_POST[ 'delete' ])) {
+    if (isset($_POST['delete'])) {
         $sql = "DELETE FROM users WHERE ID='$_POST[hidden]'";
         mysqli_query ($dbconL, $sql);
 
         echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Staff account deleted!</a></div>';
     }
 
-    if (isset($_POST[ 'update' ])) {
-        if ($_POST[ 'password' ] == '') {
+    if (isset($_POST['update'])) {
+        if ($_POST['password'] == '') {
             $UpdateQ = "UPDATE users SET username='$_POST[username]' WHERE ID='$_POST[hidden]'";
             mysqli_query ($dbconL, $UpdateQ);
             echo '<div class="alert alert-success" role="alert"><a href="#" class="alert-link">Username updated!</a></div>';
         } else {
-            $password = $_POST[ 'password' ];
+            $password = $_POST['password'];
             $pass = hash ('sha256', $password);
             $UpdateQ = "UPDATE users SET username='$_POST[username]', password='$pass' WHERE ID='$_POST[hidden]'";
             mysqli_query ($dbconL, $UpdateQ);
@@ -109,15 +109,15 @@ include 'header/header.php';
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
                 echo '<form action=staff.php method=post>';
                 echo '<tr>';
-                echo '<td>' . "<input class='form-control' type=text name=username value=" . $row[ 'username' ] . ' </td>';
+                echo '<td>' . "<input class='form-control' type=text name=username value=" . $row['username'] . ' </td>';
                 echo '<td>' . "<input class='form-control' type=text name=password placeholder='New password' </td>";
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete" . ' </td>';
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update" . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row[ 'ID' ] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row['ID'] . ' </td>';
                 echo '</form>';
                 echo '<form action=permissions.php method=post>';
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=edit value=Edit" . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=hiddenId value=' . $row[ 'ID' ] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=hiddenId value=' . $row['ID'] . ' </td>';
                 echo '</form>';
                 echo '</tr>';
             }

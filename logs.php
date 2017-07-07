@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-if ($staffPerms[ 'logs' ] != '1') {
+if ($staffPerms['logs'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -20,7 +20,7 @@ masterconnect ();
 
 include 'header/header.php';
 
-$page1 = $_GET[ 'page' ];
+$page1 = $_GET['page'];
 
 if ($page1 == '' || $page1 == '1') {
     $page = 0;
@@ -75,9 +75,9 @@ if ($page1 == '' || $page1 == '1') {
                 echo '<form action=logs.php method=post>';
                 echo '<tr>';
 
-                echo '<td>' . $row[ 'date_time' ] . '</td>';
-                echo '<td>' . $row[ 'user' ] . ' </td>';
-                echo '<td>' . $row[ 'action' ] . ' </td>';
+                echo '<td>' . $row['date_time'] . '</td>';
+                echo '<td>' . $row['user'] . ' </td>';
+                echo '<td>' . $row['action'] . ' </td>';
 
                 echo '</tr>';
                 echo '</form>';
@@ -127,14 +127,14 @@ if ($page1 == '' || $page1 == '1') {
                      $b <= $amountPage;
                      ++$b) {
                 if ($b == $currentpage) {
-                    ?>
-					<li class="active"><a href="logs.php?page=<?php echo $b; ?>"
-										  style="text-decoration:none"><?php echo $b . ' '; ?></a>
-					<li><?php
-
-                } else {
                 ?>
-			<li><a href="logs.php?page=<?php echo $b; ?>" style="text-decoration:none"><?php echo $b . ' '; ?></a>
+				<li class="active"><a href="logs.php?page=<?php echo $b; ?>"
+									  style="text-decoration:none"><?php echo $b . ' '; ?></a>
+			<li><?php
+
+            } else {
+            ?>
+				<li><a href="logs.php?page=<?php echo $b; ?>" style="text-decoration:none"><?php echo $b . ' '; ?></a>
 				<li><?php
 
                     }

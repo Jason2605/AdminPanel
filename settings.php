@@ -2,17 +2,17 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 
-if ($staffPerms[ 'superUser' ] != '1') {
+if ($staffPerms['superUser'] != '1') {
     header ('Location: lvlError.php');
     die();
 }

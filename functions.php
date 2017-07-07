@@ -29,22 +29,22 @@ function replace($string, $text) {
 function license($value, $staffPerms) {
     $val = remove ($value);
     $newVal = explode (',', $val);
-    if ($newVal[ 1 ] == 1) {
-        $display = explode ('_', $newVal[ 0 ]);
-        $displayN = $display[ '2' ];
-        if ($staffPerms[ 'editPlayer' ] == '1') {
-            echo "<button type='button' id=" . $newVal[ 0 ] . " class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>" . $displayN . '</button> ';
+    if ($newVal[1] == 1) {
+        $display = explode ('_', $newVal[0]);
+        $displayN = $display['2'];
+        if ($staffPerms['editPlayer'] == '1') {
+            echo "<button type='button' id=" . $newVal[0] . " class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>" . $displayN . '</button> ';
         } else {
-            echo "<button type='button' id=" . $newVal[ 0 ] . " class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>" . $displayN . '</button> ';
+            echo "<button type='button' id=" . $newVal[0] . " class='license btn btn-success btn-sm' style='margin-bottom: 5px;'>" . $displayN . '</button> ';
         }
     } else {
-        if ($newVal[ 0 ] != '') {
-            $display = explode ('_', $newVal[ 0 ]);
-            $displayN = $display[ '2' ];
-            if ($staffPerms[ 'editPlayer' ] == '1') {
-                echo "<button type='button' id=" . $newVal[ 0 ] . " class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>" . $displayN . '</button> ';
+        if ($newVal[0] != '') {
+            $display = explode ('_', $newVal[0]);
+            $displayN = $display['2'];
+            if ($staffPerms['editPlayer'] == '1') {
+                echo "<button type='button' id=" . $newVal[0] . " class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>" . $displayN . '</button> ';
             } else {
-                echo "<button type='button' id=" . $newVal[ 0 ] . " class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >" . $displayN . '</button> ';
+                echo "<button type='button' id=" . $newVal[0] . " class='btn btn-danger btn-sm' style='margin-bottom: 5px;' >" . $displayN . '</button> ';
             }
         }
     }

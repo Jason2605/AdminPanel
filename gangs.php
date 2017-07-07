@@ -2,13 +2,13 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
-$staffPerms = $_SESSION[ 'perms' ];
+$user = $_SESSION['user'];
+$staffPerms = $_SESSION['perms'];
 ?>
 
 
@@ -78,35 +78,35 @@ include 'header/header.php';
             <?php
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
                 echo '<tr>';
-                echo '<td>' . $row[ 'owner' ] . ' </td>';
-                echo '<td>' . $row[ 'name' ] . ' </td>';
+                echo '<td>' . $row['owner'] . ' </td>';
+                echo '<td>' . $row['name'] . ' </td>';
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'members', '<?php echo $row[ 'members' ]; ?>')"
-					   ; type=text value='<?php echo $row[ 'members' ]; ?>'>
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'members', '<?php echo $row['members']; ?>')"
+					   ; type=text value='<?php echo $row['members']; ?>'>
                 <?php
                 echo '</td>';
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'maxmembers', '<?php echo $row[ 'maxmembers' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'maxmembers' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'maxmembers', '<?php echo $row['maxmembers']; ?>')"
+					   ; type=text value="<?php echo $row['maxmembers']; ?>">
                 <?php
                 echo '</td>';
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'bank', '<?php echo $row[ 'bank' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'bank' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'bank', '<?php echo $row['bank']; ?>')"
+					   ; type=text value="<?php echo $row['bank']; ?>">
                 <?php
                 echo '</td>';
 
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'active', '<?php echo $row[ 'active' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'active' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active', '<?php echo $row['active']; ?>')"
+					   ; type=text value="<?php echo $row['active']; ?>">
                 <?php
                 echo '</td>';
 

@@ -51,14 +51,14 @@ function countVehicles($dbcon) {
 function returnLevel($array, $search) {
     $player = [];
     while ($row = mysqli_fetch_array ($array, MYSQLI_ASSOC)) {
-        if ($row[ 'pid' ]) {
-            $i = $row[ 'pid' ];
+        if ($row['pid']) {
+            $i = $row['pid'];
         } else {
-            $i = $row[ 'playerid' ];
+            $i = $row['playerid'];
         }
-        $player[ $i ][ 'name' ] = $row[ 'name' ];
-        $player[ $i ][ 'uid' ] = $i;
-        $player[ $i ][ 'level' ] = $row[ $search ];
+        $player[$i]['name'] = $row['name'];
+        $player[$i]['uid'] = $i;
+        $player[$i]['level'] = $row[$search];
     }
 
     return $player;

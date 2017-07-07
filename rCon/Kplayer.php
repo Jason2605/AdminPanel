@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
-$staffPerms = $_SESSION[ 'perms' ];
+$user = $_SESSION['user'];
+$staffPerms = $_SESSION['perms'];
 
-if ($staffPerms[ 'kick' ] != '1') {
+if ($staffPerms['kick'] != '1') {
     header ('Location: ../lvlError.php');
     die();
 }
@@ -66,10 +66,10 @@ include 'header/header.php';
 	</div>
 	<br><br><br>
     <?php
-    if (isset($_POST[ 'update' ])) {
-        $guid = $_POST[ 'guid' ];
-        $uid = $_POST[ 'uid' ];
-        $reason = $_POST[ 'reason' ];
+    if (isset($_POST['update'])) {
+        $guid = $_POST['guid'];
+        $uid = $_POST['uid'];
+        $reason = $_POST['reason'];
         if ($guid != '' || $uid != '') {
             include '../verifyPanel.php';
             masterconnect ();
@@ -78,7 +78,7 @@ include 'header/header.php';
             $sqldata = mysqli_query ($dbcon, $sqlget) or die('Connection could not be established');
 
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
-                if ($row[ 'uid' ] == $uid) {
+                if ($row['uid'] == $uid) {
                     $whitelist = true;
                 }
             }
@@ -87,8 +87,8 @@ include 'header/header.php';
                 $message = 'Admin ' . $user . ' tried to kick a whitelisted staff member - ' . $uid;
                 logIt ($user, $message, $dbcon);
             } else {
-                $_SESSION[ 'guid' ] = $guid;
-                $_SESSION[ 'reason' ] = $reason;
+                $_SESSION['guid'] = $guid;
+                $_SESSION['reason'] = $reason;
 
                 header ('Location: rcon-kick.php');
             }

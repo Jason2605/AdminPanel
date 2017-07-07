@@ -1,8 +1,8 @@
 <?php
 session_start ();
 
-if (isset($_SESSION[ 'failedLogin' ])) {
-    if ($_SESSION[ 'failedLogin' ] >= 5) {
+if (isset($_SESSION['failedLogin'])) {
+    if ($_SESSION['failedLogin'] >= 5) {
         header ('Location: locked.php');
         die();
     }
@@ -77,11 +77,11 @@ if (!file_exists ('verifyPanel.php')) {
 			<input type="password" value="" placeholder="Password" id="password" name="password"/>
             <?php
 
-            if (isset($_COOKIE[ 'conecFail' ]) && $_COOKIE[ 'conecFail' ] == '1') {
+            if (isset($_COOKIE['conecFail']) && $_COOKIE['conecFail'] == '1') {
                 echo '<div style="color:red"><center>Database connection failed!</center></div>';
             }
 
-            if (isset($_COOKIE[ 'fail' ]) && $_COOKIE[ 'fail' ] == '1') {
+            if (isset($_COOKIE['fail']) && $_COOKIE['fail'] == '1') {
                 echo '<div style="color:red"><center>Username or password incorrect.</center></div>';
             }
             ?>

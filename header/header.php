@@ -60,23 +60,23 @@
 				<li><a href="home.php">Dashboard</a></li>
 				<li><a href="players.php">Players</a></li>
                 <?php
-                $staffPerms = $_SESSION[ 'perms' ];
+                $staffPerms = $_SESSION['perms'];
                 switch ($staffPerms) {
-                    case $staffPerms[ 'vehicles' ] == '1':
+                    case $staffPerms['vehicles'] == '1':
                         echo "<li><a href=\"vehicles.php\">Vehicles</a></li>";
-                    case $staffPerms[ 'gangs' ] == '1':
+                    case $staffPerms['gangs'] == '1':
                         echo "<li><a href=\"gangs.php\">Gangs</a></li>";
-                    case $staffPerms[ 'housing' ] == '1':
+                    case $staffPerms['housing'] == '1':
                         echo "<li><a href=\"houses.php\">Houses</a></li>";
-                    case $staffPerms[ 'logs' ] == '1':
+                    case $staffPerms['logs'] == '1':
                         echo "<li><a href=\"logs.php?page=1\">Logs</a></li>";
-                    case $staffPerms[ 'money' ] == '1':
+                    case $staffPerms['money'] == '1':
                         echo "<li><a href=\"reimbursement.php\">Reimbursement Logs</a></li>";
-                    case $staffPerms[ 'notes' ] == '1':
+                    case $staffPerms['notes'] == '1':
                         echo "<li><a href=\"notesView.php\">Notes</a></li>";
-                    case $staffPerms[ 'superUser' ] == '1':
+                    case $staffPerms['superUser'] == '1':
                         echo "<li><a href=\"staff.php\">Staff</a></li>";
-                    case $staffPerms[ 'steamView' ] == '1':
+                    case $staffPerms['steamView'] == '1':
                         echo "<li><a href=\"steam.php\">Steam Accounts</a></li>";
                 }
                 ?>

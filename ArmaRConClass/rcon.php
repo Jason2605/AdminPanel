@@ -116,9 +116,9 @@ class ARC {
             $this->RCONpassword = $RConPassword;
         }
 
-        $this->socket = @fsockopen ('udp://' . $this->serverIP, $this->serverPort, $errno, $errstr, $this->options[ 'timeout_seconds' ]);
+        $this->socket = @fsockopen ('udp://' . $this->serverIP, $this->serverPort, $errno, $errstr, $this->options['timeout_seconds']);
 
-        stream_set_timeout ($this->socket, $this->options[ 'timeout_seconds' ]);
+        stream_set_timeout ($this->socket, $this->options['timeout_seconds']);
         stream_set_blocking ($this->socket, true);
 
         if (!$this->socket) {
@@ -127,7 +127,7 @@ class ARC {
 
         $this->authorize ();
 
-        if ($this->options[ 'send_heartbeat' ]) {
+        if ($this->options['send_heartbeat']) {
             $this->send_heartbeat ();
         }
 
@@ -168,7 +168,7 @@ class ARC {
         }
 
         $msgCRC = $this->get_msgCRC ($command);
-        $head = 'BE' . chr (hexdec ($msgCRC[ 0 ])) . chr (hexdec ($msgCRC[ 1 ])) . chr (hexdec ($msgCRC[ 2 ])) . chr (hexdec ($msgCRC[ 3 ])) . chr (hexdec ('ff')) . chr (hexdec ('01')) . chr (hexdec (sprintf ('%01b', 0)));
+        $head = 'BE' . chr (hexdec ($msgCRC[0])) . chr (hexdec ($msgCRC[1])) . chr (hexdec ($msgCRC[2])) . chr (hexdec ($msgCRC[3])) . chr (hexdec ('ff')) . chr (hexdec ('01')) . chr (hexdec (sprintf ('%01b', 0)));
         $msg = $head . $command;
         $this->head = $head;
 
@@ -201,7 +201,7 @@ class ARC {
 
         $result = fread ($this->socket, 16);
 
-        if (ord ($result[ strlen ($result) - 1 ]) == 0) {
+        if (ord ($result[strlen ($result) - 1]) == 0) {
             throw new AuthorizationException('[ARC] Login failed, wrong password!');
         }
     }
@@ -214,7 +214,7 @@ class ARC {
     private function get_loginmessage() {
         $authCRC = $this->get_authCRC ();
 
-        $loginmsg = 'BE' . chr (hexdec ($authCRC[ 0 ])) . chr (hexdec ($authCRC[ 1 ])) . chr (hexdec ($authCRC[ 2 ])) . chr (hexdec ($authCRC[ 3 ]));
+        $loginmsg = 'BE' . chr (hexdec ($authCRC[0])) . chr (hexdec ($authCRC[1])) . chr (hexdec ($authCRC[2])) . chr (hexdec ($authCRC[3]));
         $loginmsg .= chr (hexdec ('ff')) . chr (hexdec ('00')) . $this->RCONpassword;
 
         return $loginmsg;

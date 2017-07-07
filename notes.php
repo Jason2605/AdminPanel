@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-if ($staffPerms[ 'notes' ] != '1') {
+if ($staffPerms['notes'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -18,8 +18,8 @@ if ($staffPerms[ 'notes' ] != '1') {
 include 'verifyPanel.php';
 masterconnect ();
 
-if (isset($_POST[ 'search' ])) {
-    $valuetosearch = $_POST[ 'SearchValue' ];
+if (isset($_POST['search'])) {
+    $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%" . $valuetosearch . "%'";
     $search_result = filterTable ($dbcon, $sqlget);
     if ($search_result == '') {
@@ -81,28 +81,28 @@ include 'header/header.php';
             while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
                 echo '<form action=notes.php method=post>';
                 echo '<tr>';
-                echo '<td>' . $row[ 'uid' ] . ' </td>';
-                echo '<td>' . $row[ 'name' ] . ' </td>';
-                echo '<td>' . $row[ 'aliases' ] . ' </td>';
+                echo '<td>' . $row['uid'] . ' </td>';
+                echo '<td>' . $row['name'] . ' </td>';
+                echo '<td>' . $row['aliases'] . ' </td>';
                 echo '<td>' . "<select class='form-control' name='warn'><option value='4'>Commendation</option><option value='1' selected='selected'>Warning</option><option value='2'>Caution</option><option value='3'>Big Caution</option></select> </td>";
                 echo '<td>' . "<input class='form-control' type=text name=note value=''> </td>";
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=update value=Update" . '> </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row[ 'uid' ] . '> </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row['uid'] . '> </td>';
                 echo '</tr>';
                 echo '</form>';
             }
 
-            if (isset($_POST[ 'update' ])) {
+            if (isset($_POST['update'])) {
                 $sql = "SELECT * FROM `players` WHERE `uid` = $_POST[hidden]";
                 $result = mysqli_query ($dbcon, $sql);
                 $player = $result->fetch_object ();
 
                 $pid = playerID ($player);
 
-                if ($_POST[ 'note' ] != $player->note_text) {
-                    $message = 'Admin ' . $user . ' has added the note (' . $_POST[ 'note' ] . ') to ' . $player->name . '(' . $pid . ')';
+                if ($_POST['note'] != $player->note_text) {
+                    $message = 'Admin ' . $user . ' has added the note (' . $_POST['note'] . ') to ' . $player->name . '(' . $pid . ')';
                     logIt ($user, $message, $dbcon);
-                    $note = $_POST[ 'note' ];
+                    $note = $_POST['note'];
                     $note = '"' . $note . '"';
                     $UpdateN = "INSERT INTO notes (uid, staff_name, name, alias, note_text, warning) VALUES ('$_POST[hidden]', '$user', '$player->name', '$player->aliases', '$note','$_POST[warn]')";
                     mysqli_query ($dbcon, $UpdateN);

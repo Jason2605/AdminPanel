@@ -1,18 +1,18 @@
 <?php
 session_start ();
 ob_start ();
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 masterconnect ();
 
-$page1 = $_GET[ 'page' ];
+$page1 = $_GET['page'];
 if ($page1 == '' || $page1 == '1') {
     $page = 0;
 } else {
@@ -38,7 +38,7 @@ if ($addPage > $amount) {
 }
 $max = PHP_INT_MAX;
 
-switch ($_GET[ 'search' ]) {
+switch ($_GET['search']) {
     case 'cash':
         $search = 'cash';
         break;
@@ -59,27 +59,27 @@ switch ($_GET[ 'search' ]) {
         break;
 }
 
-if (isset($_POST[ 'search' ])) {
-    $valuetosearch = $_POST[ 'SearchValue' ];
+if (isset($_POST['search'])) {
+    $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`playerid`,`uid`, `aliases`) LIKE '%" . $valuetosearch . "%'";
     $search_result = filterTable ($dbcon, $sqlget);
     if ($search_result == '') {
         $sqlget = "SELECT * FROM players WHERE CONCAT (`name`,`pid`,`uid`, `aliases`) LIKE '%" . $valuetosearch . "%'";
         $search_result = filterTable ($dbcon, $sqlget);
     }
-} elseif (isset($_POST[ 'orderBank' ]) || $_GET[ 'search' ] == 'bank') {
+} elseif (isset($_POST['orderBank']) || $_GET['search'] == 'bank') {
     $sqlget = 'SELECT * FROM players ORDER BY bankacc DESC LIMIT ' . $page . ',50';
     $search_result = filterTable ($dbcon, $sqlget);
-} elseif (isset($_POST[ 'orderCash' ]) || $_GET[ 'search' ] == 'cash') {
+} elseif (isset($_POST['orderCash']) || $_GET['search'] == 'cash') {
     $sqlget = 'SELECT * FROM players ORDER BY cash DESC LIMIT ' . $page . ',50';
     $search_result = filterTable ($dbcon, $sqlget);
-} elseif (isset($_POST[ 'orderCop' ]) || $_GET[ 'search' ] == 'cop') {
+} elseif (isset($_POST['orderCop']) || $_GET['search'] == 'cop') {
     $sqlget = 'SELECT * FROM players ORDER BY coplevel DESC LIMIT ' . $page . ',50';
     $search_result = filterTable ($dbcon, $sqlget);
-} elseif (isset($_POST[ 'orderMedic' ]) || $_GET[ 'search' ] == 'medic') {
+} elseif (isset($_POST['orderMedic']) || $_GET['search'] == 'medic') {
     $sqlget = 'SELECT * FROM players ORDER BY mediclevel DESC LIMIT ' . $page . ',50';
     $search_result = filterTable ($dbcon, $sqlget);
-} elseif (isset($_POST[ 'orderAdmin' ]) || $_GET[ 'search' ] == 'admin') {
+} elseif (isset($_POST['orderAdmin']) || $_GET['search'] == 'admin') {
     $sqlget = 'SELECT * FROM players ORDER BY adminlevel DESC LIMIT ' . $page . ',50';
     $search_result = filterTable ($dbcon, $sqlget);
 } else {
@@ -95,25 +95,25 @@ include 'header/header.php';
 
     <?php
     switch ($staffPerms) {
-        case $staffPerms[ 'ban' ] == '1':
+        case $staffPerms['ban'] == '1':
             echo "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">
 			              <FORM METHOD=\"LINK\" ACTION=\"rCon/player.php\">
 			              <INPUT class='btn btn-primary btn-outline' TYPE=\"submit\" VALUE=\"Ban Player\">
 		        	      </FORM>
 		                  </div>";
-        case $staffPerms[ 'unban' ] == '1':
+        case $staffPerms['unban'] == '1':
             echo "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">
 			              <FORM METHOD=\"LINK\" ACTION=\"rCon/unBan.php\">
 			              <INPUT class='btn btn-primary btn-outline' TYPE=\"submit\" VALUE=\"Unban Player\">
 			              </FORM>
 		                  </div>";
-        case $staffPerms[ 'kick' ] == '1':
+        case $staffPerms['kick'] == '1':
             echo "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">
 			              <FORM METHOD=\"LINK\" ACTION=\"rCon/Kmenu.php\">
 			              <INPUT class='btn btn-primary btn-outline' TYPE=\"submit\" VALUE=\"Kick Player\">
 			              </FORM>
 		                  </div>";
-        case $staffPerms[ 'notes' ] == '1':
+        case $staffPerms['notes'] == '1':
             echo "<div class=\"btn-group\" role=\"group\" aria-label=\"...\">
 			              <FORM METHOD=\"LINK\" ACTION=\"notes.php\" STYLE = \"display: inline;\">
 			              <INPUT class='btn btn-primary btn-outline' TYPE=\"submit\" VALUE=\"Notes Menu\">
@@ -180,39 +180,39 @@ include 'header/header.php';
 			<tbody>
             <?php
             while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
-                if ($row[ 'playerid' ] != '' || $row[ 'pid' ] != '') {
-                    if ($row[ 'playerid' ] == '') {
-                        $pid = $row[ 'pid' ];
+                if ($row['playerid'] != '' || $row['pid'] != '') {
+                    if ($row['playerid'] == '') {
+                        $pid = $row['pid'];
                     } else {
-                        $pid = $row[ 'playerid' ];
+                        $pid = $row['playerid'];
                     }
                 }
                 $return = guid ($max, $pid);
-                $alias = explode ('`', $row[ 'aliases' ]);
+                $alias = explode ('`', $row['aliases']);
                 echo '<tr>';
-                echo '<td>' . $row[ 'uid' ] . '</td>';
-                echo '<td>' . utf8_encode ($row[ 'name' ]) . ' </td>';
-                echo '<td>' . utf8_encode ($alias[ 1 ]) . ' </td>';
+                echo '<td>' . $row['uid'] . '</td>';
+                echo '<td>' . utf8_encode ($row['name']) . ' </td>';
+                echo '<td>' . utf8_encode ($alias[1]) . ' </td>';
                 echo '<td>' . $pid . ' </td>';
                 echo '<td>' . $return . '</td>';
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'uid' ]; ?>', 'cash', '<?php echo $row[ 'cash' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'cash' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'cash', '<?php echo $row['cash']; ?>')"
+					   ; type=text value="<?php echo $row['cash']; ?>">
                 <?php
                 echo '</td>';
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'uid' ]; ?>', 'bankacc', '<?php echo $row[ 'bankacc' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'bankacc' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['uid']; ?>', 'bankacc', '<?php echo $row['bankacc']; ?>')"
+					   ; type=text value="<?php echo $row['bankacc']; ?>">
                 <?php
                 echo '</td>';
-                outputSelection ($maxCop, 'coplevel', $row[ 'coplevel' ], $row[ 'uid' ]);
-                outputSelection ($maxMedic, 'mediclevel', $row[ 'mediclevel' ], $row[ 'uid' ]);
-                outputSelection ($maxAdmin, 'adminlevel', $row[ 'adminlevel' ], $row[ 'uid' ]);
+                outputSelection ($maxCop, 'coplevel', $row['coplevel'], $row['uid']);
+                outputSelection ($maxMedic, 'mediclevel', $row['mediclevel'], $row['uid']);
+                outputSelection ($maxAdmin, 'adminlevel', $row['adminlevel'], $row['uid']);
                 echo '<form action=editPlayer.php method=post>';
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=edit id=edit value=View" . ' ></td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row[ 'uid' ] . '> </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row['uid'] . '> </td>';
                 echo "<td style='display:none;'>" . '<input type=hidden name=guid value=' . $return . '> </td>';
                 echo '</form>';
                 echo '</tr>';
@@ -257,20 +257,20 @@ include 'header/header.php';
                          $b <= $amountPage;
                          ++$b) {
                     if ($b >= $amount) {
-                        ?>
-						<li class="disabled"><a href="players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>"
-												style="text-decoration:none"><?php echo $b . ' '; ?></a>
-						<li><?php
-                    } else {
-                    if ($b == $currentpage) {
-                        ?>
-						<li class="active"><a href="players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>"
-											  style="text-decoration:none"><?php echo $b . ' '; ?></a>
-						<li><?php
-                    } else {
                     ?>
-				<li><a href="players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>"
-					   style="text-decoration:none"><?php echo $b . ' '; ?></a>
+					<li class="disabled"><a href="players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>"
+											style="text-decoration:none"><?php echo $b . ' '; ?></a>
+				<li><?php
+                } else {
+                if ($b == $currentpage) {
+                ?>
+					<li class="active"><a href="players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>"
+										  style="text-decoration:none"><?php echo $b . ' '; ?></a>
+				<li><?php
+                } else {
+                ?>
+					<li><a href="players.php?search=<?php echo $search; ?>&page=<?php echo $b; ?>"
+						   style="text-decoration:none"><?php echo $b . ' '; ?></a>
 					<li><?php
                         }
                         }

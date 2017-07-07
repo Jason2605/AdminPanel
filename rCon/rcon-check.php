@@ -5,11 +5,11 @@ $debug = false;
 if ($debug) {
     $time = microtime ();
     $time = explode (' ', $time);
-    $time = $time[ 1 ] + $time[ 0 ];
+    $time = $time[1] + $time[0];
     $start = $time;
 }
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
@@ -114,9 +114,9 @@ preg_match_all ("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw,
 					<tbody>
                     <?php
                     $i = 0;
-                    foreach ( $players[ 1 ] as $match ) {
-                        echo '<tr><td>' . $players[ 1 ][ $i ] . '</td>';
-                        echo '<td>' . $players[ 5 ][ $i ] . '</td></tr>';
+                    foreach ( $players[1] as $match ) {
+                        echo '<tr><td>' . $players[1][$i] . '</td>';
+                        echo '<td>' . $players[5][$i] . '</td></tr>';
                         ++$i;
                     }
                     echo '</table></div>';
@@ -135,11 +135,11 @@ preg_match_all ("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw,
 							<tbody>
                             <?php
                             $ii = 0;
-                            foreach ( $str[ 0 ] as $ban ) {
-                                echo '<tr><td>' . $str[ 1 ][ $ii ] . '</td>';
-                                echo '<td>' . $str[ 2 ][ $ii ] . '</td>';
-                                echo '<td>' . $str[ 3 ][ $ii ] . '</td>';
-                                echo '<td>' . $str[ 4 ][ $ii ] . '</td></tr>';
+                            foreach ( $str[0] as $ban ) {
+                                echo '<tr><td>' . $str[1][$ii] . '</td>';
+                                echo '<td>' . $str[2][$ii] . '</td>';
+                                echo '<td>' . $str[3][$ii] . '</td>';
+                                echo '<td>' . $str[4][$ii] . '</td></tr>';
                                 ++$ii;
                             }
 
@@ -149,7 +149,7 @@ preg_match_all ("#(\d+)\s+([0-9a-fA-F]+)\s([perm|\d]+)\s([\S ]+)$#im", $bansRaw,
                                 echo '<br>';
                                 $time = microtime ();
                                 $time = explode (' ', $time);
-                                $time = $time[ 1 ] + $time[ 0 ];
+                                $time = $time[1] + $time[0];
                                 $finish = $time;
                                 $total_time = round (($finish - $start), 4);
                                 echo 'Page generated in ' . $total_time . ' seconds.';

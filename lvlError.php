@@ -2,12 +2,12 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
+$user = $_SESSION['user'];
 include 'header/header.php';
 ?>
 

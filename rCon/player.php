@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
-if ($staffPerms[ 'ban' ] != '1') {
+if ($staffPerms['ban'] != '1') {
     header ('Location: ../lvlError.php');
     die();
 }
@@ -69,10 +69,10 @@ include 'header/header.php';
 	</div>
 	<br><br><br>
     <?php
-    if (isset($_POST[ 'update' ])) {
-        $guid = $_POST[ 'guid' ];
-        $reason = $_POST[ 'reason' ];
-        $time = $_POST[ 'time' ];
+    if (isset($_POST['update'])) {
+        $guid = $_POST['guid'];
+        $reason = $_POST['reason'];
+        $time = $_POST['time'];
 
         include '../verifyPanel.php';
         masterconnect ();
@@ -81,7 +81,7 @@ include 'header/header.php';
         $sqlinfo = mysqli_query ($dbcon, $sql) or die('Connection could not be established');
 
         while ($row = mysqli_fetch_array ($sqlinfo, MYSQLI_ASSOC)) {
-            if ($row[ 'guid' ] == $guid) {
+            if ($row['guid'] == $guid) {
                 $whitelist = true;
             }
         }
@@ -90,11 +90,11 @@ include 'header/header.php';
             $message = 'Admin ' . $user . ' tried to ban a whitelisted staff member - ' . $guid;
             logIt ($user, $message, $dbcon);
         } else {
-            $_SESSION[ 'guid' ] = $guid;
-            $_SESSION[ 'reason' ] = $reason;
-            $_SESSION[ 'time' ] = $time;
+            $_SESSION['guid'] = $guid;
+            $_SESSION['reason'] = $reason;
+            $_SESSION['time'] = $time;
 
-            if ($_POST[ 'guid' ] != '') {
+            if ($_POST['guid'] != '') {
                 $message = 'Admin ' . $user . ' has banned ' . $guid . ' for ' . $time . ' minutes under the reason of (' . $reason . ')';
                 logIt ($user, $message, $dbcon);
                 header ('Location: rcon-ban.php');

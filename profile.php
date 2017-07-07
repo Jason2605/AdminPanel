@@ -2,12 +2,12 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
+$user = $_SESSION['user'];
 include 'verifyPanel.php';
 include 'header/header.php';
 ?>
@@ -18,24 +18,24 @@ include 'header/header.php';
 
     <?php
 
-    if (isset($_POST[ 'updateButton' ])) {
+    if (isset($_POST['updateButton'])) {
         $fail = false;
 
-        if ($_POST[ 'curPass' ] != '') {
-            $curPass = $_POST[ 'curPass' ];
+        if ($_POST['curPass'] != '') {
+            $curPass = $_POST['curPass'];
             $curPass = hash ('sha256', $curPass);
         } else {
             $fail = true;
         }
 
-        if ($_POST[ 'pass' ] != '') {
-            $pass = $_POST[ 'pass' ];
+        if ($_POST['pass'] != '') {
+            $pass = $_POST['pass'];
         } else {
             $fail = true;
         }
 
-        if ($_POST[ 'pass1' ] != '') {
-            $pass1 = $_POST[ 'pass1' ];
+        if ($_POST['pass1'] != '') {
+            $pass1 = $_POST['pass1'];
         } else {
             $fail = true;
         }

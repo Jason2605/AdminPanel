@@ -2,18 +2,18 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 masterconnect ();
 
-if ($staffPerms[ 'superUser' ] != '1') {
+if ($staffPerms['superUser'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -53,15 +53,15 @@ include 'header/header.php';
 
             echo '</table></div>';
 
-            if (isset($_POST[ 'update' ])) {
-                $guid = $_POST[ 'guid' ];
-                $uid = $_POST[ 'uid' ];
+            if (isset($_POST['update'])) {
+                $guid = $_POST['guid'];
+                $uid = $_POST['uid'];
 
                 $UpdateQ = "INSERT INTO whitelist (user,uid,guid) VALUES ('$user','$uid','$guid');";
                 mysqli_query ($dbcon, $UpdateQ);
             }
 
-            if (isset($_POST[ 'delete' ])) {
+            if (isset($_POST['delete'])) {
                 $sql = "DELETE FROM whitelist WHERE ID='$_POST[hidden]'";
                 mysqli_query ($dbcon, $sql);
 
@@ -95,14 +95,14 @@ include 'header/header.php';
                     while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
                         echo '<form action=whitelist.php method=post>';
                         echo '<tr>';
-                        echo '<td>' . $row[ 'id' ] . '</td>';
-                        echo '<td>' . $row[ 'uid' ] . '</td>';
-                        echo '<td>' . $row[ 'guid' ] . ' </td>';
-                        echo '<td>' . $row[ 'user' ] . ' </td>';
-                        echo '<td>' . $row[ 'date_time' ] . ' </td>';
+                        echo '<td>' . $row['id'] . '</td>';
+                        echo '<td>' . $row['uid'] . '</td>';
+                        echo '<td>' . $row['guid'] . ' </td>';
+                        echo '<td>' . $row['user'] . ' </td>';
+                        echo '<td>' . $row['date_time'] . ' </td>';
 
                         echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=delete value=Delete" . ' </td>';
-                        echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row[ 'id' ] . ' </td>';
+                        echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row['id'] . ' </td>';
                         echo '</tr>';
                         echo '</form>';
                     }

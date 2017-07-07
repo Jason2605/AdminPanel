@@ -2,55 +2,55 @@
 
 if (!file_exists ('verifyPanel.php')) {
     $fail = false;
-    if ($_POST[ 'user' ] != '') {
-        $user = $_POST[ 'user' ];
+    if ($_POST['user'] != '') {
+        $user = $_POST['user'];
     } else {
         echo 'Invalid User ';
         $fail = true;
     }
 
-    if ($_POST[ 'pass' ] != '') {
-        $pass = $_POST[ 'pass' ];
+    if ($_POST['pass'] != '') {
+        $pass = $_POST['pass'];
     } else {
         $pass = '';
     }
 
-    if ($_POST[ 'host' ] != '') {
-        $host = $_POST[ 'host' ];
+    if ($_POST['host'] != '') {
+        $host = $_POST['host'];
     } else {
         echo 'Invalid Host ';
         $fail = true;
     }
 
-    if ($_POST[ 'name' ] != '') {
-        $name = $_POST[ 'name' ];
+    if ($_POST['name'] != '') {
+        $name = $_POST['name'];
     } else {
         echo 'Invalid DB Name ';
         $fail = true;
     }
 
-    if ($_POST[ 'port' ] != '') {
-        $port = $_POST[ 'port' ];
+    if ($_POST['port'] != '') {
+        $port = $_POST['port'];
     } else {
         $port = 3306;
     }
 
-    if ($_POST[ 'RHost' ] != '') {
-        $RHost = $_POST[ 'RHost' ];
+    if ($_POST['RHost'] != '') {
+        $RHost = $_POST['RHost'];
     } else {
         echo 'Invalid RCON Host ';
         $fail = true;
     }
 
-    if ($_POST[ 'RPass' ] != '') {
-        $RPass = $_POST[ 'RPass' ];
+    if ($_POST['RPass'] != '') {
+        $RPass = $_POST['RPass'];
     } else {
         echo 'Invalid RCON Password ';
         $fail = true;
     }
 
-    if ($_POST[ 'RPort' ] != '') {
-        $RPort = $_POST[ 'RPort' ];
+    if ($_POST['RPort'] != '') {
+        $RPort = $_POST['RPort'];
         $RPort = (int)$RPort;
     } else {
         echo 'Invalid RCON Port ';
@@ -59,49 +59,49 @@ if (!file_exists ('verifyPanel.php')) {
 
     //max level checks
 
-    if ($_POST[ 'maxCop' ] != '') {
-        $maxCop = $_POST[ 'maxCop' ];
+    if ($_POST['maxCop'] != '') {
+        $maxCop = $_POST['maxCop'];
         $maxCop = (int)$maxCop;
     } else {
         $maxCop = 7;
     }
 
-    if ($_POST[ 'maxMedic' ] != '') {
-        $maxMedic = $_POST[ 'maxMedic' ];
+    if ($_POST['maxMedic'] != '') {
+        $maxMedic = $_POST['maxMedic'];
         $maxMedic = (int)$maxMedic;
     } else {
         $maxMedic = 5;
     }
 
-    if ($_POST[ 'maxAdmin' ] != '') {
-        $maxAdmin = $_POST[ 'maxAdmin' ];
+    if ($_POST['maxAdmin'] != '') {
+        $maxAdmin = $_POST['maxAdmin'];
         $maxAdmin = (int)$maxAdmin;
     } else {
         $maxAdmin = 5;
     }
 
-    if ($_POST[ 'maxDonator' ] != '') {
-        $maxDonator = $_POST[ 'maxDonator' ];
+    if ($_POST['maxDonator'] != '') {
+        $maxDonator = $_POST['maxDonator'];
         $maxDonator = (int)$maxDonator;
     } else {
         $maxDonator = 5;
     }
 
-    if ($_POST[ 'apiUser' ] != '') {
-        $apiUser = $_POST[ 'apiUser' ];
+    if ($_POST['apiUser'] != '') {
+        $apiUser = $_POST['apiUser'];
     } else {
         $apiUser = 'default';
     }
 
-    if ($_POST[ 'apiPass' ] != '') {
-        $apiPass = $_POST[ 'apiPass' ];
+    if ($_POST['apiPass'] != '') {
+        $apiPass = $_POST['apiPass'];
     } else {
         $apiPass = 'password';
     }
 
-    if ($_POST[ 'apiEnable' ] != '') {
-        if ($_POST[ 'apiEnable' ] == '1' || $_POST[ 'apiEnable' ] == '0') {
-            $apiEnable = $_POST[ 'apiEnable' ];
+    if ($_POST['apiEnable'] != '') {
+        if ($_POST['apiEnable'] == '1' || $_POST['apiEnable'] == '0') {
+            $apiEnable = $_POST['apiEnable'];
             $apiEnable = (int)$apiEnable;
         } else {
             $apiEnable = 1;

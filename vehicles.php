@@ -2,13 +2,13 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 masterconnect ();
@@ -16,7 +16,7 @@ masterconnect ();
 $resultQ = 'SELECT id FROM vehicles';
 $result = mysqli_query ($dbcon, $resultQ) or die('Connection could not be established');
 
-$page1 = $_GET[ 'page' ];
+$page1 = $_GET['page'];
 
 if ($page1 == '' || $page1 == '1') {
     $page = 0;
@@ -42,8 +42,8 @@ if ($addPage > $amount) {
     $addPage = $amount;
 }
 
-if (isset($_POST[ 'search' ])) {
-    $valuetosearch = $_POST[ 'SearchValue' ];
+if (isset($_POST['search'])) {
+    $valuetosearch = $_POST['SearchValue'];
     $sqlget = "SELECT * FROM vehicles WHERE CONCAT (`pid`) LIKE '%" . $valuetosearch . "%'";
     $sqldata = filterTable ($dbcon, $sqlget);
 } else {
@@ -96,34 +96,34 @@ include 'header/header.php';
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
                 //echo '<form action=vehicles.php method=post>';
                 echo '<tr>';
-                echo '<td>' . $row[ 'id' ] . '</td>';
-                echo '<td>' . $row[ 'side' ] . ' </td>';
+                echo '<td>' . $row['id'] . '</td>';
+                echo '<td>' . $row['side'] . ' </td>';
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'classname', '<?php echo $row[ 'classname' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'classname' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'classname', '<?php echo $row['classname']; ?>')"
+					   ; type=text value="<?php echo $row['classname']; ?>">
                 <?php
 
-                echo '<td>' . $row[ 'pid' ] . ' </td>';
-                echo '<td>' . $row[ 'type' ] . ' </td>';
+                echo '<td>' . $row['pid'] . ' </td>';
+                echo '<td>' . $row['type'] . ' </td>';
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'alive', '<?php echo $row[ 'alive' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'alive' ]; ?>">
-                <?php
-
-                echo '<td>' ?>
-				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'active', '<?php echo $row[ 'active' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'active' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'alive', '<?php echo $row['alive']; ?>')"
+					   ; type=text value="<?php echo $row['alive']; ?>">
                 <?php
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'plate', '<?php echo $row[ 'plate' ]; ?>')"
-					   ; type=text value="<?php echo $row[ 'plate' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'active', '<?php echo $row['active']; ?>')"
+					   ; type=text value="<?php echo $row['active']; ?>">
+                <?php
+
+                echo '<td>' ?>
+				<input class="form-control"
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'plate', '<?php echo $row['plate']; ?>')"
+					   ; type=text value="<?php echo $row['plate']; ?>">
                 <?php
                 echo '</tr>';
             }
@@ -171,22 +171,22 @@ include 'header/header.php';
                          $b <= $amountPage;
                          ++$b) {
                     if ($b >= $amount) {
-                        ?>
-						<li class="disabled"><a href="vehicles.php?page=<?php echo $b; ?>"
-												style="text-decoration:none"><?php echo $b . ' '; ?></a>
-						<li><?php
-
-                    } else {
-                    if ($b == $currentpage) {
-                        ?>
-						<li class="active"><a href="vehicles.php?page=<?php echo $b; ?>"
-											  style="text-decoration:none"><?php echo $b . ' '; ?></a>
-						<li><?php
-
-                    } else {
                     ?>
-				<li><a href="vehicles.php?page=<?php echo $b; ?>"
-					   style="text-decoration:none"><?php echo $b . ' '; ?></a>
+					<li class="disabled"><a href="vehicles.php?page=<?php echo $b; ?>"
+											style="text-decoration:none"><?php echo $b . ' '; ?></a>
+				<li><?php
+
+                } else {
+                if ($b == $currentpage) {
+                ?>
+					<li class="active"><a href="vehicles.php?page=<?php echo $b; ?>"
+										  style="text-decoration:none"><?php echo $b . ' '; ?></a>
+				<li><?php
+
+                } else {
+                ?>
+					<li><a href="vehicles.php?page=<?php echo $b; ?>"
+						   style="text-decoration:none"><?php echo $b . ' '; ?></a>
 					<li><?php
 
                         }

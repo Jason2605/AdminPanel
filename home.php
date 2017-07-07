@@ -3,16 +3,16 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 $conecG = 'work';
-$_SESSION[ 'conecFail' ] = $conecG;
+$_SESSION['conecFail'] = $conecG;
 
 include 'verifyPanel.php';
 masterconnect ();
@@ -25,7 +25,7 @@ $sqldata = mysqli_query ($dbcon, $sqlget) or die('Connection could not be establ
 
 while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
     ++$players;
-    $money = $money + $row[ 'cash' ] + $row[ 'bankacc' ];
+    $money = $money + $row['cash'] + $row['bankacc'];
 }
 
 $sqlgetVeh = 'SELECT * FROM vehicles';
@@ -135,10 +135,10 @@ include 'header/header.php';
     echo '</div>';
     echo '<div class="col-lg-4">';
 
-    if (isset($_POST[ 'send' ])) {
-        if ($staffPerms[ 'globalMessage' ] == '1') {
-            $send = $_POST[ 'global' ];
-            $_SESSION[ 'send' ] = $send;
+    if (isset($_POST['send'])) {
+        if ($staffPerms['globalMessage'] == '1') {
+            $send = $_POST['global'];
+            $_SESSION['send'] = $send;
             header ('Location: rCon/rcon-mess.php');
             $message = 'Admin ' . $user . ' has sent a global message (' . $send . ')';
             logIt ($user, $message, $dbcon);
@@ -148,8 +148,8 @@ include 'header/header.php';
         }
     }
 
-    if (isset($_POST[ 'restart' ])) {
-        if ($staffPerms[ 'restartServer' ] == '1') {
+    if (isset($_POST['restart'])) {
+        if ($staffPerms['restartServer'] == '1') {
             $message = 'Admin ' . $user . ' has restarted the server.';
             logIt ($user, $message, $dbcon);
             header ('Location: rCon/rcon-restart.php');
@@ -159,8 +159,8 @@ include 'header/header.php';
         }
     }
 
-    if (isset($_POST[ 'stop' ])) {
-        if ($staffPerms[ 'stopServer' ] == '1') {
+    if (isset($_POST['stop'])) {
+        if ($staffPerms['stopServer'] == '1') {
             $message = 'Admin ' . $user . ' has stopped the server.';
             logIt ($user, $message, $dbcon);
             header ('Location: rCon/rcon-stop.php');
@@ -170,7 +170,7 @@ include 'header/header.php';
         }
     }
 
-    if (isset($_POST[ 'help' ])) {
+    if (isset($_POST['help'])) {
         header ('Location: help.php');
         die();
     }

@@ -2,15 +2,15 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
+$staffPerms = $_SESSION['perms'];
 $perms = '"[[`notes`,0],[`cop`,0],[`medic`,0],[`money`,0],[`IG-Admin`,0],[`editPlayer`,0],[`housing`,0],[`gangs`,0],[`vehicles`,0],[`logs`,0],[`steamView`,0],[`ban`,0],[`kick`,0],[`unban`,0],[`globalMessage`,0],[`restartServer`,0],[`stopServer`,0],[`superUser`,0]]"';
 
-if ($staffPerms[ 'superUser' ] != '1') {
+if ($staffPerms['superUser'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -38,10 +38,10 @@ include 'header/header.php';
 	<br><br><br>
 
     <?php
-    if (isset($_POST[ 'update' ])) {
-        if ($staffPerms[ 'superUser' ] == '1') {
-            $username = mysqli_real_escape_string ($dbconL, $_POST[ 'username' ]);
-            $password = mysqli_real_escape_string ($dbconL, $_POST[ 'password' ]);
+    if (isset($_POST['update'])) {
+        if ($staffPerms['superUser'] == '1') {
+            $username = mysqli_real_escape_string ($dbconL, $_POST['username']);
+            $password = mysqli_real_escape_string ($dbconL, $_POST['password']);
 
             $encPass = hash ('sha256', $password);
 

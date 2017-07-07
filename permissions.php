@@ -4,12 +4,12 @@ session_start ();
 ob_start ();
 $version = '';
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
-$user = $_SESSION[ 'user' ];
-$id = $_POST[ 'hiddenId' ];
+$user = $_SESSION['user'];
+$id = $_POST['hiddenId'];
 
 include 'verifyPanel.php';
 masterconnect ();
@@ -46,10 +46,10 @@ include 'header/header.php';
         foreach ( $return as $value ) {
             $val = remove ($value);
             $newVal = explode (',', $val);
-            if ($newVal[ 1 ] == 1) {
-                echo "<button type='button' id=" . $newVal[ 0 ] . " class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>" . $newVal[ 0 ] . '</button> ';
+            if ($newVal[1] == 1) {
+                echo "<button type='button' id=" . $newVal[0] . " class='license btn btn-success btn-sm' style='margin-bottom: 5px;' onClick='post1(this.id);'>" . $newVal[0] . '</button> ';
             } else {
-                echo "<button type='button' id=" . $newVal[ 0 ] . " class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>" . $newVal[ 0 ] . '</button> ';
+                echo "<button type='button' id=" . $newVal[0] . " class='btn btn-danger btn-sm' style='margin-bottom: 5px;' onClick='post(this.id);'>" . $newVal[0] . '</button> ';
             }
         }
 

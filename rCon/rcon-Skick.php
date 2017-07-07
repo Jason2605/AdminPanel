@@ -3,13 +3,13 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
-$staffPerms = $_SESSION[ 'perms' ];
+$staffPerms = $_SESSION['perms'];
 
-if ($staffPerms[ 'kick' ] != '1') {
+if ($staffPerms['kick'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -23,8 +23,8 @@ ob_start ();
 include '../verifyPanel.php';
 Rconconnect ();
 
-$uid = $_SESSION[ 'SKguid' ];
-$name = $_SESSION[ 'name' ];
+$uid = $_SESSION['SKguid'];
+$name = $_SESSION['name'];
 
 if ($uid == '') {
     header ('Location: ../home.php');

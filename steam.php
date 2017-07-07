@@ -2,16 +2,16 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
+$user = $_SESSION['user'];
 
-$staffPerms = $_SESSION[ 'perms' ];
+$staffPerms = $_SESSION['perms'];
 
-if ($staffPerms[ 'steamView' ] != '1') {
+if ($staffPerms['steamView'] != '1') {
     header ('Location: lvlError.php');
     die();
 }
@@ -46,19 +46,19 @@ include 'header/header.php';
 			<tbody>
             <?php
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
-                if ($row[ 'playerid' ] != '' || $row[ 'pid' ] != '') {
-                    if ($row[ 'playerid' ] == '') {
-                        $pid = $row[ 'pid' ];
+                if ($row['playerid'] != '' || $row['pid'] != '') {
+                    if ($row['playerid'] == '') {
+                        $pid = $row['pid'];
                     } else {
-                        $pid = $row[ 'playerid' ];
+                        $pid = $row['playerid'];
                     }
                 }
 
                 $return = guid ($max, $pid);
 
                 echo '<tr>';
-                echo '<td>' . $row[ 'name' ] . '</td>';
-                echo '<td>' . $row[ 'aliases' ] . ' </td>';
+                echo '<td>' . $row['name'] . '</td>';
+                echo '<td>' . $row['aliases'] . ' </td>';
                 echo '<td>' . $pid . ' </td>';
                 echo '<td>' . $return . '</td>';
                 echo "<td><a href='http://steamcommunity.com/profiles/" . $pid . "' target='_blank' class='btn btn-primary btn-outline' role='button'>Steam Accounts</a></td>";

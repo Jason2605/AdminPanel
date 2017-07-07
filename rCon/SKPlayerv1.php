@@ -3,16 +3,16 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: ../index.php');
     die();
 }
 
-$user = $_SESSION[ 'user' ];
+$user = $_SESSION['user'];
 
-$staffPerms = $_SESSION[ 'perms' ];
+$staffPerms = $_SESSION['perms'];
 
-if ($staffPerms[ 'kick' ] != '1') {
+if ($staffPerms['kick'] != '1') {
     header ('Location: ../lvlError.php');
     die();
 }
@@ -87,14 +87,14 @@ include 'header/header.php';
             include '../verifyPanel.php';
             masterconnect ();
 
-            if (isset($_POST[ 'update' ])) {
-                $guid = $_POST[ 'hiddenUID' ];
+            if (isset($_POST['update'])) {
+                $guid = $_POST['hiddenUID'];
 
                 $sql = 'SELECT uid,guid FROM whitelist';
                 $sqlinfo = mysqli_query ($dbcon, $sql) or die('Connection could not be established');
 
                 while ($row = mysqli_fetch_array ($sqlinfo, MYSQLI_ASSOC)) {
-                    if ($row[ 'uid' ] == $guid) {
+                    if ($row['uid'] == $guid) {
                         $whitelist = true;
                     }
                 }
@@ -103,8 +103,8 @@ include 'header/header.php';
                     $message = 'Admin ' . $user . ' tried to kick a whitelisted staff member - ' . $guid;
                     logIt ($user, $message, $dbcon);
                 } else {
-                    $name = $_POST[ 'hiddenName' ];
-                    $_SESSION[ 'SKguid' ] = $guid;
+                    $name = $_POST['hiddenName'];
+                    $_SESSION['SKguid'] = $guid;
 
                     $message = 'Admin ' . $user . ' has kicked ' . $player->name . '(' . $guid . ')';
                     logIt ($user, $message, $dbcon);
@@ -116,11 +116,11 @@ include 'header/header.php';
             $sqldata = mysqli_query ($dbcon, $sqlget) or die('Connection could not be established');
 
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
-            if ($row[ 'playerid' ] != '' || $row[ 'pid' ] != '') {
-                if ($row[ 'playerid' ] == '') {
-                    $pid = $row[ 'pid' ];
+            if ($row['playerid'] != '' || $row['pid'] != '') {
+                if ($row['playerid'] == '') {
+                    $pid = $row['pid'];
                 } else {
-                    $pid = $row[ 'playerid' ];
+                    $pid = $row['playerid'];
                 }
             }
 
@@ -128,14 +128,14 @@ include 'header/header.php';
             echo '<tr>';
 
             echo "<td style='display:none;'>" . '<input type=hidden name=hiddenUID value=' . $pid . ' </td>';
-            echo '<td>' . $row[ 'name' ] . ' </td>'; ?>
+            echo '<td>' . $row['name'] . ' </td>'; ?>
 			<td>
-                <?php echo '<button class="btn btn-primary btn-outline" type="button" data-toggle="collapse" data-target="#' . $row[ 'uid' ] . '" aria-expanded="false" aria-controls="' . $row[ 'uid' ] . '" >'; ?>
+                <?php echo '<button class="btn btn-primary btn-outline" type="button" data-toggle="collapse" data-target="#' . $row['uid'] . '" aria-expanded="false" aria-controls="' . $row['uid'] . '" >'; ?>
 				Toggle Aliases
 				</button>
-                <?php echo '<div class="collapse" id=' . $row[ 'uid' ] . ' >' ?>
+                <?php echo '<div class="collapse" id=' . $row['uid'] . ' >' ?>
 				<div class="well">
-                    <?php echo $row[ 'aliases' ]; ?>
+                    <?php echo $row['aliases']; ?>
 				</div>
 	</div>
 	</td>
@@ -144,7 +144,7 @@ include 'header/header.php';
 
     echo '<td>' . $pid . ' </td>';
     echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=update value=Kick" . ' </td>';
-    echo "<td style='display:none;'>" . '<input type=hidden name=hiddenName value=' . $row[ 'name' ] . ' </td>';
+    echo "<td style='display:none;'>" . '<input type=hidden name=hiddenName value=' . $row['name'] . ' </td>';
 
     echo '</tr>';
     echo '</form>';

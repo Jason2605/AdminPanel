@@ -2,13 +2,13 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 masterconnect ();
@@ -43,19 +43,19 @@ include 'header/header.php';
             <?php
             while ($row = mysqli_fetch_array ($sqldata, MYSQLI_ASSOC)) {
                 echo '<tr>';
-                echo '<td>' . $row[ 'id' ] . '</td>';
-                echo '<td>' . $row[ 'pid' ] . ' </td>';
-                echo '<td>' . $row[ 'pos' ] . ' </td>';
+                echo '<td>' . $row['id'] . '</td>';
+                echo '<td>' . $row['pid'] . ' </td>';
+                echo '<td>' . $row['pos'] . ' </td>';
 
                 echo '<td>' ?>
 				<input class="form-control"
-					   onBlur="dbSave(this.value, '<?php echo $row[ 'id' ]; ?>', 'owned', '<?php echo $row[ 'owned' ]; ?>')"
-					   type=text value="<?php echo $row[ 'owned' ]; ?>">
+					   onBlur="dbSave(this.value, '<?php echo $row['id']; ?>', 'owned', '<?php echo $row['owned']; ?>')"
+					   type=text value="<?php echo $row['owned']; ?>">
                 <?php
                 echo '</td>';
                 echo '<form action=editHouses.php method=post>';
                 echo '<td>' . "<input class='btn btn-primary btn-outline' type=submit name=edit value=View" . ' </td>';
-                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row[ 'id' ] . ' </td>';
+                echo "<td style='display:none;'>" . '<input type=hidden name=hidden value=' . $row['id'] . ' </td>';
                 echo '</form>';
 
                 echo '</tr>';

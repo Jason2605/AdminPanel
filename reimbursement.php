@@ -2,18 +2,18 @@
 session_start ();
 ob_start ();
 
-if (!isset($_SESSION[ 'logged' ])) {
+if (!isset($_SESSION['logged'])) {
     header ('Location: index.php');
     die();
 }
 
-$staffPerms = $_SESSION[ 'perms' ];
-$user = $_SESSION[ 'user' ];
+$staffPerms = $_SESSION['perms'];
+$user = $_SESSION['user'];
 
 include 'verifyPanel.php';
 masterconnect ();
 
-if ($staffPerms[ 'money' ] != '1') {
+if ($staffPerms['money'] != '1') {
     echo "<script src='scripts/na.js'></script>";
     header ('Location: lvlError.php');
     die();
@@ -52,10 +52,10 @@ include 'header/header.php';
 
             echo '</table></div>';
 
-            if (isset($_POST[ 'update' ])) {
-                $uid = $_POST[ 'uid' ];
-                $amount = $_POST[ 'amount' ];
-                $reason = $_POST[ 'reason' ];
+            if (isset($_POST['update'])) {
+                $uid = $_POST['uid'];
+                $amount = $_POST['amount'];
+                $reason = $_POST['reason'];
 
                 $UpdateQ = "INSERT INTO reimbursement_log (playerid,comp,reason,staff_name) VALUES ('$uid','$amount','$reason','$user');";
                 mysqli_query ($dbcon, $UpdateQ);
@@ -88,12 +88,12 @@ include 'header/header.php';
                     <?php
                     while ($row = mysqli_fetch_array ($search_result, MYSQLI_ASSOC)) {
                         echo '<tr>';
-                        echo '<td>' . $row[ 'reimbursement_id' ] . '</td>';
-                        echo '<td>' . $row[ 'playerid' ] . ' </td>';
-                        echo '<td>' . $row[ 'comp' ] . ' </td>';
-                        echo '<td>' . $row[ 'reason' ] . ' </td>';
-                        echo '<td>' . $row[ 'staff_name' ] . ' </td>';
-                        echo '<td>' . $row[ 'timestamp' ] . ' </td>';
+                        echo '<td>' . $row['reimbursement_id'] . '</td>';
+                        echo '<td>' . $row['playerid'] . ' </td>';
+                        echo '<td>' . $row['comp'] . ' </td>';
+                        echo '<td>' . $row['reason'] . ' </td>';
+                        echo '<td>' . $row['staff_name'] . ' </td>';
+                        echo '<td>' . $row['timestamp'] . ' </td>';
                         echo '</tr>';
                     }
 
