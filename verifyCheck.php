@@ -236,22 +236,6 @@ global ".'$'.'apiEnable;
 			AUTO_INCREMENT=1;"
 		;
 
-		$sql[] = "
-			CREATE TABLE IF NOT EXISTS `reimbursement_log` (
-				`reimbursement_id` INT(11) NOT NULL AUTO_INCREMENT,
-				`playerid` VARCHAR(50) NOT NULL,
-				`comp` INT(100) NOT NULL DEFAULT '0',
-				`reason` VARCHAR(255) NOT NULL,
-				`staff_name` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci',
-				`timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-				PRIMARY KEY (`reimbursement_id`),
-				UNIQUE INDEX `reimbursement_id` (`reimbursement_id`)
-			)
-			COLLATE='latin1_swedish_ci'
-			ENGINE=InnoDB
-			AUTO_INCREMENT=1;"
-		;
-
         $sql[] = '
 	        CREATE TABLE IF NOT EXISTS `whitelist` (
 	            `id` int(0) NOT NULL AUTO_INCREMENT,
