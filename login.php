@@ -11,7 +11,7 @@ if (isset($_SESSION['logged'])) {
 
 include 'verifyPanel.php';
 loginconnect();
-function get_client_ip_server()
+get_client_ip_server()
 
 if (!$dbconL) {
     echo 'Database connection error';
