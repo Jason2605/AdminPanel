@@ -12,11 +12,11 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
-$uidPlayer = mysqli_real_escape_string($_POST['hidden']);
-$guidPlayer = htmlspecialchars($_POST['guid']);
-
 include 'verifyPanel.php';
 masterconnect();
+
+$guidPlayer = htmlspecialchars($_POST['guid']);
+$uidPlayer = mysqli_real_escape_string($dbcon, $_POST['hidden']);
 
 $sql = "SELECT * FROM `players` WHERE uid = '$uidPlayer'";
 $result = mysqli_query($dbcon, $sql);
