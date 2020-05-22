@@ -12,8 +12,8 @@ if (!isset($_SESSION['logged'])) {
 $staffPerms = $_SESSION['perms'];
 $user = $_SESSION['user'];
 
-$uidPlayer = $_POST['hidden'];
-$guidPlayer = $_POST['guid'];
+$uidPlayer = mysqli_real_escape_string($_POST['hidden']);
+$guidPlayer = htmlspecialchars($_POST['guid']);
 
 include 'verifyPanel.php';
 masterconnect();
