@@ -19,7 +19,7 @@ include 'verifyPanel.php';
 masterconnect();
 
 if (isset($_POST['search'])) {
-    $valuetosearch = $_POST['SearchValue'];
+    $valuetosearch = mysqli_real_escape_string($dbcon, $_POST['SearchValue']);
     $sqlget = "SELECT * FROM notes WHERE CONCAT (`name`) LIKE '%".$valuetosearch."%' ORDER BY note_id DESC";
     $search_result = filterTable($dbcon, $sqlget);
 } else {
