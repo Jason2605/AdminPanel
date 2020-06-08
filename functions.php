@@ -125,3 +125,23 @@ function logs($perms, $column, $pid, $user, $dbcon, $player, $val)
         }
     }
 }
+
+function get_client_ip_server() {
+
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $Address = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $Address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $Address = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $Address = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $Address = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $Address = $_SERVER['REMOTE_ADDR'];
+    else
+        $Address = 'UNKNOWN';
+
+    return $Address;
+}

@@ -11,6 +11,7 @@ if (isset($_SESSION['logged'])) {
 
 include 'verifyPanel.php';
 loginconnect();
+get_client_ip_server()
 
 if (!$dbconL) {
     echo 'Database connection error';
@@ -34,14 +35,14 @@ $encPass = hash('sha256', $password);
 
 if ($username && $password) {
     if (!isset($_SESSION['failedLogin'])) {
-        $sql = "SELECT * FROM access WHERE address = '$_SERVER[REMOTE_ADDR]'";
+        $sql = "SELECT * FROM access WHERE address = '$Address'";
         $sqldata = mysqli_query($dbconL, $sql) or die('Connection could not be established - LOG');
 
         if (mysqli_num_rows($sqldata) == 0) {
-            $sqli = "INSERT INTO access (address,failed) VALUES ('$_SERVER[REMOTE_ADDR]',0)";
+            $sqli = "INSERT INTO access (address,failed) VALUES ('$Address',0)";
             $sqlinput = mysqli_query($dbconL, $sqli) or die('Connection could not be established - LOG');
 
-            $sql = "SELECT * FROM access WHERE address = '$_SERVER[REMOTE_ADDR]'";
+            $sql = "SELECT * FROM access WHERE address = '$Address'";
             $sqldata = mysqli_query($dbconL, $sql) or die('Connection could not be established - LOG');
         }
         $user = $sqldata->fetch_object();
@@ -97,7 +98,7 @@ if ($username && $password) {
             $_SESSION['perms'] = $perms;
             $_SESSION['failedLogin'] = 0;
 
-            $sqlget = "UPDATE access SET failed = 0 WHERE address = '$_SERVER[REMOTE_ADDR]'";
+            $sqlget = "UPDATE access SET failed = 0 WHERE address = '$Address'";
             $res = mysqli_query($dbconL, $sqlget);
 
             if ($_SESSION['failedLogin'] >= 5) {
