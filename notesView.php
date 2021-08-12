@@ -19,7 +19,7 @@ include 'verifyPanel.php';
 masterconnect();
 
 if (isset($_POST['search'])) {
-    $valuetosearch = $_POST['SearchValue'];
+    $valuetosearch = mysqli_real_escape_string($dbcon, $_POST['SearchValue']);
     $sqlget = "SELECT * FROM notes WHERE CONCAT (`name`) LIKE '%".$valuetosearch."%' ORDER BY note_id DESC";
     $search_result = filterTable($dbcon, $sqlget);
 } else {
@@ -107,18 +107,18 @@ while ($row = mysqli_fetch_array($search_result, MYSQLI_ASSOC)) {
             echo '<tr class = "success">';
             break;
     }
-    echo '<td>'.$row['uid'].' </td>';
-    echo '<td>'.$row['name'].' </td>';
-    echo '<td>'.$row['alias'].' </td>';
-    echo '<td>'.$row['note_text'].' </td>';
-    echo '<td>'.$row['staff_name'].' </td>';
-    echo '<td>'.$row['note_updated'].' </td>';
+    echo '<td>'.htmlspecialchars($row['uid'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo '<td>'.htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo '<td>'.htmlspecialchars($row['alias'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo '<td>'.htmlspecialchars($row['note_text'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo '<td>'.htmlspecialchars($row['staff_name'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo '<td>'.htmlspecialchars($row['note_updated'], ENT_QUOTES, 'UTF-8').' </td>';
     echo '<td>'."<input class='btn btn-primary btn-outline' type=submit name=update value=Delete".' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.$row['note_id'].' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=uid value='.$row['uid'].' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=name value='.$row['name'].' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.$row['note_text'].' </td>';
-    echo "<td style='display:none;'>".'<input type=hidden name=admin value='.$row['staff_name'].' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=note_id value='.htmlspecialchars($row['note_id'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=uid value='.htmlspecialchars($row['uid'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=name value='.htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=note_text value='.htmlspecialchars($row['note_text'], ENT_QUOTES, 'UTF-8').' </td>';
+    echo "<td style='display:none;'>".'<input type=hidden name=admin value='.htmlspecialchars($row['staff_name'], ENT_QUOTES, 'UTF-8').' </td>';
 
     echo '</tr>';
     echo '</form>';
